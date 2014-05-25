@@ -47,5 +47,11 @@ class CreateUsers < ActiveRecord::Migration
 
 			t.timestamps
 		end
+		
+		create_table :reviews do |t|
+
+      	t.timestamps
+    	end
+	
 	end
 end
