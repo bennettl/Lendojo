@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+
+  # Root
+  root 'static_pages#home'
+
+  # Static pages
+  match 'contact', to: 'static_pages#contact', via: 'get'
+
+  # Sessions
+  match 'signin', to: 'sessions#new', via: 'get'
+  match 'signout', to: 'sessions#destroy', via: 'delete'
+
+  # Resources
+  resources :members do
+    get :autocomplete, :on => :collection
+  end
+  resources :users
+  resources :services
+  resources :products
+  resources :sessions, only: [:new, :create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
