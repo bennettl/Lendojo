@@ -20,7 +20,8 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :last_name
 			t.string :headline
 			t.integer :age
-			t.string :location 
+			t.string :location # more specific
+			t.string :city 
 			t.string :email
 			t.string :phone
 			t.timestamps
@@ -50,7 +51,7 @@ class CreateUsers < ActiveRecord::Migration
 		
 		create_table :reviews do |t|
 
-      	t.timestamps
+	      	t.timestamps
     	end
 	
 	end

@@ -18,6 +18,11 @@ ActiveRecord::Schema.define(version: 20140525190222) do
     t.datetime "updated_at"
   end
 
+  create_table "reviews", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "services", force: true do |t|
     t.string   "image"
     t.string   "title"
@@ -40,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140525190222) do
     t.string   "headline"
     t.integer  "age"
     t.string   "location"
+    t.string   "city"
     t.string   "email"
     t.string   "phone"
     t.datetime "created_at"

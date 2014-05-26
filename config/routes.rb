@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   match 'signout', to: 'sessions#destroy', via: 'delete'
 
   # Resources
-  resources :members do
-    get :autocomplete, :on => :collection
-  end
   resources :users
   resources :services
   resources :products

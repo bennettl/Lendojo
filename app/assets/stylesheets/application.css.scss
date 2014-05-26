@@ -10,6 +10,52 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+
+// Remove  *= require_tree . because we don't want to include all css files
+
+@import "bootstrap";
+
+body, ul{
+	margin: 0;
+	padding: 0;
+}
+
+a{
+	text-decoration: none;
+}
+
+/* Header */
+
+header{
+	background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 0 0 8px 2px #9D9D9D;
+    height: 125px;
+    overflow: inherit;
+    width: 100%;
+    z-index: 100;
+}
+
+#logo{
+	display: block;
+	width: 300px;
+	height: 110px;
+	margin: 0 auto;
+}
+
+.loginIndicator{
+	top: 10px;
+	right: 20px;
+	position: absolute;
+}
+
+/* Body */
+.container{
+	margin: 20px 0;
+}
+
+/* Footer */
+footer{
+	text-align: center;
+}

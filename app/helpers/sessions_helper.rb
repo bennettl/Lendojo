@@ -2,9 +2,9 @@ module SessionsHelper
 
 	# Sign in user by creating a new reuser token, store it in cookie and encrpyted version on database
 	def sign_in(user)
-		reuser_token 						= User.new_reuser_token
-		cookies.permanent[:reuser_token] 	= reuser_token
-		user.update_attribute(:reuser_token, User.encrypt(reuser_token))
+		remember_token 						= User.new_remember_token
+		cookies.permanent[:remember_token] 	= remember_token
+		user.update_attribute(:remember_token, User.encrypt(remember_token))
 		self.current_user = user
 	end
 
@@ -16,10 +16,10 @@ module SessionsHelper
 	# Sign user out by replacing user's reuser token in dabatse with a random one and delete reuser token in cookie
 	def sign_out
 		# Make a random reuser token in case user cookie is every stolen
-		randomReuserToken = User.new_reuser_token
-		current_user.update_attribute(:reuser_token, User.encrypt(randomReuserToken))
+		randomReuserToken = User.new_remember_token
+		current_user.update_attribute(:remember_token, User.encrypt(randomReuserToken))
 		# Delete reuser token from cookies and set user to nil
-		cookies.delete(:reuser_token)
+		cookies.delete(:remember_token)
 		self.current_user = nil
 	
 	end
@@ -31,8 +31,8 @@ module SessionsHelper
 
 	# When retriving current user, grab session token from cookie and see if user exists in database
 	def current_user
-		encrypted_reuser_token = User.encrypt(cookies[:reuser_token])
-		@current_user ||= User.find_by(reuser_token: encrypted_reuser_token) #only calls find_by when @current_user is nil
+		encrypted_remember_token = User.encrypt(cookies[:remember_token])
+		@current_user ||= User.find_by(remember_token: encrypted_remember_token) #only calls find_by when @current_user is nil
 	end
 
 	# See if current user is the same as user

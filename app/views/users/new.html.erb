@@ -1,0 +1,12 @@
+<h2>Create New user</h2>
+<%= form_for @user do |f| %>
+	<%= f.text_field :image, placeholder: 'Image' %> <br />
+	<%= f.text_field :first_name, placeholder: 'First Name' %> <br />
+	<%= f.text_field :last_name, placeholder: 'Last Name' %> <br />
+	<%= f.text_field :headline, placeholder: 'Headline' %> <br />
+	<%= f.text_field :age, placeholder: 'Age' %> <br />
+	<%= f.text_field :location, placeholder: 'Location' %> <br />
+	<%= f.text_field :city, placeholder: 'City' %> <br /> 
+	<%= f.text_field :email, placeholder: 'Email' %> <br />
+	<%= f.text_field :phone, placeholder: 'Phone' %> <br />
+<% end %>

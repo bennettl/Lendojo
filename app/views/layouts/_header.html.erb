@@ -1,0 +1,11 @@
+<header role="banner">	
+	<%= link_to(image_tag('logo.png', id: :logo), main_app.root_path) %>
+	
+	<div class="loginIndicator">
+	<% if signed_in? %>
+		<%= "WELCOME #{current_user.first_name.upcase}!" %>
+	<% else  %>
+		<%= link_to 'SIGN IN', main_app.signin_path, id: 'sessionText' %>
+	<% end  %>
+	</div> 
+</header>

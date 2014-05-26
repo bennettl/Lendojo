@@ -2,11 +2,8 @@ class UsersController < ApplicationController
 
 	# List all users
 	def index
-		# Default values for params hash
-		params[:sort] ||= 'first_name'
-		params[:direction] ||= 'asc'
-		
-		@users = User.all.paginate(per_page: 5, page: params[:page])
+		# @users = User.all.paginate(per_page: 5, page: params[:page])
+		@users = User.all
 	end
 
 	# Show individual user

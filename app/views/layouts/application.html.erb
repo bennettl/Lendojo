@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LendojoApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <title>Lendojo</title>
+	<%= stylesheet_link_tag    "application", params[:controller] ,media: "all", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "application", "https://js.stripe.com/v2/", params[:controller] ,"data-turbolinks-track" => true %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div class="siteWrap">
+	  	<%= render 'layouts/header' %>
+		<% flash.each do |key, value| %>
+			<%= content_tag :div, value, class:"alert alert-#{key}" %>
+		<% end %>
+		<div class="container">
+			<%= yield %>
+		</div>
+	  	<%= render 'layouts/footer' %>
+		<div style="clear: both; padding-top: 20px;">
+			<%= debug params %>
+		</div>
+	</div> <!-- /.siteWrap -->
 </body>
 </html>
