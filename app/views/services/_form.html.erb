@@ -1,0 +1,69 @@
+<div class="box col-sm-10 col-sm-offset-1">
+	<div class="title"> <%= title %> Service</div>
+
+	<%= form_for @service, html: {multipart: true, class: 'form-horizontal'} do |f| %>
+  	<%= render 'shared/error_messages', object: f.object  %>
+	<div class="row">
+		<!-- AVATAR  -->
+		<div class="col-md-5 text-center">
+			<%= image_tag @service.main_img.url, class: "serviceImage" %>
+			<%= f.file_field :main_img %>
+		</div>
+		<!-- BASIC INFO  -->
+		<div id="basicInfo" class="col-md-7">
+			<div class="detailTitle">Basic Info</div>
+			<div id="memberName" class="col-xs-12 form-group">
+				<div class="col-md-4 col-sm-5">
+					<span class="glyphicon glyphicon-user"></span>
+					<%= f.label 'Title', class: 'control-label' %>
+				</div>
+				<div class="col-md-8 col-sm-7">
+					<%= f.text_field :title, value: @service.title, autocomplete: :off, placeholder: '2 Hour Guitar Lessions', required: "required", class: 'form-control' %>
+				</div>
+			</div>
+			<div id="headline" class="col-xs-12 form-group">
+				<div class="col-md-4 col-sm-5">
+					<span class="glyphicon glyphicon-pushpin"></span>
+					<%= f.label 'Headline', class: 'control-label' %>						
+				</div>
+				<div class="col-md-8 col-sm-7">
+					<%= f.text_area :headline, value: @service.headline, placeholder: 'Experience Graduate Student Teaching Weekened Classes', class: 'form-control' %>
+				</div>
+			</div>
+			<div id="location" class="col-xs-12 form-group">
+				<div class="col-md-4 col-sm-5">
+					<span class="glyphicon glyphicon-map-marker"></span>
+					<%= f.label 'Location', class: 'control-label' %>
+				</div>
+				<div class="col-md-8 col-sm-7">
+					<%= f.text_field :location, value: current_user.city , placeholder: current_user.city, class: 'form-control' %>
+				</div>
+			</div>
+			<div id="price" class="col-xs-12 form-group">
+				<div class="col-md-4 col-sm-5">
+					<span class="glyphicon glyphicon-usd"></span>
+					<%= f.label 'Price', class: 'control-label' %>
+				</div>
+				<div class="col-md-8 col-sm-7">
+					<%= f.text_field :price, value: @service.price, placeholder: "$15/hr or $50/session", class: 'form-control' %>
+				</div>
+			</div>
+		</div>		
+	</div>
+	<div class="row">
+		<!-- DESCRIPTION -->
+		<div class="col-xs-12">
+			<div class="detailTitle">
+				<span class="glyphicon glyphicon-align-left"></span>
+				<span>Summary</span>
+			</div>
+			<%= f.text_area :description, value: @service.description, placeholder: "More about the service...", class: "form-control" %>
+		
+		</div>
+	</div>
+	<div class="row">
+		<%= f.submit submit, class: 'button center' %>
+	</div>
+	
+</div>
+<% end %>

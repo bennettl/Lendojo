@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   # Static pages
+  match 'about', to: 'static_pages#about', via: 'get'
   match 'contact', to: 'static_pages#contact', via: 'get'
 
   # Sessions

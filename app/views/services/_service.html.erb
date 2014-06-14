@@ -1,0 +1,6 @@
+<li class="serviceListItem col-sm-4"> 
+	<%= link_to service do %>
+		<%= image_tag service.main_img.url, class: "serviceImage" %>
+		<div class="serviceListTitle"><%= service.title %></div>
+	<% end %>
+</li>

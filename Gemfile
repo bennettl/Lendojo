@@ -10,7 +10,10 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem "autoprefixer-rails"
 
-# payment
+# File Attachments
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+
+# Payment Network
 gem 'stripe'
 
 group :development, :test do

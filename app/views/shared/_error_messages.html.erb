@@ -1,0 +1,11 @@
+<% if object.errors.any? %>
+ <div id="error_explanation">
+   <!--  <div class="alert alert-error">The form contains <%= pluralize(object.errors.count, "error") %>.</div> -->
+    <ul>
+    	<!-- http://graffzon.tumblr.com/post/31730804641/lightweight-handmade-solution-for-jquery-autocomplete -->
+    	<% object.errors.full_messages.each do |m| %>
+    		<li> <%= m %> </li>
+    	<% end %>
+    </ul>
+</div>
+<% end %>

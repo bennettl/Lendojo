@@ -1,3 +1,35 @@
 // Place all the styles related to the Services controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* GENERAL */
+
+
+/* INDEX */
+
+/* SHOW */
+
+
+#userInfo{
+}
+
+.row{
+	> .col-xs-12{
+		padding: 0 4em;
+	}
+}
+
+/* EDIT */
+#service_main_img[type="file"]{
+	margin: 15px;
+}
+
+form {
+	padding-top: 20px;
+	#basicInfo{
+		padding-right: 5%;
+	}
+}
+.form-group{
+	padding-right: 0;
+}

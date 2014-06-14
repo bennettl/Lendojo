@@ -1,0 +1,49 @@
+<div class="box col-sm-10 col-sm-offset-1">
+	<!-- Overview -->
+	<div class="row">
+		<!-- Service/User info -->
+		<div id="snapshot" class="col-sm-5">
+			<%= service_img @service %>
+			<%= render 'shared/belt' %>
+		</div>
+		
+		<!-- At A Glance -->
+		<div id="detail" class="col-sm-7">
+			<div class="boxTitle"><%= @service.title %></div>
+			<div id="headline"><%= @service.headline %></div>
+			<div id="glance" class="col-xs-11">
+				<div class="detailTitle row"><span class="glyphicon glyphicon-search"></span> At A Glance</div>
+				<div class="row group">
+					<div class="col-sm-3"><span class="glyphicon glyphicon-user"></span> Lender</div>
+					<div class="col-sm-5"><%= @service.user.name %></div>
+				</div>
+				<div class="row group">
+					<div class="col-sm-3"><span class="glyphicon glyphicon-map-marker"></span> Location</div>
+					<div class="col-sm-5"><%= @service.location %> <small> (0.3 miles) </small></div>
+				</div>
+				<div class="row group">
+					<div class="col-sm-3"><span class="glyphicon glyphicon glyphicon-usd"></span> Price</div>
+					<div class="col-sm-5"><%= @service.price %></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Description -->
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="sectionTitle">
+				Summary
+			</div>
+			<p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+	</div>
+
+	<!-- Reviews -->
+	<%= render 'shared/reviews' %>
+	
+</div>

@@ -1,0 +1,27 @@
+/* GENERAL */
+/* INDEX */
+/* SHOW */
+/* line 17, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/services.css.scss */
+.row > .col-xs-12 {
+  padding: 0 4em;
+}
+
+/* EDIT */
+/* line 23, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/services.css.scss */
+#service_main_img[type="file"] {
+  margin: 15px;
+}
+
+/* line 27, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/services.css.scss */
+form {
+  padding-top: 20px;
+}
+/* line 29, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/services.css.scss */
+form #basicInfo {
+  padding-right: 5%;
+}
+
+/* line 33, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/services.css.scss */
+.form-group {
+  padding-right: 0;
+}

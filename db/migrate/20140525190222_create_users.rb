@@ -10,26 +10,33 @@ class CreateUsers < ActiveRecord::Migration
 
 		# Users
 		create_table :users do |t|
-			# hidden info
-			t.string :password_digest
-			# session
-			t.string :remember_token
-			# basic info
-			t.string :image #profile image
+			# Basic Info
+			t.attachment :avatar
 			t.string :first_name
 			t.string :last_name
 			t.string :headline
 			t.integer :age
-			t.string :location # more specific
-			t.string :city 
+			# Contact/Social
 			t.string :email
-			t.string :phone
+			t.string :phone			
+			# Location
+			t.string :location # more specific, address
+			t.string :city 
+			t.string :state
+			t.string :zip
+			# determines if user is leader or not
+			t.boolean :lender 
+			# hidden info
+			t.string :password_digest
+			# session
+			t.string :remember_token
 			t.timestamps
 		end
 
 		# Services
 		create_table :services do |t|
-			t.string :image 
+			t.belongs_to :user # member who created service
+			t.attachment :main_img
 			t.string :title
 			t.string :headline # a sentence
 			t.text :description # full description of service
@@ -45,13 +52,14 @@ class CreateUsers < ActiveRecord::Migration
 
 		# Products
 		create_table :products do |t|
-
 			t.timestamps
 		end
 		
+		# Reviews
 		create_table :reviews do |t|
-
-	      	t.timestamps
+			t.string :title
+		    t.text :text
+	    	t.timestamps
     	end
 	
 	end

@@ -3,12 +3,18 @@ class User < ActiveRecord::Base
 	before_create :create_remember_token
 
 	# Association
-	# has_many :jobs_created, class_name: 'Job', dependent: :destroy
-	# has_many :events, dependent: :destroy
-	# has_many :news, dependent: :destroy
+	has_many :services, dependent: :destroy
+
+	# Attachments: avatar
+	has_attached_file :avatar, 
+						:styles => { :medium => "200x200>", :thumb => "100x100>" }, 
+						:default_url => "/images/users/avatar/:style/missing.png", 
+						:url => "/assets/users/avatar/:id/:style/:basename.:extension",
+						:path => ":rails_root/public/assets/users/avatar/:id/:style/:basename.:extension"
+	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 	# Validation
-	validates :image, presence: true #profile image
+	# validates :avatar, presence: true #profile image
 	validates :first_name, presence: true
 	validates :last_name, presence: true
 	validates :headline, presence: true

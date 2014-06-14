@@ -1,6 +1,16 @@
 <header role="banner">	
 	<%= link_to(image_tag('logo.png', id: :logo), main_app.root_path) %>
-	
+	<nav class="mainNav" role="navigation">
+		<div class="innerNav">
+			<% # nav_link 'Products', main_app.products_path %>
+			<%= nav_link 'Users', main_app.users_path %>
+			<%= nav_link 'Services', main_app.services_path %>
+			<%= nav_link 'About', main_app.about_path %>
+			<%= nav_link 'Contact', main_app.contact_path %>
+			<% # nav_link 'My Account', main_app.edit_user_path(current_user) %>
+		</div>
+	</nav>
+
 	<div class="loginIndicator">
 	<% if signed_in? %>
 		<%= "WELCOME #{current_user.first_name.upcase}!" %>

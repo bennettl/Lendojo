@@ -1,0 +1,19 @@
+/* SHOW */
+/* line 6, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#join_info {
+  color: #979797;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
+
+/* Service */
+/* line 12, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.row.service {
+  padding: 0 30px;
+}
+
+/* line 16, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.serviceImageContainer, .serviceImage {
+  width: 98%;
+  height: 151px;
+}
