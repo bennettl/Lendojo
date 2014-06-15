@@ -3,7 +3,11 @@
 	<div class="row">
 		<!-- Snapshot -->
 		<div id="snapshot" class="col-sm-5">
-			<%= user_img @user %>
+			<% # user_img @user %>
+			<%= render 'shared/options/options', 
+						object: @user, 
+						edit_path: edit_user_path(@user),
+						report_path: report_user_path(@user) %>
 			<%= render 'shared/belt' %>
 		</div>
 

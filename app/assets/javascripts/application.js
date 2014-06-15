@@ -14,3 +14,21 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+jQuery(document).ready(function($){
+
+	// Use for shared/_options partial
+	// When user clicks <a> on #options, if a parent form exist, submit it
+	$('#options').on('click','a', function(){ 
+		var form = $(this).parents("form");
+
+		// If for exists, submit it and return false
+		if (form.length != 0){
+			form.submit();
+			return false;
+		}
+		
+	});
+
+});
+

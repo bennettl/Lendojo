@@ -4,6 +4,7 @@ namespace :db do
 		populate_admin
 		populate_users
 		populate_services
+		#populate_user_services
 	end	
 
 	def populate_admin
@@ -23,7 +24,6 @@ namespace :db do
 						password_confirmation: 'paper')
 
 	end
-
 	
 	def populate_users
 		# Create 40 users
@@ -80,8 +80,36 @@ namespace :db do
 		end
 	end
 
+	def populate_user_services
+		users = User.limit(5)
+		services = Service.limit(10)
+
+		# For each user attach service relationships 
+		users.each do |u|
+			relationship_type = 'check'
+			services.each do |s|
+				# Swtich between creating services and pins
+				u.user_services.create!(service_id: s.id, relationship_type: relationship_type)
+				relationship_type = (relationship_type == 'check') ? 'pin' : 'check'
+			end
+		end 
+	end
+
 	def random_date
 		[*1..30].sample.days.from_now.to_date
 	end
-	
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+

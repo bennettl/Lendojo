@@ -42,11 +42,19 @@ ActiveRecord::Schema.define(version: 20140525190222) do
     t.datetime "updated_at"
   end
 
+  create_table "user_services", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "service_id"
+    t.string   "relationship_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.string   "main_img_file_name"
+    t.string   "main_img_content_type"
+    t.integer  "main_img_file_size"
+    t.datetime "main_img_updated_at"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "headline"

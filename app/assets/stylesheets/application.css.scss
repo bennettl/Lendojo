@@ -72,6 +72,13 @@ header{
 	margin: 0 auto;
 }
 
+.alert-error{
+	text-align: center;
+	 background-color: #F2DEDE;
+    border-color: #EBCCD1;
+    color: #A94442;
+}
+
 .loginIndicator{
 	top: 10px;
 	right: 20px;
@@ -91,6 +98,7 @@ header{
 	}
 
 	a {
+		color: #808080;
 		float: left;
 		padding: 5px 20px;
 		transition: all 0.25s ease;
@@ -161,9 +169,15 @@ header{
 #options{
     display: table;
     margin: -55px auto 25px;
+    form{
+    	display: inline;
+    }
+    & > a:last-child{
+		margin: 0;
+	}
 }
 
-#options > a{
+#options a{
 	color: #ffffff;
 	padding: 15px;
     @include border-radius(30px);
@@ -173,19 +187,15 @@ header{
     float: left;
     margin-right: 15px;
     
-    &:last-child{
-    	margin: 0;
-    }
-    
     &.corner{
     	position: absolute;
 		right: 10px;
 		top: 10px;
     }
-    &.list{
+    &.check, &.uncheck{
 		background: #ebce59;
     }
-    &.pin{
+    &.pin, &.unpin{
     	background: #5e9abc;
     }
    	&.edit{
@@ -198,7 +208,6 @@ header{
 	    opacity: 1.0;
     }
 }
-
 
 .box{
 	border: 1px solid #E6E6E6;
@@ -269,7 +278,7 @@ header{
 	text-align: center;
 }
 
-.imageContainer, .imageContainer > img{
+.imageContainer, .imageContainer > img, .serviceImage{
 	position: relative;
 	width: 95%;
 	max-height: 170px;

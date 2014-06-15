@@ -3,6 +3,13 @@ class Service < ActiveRecord::Base
 	# Association
 	belongs_to :user
 
+    has_many :user_services, foreign_key: "service_id" ,dependent: :destroy
+
+	# Items are services/products user added  to checklist
+	# has_many :past_customers, through: :checklist_items, source: :user, dependent: :destroy
+	# Pins are services 
+	# has_many :interested_customers, through: :user_services, source: :user
+
 	# Attachment 
 	has_attached_file :main_img,
 						:styles => { :medium => "500x500>", :thumb => "150x150>" }, 

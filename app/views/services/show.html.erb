@@ -3,7 +3,10 @@
 	<div class="row">
 		<!-- Service/User info -->
 		<div id="snapshot" class="col-sm-5">
-			<%= service_img @service %>
+			<%= render 'shared/options/options', 
+						object: @service, 
+						edit_path: edit_service_path(@service), 
+						report_path: report_service_path(@service) %>
 			<%= render 'shared/belt' %>
 		</div>
 		

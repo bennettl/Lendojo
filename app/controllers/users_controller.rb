@@ -45,6 +45,11 @@ class UsersController < ApplicationController
 		end
 	end
 
+	# Report an existing user
+	def report
+		@user = User.find(params[:id])
+	end
+
 	# Destroy an existing user
 	def destroy
 		User.delete(params[:id])

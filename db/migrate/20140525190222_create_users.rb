@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration
 		# Users
 		create_table :users do |t|
 			# Basic Info
-			t.attachment :avatar
+			t.attachment :main_img
 			t.string :first_name
 			t.string :last_name
 			t.string :headline
@@ -30,6 +30,14 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :password_digest
 			# session
 			t.string :remember_token
+			t.timestamps
+		end
+
+		# Relationship table between users and services
+		create_table :user_services do |t|
+			t.integer :user_id
+			t.integer :service_id
+			t.string :relationship_type # checks, pins, hidden
 			t.timestamps
 		end
 

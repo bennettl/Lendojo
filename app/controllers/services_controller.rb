@@ -43,6 +43,11 @@ class ServicesController < ApplicationController
 		end
 	end
 
+	# Reports an existing service
+	def report
+		@service = Service.find(params[:id]) 
+	end
+	
 	# Destroys the existing service
 	def destroy
 		Service.destroy(params[:id])
