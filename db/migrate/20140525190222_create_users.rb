@@ -33,14 +33,6 @@ class CreateUsers < ActiveRecord::Migration
 			t.timestamps
 		end
 
-		# Relationship table between users and services
-		create_table :user_services do |t|
-			t.integer :user_id
-			t.integer :service_id
-			t.string :relationship_type # checks, pins, hidden
-			t.timestamps
-		end
-
 		# Services
 		create_table :services do |t|
 			t.belongs_to :user # member who created service
