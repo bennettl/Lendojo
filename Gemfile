@@ -3,14 +3,30 @@ ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.1.0'
-gem 'bootstrap-sass', '~> 3.1'
 gem 'bcrypt-ruby', '3.1.2'
+gem "autoprefixer-rails"
+gem "sass-rails", "~> 4.0.2"
+gem 'uglifier', '2.1.1'
+gem 'coffee-rails', '4.0.1'
+gem 'jquery-rails', '3.0.4'
+gem 'turbolinks', '1.1.1'
+gem 'jbuilder', '1.0.2'
+
+# Style
+gem 'bootstrap-sass', '~> 3.1'
+
+# Populate DB for Testing
 gem 'faker', '1.2.0'
+
+# Pagination
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
-gem "autoprefixer-rails"
 
-# File Attachments
+# Date picker
+gem 'momentjs-rails', '~> 2.5.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'
+
+# File Attachment
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 # Payment Network
@@ -28,13 +44,6 @@ group :test do
   gem 'capybara', '2.1.0'
   gem 'factory_girl_rails', '4.2.1'
 end
-
-gem "sass-rails", "~> 4.0.2"
-gem 'uglifier', '2.1.1'
-gem 'coffee-rails', '4.0.1'
-gem 'jquery-rails', '3.0.4'
-gem 'turbolinks', '1.1.1'
-gem 'jbuilder', '1.0.2'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

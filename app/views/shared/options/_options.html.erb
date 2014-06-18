@@ -1,6 +1,6 @@
 <div class="imageContainer">
 	<%= image_tag object.main_img.url %>
-	<div id="options">
+	<div class="options">
 		
 		<!-- SERVICE ONLY -->
 		<% if object.class.name == 'Service' %>
@@ -10,7 +10,7 @@
 			<% if user_service.nil? %>
 				<%= render 'shared/options/check', service_id: service.id %>
 			<% else %>
-				<%= render 'shared/options/uncheck', user_service_id: user_service.id %>
+				<%= render 'shared/options/uncheck', user_service_id: user_service.id, class_name: "glyphicon glyphicon-minus uncheck" %>
 			<% end %>
 
 			<!-- PIN -->

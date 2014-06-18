@@ -1,0 +1,4 @@
+// Update service container asynchronously
+jQuery(document).ready(function($) {
+    $("#serviceContainer").html("<%= escape_javascript(render 'service_list')%>");
+});

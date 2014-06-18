@@ -14,11 +14,15 @@
     # Resources
     resources :users do 
         get 'report', on: :member
+        get 'checklist', on: :collection
+        get 'pins', on: :collection
+        patch 'update_card', on: :collection
     end
-    resources :user_services, only: [:create, :destroy] do
+    resources :filters, only: [:create, :destroy, :update]
+    resources :user_services, only: [:create, :destroy, :update] do
         # :collection, no id require
         post 'create_check', on: :collection
-        post 'create_pin', on: :collection 
+        post 'create_pin', on: :collection
         # :member, needs an id
         delete 'destroy_check', on: :member
         delete 'destroy_pin', on: :member

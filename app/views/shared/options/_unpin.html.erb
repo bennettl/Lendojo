@@ -3,5 +3,5 @@
 	user_service = UserService.find(user_service_id)
 %>
 <%=	form_for user_service, remote: true, html: {method: :delete, id: 'unpin_form' }, url: { controller:'user_services', action: 'destroy_pin', id: user_service_id } do |f|  %>
-	<%= link_to('', '#', class: "glyphicon glyphicon-minus pin")  %>
+	<%= link_to('', '#', class: "option glyphicon glyphicon-minus pin")  %>
 <% end %>

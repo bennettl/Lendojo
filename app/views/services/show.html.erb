@@ -18,7 +18,7 @@
 				<div class="detailTitle row"><span class="glyphicon glyphicon-search"></span> At A Glance</div>
 				<div class="row group">
 					<div class="col-sm-3"><span class="glyphicon glyphicon-user"></span> Lender</div>
-					<div class="col-sm-5"><%= @service.user.name %></div>
+					<div class="col-sm-5"><%= link_to @service.lender.name, @service.lender %></div>
 				</div>
 				<div class="row group">
 					<div class="col-sm-3"><span class="glyphicon glyphicon-map-marker"></span> Location</div>

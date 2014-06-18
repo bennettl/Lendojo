@@ -5,9 +5,11 @@
 			<% # nav_link 'Products', main_app.products_path %>
 			<%= nav_link 'Users', main_app.users_path %>
 			<%= nav_link 'Services', main_app.services_path %>
+			<%= nav_link 'Checklist', main_app.checklist_users_path %>
+			<%= nav_link 'Pins', main_app.pins_users_path %>
 			<%= nav_link 'About', main_app.about_path %>
 			<%= nav_link 'Contact', main_app.contact_path %>
-			<% # nav_link 'My Account', main_app.edit_user_path(current_user) %>
+			<%= nav_link 'My Account', main_app.edit_user_path(current_user) %>
 		</div>
 	</nav>
 

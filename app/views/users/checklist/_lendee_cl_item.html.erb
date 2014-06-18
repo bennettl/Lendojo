@@ -1,0 +1,47 @@
+<% s = Service.find(checklist_item.service_id) %>
+<tr class="check">
+	<td class="options_checklist col-xs-2">
+		<!--  REMOVE -->
+		<%= render 'shared/options/uncheck', user_service_id: checklist_item.id, class_name: "uncheck glyphicon glyphicon-remove" %>
+
+		<% # Depending on checklist_item status, have different options presented to lendee %>
+		<% case checklist_item.status %>
+			<% when 'pending' %>
+					<% # Pending: lendee needs to wait for a call from lender %>
+			<% when 'scheduled_unconfirm' %>
+					<% # Schedule_unconfirm: lendee needs to confirm %>
+					<!-- CONFIRM -->
+					<%=	form_for checklist_item, remote: true, html: { class: 'update_confirmation_form' } do |f|  %>
+						<%= f.hidden_field :status, value: 'schedule_confirmed' %>
+						<span class="option confirm glyphicon glyphicon-ok"></span>
+					<% end %>
+			<% when 'schedule_confirmed' %>
+				<% # Schedule_confirmed: lendee can call lender %>
+				<span class="option call glyphicon glyphicon-earphone"></span>
+		<% end %>
+	</td>
+	<td class="status col-xs-2">
+		<% # Display differnt HTML base on checkList_item status %>
+		<% case checklist_item.status %>
+			<% when 'pending' %>
+					<span>Pending 
+			<% when 'scheduled_unconfirm' %>
+					<span>Please Confirm
+			<% when 'schedule_confirmed' %>
+					<span>Confirmed
+		<% end %>
+		<br /> <small><%= checklist_item.request_time %></small></span>
+	</td>
+	<td class="schedule_date col-xs-2">
+		<span><%= checklist_item.scheduled_date_text %></span>
+	</td>
+	<td class="serviceTitle col-xs-2">
+		<%= link_to s.title, s %>
+	</td>
+	<td class="lender col-xs-2">
+		<%= link_to s.lender.name, s.lender %>
+	</td>
+	<td class="price col-xs-2">
+		$<%= s.price %>
+	</td>
+</tr>

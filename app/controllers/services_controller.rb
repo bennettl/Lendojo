@@ -2,7 +2,12 @@ class ServicesController < ApplicationController
 	
 	# List all services
 	def index
-		@services = Service.all.paginate(per_page: 12, page: params[:page])
+		@services = Service.search(search_params).paginate(per_page: 9, page: params[:page])
+
+		respond_to do |format|
+		    format.html
+		    format.js
+		end
 	end
 
 	# Display individual service
@@ -58,6 +63,22 @@ class ServicesController < ApplicationController
 	# Strong parameters
 	def service_params
 		params.require(:service).permit(:title, :headline, :description, :location, :price, :categories, :tags, :image_one)
+	end
+
+	# Parameters use for searching
+	def search_params
+		# If there is no filter data, return empty
+		if params[:filter_data].nil?
+			return ''
+		end
+		
+		# Fixes error when any of the array is nil by setting default to an empty array
+		params[:filter_data][:locations] ||= []
+		params[:filter_data][:prices] ||= []
+		params[:filter_data][:belts] ||= []
+		params[:filter_data][:keywords] ||= []
+
+		params.require(:filter_data).permit(locations: [], prices: [], belts: [], keywords: [])
 	end
 
 end

@@ -13,22 +13,33 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 
-jQuery(document).ready(function($){
+// Remove //= require_tree because we don't want to include all javascript files
 
-	// Use for shared/_options partial
-	// When user clicks <a> on #options, if a parent form exist, submit it
-	$('#options').on('click','a', function(){ 
-		var form = $(this).parents("form");
+(function(){
 
-		// If for exists, submit it and return false
-		if (form.length != 0){
-			form.submit();
-			return false;
-		}
-		
-	});
+    jQuery(document).ready(function($) {
+        initApp();
+    });
 
-});
+    jQuery(document).on('page:change, page:load', initApp);
+
+
+    function initApp(){
+
+		// Use for shared/_options partial
+		// When user clicks <a> on #options, if a parent form exist, submit it
+		$('.options').on('click','a.option', function(){ 
+			var form 			= $(this).parents("form");		
+
+			// If for exists, submit it and return false
+			if (form.length != 0){
+				form.submit();
+				return false;
+			}
+			
+		});
+	}
+
+}());
 

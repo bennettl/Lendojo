@@ -48,6 +48,8 @@ GEM
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.9)
       will_paginate
+    bootstrap3-datetimepicker-rails (3.0.0.1)
+      momentjs-rails (~> 2.5.0)
     builder (3.2.2)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -94,6 +96,8 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.6.0)
     minitest (5.3.4)
+    momentjs-rails (2.5.1)
+      railties (>= 3.1)
     multi_json (1.10.1)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
@@ -194,6 +198,7 @@ DEPENDENCIES
   bcrypt-ruby (= 3.1.2)
   bootstrap-sass (~> 3.1)
   bootstrap-will_paginate (= 0.0.9)
+  bootstrap3-datetimepicker-rails (~> 3.0.0)
   capybara (= 2.1.0)
   coffee-rails (= 4.0.1)
   factory_girl_rails (= 4.2.1)
@@ -201,6 +206,7 @@ DEPENDENCIES
   hirb (= 0.7.1)
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
+  momentjs-rails (~> 2.5.0)
   paperclip!
   pg (= 0.15.1)
   rails (= 4.1.0)

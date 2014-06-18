@@ -18,6 +18,17 @@ class UserServicesController < ApplicationController
 		end
 	end
 
+	# Update the user_service attributes (done via AJAX/asynchronously)
+	def update
+		@user_service = UserService.find(params[:id])
+		@user_service.update_attributes(check_params)
+
+		# If the user service is finished, charge the lendee
+		if params[:user_service][:status] == "complete"
+			@user_service.charge!
+		end
+	end
+
 	# Unchecks service for current_user and places "_uncheck" with "_check" partial via destroy.js.erb
 	def destroy_check
 		# Uncheck the service for user
@@ -62,4 +73,13 @@ class UserServicesController < ApplicationController
 		  format.js # execute destroy_pin.js.erb
 		end
 	end
+
+	private
+
+	# Strong parameters for check
+
+	def check_params
+		params.require(:user_service).permit(:scheduled_date, :status)
+	end
+
 end

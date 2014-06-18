@@ -31,8 +31,10 @@ module SessionsHelper
 
 	# When retriving current user, grab session token from cookie and see if user exists in database
 	def current_user
-		encrypted_remember_token = User.encrypt(cookies[:remember_token])
-		@current_user ||= User.find_by(remember_token: encrypted_remember_token) #only calls find_by when @current_user is nil
+		## FOR DEBUGGING PURPOSE, CURRENT USER IS ALWAYS USER 1
+		User.find(1)
+		# encrypted_remember_token = User.encrypt(cookies[:remember_token])
+		# @current_user ||= User.find_by(remember_token: encrypted_remember_token) #only calls find_by when @current_user is nil
 	end
 
 	# See if current user is the same as user

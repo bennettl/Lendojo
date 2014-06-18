@@ -1,9 +1,9 @@
 <% 	# Remote: true uses ajax 
 	# Create a new object in memory so that the view/form can take this object and display something
-	user_service = current_user.user_services.new
+	user_service = current_user.lendee_user_services.new
 %>
 <%= form_for user_service, remote: true, html: { id: 'pin_form' }, url: { controller:'user_services', action: 'create_pin' } do |f| %>
 	<%= f.hidden_field :service_id, value: service_id %>
 	<%= f.hidden_field :relationship_type, value: 'pin' %>
-	<%= link_to('', '#', class: "glyphicon glyphicon-pushpin pin")  %>
+	<%= link_to('', '#', class: "option glyphicon glyphicon-pushpin pin")  %>
 <% end %>

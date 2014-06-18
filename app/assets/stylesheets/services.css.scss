@@ -2,10 +2,193 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/********************  MIXINS ********************/
+
+@mixin border-radius($radius: 1px) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+
 /* GENERAL */
 
 
 /* INDEX */
+
+.serviceListTitle{
+	font-size: 0.8em;
+}
+
+// Filter
+
+.searchIcon{
+	margin-right: 15px;
+}
+
+#filter-container{
+	// border: medium none !important;
+    // box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+	// border-color: #EEEEEE #EAEAEA #E5E5E5;
+    // border-style: solid;
+    // border-width: 1px;
+    // background: #F7F7F7;
+    margin: 30px auto 55px;
+    width: 80%;
+    height: 110px;
+	
+	.filter-state{
+		background-color: #F7F7F7;
+		border-bottom: 1px solid #EEEEEE;
+		min-height: 61px;
+		padding: 0;
+		transition-duration: 0.1s;
+		transition-property: color, background-color;
+		box-sizing: border-box;
+		clear: both;
+		float: left;
+		font-size: 14px;
+		width: 100%;
+
+	    .filter-box{
+	    	box-sizing: border-box;
+		    cursor: text;
+		    float: left;
+		    padding: 16px 16px 10px;
+		    width: 85%;
+		    
+		    .current-filters{
+		    	display: inline-block;
+			    vertical-align: middle;
+			    width: 95%;
+			    
+			    .filter{
+					background-color: #F59E8F;
+				    color: #FFFFFF;
+				    float: left;
+				    font-weight: 500;
+				    height: 32px;
+				    line-height: 28px;
+				    margin: 0 8px 8px 0;
+				    padding: 2px 8px 7px 13px;
+				    white-space: nowrap;
+				    @include border-radius(3px);
+
+				    .filter-remove{
+				    	font-size: 0.8em;
+				    	margin: 0 2px;
+				    	cursor: pointer;
+				    	opacity: 0.7;
+			    
+			    		&:hover{
+			    			opacity: 1.0;
+			    		}
+				    }
+				}
+		    }
+	    }
+	}
+
+	.filter-menus{
+		background-color: #F7F7F7;
+	    padding: 0 0 0 16px;
+	     box-sizing: border-box;
+	    clear: both;
+	    float: left;
+	    font-size: 14px;
+	    width: 100%;
+
+	    .filter-dimensions{
+	    	display: inline;
+
+	    	// DIMENSIONS
+	    	.dimension{
+	    		color: #999999;
+			    display: inline-block;
+			    padding: 16px 14px;
+			    position: relative;
+			    vertical-align: middle;
+
+			    .dimension-label{
+			    	font-size: 0.8em;
+			    }
+	    	}
+
+	    	// MY FILTERS
+	    	li.my-filters{
+	    		float: right;
+	    		top: 10px;
+	    		right: 20px;
+		    	font-size: 0.8em;
+		    	cursor: pointer;
+
+	    		ul.my-filters-dropdown{
+
+		    		li.my-filter-row{
+		    			padding: 5px 0;
+
+		    			&.body:hover{
+				    		background-color: #F5F5F5;
+				    		color: #262626;
+				    	}
+
+		    			span.my-filter-name{
+			    			width: 150px;
+			    			display: inline-block;
+			    		}
+			    		span.my-filter-alert{
+			    			width: 50px;
+			    			display: inline-block;
+			    		}
+			    		span.my-filter-remove{
+			    			cursor: pointer;
+			    			opacity: 0.7;
+			    			&:hover{
+			    				opacity: 1.0f;
+			    			}
+			    		}
+		    		}
+	    		}
+	    	}
+	    }
+	}
+}
+
+.saveBox{
+	box-sizing: border-box;
+    float: right;
+    padding: 16px 16px 10px 0;
+    position: relative;
+    width: 12%;
+    
+    .btn-group{
+    	width: 100%;
+    	border: none;
+    	// Save dropdown toggle
+	    .save.dropdown-toggle{
+			background-color: #DDE2E7;
+		    color: #444444;
+		    float: right;
+		    font-size: 11px;
+		    padding: 8px;
+		    text-align: center;
+		    text-transform: uppercase;
+		    vertical-align: middle;
+		    width: 100%;
+	        @include border-radius(5px);
+		}
+		// Save current filters
+		.save-current-filters{
+    		margin: 10px 5%;
+    		width: 90%;
+	    }
+    }
+	
+
+	
+}
+
+
 
 /* SHOW */
 

@@ -1,0 +1,22 @@
+<!-- LENDER CHECKLIST -->
+<div class="checkList">
+	<div class="title">LENDER</div>
+
+	<div class="alert alert-success"></div>
+
+	<table class="table table-striped">
+		<thead>
+			<th>Options</th>
+			<th>Status</th>
+			<th>Schedule Date</th>
+			<th>Service</th>
+			<th>Lendee</th>
+			<th>Price</th>
+		</thead>
+		<tbody>
+			<% @lender_checkList.each do |n| %>
+				<%= render '/users/checklist/lender_cl_item', checklist_item: n %>
+			<% end %>
+		</tbody>
+	</table>
+</div>

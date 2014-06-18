@@ -2,13 +2,101 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* SHOW */
+@import 'bootstrap';
+@import 'bootstrap-datetimepicker';
+
+/*********************** CHECKLIST ***********************/
+
+.bootstrap-datetimepicker-widget ul{
+	font-size: 1.0em;
+}
+
+.options_checklist{
+
+	form, .option{
+		display: inline-block;
+		margin: 0 5px;
+		cursor: pointer;
+	}
+
+	form:last-child{
+		margin-right: 0;
+	}
+	.glyphicon-remove{
+		color: #A94442;
+		font-size: 1em;
+	}
+}
+
+/*********************** EDIT ***********************/
+
+form{
+	label{
+		padding-top: 7px;
+	}
+}
+
+#basicSection{
+	margin-top: 0;
+}
+#summarySection{
+	padding: 0 35px;
+}
+
+#user_summary{
+	height: 200px;
+}
+
+.edit-group{
+	margin-top: 30px;
+	margin-bottom: 20px;
+	& > .group:last-child{
+		border: none;
+	}
+}
+
+#cardContainer{
+	height: 36px;
+    margin: 17px 15px;
+    text-align: center;
+    width: 100%;
+    
+	.card{
+		background: url("/images/logos/credit_card.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+		width: 55px;
+		height: 36px;
+	    display: inline-block;
+
+		&.visa{
+		 background-position: 0px 0px;
+		}
+		&.mastercard{
+		 background-position: -60px 0px;
+		}
+		&.discover{
+		 background-position: -120px 0px;
+		}
+		&.amex{
+		 background-position: -180px 0px;
+		}
+	}
+	.cardLabel{
+		font-size: 0.9em;
+		padding-top: 10px;
+		padding-right: 0;
+	}
+}
+
+
+/*********************** SHOW ***********************/
+
 #join_info{
 	color: #979797;
     font-size: 0.9em;
     margin-bottom: 20px;
 }
-/* Service */
+
+/*********************** Service ***********************/
 .row.service{
 	padding: 0 30px;
 }
