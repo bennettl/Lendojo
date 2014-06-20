@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.raty.js
 
 // Remove //= require_tree because we don't want to include all javascript files
 
@@ -26,7 +27,12 @@
 
 
     function initApp(){
+    	/**************************  TOOLTIP **************************/
+    	
+    	// Activate tooltip for all .tooltip_target, set container to body to prevent divs from mmoving around if tooltip is appended to it
+    	$('.tooltip_target').tooltip({container: 'body'});
 
+    	/**************************  OPTIONS **************************/
 		// Use for shared/_options partial
 		// When user clicks <a> on #options, if a parent form exist, submit it
 		$('.options').on('click','a.option', function(){ 
@@ -39,6 +45,25 @@
 			}
 			
 		});
+
+		/************************** REVIEW LIST **************************/
+
+		// If .review-list exists, continue
+		if ($('.review-list-item').length > 0){
+			// Get the # of stars for each review-list item and use it for the raty function
+			$('.review-list-item').each(function(){
+				var ratyHTML 	= $(this).find('.raty');
+				var stars 		= ratyHTML.data().stars;
+
+				ratyHTML.raty({
+					starHalf   	: '/images/raty/images/star-half.png',
+					starOff    	: '/images/raty/images/star-off.png',
+					starOn     	: '/images/raty/images/star-on.png',
+					readOnly	: true, 
+					score		: stars
+				});	
+			});
+		}
 	}
 
 }());

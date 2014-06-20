@@ -5,5 +5,5 @@
 <%= form_for user_service, remote: true, html: { id: 'check_form' }, url: { controller:'user_services', action: 'create_check' } do |f| %>
 	<%= f.hidden_field :service_id, value: service_id %>
 	<%= f.hidden_field :relationship_type, value: 'check' %>
-	<%= link_to('', '#', class: "option check glyphicon glyphicon-ok")  %>
+	<%= link_to('', '#', class: "option check tooltip_target glyphicon glyphicon-ok", data: {toggle: 'tooltip'}, title: 'Add To Checklist')  %>
 <% end %>

@@ -25,8 +25,8 @@
 		<!-- SERVICE ONLY -->
 
 		<!-- OTHER OPTIONS -->
-		<%= link_to('', edit_path, class: "glyphicon glyphicon-pencil edit")  %>
-		<%= link_to('', report_path, class: "glyphicon glyphicon-flag flag") %>
+		<%= link_to('', edit_path, class: "edit tooltip_target glyphicon glyphicon-pencil", data: {toggle: 'tooltip'}, title: 'Edit')  %>
+		<%= link_to('', report_path, class: "flag tooltip_target glyphicon glyphicon-flag", data: {toggle: 'tooltip'}, title: 'Report') %>
 	</div>
 </div>
 

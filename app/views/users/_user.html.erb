@@ -1,1 +1,14 @@
-<li><%= link_to user.first_name, user %></li>
+<div class="userList row">
+	<a href="<%= user_path(user.id) %>">
+		<div class="col-xs-2"><%= image_tag user.main_img(:thumb), class: 'userThumb' %></div>
+		<div class="col-xs-3 cell"><%= user.name %></div>
+		<div class="col-xs-3 cell"><%= user.location %></div>
+		<div class="col-xs-3 cell">
+			<% if user.lender %>
+				<div class="belt-icon <%= user.belt %>"></div>
+			<% else %>
+				N/A
+			<% end %>
+		</div>
+	</a>
+</div>

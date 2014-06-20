@@ -1,3 +1,28 @@
 // Place all the styles related to the Static_Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/******************************* About *******************************/
+#about{
+	background: url("/images/about.png") no-repeat scroll 0 0 / cover #ffffff;
+    min-height: 955px;
+    width: 100%;
+    position: relative;
+
+    .title{
+    	padding: 30px 0;
+    }
+    .aboutBlurb{
+    	height: 200px;
+	    margin: 0 auto;
+	    text-align: center;
+	    width: 500px;
+    }
+}
+
+/******************************* Contact *******************************/
+#contactBox{
+	input, select{
+		margin: 20px 0;
+	}
+}

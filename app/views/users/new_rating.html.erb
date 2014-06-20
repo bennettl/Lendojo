@@ -1,0 +1,37 @@
+<div id="newRating" class="box col-sm-10 col-sm-offset-1">
+    <div class="title">Rate Your Experience</div>
+    <div class="col-sm-5 col-xs-12">
+        <div id="lender">
+            <div class="name"><%= @user.name %></div>
+            <%= image_tag @user.main_img, class: 'imageContainer' %>
+        </div>
+    </div>
+    <div class="col-sm-7 col-xs-12">
+        <!-- RATING BOX -->
+        <div id="ratingBox">
+            <%= form_for @rating, html: { id: 'ratingForm', autocomplete: :off } do |f| %>
+                <div id="raty-hint">Dont Like it</div>
+                <div class="raty"></div>
+                <%= f.hidden_field :lender_id, value: @user.id %>
+                <%= f.hidden_field :stars, value: 3 %>
+            <% end %>
+        </div> 
+        <!-- REVIEW BOX -->
+        <div id="reviewBox">
+            <%= form_for @review, html: {id: 'reviewForm', remote: true, autocomplete: :off} do |f| %>
+                <div class="title">Attach A Review</div>
+                <div id="title" class="row">
+                   <%= f.text_field :title, value: @review.title, required: true, placeholder: 'Best Lender In The Dojo!', class: 'form-control' %>
+                </div>
+                <div id="summary" class="row">
+                    <%= f.text_area :summary, value: @review.summary, required: true, placeholder: "Consider why did you choose this rating? What did you like or dislike? Who would you recommend this to?", class: 'form-control' %>
+                </div>
+                <%= f.hidden_field :lender_id, value: @user.id %>
+                <%= f.hidden_field :stars, value: 3 %>
+            <% end %>
+        </div>
+        <div class="row">
+            <%= link_to 'Submit', '#', id: 'submitRating', class: 'button center' %>
+        </div>
+    </div>
+</div>

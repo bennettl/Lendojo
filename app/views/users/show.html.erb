@@ -8,7 +8,7 @@
 						object: @user, 
 						edit_path: edit_user_path(@user),
 						report_path: report_user_path(@user) %>
-			<%= render 'shared/belt' %>
+			<%= render 'shared/belt', user: @user %>
 		</div>
 
 		<!-- Detail  -->
@@ -44,7 +44,7 @@
 		<%= render @services %>
 	</div>
 
-	<%= render 'shared/reviews' %>
+	<%# render 'shared/reviews' %>
 
 	<!-- Latest Servies tried -->
 	<div class="row service">

@@ -1,4 +1,62 @@
-<h2>Users</h2>
-<ul>
-	<%=	render @users %>
-</ul>
+<div class="box col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1">	
+	<div class="col-sm-3" style="margin-top: 120px;">
+		<div class="title pull-left">Dashboard</div>
+		<table id="userDashboard" class="table">
+			<tr>
+				<th>Users</th>
+				<td><%= User.all.count %></td>
+			</tr>
+			<tr>
+				<th>Lenders</th>
+				<td><%= total_lenders = User.where(lender: true).count %></td>
+			</tr>
+			<tr>
+				<th>Checks</th>
+				<td><%= UserService.where(relationship_type: 'check').count %></td>
+			</tr>
+			<tr>
+				<th>Pins</th>
+				<td><%= UserService.where(relationship_type: 'pin').count %></td>
+			</tr>
+		</table>
+
+		<div class="title pull-left">Rank</div>
+
+		<table id="userDashboard" class="table">
+			<tr>
+				<th>White</th>
+				<td>39%</td>
+			</tr>
+			<tr>
+				<th>Green</th>
+				<td>20%</td>
+			</tr>
+			<tr>
+				<th>Blue</th>
+				<td>30%</td>
+			</tr>
+			<tr>
+				<th>Red</th>
+				<td>10%</td>
+			</tr>
+			<tr>
+				<th>Black</th>
+				<td>5%</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-sm-9">
+		<div class="title">Users</div>
+		<div class="searchContainer">
+			<span class="searchIcon glyphicon glyphicon-search icon-flipped"></span>
+			<input type="text" name="user_full_name" class="input name-input" placeholder="Enter a name, any name">
+		</div>
+		<div class="userList-header row">
+			<div class="col-xs-2">Avatar</div>
+			<div class="col-xs-3">Name</div>
+			<div class="col-xs-3">Location</div>
+			<div class="col-xs-3">Belt</div>
+		</div>
+		<%= render 'userList' %>
+	</div>
+</div>

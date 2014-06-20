@@ -3,9 +3,17 @@ class User < ActiveRecord::Base
 	before_create :create_remember_token
 
 	# Association
-	has_many :services, foreign_key: "lender_id", dependent: :destroy # use lender_id instead of user_id
 	has_many :filters
-	
+	has_many :services, foreign_key: "lender_id", dependent: :destroy # use lender_id instead of user_id
+
+	# RATINGS
+	has_many :ratings_given, class_name: "Rating", foreign_key: "author_id", dependent: :destroy # Ratings that the user has given
+	has_many :ratings_recieved, class_name: "Rating", foreign_key: "lender_id", dependent: :destroy # Ratings that the user has recieved
+
+	# REVIEWS
+	has_many :reviews_given, class_name: "Review", foreign_key: "author_id", dependent: :destroy # Reviews that user has given
+	has_many :reviews_recieved, class_name: "Review", foreign_key: "lender_id", dependent: :destroy # Reviews that the user has recieved
+
     # Has many ... through explaination
     # Check: alias name (user.checks) 
     # Users_services: table name,
@@ -82,15 +90,40 @@ class User < ActiveRecord::Base
 	    Digest::SHA1.hexdigest(token.to_s)
 	end
 
+
+	# Searches users base similar (LIKE) to search hash
+	def self.search(search)
+		if !search.nil? && !search.empty?
+			# Parameters
+			query 	= []
+			like 	= Rails.env.development? ? 'LIKE' : 'ILIKE' ; #case insensitive for postgres
+			
+			# Concatinate columns with || so search[:name] can search both columns
+			query.push((search[:name].blank?) ? '' : "(first_name || ' ' || last_name) #{like} '%#{search[:name]}%'")
+			
+			query.reject! {|q| q.empty? }
+
+			# Search for all fields
+			self.where(query.join(' AND '))
+		else
+			self.all
+		end
+	end
+
+
 	# Returns full name
 	def name
 		"#{first_name} #{last_name}"
 	end
 
-	def lender?
-		lender
+	# Has the current user given rating to other user?
+	def given_rating_to?(other_user)
+		self.ratings_given.find_by(lender_id: other_user.id)
 	end
 
+
+	################################################### BELT ###################################################
+	
 
 	################################################### USER - SERVICE ###################################################
 	

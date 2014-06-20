@@ -4,6 +4,7 @@
 		<div class="innerNav">
 			<% # nav_link 'Products', main_app.products_path %>
 			<%= nav_link 'Users', main_app.users_path %>
+			<%= nav_link 'Rate', main_app.new_rating_user_path(current_user) %>
 			<%= nav_link 'Services', main_app.services_path %>
 			<%= nav_link 'Checklist', main_app.checklist_users_path %>
 			<%= nav_link 'Pins', main_app.pins_users_path %>

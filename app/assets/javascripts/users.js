@@ -6,14 +6,35 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require date.format
+//= require ratings
 
 // Date: date.format formats a unix timestamp
 // http://blog.stevenlevithan.com/archives/date-time-format
 
-$(document).ready(function(){
+
+jQuery(document).ready(function($) {
+    initUser();
+});
+
+jQuery(document).on('page:change, page:load', initUser);
+
+// Calls the necessary functions for users related pages
+function initUser(){
 	ccInit();
 	checkList();
-});
+	index();
+}
+
+// Handles the JS for index
+function index(){
+	// Reloads list in real time every time the user types
+    $('input[name="user_full_name"]').keyup(function(event) {
+        var memberSearchForm = $("#member_search");
+        var path = '/users/';
+        var info = { 'name': $(this).val() };
+        $.get(path, info, null, "script");
+    });
+}
 
 // Handles the JS for users/checklist
 function checkList(){

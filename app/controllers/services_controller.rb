@@ -3,6 +3,7 @@ class ServicesController < ApplicationController
 	# List all services
 	def index
 		@services = Service.search(search_params).paginate(per_page: 9, page: params[:page])
+		@myFilters = current_user.filters
 
 		respond_to do |format|
 		    format.html
@@ -13,6 +14,7 @@ class ServicesController < ApplicationController
 	# Display individual service
 	def show
 		@service = Service.find(params[:id])
+		@reviews = @service.lender.reviews_recieved.paginate(per_page: 4, page: params[:review_page])
 	end
 
 	# Displays a form to create a new service
@@ -62,7 +64,7 @@ class ServicesController < ApplicationController
 
 	# Strong parameters
 	def service_params
-		params.require(:service).permit(:title, :headline, :description, :location, :price, :categories, :tags, :image_one)
+		params.require(:service).permit(:main_img, :title, :headline, :description, :location, :price, :category, :tags, :hidden)
 	end
 
 	# Parameters use for searching

@@ -1,8 +1,10 @@
 <% s = Service.find(checklist_item.service_id) %>
 <tr class="check">
 	<td class="options_checklist col-xs-2">
-		<!--  REMOVE -->
-		<%= render 'shared/options/uncheck', user_service_id: checklist_item.id, class_name: "uncheck glyphicon glyphicon-remove" %>
+		<% unless checklist_item.status == 'complete' %>
+			<!--  REMOVE -->
+			<%= render 'shared/options/uncheck', user_service_id: checklist_item.id, class_name: "uncheck glyphicon glyphicon-remove" %>
+		<% end %>
 
 		<% # Depending on checklist_item status, have different options presented to lendee %>
 		<% case checklist_item.status %>
@@ -18,6 +20,11 @@
 			<% when 'schedule_confirmed' %>
 				<% # Schedule_confirmed: lendee can call lender %>
 				<span class="option call glyphicon glyphicon-earphone"></span>
+			<% when 'complete' %>
+				<% # Coplete, lendee can rate lender %>
+				<%= link_to new_rating_user_path(checklist_item.lender) do %>
+					<span class="rate glyphicon glyphicon-star"></span>
+				<% end %>
 		<% end %>
 	</td>
 	<td class="status col-xs-2">
@@ -29,6 +36,8 @@
 					<span>Please Confirm
 			<% when 'schedule_confirmed' %>
 					<span>Confirmed
+			<% when 'complete' %>
+					<span>Complete
 		<% end %>
 		<br /> <small><%= checklist_item.request_time %></small></span>
 	</td>

@@ -1,0 +1,28 @@
+<div class="review-list-item row">
+	<!-- User Avatar -->
+	<div class="col-sm-2">
+		<%= image_tag review.lender.main_img(:thumb), class: 'userThumb' %>
+	</div>
+	<!--  Review Details -->
+	<div class="review-details col-sm-9">
+		<h4><%= review.title %>, <small> <%= review.created_at.strftime("%B %e, %Y") %></small><br /> 
+			<small>By <%= review.author.name %></small>
+		</h4>
+		<div class="vote-blurb">
+			<%= "#{review.reputation_for(:up_votes).to_i} out of #{review.reputation_for(:total_votes).to_i} found this review helpful" %>
+		</div>
+		<div class="raty" data-stars="<%= review.stars %>"></div>
+		<div class="summary">
+			<%= review.summary %>
+		</div>
+		<% unless review.has_evaluation?(:total_votes, current_user) %>
+			<div class="vote">
+				<span class="">Was this review helpful? </span>
+				<%= link_to 'Yes', vote_review_path(review, type: 'up'), method: 'post', class: 'vote-yes' %> | 
+				<%= link_to 'No', vote_review_path(review, type: 'down'), method: 'post', class: 'vote-no' %>
+			</div>
+		<% end %>
+	</div>
+	<!-- <div class="reviewTitle">Review Title</div> -->
+	<!-- <div class="reviewDate"></div> -->
+</div>

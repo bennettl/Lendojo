@@ -41,7 +41,7 @@ namespace :db do
 			state 			= 'CA'
 			city			=  Faker::Address.city
 			zip 			= '90007'
-			lender 			= false
+			lender 			= [true, false].sample
 			belt 			= random_belt
 
 			# Create the user
@@ -66,17 +66,19 @@ namespace :db do
 
 	def populate_services
 		users = User.limit(5)
-		# Each user will create 8 services
+		
+		# Loop through each user
 		users.each do |u|
+			# Each user will create 8 services
 			8.times do |n|
-				hash 			= random_hash
-				title 			= random_hash[:desc][:title] + " #{n}"
-				headline 		= hash[:desc][:headline]
+				service_hash 	= random_service_hash
+				title 			= "#{n}" + service_hash[:desc][:title]
+				headline 		= service_hash[:desc][:headline]
 				summary 		= Faker::Lorem.paragraphs(5).join("\n\n")
-				location 		= hash[:location]
-				price 			= hash[:price]
-				category 		= hash[:desc][:category]
-				tags 			= hash[:desc][:tag]
+				location 		= service_hash[:location]
+				price 			= service_hash[:price]
+				category 		= service_hash[:desc][:category]
+				tags 			= service_hash[:desc][:tag]
 				u.services.create!(title: title, 
 										headline: headline, 
 										summary: summary, 
@@ -84,6 +86,23 @@ namespace :db do
 										price: price,
 										category: category, 
 										tags: tags )
+				# Each service will have five ratings/reviews
+				5.times do |m|
+					author 			= User.all.sample # bad for memory
+					reviews_hash 	= random_reviews_hash
+					title 			= reviews_hash[:title]
+					stars 			= reviews_hash[:stars]
+					summary 		= reviews_hash[:summary]
+
+					# Create rating
+					author.ratings_given.create!(lender_id: u.id, stars: stars)
+					# Create review
+					author.reviews_given.create!(lender_id: u.id,
+													title: title, 
+													stars: stars,
+													summary: summary, 
+													category: category)
+				end
 			end
 		end
 	end
@@ -104,8 +123,35 @@ namespace :db do
 		end 
 	end
 
-	# Random values
-	def random_hash
+	# Random hash for reviews
+	def random_reviews_hash
+		[ {title: "Pretty decent, could have been better", stars: 4, summary: "This chair arrived well-packaged and protected with a lot of foam insulation around the wheels and metal components. Assembly was quick and simple, as I didn't even need the instructions. All you have to do is put the air lift on the base and place the seat on the air lift, then it's ready to go. The chair has great lumbar support and reaches all the way up to my head, allowing me to rest entirely against it. It's also fairly comfortable, having a few inches of padding, while not being too compliant so as to lack support, making for a pretty good balance that I particularly like. The air lift lever (for raising/lowering the height of the chair) is designed so that when pushed in the chair cannot recline, but if you pull it out slightly, it releases a mechanical lock and allows the chair to recline back about 20-30 degrees."},
+			{title: "Got exactly what I needed and more!", stars: 5, summary: "Customer Service: We often encounter a customer service rep who has had a bad day or just does not care or any of the negative phrases that make us some reps. This is absolutely NOT the case with the folks at BOSS. After opening the box and putting it together (a feat accomplished by anyone who can lift a sack of potatoes) I could not get the gas cylinder to raise the seat level. One of us is 5'6\" and the other is 6'3\" and the seat is either too high or too low unless the gas cylinder works. It did not. 
+
+				It was too late to call and it was Thanksgiving eve. Even if anyone had been home I would have waited until Frantic Friday to call. So I emailed my concern and expected no reply until today or maybe tomorrow. On Friday, the 26th, the height adjustment absence was just too much to endure. A call was placed to BOSS and a woman told me exactly what to do and I did. Closed case. Wow! I did suggest that the instructions would benefit from her advice in future iterations. Regardless, my problem was settled in seconds and when I finally got to reviewing my email I saw a response from BOSS saying the same thing. Let's all give a big shout to BOSS for fantastic service."
+			},
+			{title: "Quick, Easy, and Fast!", stars: 4, summary: "The chair leans back which is nice. Doesn't seem to have too much lean which i don't really like but it's enough to put my feet up on my sub woofer. The leather is very nice quality and it has a built-in lumbar support which feels nice. My only issue with the chair was the first chair i sat in it and a bolt sheered off. But i told amazon and they had my new chair their the next day (same as what i paid for to ship it originally) and they had a ups man there the next day to pick up the broken chair. After that the chair has been flawless and very comfortable. The leather feels less cheap then the leather on my old chair." },
+			{title: "Bad Overall Experience", stars: 2 , summary: "This chair is nicely built. It looks elegant and cool. It is easy to clean.
+The problem for me is that this is too big.
+I am male, 170 cm, 56 kg, that is about 5 foot 7 inches and 123 pounds. I don't feel very comfortable in this chair especially due to the armrest. The armrest is just a few centimeters too high, it pushes my elbow up, and that's annoying.
+The part where you sit on is very large, and I seem to \"sink\" inside it, which worsens the armrest problem.
+But I think if you are taller, this should be good. It will be even better if you are both taller and fatter. Maybe if I were 180cm(5 foot 11 inches) 85kg(188 pounds), this chair would be perfect." },
+			{title: "Worse Lender In Dojo!", stars: 1, summary: "First the positives:
+
+* This is the easiest chair I've ever put together. Simply unfold the chair back and the seat, which come pre-attached along with the arms, until they lock together. Next, place the gas cylinder firmly into the chair base and snap the 5 wheels onto the bottom. Finally, slide the gas cylinder/base into the seat bottom. It's completely tool-less and takes minutes.
+
+* The chair itself is pretty comfortable. It fit my back perfectly and was firm enough to give support while being soft enough to sit for extended periods.
+
+* Contrary to what other reviewers say, this chair can lean back. Just slide the height adjustment lever in towards the chair to lock the back in place, or slide it out to allow the chair to lean backwards.
+"},
+			{title: "The Best Lender In the Dojo!", stars: 5, summary: "Purchased this chair once before on July 26, 2012. Was happy with the chair and the material that was used. This time the material was totally different. Very Cheap, so called Leather Plus..................... Very Cheap. In the description it does say Leather Plus but in the details as this is how it is described, below. I copied and pasted the information. It is not Leather............. Don't be fooled and it feels and looks very cheap. This material is totally different from the purchase in the past. If it were the same as the first chair I bought, I would have been happy. It was discribe to be the exact same and was not............ I don't write many reviews and I shop a lot with Amazon and this time I am a very unhappy shopper. Beware of this cheap chair..........................................."},
+			{title: "Very good experience", stars: 4, summary: "This chair was packed sufficiently, arrived quickly, and was easy to assemble (5mins, no tools). The chair is comfortable, but I'll have to either turn my A/C colder or wear a shirt (I work at home) because this material either makes me sweat a lot more, or it just shows up more."},
+			{title: "Experienced teach, but always late", stars: 2, summary: "Update: after less that 1 year of use, this chair's piston is giving out. It rises on it's own, and I have to lower the chair every time I sit in it. It even rises slowly while I am in it, causing me to have to constantly lower it again. CHEAP CRAP!!!"}
+		].sample
+	end
+
+	# Random hash for service
+	def random_service_hash
 		belt 		= ['white', 'green', 'blue', 'red', 'black'].sample
 		location 	= ['Los Angeles', 'USC', 'Southern California', 'Silicon Valley', 'San Francisco', 'Boston', 'United States'].sample
 		price 		= [*10..200].sample

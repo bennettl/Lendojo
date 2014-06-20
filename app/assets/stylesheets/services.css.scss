@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/********************  VARIABLES ********************/
+$orange-red: #e28778;
+
 /********************  MIXINS ********************/
 
 @mixin border-radius($radius: 1px) {
@@ -16,9 +19,6 @@
 
 /* INDEX */
 
-.serviceListTitle{
-	font-size: 0.8em;
-}
 
 // Filter
 
@@ -35,11 +35,10 @@
     // background: #F7F7F7;
     margin: 30px auto 55px;
     width: 80%;
-    height: 110px;
+    height: 140px;
 	
 	.filter-state{
-		background-color: #F7F7F7;
-		border-bottom: 1px solid #EEEEEE;
+		border: 1px solid #dfdfdf;
 		min-height: 61px;
 		padding: 0;
 		transition-duration: 0.1s;
@@ -49,6 +48,7 @@
 		float: left;
 		font-size: 14px;
 		width: 100%;
+		@include border-radius(5px);
 
 	    .filter-box{
 	    	box-sizing: border-box;
@@ -86,11 +86,24 @@
 				    }
 				}
 		    }
+
+		    .keyword-box{
+		    	border-top: 1px dashed #4b4b4b;
+			    margin-left: 22px;
+			    margin-top: 10px;
+			    padding: 12px 0 6px 6px;
+			    
+			    .keyword-input{
+			    	background: #ffffff;
+			    	border: 0 none;
+				    padding: 0;
+				    width: 90%;
+			    }
+		    }
 	    }
 	}
 
 	.filter-menus{
-		background-color: #F7F7F7;
 	    padding: 0 0 0 16px;
 	     box-sizing: border-box;
 	    clear: both;
@@ -105,22 +118,27 @@
 	    	.dimension{
 	    		color: #999999;
 			    display: inline-block;
-			    padding: 16px 14px;
+			    padding: 8px 14px;
 			    position: relative;
 			    vertical-align: middle;
 
 			    .dimension-label{
+			    	color: #808080;
 			    	font-size: 0.8em;
 			    }
 	    	}
 
 	    	// MY FILTERS
 	    	li.my-filters{
-	    		float: right;
-	    		top: 10px;
-	    		right: 20px;
-		    	font-size: 0.8em;
-		    	cursor: pointer;
+	    		cursor: pointer;
+			    float: right;
+			    font-size: 0.7em;
+			    right: 16px;
+			    text-transform: uppercase;
+			    top: 15px;
+			    a{
+		    		color: $orange-red;
+			    }
 
 	    		ul.my-filters-dropdown{
 
@@ -141,6 +159,8 @@
 			    			display: inline-block;
 			    		}
 			    		span.my-filter-remove{
+			    			z-index: 10;
+			    			display: inline-block;
 			    			cursor: pointer;
 			    			opacity: 0.7;
 			    			&:hover{
@@ -184,10 +204,7 @@
 	    }
     }
 	
-
-	
 }
-
 
 
 /* SHOW */
@@ -203,6 +220,7 @@
 }
 
 /* EDIT */
+
 #service_main_img[type="file"]{
 	margin: 15px;
 }
@@ -213,6 +231,12 @@ form {
 		padding-right: 5%;
 	}
 }
+
 .form-group{
 	padding-right: 0;
+}
+
+textarea#service_summary{
+	height: 200px;
+	margin-bottom: 30px;
 }

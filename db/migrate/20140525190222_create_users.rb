@@ -1,9 +1,12 @@
 class CreateUsers < ActiveRecord::Migration
 
 	# Always run these three commands
-	# bundle exec rake db:rollback
+	# bundle exec rake db:drop
+	# bundle exec rake db:create
 	# bundle exec rake db:migrate
 	# bundle exec rake test:prepare
+	# bundle exec rake db:populate
+
 	
 	def change
 		# All tables and columns for database
@@ -30,6 +33,8 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :zip
 			# Payment
 			t.string :stripe_customer_id
+			# Status
+			t.string :status, default: :inactive # inactive, active, admin, warned, banned
 			# Password
 			t.string :password_digest
 			# Session
@@ -40,11 +45,11 @@ class CreateUsers < ActiveRecord::Migration
 		end
 
 		# Filters 
-		 create_table :filters do |t|
+		create_table :filters do |t|
 		 	# Association
 		 	t.belongs_to :user 
 		 	t.string :title
-		 	t.boolean :alert, default: false # Wheather user wants alerts to be shown for new services offered for filters
+		 	t.boolean :alert, default: true # Wheather user wants alerts to be shown for new services offered for filters
 		 	# Serialized hash
 		 	t.text :data
     		t.timestamps
@@ -56,7 +61,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.integer :lendee_id
 			t.integer :service_id
 			t.string :relationship_type # checks, pins, hidden
-			t.string :status, default: 'pending' # pending, owner_called, scheduled_unconfirm, scheduled_confirmed, complete
+			t.string :status, default: 'pending' # pending, scheduled_unconfirm, scheduled_confirmed, complete
 			t.datetime :scheduled_date # date time when service is scheduled
 			t.timestamps
 			# Indexes
@@ -87,13 +92,27 @@ class CreateUsers < ActiveRecord::Migration
 		create_table :products do |t|
 			t.timestamps
 		end
+
+    	# Ratings
+    	create_table :ratings do |t|
+			t.belongs_to :author, class_name: 'User', foreign_key: 'author_id' # author of rating 
+			t.belongs_to :lender, class_name: 'User', foreign_key: 'lender_id' # target of rating
+			t.integer :stars, default: 0
+			t.timestamps
+	    end
 		
 		# Reviews
 		create_table :reviews do |t|
-			t.string :title
-		    t.text :text
+			# Association
+			t.belongs_to :author, class_name: 'User', foreign_key: 'author_id' # author of review
+			t.belongs_to :lender, class_name: 'User', foreign_key: 'lender_id' # target of the review
+			t.string :title # will act as headline
+		    t.text :summary
+			t.integer :stars, default: 0
+			t.string :category # music, art, education
 	    	t.timestamps
     	end
+
 	
 	end
 end

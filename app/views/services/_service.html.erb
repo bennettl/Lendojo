@@ -1,24 +1,21 @@
 <li class="serviceListItem col-sm-4"> 
 	<%= link_to service do %>
-		<%= image_tag service.main_img.url, class: "serviceImage" %>
-		<table class="table desc">
-			<tr>
-				<th>Title</th>
-				<td><div class="serviceListTitle"><%= Service.price_to_symbol(service.price) %>
-					 <%= service.title %></div></td>
-			</tr>
-			<tr>
-				<th>Location</th>
-				<td><div class="serviceListTitle"><%= service.location %></div></td>
-			</tr>
-			<tr>
-				<th>Lender</th>
-				<td><div class="serviceListTitle"><%= service.lender.name %></div></td>
-			</tr>
-			<tr>
-				<th>Belt</th>
-				<td><div class="serviceListTitle"><%= service.lender.belt.capitalize %></div></td>
-			</tr>
-		</table>
+		<div class="imageContainer">
+			<%= image_tag service.main_img.url, class: "serviceImage" %>
+			<div class="shadow"></div>
+			<div class="lender">
+				<span class="belt-<%= service.lender.belt %> glyphicon glyphicon-user"></span>
+				<span class="service"><%= service.lender.name %></span>
+			</div>
+			<div class="price"><%= Service.price_to_symbol(service.price) %></div>
+			<div class="location">
+				<span class="glyphicon glyphicon-map-marker"></span>
+				<span><%= service.location %></span>
+			</div>
+		</div>
+		<div class="desc">
+			<div class="title"><%= service.title %></div>
+			<div class="headline"><%= service.headline %></div>
+		</div>
 	<% end %>
 </li>

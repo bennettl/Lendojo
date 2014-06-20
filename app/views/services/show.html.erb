@@ -7,7 +7,7 @@
 						object: @service, 
 						edit_path: edit_service_path(@service), 
 						report_path: report_service_path(@service) %>
-			<%= render 'shared/belt' %>
+			<%= render 'shared/belt', user: @service.lender %>
 		</div>
 		
 		<!-- At A Glance -->
@@ -17,7 +17,7 @@
 			<div id="glance" class="col-xs-11">
 				<div class="detailTitle row"><span class="glyphicon glyphicon-search"></span> At A Glance</div>
 				<div class="row group">
-					<div class="col-sm-3"><span class="glyphicon glyphicon-user"></span> Lender</div>
+					<div class="col-sm-3"><span class="belt-<%= @service.lender.belt %> glyphicon glyphicon-user"></span> Lender</div>
 					<div class="col-sm-5"><%= link_to @service.lender.name, @service.lender %></div>
 				</div>
 				<div class="row group">
@@ -47,6 +47,6 @@
 	</div>
 
 	<!-- Reviews -->
-	<%= render 'shared/reviews' %>
+	<%= render 'reviews/review_list' %>
 	
 </div>

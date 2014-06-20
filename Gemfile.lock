@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/NARKOZ/activerecord-reputation-system.git
+  revision: 01197ad78cac3136317b2884b61ed3da34c607d0
+  branch: rails4
+  specs:
+    activerecord-reputation-system (2.0.2)
+
+GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: 73fd316733325c8de2f16e5f3655b4938dfb156e
   specs:
@@ -193,6 +200,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-reputation-system!
   annotate (>= 2.6.0)
   autoprefixer-rails
   bcrypt-ruby (= 3.1.2)

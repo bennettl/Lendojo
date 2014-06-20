@@ -2,8 +2,7 @@ class UsersController < ApplicationController
 
 	# List all users
 	def index
-		# @users = User.all.paginate(per_page: 5, page: params[:page])
-		@users = User.all
+		@users = User.search(search_params).paginate(per_page: 5, page: params[:page])
 	end
 
 	# Show individual user
@@ -43,6 +42,13 @@ class UsersController < ApplicationController
 		else
 			render 'edit'
 		end
+	end
+
+	# Displays the form for creating both a rating AND a review
+	def new_rating
+		@user 	= User.find(params[:id])
+		@rating = Rating.new
+		@review = Review.new
 	end
 
 	# Update a user's credit card information
@@ -95,7 +101,7 @@ class UsersController < ApplicationController
 
 	# Display a list of services user had pinned
 	def pins
-		@services = current_user.pins
+		@services = current_user.lendee_pins
 	end
 
 	# Report an existing user
@@ -120,6 +126,11 @@ class UsersController < ApplicationController
 	end
 
 	private
+		
+		# Strong parameters
+		def search_params
+			params.permit(:name)
+		end
 		
 		def user_params
 			params.require(:user).permit(:main_img, :first_name, :last_name, :headline, :age, :email, :phone, :lender, :summary, :location, :city, :state, :zip, :stripe_customer_id, :password, :password_confirmation)

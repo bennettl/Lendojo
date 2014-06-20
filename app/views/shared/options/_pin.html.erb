@@ -5,5 +5,5 @@
 <%= form_for user_service, remote: true, html: { id: 'pin_form' }, url: { controller:'user_services', action: 'create_pin' } do |f| %>
 	<%= f.hidden_field :service_id, value: service_id %>
 	<%= f.hidden_field :relationship_type, value: 'pin' %>
-	<%= link_to('', '#', class: "option glyphicon glyphicon-pushpin pin")  %>
+	<%= link_to('', '#', class: "option tooltip_target glyphicon glyphicon-pushpin pin",  data: {toggle: 'tooltip'}, title: "Pin For Later")  %>
 <% end %>

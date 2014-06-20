@@ -4,6 +4,97 @@
 
 @import 'bootstrap';
 @import 'bootstrap-datetimepicker';
+@import 'ratings';
+
+/*********************** VARIABLES ***********************/
+
+$orange-red: #e28778;
+$belt-white: #767676; // for border
+$belt-green: #489b4a;
+$belt-blue: #4a66b5;
+$belt-red: #d14e4e;
+$belt-black: #3a3c3a;
+
+/********************  MIXINS ********************/
+
+@mixin border-radius($radius: 1px) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+/*********************** INDEX ***********************/
+
+.searchContainer{
+	border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    box-sizing: border-box;
+    clear: both;
+    float: left;
+    font-size: 14px;
+    min-height: 43px;
+    padding: 10px 20px;
+    transition-duration: 0.1s;
+    transition-property: color, background-color;
+    width: 100%;
+    margin-bottom: 20px;
+    input{
+    	background: #ffffff;
+	    border: none;
+	    padding: 0;
+	    margin-left: 8px;
+	    width: 90%;
+    }
+}
+
+#userDashboard{
+	width: 200px;
+}
+
+.userList-header{
+	text-align: center;
+	font-weight: bold;
+	text-decoration: uppercase;
+	margin-top: 20px 0;
+}
+
+.userList{
+	text-align: center;
+	border-bottom: 1px solid #E6E6E6;
+	&.row:hover{
+		background: #f7f7f7;
+	}
+	.cell{
+		padding-top: 42px;
+	}
+	a{
+		color: $orange-red;
+	}
+	&:nth-child(even){
+	//	background: #f7f7f7;
+	}
+	.belt-icon{
+		width: 90px;
+		height: 20px;
+		margin: 0 auto;
+		@include border-radius(5px);
+		&.white{
+			border: 1px solid $belt-white;
+		}
+		&.green{
+			background: $belt-green;
+		}
+		&.blue{
+			background: $belt-blue;
+		}
+		&.red{
+			background: $belt-red;
+		}
+		&.black{
+			background: $belt-black;
+		}
+	}
+}
 
 /*********************** CHECKLIST ***********************/
 

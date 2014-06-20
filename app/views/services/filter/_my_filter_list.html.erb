@@ -1,0 +1,15 @@
+<ul data-menu="filters" class="my-filters-dropdown dropdown-menu" style="left: -200px; top: 23px;">
+	<li class="dropdown-header my-filter-row">
+		<div>
+			<span class="my-filter-name">Name </span>
+			<span class="my-filter-alert"> Alerts</span>
+			<span> Remove</span>
+		</div>
+	</li>
+	
+	<% @myFilters.each do |f| %>
+		<%= render 'services/filter/my_filter', f: f %>
+	<% end %>
+
+	</li>
+</ul>

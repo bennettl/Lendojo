@@ -1,26 +1,24 @@
 <div id="filter-container">
 	<!-- FILTER STATE -->
-	<div class="filter-state row">
+	<div class="filter-state">
 		<!--  FILTER BOX -->
 		<div class="filter-box col-sm-9">
 			<!-- SEARCH ICON -->
 			<span class="searchIcon glyphicon glyphicon-search icon-flipped"></span>
 			<!-- CURRENT FILTERS -->
 			<div class="current-filters">
-				<div class="filter" data-key="locations" data-value="Southern California">
+				<!-- <div class="filter" data-key="locations" data-value="Southern California">
 					Southern California
 					<span class="filter-remove glyphicon glyphicon-remove"></span>
-				</div>
-				<div class="filter" data-key="keywords" data-value="Mobile Developer">
-					Mobile Developer
-					<span class="filter-remove glyphicon glyphicon-remove"></span>
-				</div>
-				<div class="filter" data-key="keywords" data-value="Software Developer">
-					Software Engineer
-					<span class="filter-remove glyphicon glyphicon-remove"></span>
-				</div>
+				</div> -->
 			</div>
 			<!-- CURRENT FILTERS -->
+			<!-- KEYWORD BOX -->
+			<div class="keyword-box" style="display: none;">
+				<input type="text" placeholder="Enter a keyword" class="input keyword-input" name="keywords">
+				<div class="fontello-cancel-circle close"></div>
+			</div>
+			<!-- KEYWORD BOX -->
 		</div>
 		<!--  FILTER BOX -->
 		<!--  SAVEBOX -->
@@ -30,7 +28,7 @@
 				<ul class="dropdown-menu" role="menu" style="left: -240px;">
 					<li class="dropdown-header">Filter Name</li>
 					<li class="dropdown">
-						<input type="text" placeholder="Cheap Car Washes @ LA" class="location-input ui-autocomplete-input form-control" autocomplete="off" />
+						<input type="text" placeholder="Cheap Car Washes @ LA" class="location-input ui-autocomplete-input form-control" autocomplete="off" name="filter_title" />
 					</li>
 					<li>
 						<button type="button" class="btn btn-default save-current-filters">Save Filter</button>
@@ -40,7 +38,7 @@
 		</div>
 		<!--  SAVEBOX -->
 	</div>
-	<div class="row filter-menus">
+	<div class="filter-menus">
 		<ul class="filter-dimensions">
 			<!-- DIMENSION -->
 			<li class="dimension dropdown" data-menu="locationss">
@@ -50,7 +48,7 @@
 				<ul data-menu="locations" class="dropdown-menu">
 					<li class="dropdown-header">Top locations</li>
 					<li>
-						<input type="text" placeholder="Enter A Location" class="location-input ui-autocomplete-input form-control" autocomplete="off" />
+						<input type="text" placeholder="Enter A Location" class="ui-autocomplete-input form-control" autocomplete="off" name="locations" />
 					</li>
 					<li class="dropdown-header">Top locations</li>
 					<li data-value="Los Angeles" data-key="locations" class="filter-item"><a href="#">Los Angeles</a></li>
@@ -87,7 +85,7 @@
 				<!-- DROPDOWN MENU -->
 				<ul data-menu="keywords" class="dropdown-menu">
 					<li>
-						<input type="text" placeholder="Enter Keywords" class="keyword-input ui-autocomplete-input form-control" autocomplete="off" />
+						<input type="text" placeholder="Enter Keywords" class="keyword-input ui-autocomplete-input form-control" autocomplete="off" name="keywords" />
 					</li>
 					<li class="dropdown-header">Top Keywords</li>
 					<li data-value="Dog Walking" data-key="keywords" class="filter-item"><a href="#">Dog Walking</a></li>
@@ -98,29 +96,9 @@
 				</ul>
 			</li>
 			<li class="dropdown my-filters" date-menu="filters">
-				<a href="#" class="dimension-label" data-toggle="dropdown">My Filter <b class="caret"></b></a>
+				<a href="#" class="dimension-label" data-toggle="dropdown">My Filters <b class="caret"></b></a>
 				<!-- DROPDOWN MENU -->
-				<ul data-menu="filters" class="my-filters-dropdown dropdown-menu" style="left: -200px; top: 23px;">
-					<li class="dropdown-header my-filter-row">
-						<div>
-							<span class="my-filter-name">Name </span>
-							<span class="my-filter-alert"> Alerts</span>
-							<span> Remove</span>
-						</div>
-					</li>
-					<% current_user.filters.each do |f| %>
-						<li class="my-filter-row body" data-filter_id="<%= f.id %>" data-filter_data="<%= f.data.to_json %>" >
-							<div>
-								<span href="#" class="my-filter-name" class="saved-filter-row"><%= f.title %></span>
-								<span class="my-filter-alert"><input type="checkbox" value="1" name="alert" id="alert" class="alert_checkbox" checked="checked"></span>
-								<span class="my-filter-remove glyphicon glyphicon-remove"></span>
-							</div>
-						</li>
-					<% end %>
-
-					</li>
-					
-				</ul>
+			<%= render 'services/filter/my_filter_list' %>
 			</li>
 		</ul>
 	</div>

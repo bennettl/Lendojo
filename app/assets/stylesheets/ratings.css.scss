@@ -1,0 +1,55 @@
+// Place all the styles related to the ratings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/************************************ NEW RATING FORM ************************************/
+
+#lender{
+	width: 100%;
+	text-align: center;
+	font-size: 1.3em;
+	.imageContainer{
+		width: 300px;
+	}
+	.name{
+		font-weight: 300;
+		margin: 15px 0;
+		text-transform: uppercase;
+	}
+}
+#newRating{
+	padding-top: 20px;
+	
+	#ratingBox{
+		text-align: center;
+		padding: 20px 0;
+		margin-bottom: 20px;
+		border-bottom: 1px dashed #e6e6e6;
+
+		#raty-hint{
+			margin-bottom: 5px;
+			font-weight: 300;
+			text-transform: uppercase;
+			font-size: 1.3em;
+			height: 20px;
+			width: 100%;
+		}
+	}
+	#reviewBox{
+		width: 80%;
+		margin: 0 auto;
+
+		.title{
+			font-size: 1.2em;
+		}
+		.row{
+			margin-bottom: 20px;
+		}
+		textarea{
+			height: 150px;
+		}
+	}
+	.button.center{
+		margin-top: 10px;
+	}
+}

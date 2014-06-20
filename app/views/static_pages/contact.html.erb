@@ -1,1 +1,13 @@
-<div class="mainTitle">Contact</div>
+<div id="contactBox" class="box col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+	<div class="title">Contact</div>
+	<div class="text-center">We love to hear from you. Feel free to contact us anytime!</div>
+	<div class="col-xs-10 col-xs-offset-1">
+		<%= form_tag :contact_form_submit, autocomplete: :off do %>
+			<%= text_field_tag 'name', '', required: true, placeholder: 'Name', class: 'form-control' %>
+			<%= text_field_tag 'email_from', '', required: true, placeholder: 'Email', class: 'form-control' %>
+			<%= select_tag "category", options_for_select(["General Questions", "Technical Questions", "Feedback/Suggestions", "Business Inquiries", "Media", "Other"]), class: 'form-control' %>
+			<%= text_area_tag 'message', '', required: true, placeholder: 'Message', class: 'form-control', style: "height: 110px;" %>
+			<%= submit_tag 'Send', class: 'button center', style: "margin: 20px auto;" %>
+		<% end %>
+	</div>
+</div>

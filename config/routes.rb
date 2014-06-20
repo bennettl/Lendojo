@@ -4,36 +4,45 @@
     root 'static_pages#home'
 
     # Static pages
-    match 'about', to: 'static_pages#about', via: 'get'
-    match 'contact', to: 'static_pages#contact', via: 'get'
+    match   'about',    to: 'static_pages#about',       via: 'get'
+    match   'contact',  to: 'static_pages#contact',     via: 'get'
+    match   'contact_form_submit', to: 'static_pages#contact_form_submit', via: 'post'
 
     # Sessions
-    match 'signin', to: 'sessions#new', via: 'get'
-    match 'signout', to: 'sessions#destroy', via: 'delete'
+    match   'signin',   to: 'sessions#new',             via: 'get'
+    match   'signout',  to: 'sessions#destroy',         via: 'delete'
 
     # Resources
     resources :users do 
-        get 'report', on: :member
-        get 'checklist', on: :collection
-        get 'pins', on: :collection
-        patch 'update_card', on: :collection
+        get     'checklist',            on: :collection
+        get     'pins',                 on: :collection
+        get     'new_rating',           on: :member
+        get     'report',               on: :member
+        patch   'update_card',          on: :collection
     end
-    resources :filters, only: [:create, :destroy, :update]
+    
+    
     resources :user_services, only: [:create, :destroy, :update] do
         # :collection, no id require
-        post 'create_check', on: :collection
-        post 'create_pin', on: :collection
+        post    'create_check',         on: :collection
+        post    'create_pin',           on: :collection
         # :member, needs an id
-        delete 'destroy_check', on: :member
-        delete 'destroy_pin', on: :member
+        delete  'destroy_check',        on: :member
+        delete  'destroy_pin',          on: :member
     end
 
+    resources :filters, only: [:create, :destroy, :update]
     resources :services do
-        get 'report', on: :member
+        get     'report',               on: :member
     end
     resources :products
+
+    resources :ratings, only: [:create]
+    resources :reviews, only: [:create, :destroy, :update] do
+        post    'vote',                 on: :member
+    end
+
     resources :sessions, only: [:new, :create, :destroy]
-    resources :reviews
 
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".

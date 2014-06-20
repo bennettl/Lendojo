@@ -21,8 +21,14 @@
 /********************  VARIABLES ********************/
 
 $brandBlue: gray;
-$lightGray: #DEDEDE;
-$gold: #ffc549;
+$lightGray: #eaeaea;
+$gold: #edb337;
+$orange-red: #e28778;
+$belt-white: #767676; // for border
+$belt-green: #489b4a;
+$belt-blue: #4a66b5;
+$belt-red: #d14e4e;
+$belt-black: #3a3c3a;
 
 /********************  MIXINS ********************/
 
@@ -100,7 +106,7 @@ header{
 		height: 28px;
 	    margin: 0 auto;
 	    text-align: center;
-	    width: 710px;
+	    width: 790px;
 	}
 
 	a {
@@ -150,7 +156,51 @@ header{
 	padding: 5px 20px;
 }
 
- 
+
+.belt-white{
+	color: #ffffff;
+	border-color: $belt-black;
+	background: #FFFFFF;
+	&.large{
+		background: #FFFFFF;		
+	}
+}
+
+.belt-blue{
+	color: $belt-blue;
+	&.large{
+		background: $belt-blue;		
+	}
+}
+
+.belt-green{
+	color: $belt-green;
+	&.large{
+		background: $belt-green;		
+	}
+}
+
+.belt-red{
+	color: $belt-red;
+	&.large{
+		background: $belt-red;		
+	}
+}
+
+.belt-black{
+	color: $belt-black;
+	border-color: #FFFFFF;
+	&.large{
+		background: $belt-black;		
+	}
+}
+
+.belt-large{
+	margin: 0 auto;
+	color: #FFFFFF;
+	width: 90%;
+	padding: 10px 0;
+}
 
 .icon-flipped {
 	transform: scaleX(-1);
@@ -184,6 +234,9 @@ header{
     padding: 8px 35px;
     border: none;
     color: #fbfbfb;
+    width: 200px;
+    display: block;
+    text-align: center;
     font-weight: 300;
     text-transform: uppercase;
     &.center{
@@ -195,6 +248,14 @@ header{
     &:hover{
     	// background: #dcac2f;
     }
+}
+
+.update-button{
+	background: #edb337;
+}
+
+.button-remove{
+	background: #b55454;
 }
 
 #snapshot{
@@ -264,7 +325,15 @@ header{
     }
     &:hover{
 	    opacity: 1.0;
+    	text-decoration: none;
+    	color: #FFFFFF;
     }
+}
+
+.userThumb{
+	background: #55dfc3;
+    @include border-radius(50%);
+    margin: 20px auto;
 }
 
 .box{
@@ -277,14 +346,6 @@ header{
 
     #headline{
     	margin-bottom: 20px;
-    }
-
-    .userBubble{
-    	background: #55dfc3;
-    	width: 70px;
-    	height: 70px;
-	    @include border-radius(35px);
-	    margin: 20px auto;
     }
     .detailTitle{
     	text-transform: uppercase;
@@ -336,21 +397,65 @@ header{
 .serviceListItem{
 	margin-bottom: 20px;
 	text-align: center;
-	.desc{
+	a{
 		color: #808080;
-		font-size: 0.68em;
+	}
+	.imageContainer{
+		color: #ffffff;
+		font-size: 0.7em;
+		.shadow{
+			background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(3,3,3,0) 4%, rgba(85,85,85,0.65) 99%, rgba(86,86,86,0.65) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(4%,rgba(3,3,3,0)), color-stop(99%,rgba(85,85,85,0.65)), color-stop(100%,rgba(86,86,86,0.65))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(3,3,3,0) 4%,rgba(85,85,85,0.65) 99%,rgba(86,86,86,0.65) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(3,3,3,0) 4%,rgba(85,85,85,0.65) 99%,rgba(86,86,86,0.65) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(3,3,3,0) 4%,rgba(85,85,85,0.65) 99%,rgba(86,86,86,0.65) 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(3,3,3,0) 4%,rgba(85,85,85,0.65) 99%,rgba(86,86,86,0.65) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6565656',GradientType=0 ); /* IE6-9 */
+			position: absolute;
+			height: 70px;
+			bottom: 0;
+			width: 100%;
+		}
+	}
+	.lender{
+		position: absolute;
+		left: 10px;
+		bottom: 30px;
+	}	
+	.location{
+		position: absolute;
+		left: 10px;
+		bottom: 10px;
+	}
+	.price{
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+	}
+	.title{
+		font-size: 1.1em;
+		text-transform: none;
+		margin: 5px 0 3px 0;
+	}
+	.headline{
+		margin-bottom: 20px;
+		font-size: 0.7em;
 	}
 }
 
-.imageContainer, .imageContainer > img, .serviceImage{
+.imageContainer{
 	position: relative;
 	width: 95%;
 	max-height: 170px;
 	margin: 0 auto;
+} 
+.imageContainer > img, .serviceImage{
+	width: 100%;
+	max-height: 170px;
 }
 
 /* Reviews */
-.review.row{
+.review-list-item.row{
 	border-bottom: 1px solid $lightGray;
 	padding: 30px 0;
 	&:last-child{
@@ -359,13 +464,28 @@ header{
 }
 .reviewSection{
 	margin: 0px 40px;
+	
+	.review-details{
+		
+		.vote-blurb{
+			color: #5a5a5a;
+			font-size: 1.0em;
+		}
+		.summary{
+			margin: 10px 0;
+		}
+	}
 }
 
 .pagination{
 	width: 100%;
 	display: block;
 	clear: both;
-	padding-top: 50px;
+	padding-top: 20px;
+	font-size: 0.8em;
+	a{
+		color: $orange-red;
+	}
 	ul{
 		display: table;
 		margin: 0 auto;
@@ -374,6 +494,9 @@ header{
 		display: table-cell;
 	    float: left;
 	    margin: 0 7px;
+	    &.active{
+	    	font-weight: bold;
+	    }
 	}
 }
 
@@ -388,9 +511,11 @@ header{
 
 /******************** FOOTER ********************/
 footer{
-	background: none repeat scroll 0 0 #F7F7F7;
-	height: 30px;
+	background: #F7F7F7;
+	padding: 20px 0;
 	text-align: center;
 	clear: both;
-
+	span{
+		display: inline-block;
+	}
 }
