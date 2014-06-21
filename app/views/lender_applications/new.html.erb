@@ -1,0 +1,42 @@
+<div id="lenderApplicationBox" class="box col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+	<div class="title">Lender Application</div>
+	
+	<div id="lenderAppBlurb">Your journey as a lender begins here. Lenders are the centerpiece of Lendojo. The are people who dedicate their time in giving back to the community and offering their skills. The more you give back to your community, the faster you will advance up the ranks in your Dojo. Those who are master lenders will be awarded the black belt, the most distinct form of honor in the Lendojo community.</div>
+
+	<%= form_for @lenderApp, html: { class: 'form-horizontal', autocomplete: :off } do |f| %>
+		<div class="form-group">
+			<%= f.label 'Name', class: 'control-label col-sm-2' %>
+			<div class="detail col-sm-9">
+				<div class="col-sm-5">
+					<%= f.text_field :first_name, value: current_user.first_name, disabled: true, class: 'form-control' %>
+				</div>
+				<div class="col-sm-5">
+					<%= f.text_field :last_name, value: current_user.last_name, disabled: true, class: 'form-control' %>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.label 'Categories', class: 'control-label col-sm-2' %>
+			<div class="detail col-sm-9"><%= f.text_field :hours, required: true, class: 'form-control' %></div>
+		</div>
+		<div class="form-group">
+			<%= f.label 'Hrs/Week', class: 'control-label col-sm-2' %>
+			<div class="detail col-sm-3"><%= f.text_field :hours, required: true, placeholder: 'Estimate',class: 'form-control' %></div>
+		</div>
+		<div class="form-group">
+			<%= f.label 'Skill', class: 'control-label col-sm-2' %>
+			<div class="detail col-sm-9">
+				<%= f.select :skill, options_for_select([ ["Rookie", 'rookie'], ["Intermediate", 'intermediate'], ["Expert", 'expert']]), {} , {class: 'form-control col-sm-9'} %>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.label 'Summary', class: 'control-label col-sm-2' %>
+			<div class="detail col-sm-9">
+				<%= f.text_area :summary, required: true, placeholder: 'A few sentences about the types of service you will be lending', class: 'form-control' %>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.submit 'Submit', class: 'button center' %>
+		</div>
+	<% end %>
+</div>

@@ -1,0 +1,9 @@
+<div class="indexList row">
+	<%= link_to edit_report_path(report) do %>
+		<div class="col-xs-2 cell"><%= report.author.name %></div>
+		<div class="col-xs-2 cell"><%= report.status %></div>
+		<div class="col-xs-2 cell"><%= report.reportable_type %></div>
+		<div class="col-xs-2 cell"><%= report.summary %></div>
+		<div class="col-xs-3 cell"><%= time_ago_in_words(report.created_at) %></div>
+	<% end %>
+</div>

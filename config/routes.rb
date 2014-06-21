@@ -12,16 +12,18 @@
     match   'signin',   to: 'sessions#new',             via: 'get'
     match   'signout',  to: 'sessions#destroy',         via: 'delete'
 
-    # Resources
+    ################################## RESOURCES ##################################
+    
+    # Users
     resources :users do 
         get     'checklist',            on: :collection
         get     'pins',                 on: :collection
         get     'new_rating',           on: :member
-        get     'report',               on: :member
         patch   'update_card',          on: :collection
+        resources 'reports',            only: [:new, :create]
     end
     
-    
+    # User Serivces
     resources :user_services, only: [:create, :destroy, :update] do
         # :collection, no id require
         post    'create_check',         on: :collection
@@ -31,17 +33,34 @@
         delete  'destroy_pin',          on: :member
     end
 
+    # Filters
     resources :filters, only: [:create, :destroy, :update]
+   
+    # Services
     resources :services do
-        get     'report',               on: :member
+        resources 'reports',        only: [:new, :create]
     end
-    resources :products
 
-    resources :ratings, only: [:create]
+    # Products
+    resources :products do
+        resources 'reports',        only: [:new, :create]
+    end
+
+    # Lender Application
+    resources :lender_applications
+    
+    # Ratings
+    resources :ratings,             only: [:create]
+
+    # Reviews
     resources :reviews, only: [:create, :destroy, :update] do
         post    'vote',                 on: :member
     end
 
+    # Reports
+    resources :reports, only: [:index, :edit, :update]
+
+    # Sessions
     resources :sessions, only: [:new, :create, :destroy]
 
     # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,26 @@
+<div class="box col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1">	
+	
+	<div class="col-sm-3" style="margin-top: 120px;">
+		<% 
+			total 		= Report.all.count
+			pending 	= Report.where(status: 'pending').count
+			active 		= Report.where(status: 'active').count
+			resolved	= Report.where(status: 'resolved').count 
+			data 		= { Total: total, Pending: pending, Active: active, Resolved: resolved }
+		%>
+		<%= dashboard_widget 'Dashboard', data %>
+	</div>
+
+	<div class="col-sm-9">
+		<div class="title">Reports</div>
+		<div class="indexList-header row">
+			<div class="col-xs-2">Status</div>
+			<div class="col-xs-2">Author</div>
+			<div class="col-xs-2">Type</div>
+			<div class="col-xs-2">Title</div>
+			<div class="col-xs-3">Time</div>
+		</div>
+		<%= render @reports %>
+	</div>
+
+</div>

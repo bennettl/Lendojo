@@ -1,6 +1,7 @@
 class Service < ActiveRecord::Base
 
-	# Association
+	################################## ASSOCIATIONS ##################################
+
 	belongs_to :lender, class_name: 'User', foreign_key: 'lender_id' # use lender_id instead of user_id
     has_many :user_services, foreign_key: "service_id", dependent: :destroy
 
@@ -8,6 +9,9 @@ class Service < ActiveRecord::Base
 	# has_many :past_customers, through: :checklist_items, source: :user, dependent: :destroy
 	# Pins are services 
 	# has_many :interested_customers, through: :user_services, source: :user
+
+	# Polymorpic associations 
+	has_many :reports_received, class_name: "Report", as: :reportable
 
 	# Attachment 
 	has_attached_file :main_img,
@@ -17,13 +21,20 @@ class Service < ActiveRecord::Base
 						:path => ":rails_root/public/assets/services/:id/:style/:basename.:extension"
 	validates_attachment_content_type :main_img, :content_type => /\Aimage\/.*\Z/
 
-	# Validation
+	################################## VALIDATION ##################################
+
 	validates :title, presence: true
 	validates :headline, presence: true
 	validates :summary, presence: true
 	validates :location, presence: true
 	validates :price, presence: true
 	validates :category, presence: true
+
+
+	# Returns the title use for reports
+	def report_title
+		self.title
+	end
 
 	# Price Key
 	# $ 		|		Inexpensive 	|	 < 15

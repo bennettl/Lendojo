@@ -1,0 +1,9 @@
+<div class="indexList row">
+	<%= link_to lender_application do %>
+		<div class="col-xs-3 cell"><%= lender_application.status %></div>
+		<div class="col-xs-2"><%= image_tag lender_application.author.main_img(:thumb), class: 'userThumb' %></div>
+		<div class="col-xs-3 cell"><%= lender_application.lender.name %></div>
+		<div class="col-xs-1 cell"><%= lender_application.hours %></div>
+		<div class="col-xs-2 cell"><%= lender_application.categories %></div>
+	<% end %>
+</div>

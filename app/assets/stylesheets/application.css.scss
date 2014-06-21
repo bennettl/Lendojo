@@ -60,6 +60,7 @@ li{
 
 textarea{
 	resize: vertical;
+	min-height: 120px;
 }
 
 /******************** HEADER ********************/
@@ -69,6 +70,17 @@ header{
     overflow: inherit;
     width: 100%;
     z-index: 100;
+}
+
+#be_a_lender{
+	color: #FFFFFF;
+	background: #f2c846;
+	padding: 10px 20px;
+	text-transform: uppercase;
+	@include border-radius(5px);
+	position: absolute;
+	top: 20px;
+	right: 20px;
 }
 
 #logo{
@@ -106,7 +118,7 @@ header{
 		height: 28px;
 	    margin: 0 auto;
 	    text-align: center;
-	    width: 790px;
+	    width: 890px;
 	}
 
 	a {
@@ -122,6 +134,57 @@ header{
 }
 
 /******************* BODY ********************/
+
+// Index
+.indexListDashboard{
+	width: 200px;
+}
+
+.indexList-header{
+	text-align: center;
+	font-weight: bold;
+	text-decoration: uppercase;
+	margin-top: 20px 0;
+}
+
+.indexList{
+	text-align: center;
+	border-bottom: 1px solid #E6E6E6;
+	&.row:hover{
+		background: #f7f7f7;
+	}
+	.cell{
+		padding: 40px 0;
+	}
+	a{
+		color: $orange-red;
+	}
+	&:nth-child(even){
+	//	background: #f7f7f7;
+	}
+	.belt-icon{
+		width: 90px;
+		height: 20px;
+		margin: 0 auto;
+		@include border-radius(5px);
+		&.white{
+			border: 1px solid $belt-white;
+		}
+		&.green{
+			background: $belt-green;
+		}
+		&.blue{
+			background: $belt-blue;
+		}
+		&.red{
+			background: $belt-red;
+		}
+		&.black{
+			background: $belt-black;
+		}
+	}
+}
+
 
 // Bootstrap dropdown menu for inputs
 .dropdown-menu > li > div{

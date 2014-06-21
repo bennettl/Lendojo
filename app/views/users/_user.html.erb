@@ -1,5 +1,5 @@
-<div class="userList row">
-	<a href="<%= user_path(user.id) %>">
+<div class="indexList row">
+	<%= link_to user do %>
 		<div class="col-xs-2"><%= image_tag user.main_img(:thumb), class: 'userThumb' %></div>
 		<div class="col-xs-3 cell"><%= user.name %></div>
 		<div class="col-xs-3 cell"><%= user.location %></div>
@@ -10,5 +10,5 @@
 				N/A
 			<% end %>
 		</div>
-	</a>
+	<% end %>
 </div>

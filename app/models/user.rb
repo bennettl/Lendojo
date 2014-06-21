@@ -2,15 +2,16 @@ class User < ActiveRecord::Base
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
 
-	# Association
+	################################## ASSOCIATIONS ##################################
+
 	has_many :filters
 	has_many :services, foreign_key: "lender_id", dependent: :destroy # use lender_id instead of user_id
 
-	# RATINGS
+	### RATINGS
 	has_many :ratings_given, class_name: "Rating", foreign_key: "author_id", dependent: :destroy # Ratings that the user has given
 	has_many :ratings_recieved, class_name: "Rating", foreign_key: "lender_id", dependent: :destroy # Ratings that the user has recieved
 
-	# REVIEWS
+	### REVIEWS
 	has_many :reviews_given, class_name: "Review", foreign_key: "author_id", dependent: :destroy # Reviews that user has given
 	has_many :reviews_recieved, class_name: "Review", foreign_key: "lender_id", dependent: :destroy # Reviews that the user has recieved
 
@@ -24,7 +25,7 @@ class User < ActiveRecord::Base
  	# The original user_services table!
     # has_many :user_services, dependent: :destroy
 
-    # LENDEES
+    ### LENDEES
 
     # All the lendee's checks and pins
     has_many :lendee_user_services, class_name: "UserService", foreign_key: "lendee_id", dependent: :destroy
@@ -39,7 +40,10 @@ class User < ActiveRecord::Base
 	has_many :lendee_checks, through: :lendee_check_user_services, source: :service, dependent: :destroy
 	has_many :lendee_pins, through: :lendee_pin_user_services, source: :service, dependent: :destroy
 
-	# LENDER
+	### LENDER
+
+	has_one :lender_app, class_name: 'LenderApplication', foreign_key: 'author_id', dependent: :destroy
+
     # All the lender's checks and pins
     has_many :lender_user_services, class_name: "UserService", foreign_key: "lender_id", dependent: :destroy
 
@@ -54,6 +58,10 @@ class User < ActiveRecord::Base
 	# has_many :lender_pins, through: :lender_pin_user_services, source: :service, dependent: :destroy
 
 
+	# Polymorpic associations 
+	has_many :reports_received, class_name: "Report", as: :reportable
+	has_many :reports_given, class_name: "Report", foreign_key: "author_id", dependent: :destroy
+
 	# Attachments: main_img
 	has_attached_file :main_img, 
 						:styles => { :medium => "200x200>", :thumb => "100x100>" }, 
@@ -62,7 +70,7 @@ class User < ActiveRecord::Base
 						:path => ":rails_root/public/assets/users/main_img/:id/:style/:basename.:extension"
 	validates_attachment_content_type :main_img, :content_type => /\Aimage\/.*\Z/
 
-	# Validation
+	################################## VALIDATION ##################################
 	# validates :main_img, presence: true #profile image
 	validates :first_name, presence: true
 	validates :last_name, presence: true
@@ -110,10 +118,14 @@ class User < ActiveRecord::Base
 		end
 	end
 
-
 	# Returns full name
 	def name
 		"#{first_name} #{last_name}"
+	end
+
+	# Returns the title use for reports
+	def report_title
+		self.name
 	end
 
 	# Has the current user given rating to other user?

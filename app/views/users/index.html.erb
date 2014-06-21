@@ -1,49 +1,19 @@
 <div class="box col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1">	
 	<div class="col-sm-3" style="margin-top: 120px;">
-		<div class="title pull-left">Dashboard</div>
-		<table id="userDashboard" class="table">
-			<tr>
-				<th>Users</th>
-				<td><%= User.all.count %></td>
-			</tr>
-			<tr>
-				<th>Lenders</th>
-				<td><%= total_lenders = User.where(lender: true).count %></td>
-			</tr>
-			<tr>
-				<th>Checks</th>
-				<td><%= UserService.where(relationship_type: 'check').count %></td>
-			</tr>
-			<tr>
-				<th>Pins</th>
-				<td><%= UserService.where(relationship_type: 'pin').count %></td>
-			</tr>
-		</table>
-
-		<div class="title pull-left">Rank</div>
-
-		<table id="userDashboard" class="table">
-			<tr>
-				<th>White</th>
-				<td>39%</td>
-			</tr>
-			<tr>
-				<th>Green</th>
-				<td>20%</td>
-			</tr>
-			<tr>
-				<th>Blue</th>
-				<td>30%</td>
-			</tr>
-			<tr>
-				<th>Red</th>
-				<td>10%</td>
-			</tr>
-			<tr>
-				<th>Black</th>
-				<td>5%</td>
-			</tr>
-		</table>
+		<%  
+			# Data for user dashboard
+			all_users 		= User.all.count
+			total_lenders 	= User.where(lender: true).count
+			total_checks 	= UserService.where(relationship_type: 'check').count
+			total_pins 		= UserService.where(relationship_type: 'pin').count
+			data 			= { Users: all_users, Lenders: total_lenders, Checks: total_checks, Pins: total_pins } 
+		%>
+		<%= dashboard_widget 'Dashboard', data %>
+		<%  
+			# Data for user dashboard
+			data 			= { White: '39%', Green: '20%', Blue: '30%', Red: '10%', Black: '5%' } 
+		%>
+		<%= dashboard_widget 'Rank', data %>
 	</div>
 	<div class="col-sm-9">
 		<div class="title">Users</div>
@@ -51,7 +21,7 @@
 			<span class="searchIcon glyphicon glyphicon-search icon-flipped"></span>
 			<input type="text" name="user_full_name" class="input name-input" placeholder="Enter a name, any name">
 		</div>
-		<div class="userList-header row">
+		<div class="indexList-header row">
 			<div class="col-xs-2">Avatar</div>
 			<div class="col-xs-3">Name</div>
 			<div class="col-xs-3">Location</div>

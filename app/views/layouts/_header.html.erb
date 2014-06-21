@@ -8,6 +8,7 @@
 			<%= nav_link 'Services', main_app.services_path %>
 			<%= nav_link 'Checklist', main_app.checklist_users_path %>
 			<%= nav_link 'Pins', main_app.pins_users_path %>
+			<%= nav_link 'Reports', main_app.reports_path %>
 			<%= nav_link 'About', main_app.about_path %>
 			<%= nav_link 'Contact', main_app.contact_path %>
 			<%= nav_link 'My Account', main_app.edit_user_path(current_user) %>
@@ -16,9 +17,10 @@
 
 	<div class="loginIndicator">
 	<% if signed_in? %>
-		<%= "WELCOME #{current_user.first_name.upcase}!" %>
-	<% else  %>
+		<% # "WELCOME #{current_user.first_name.upcase}!" %>
+	<% else %>
 		<%= link_to 'SIGN IN', main_app.signin_path, id: 'sessionText' %>
-	<% end  %>
+	<% end %>
 	</div> 
+	<%= link_to 'Become A Lender', new_lender_application_path, id: 'be_a_lender' %>
 </header>

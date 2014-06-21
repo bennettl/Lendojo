@@ -22,7 +22,32 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.datetime "updated_at"
   end
 
+  create_table "lender_applications", force: true do |t|
+    t.integer  "author_id"
+    t.text     "categories"
+    t.string   "skill"
+    t.integer  "hours"
+    t.text     "summary"
+    t.string   "status",      default: "pending"
+    t.text     "staff_notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", force: true do |t|
+    t.integer  "lender_id"
+    t.string   "main_img_file_name"
+    t.string   "main_img_content_type"
+    t.integer  "main_img_file_size"
+    t.datetime "main_img_updated_at"
+    t.string   "title"
+    t.string   "headline"
+    t.text     "summary"
+    t.string   "location"
+    t.integer  "price"
+    t.string   "category"
+    t.string   "tags"
+    t.boolean  "hidden",                default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,6 +60,18 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.datetime "updated_at"
   end
 
+  create_table "reports", force: true do |t|
+    t.integer  "author_id"
+    t.integer  "reportable_id"
+    t.string   "reportable_type"
+    t.string   "reason"
+    t.text     "summary"
+    t.text     "staff_notes"
+    t.string   "status",          default: "pending"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "reviews", force: true do |t|
     t.integer  "author_id"
     t.integer  "lender_id"
@@ -42,6 +79,7 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.text     "summary"
     t.integer  "stars",      default: 0
     t.string   "category"
+    t.string   "status",     default: "pending"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -136,12 +174,14 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.string   "phone"
     t.boolean  "lender"
     t.string   "belt",                  default: "white"
+    t.string   "skill_level"
     t.text     "summary"
     t.string   "location"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
     t.string   "stripe_customer_id"
+    t.string   "status",                default: "inactive"
     t.string   "password_digest"
     t.string   "remember_token"
     t.datetime "created_at"
