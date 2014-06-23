@@ -1,35 +1,69 @@
-<div class="box col-xs-8 col-xs-offset-2">
+<div id="reportEditBox" class="box col-xs-8 col-xs-offset-2">
 	<div class="title">Report Debrief</div>
 	<%= form_for @report, html: {id: 'editReport', class: 'form-horizontal'} do |f| %>
+		<!-- AUTHOR -->
 		<div class="form-group">
 			<%= f.label 'Author', class: 'control-label col-sm-2' %>
 			<div class="detail col-sm-9"><%= link_to @report.author.name, @report.author %></div>
 		</div>
+		<!-- REPORTABLE -->
 		<div class="form-group">
 			<%= f.label 'Reporting', class: 'control-label col-sm-2' %>
-			<div class="detail col-sm-9">(<%= @report.reportable_type %>) <%= link_to @reportable.report_title, @reportable %></div>
+			<div class="detail col-sm-9">
+				(<%= @report.reportable_type %>) <%= link_to @reportable.report_title, @reportable %>
+			</div>
 		</div>
+		<!-- USER STATUS/INFO -->
+		<div class="form-group">
+			<% if @report.reportable_type == 'User' %>
+				<%= f.label 'User Status', class: 'control-label col-sm-2' %>
+				<!-- STATUS -->
+				<div class="detail col-sm-9">
+					<%= @reportable.status.capitalize %>
+				</div>
+			<% else %>
+				<%= f.label 'User Info', class: 'control-label col-sm-2' %>
+				<div class="detail col-sm-9">
+					<!-- NAME AND STATUS -->
+					<% if @report.reportable_type == 'Service' || @report.reportable_type == 'Product' %>
+						(<%= @reportable.lender.status.capitalize %>) <%= link_to @reportable.lender.name, @reportable.lender %>
+					<% elsif @report.reportable_type == 'Review' %>
+						(<%= @reportable.author.status.capitalize %>) <%= link_to @reportable.author.name, @reportable.lender %>		
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<!-- REASON -->
 		<div class="form-group">
 			<%= f.label 'Reason', class: 'control-label col-sm-2' %>
 			<div class="detail col-sm-9"><%= @report.reason %></div>
 		</div>
+		<!-- SUMMARY -->
 		<div class="form-group">
 			<%= f.label 'Summary', class: 'control-label col-sm-2' %>
 			<div class="detail col-sm-9" style="border: none;"><%= @report.summary %></div>
 		</div>
+		<!-- ACTION -->
 		<div class="form-group">	
-		 	<%= f.label 'Status', class: 'control-label col-sm-2' %>
+		 	<%= f.label 'Action', class: 'control-label col-sm-2' %>
 			<div class="col-sm-9">
-				<%= f.select :status, options_for_select( [ ["Pending", 'pending'], ["Active", 'active'], ["Resolved", 'resolved'] ], @report.status ), {}, { class: 'form-control' } %>
+				<%= f.select :action, options_for_select( [ ["No Action", 'n/a'], ["Issue Warning", 'warn'], ["Suspend User", 'suspend'], ["Ban user", "ban"] ], @report.action ), {}, { class: 'form-control' } %>
 			</div>
 		</div>
+		<!-- STAFF NOTES -->
 		<div class="form-group">
 		 	<%= f.label 'Staff Notes', class: 'control-label col-sm-2' %>
 			<div class="col-sm-9">
 				<%= f.text_area :staff_notes, value: @report.staff_notes, placeholder: "Write Notes About The Report Here...", class: 'form-control' %>
 			</div>
 		</div>
-		
+		<!-- STATUS -->
+		<div class="form-group">	
+		 	<%= f.label 'Report Status', class: 'control-label col-sm-2' %>
+			<div class="col-sm-9">
+				<%= f.select :status, options_for_select( [ ["Pending", 'pending'], ["Active", 'active'], ["Resolved", 'resolved'] ], @report.status ), {}, { class: 'form-control' } %>
+			</div>
+		</div>
 		<div class="form-group">
 			<%= f.submit 'Update', class: 'button center' %>
 		</div>

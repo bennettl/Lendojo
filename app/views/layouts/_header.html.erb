@@ -8,7 +8,7 @@
 			<li class="nav-list"><%= nav_link 'Pins', main_app.pins_users_path %></li>
 			<li class="nav-list dropdown hover" data-menu="account">
 				<a href="#" class="nav-link" data-toggle="dropdown"> Account <b class="caret"></b></a>
-				<ul data-menu="account" class="dropdown-menu">
+				<ul data-menu="account" class="dropdown-menu" style="top: 25px;">
 					<li><%= link_to 'Profile', main_app.user_path(current_user) %></li>
 					<li><%= link_to 'Settings', main_app.edit_user_path(current_user) %></li>
 				    <li class="divider"></li>
@@ -17,7 +17,7 @@
 			</li>
 			<li class="nav-list dropdown hover" data-menu="admin">
 				<a href="#" class="nav-link" data-toggle="dropdown"> Admin <b class="caret"></b></a>
-				<ul data-menu="admin" class="dropdown-menu">
+				<ul data-menu="admin" class="dropdown-menu" style="top: 25px;">
 					<li><%= link_to 'Users', main_app.users_path %></li>
 					<li><%= link_to 'Lender Applications', main_app.lender_applications_path %></li>
 					<li><%= link_to 'Reports', main_app.reports_path %></li>

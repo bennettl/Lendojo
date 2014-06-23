@@ -250,12 +250,6 @@ header{
 }
 
 // Bootstrap dropdown menu for inputs
-
-.dropdown.hover:hover{
-	.dropdown-menu{
-		display: block;
-	}
-}
 .dropdown-menu > li > div{
 	clear: both;
 	color: #333333;
@@ -290,9 +284,18 @@ header{
 
 
 
+.belt-large{
+	margin: 0 auto;
+	color: #FFFFFF;
+	width: 90%;
+	padding: 10px 0;
+	
+}
+
 .belt-white{
-	color: #ffffff;
-	border-color: $belt-black;
+	border: 1px solid $belt-black;
+	color: $belt-black;
+	@include border-radius(5px);
 	&.large{
 		background: #FFFFFF;		
 	}
@@ -325,13 +328,6 @@ header{
 	&.large{
 		background: $belt-black;		
 	}
-}
-
-.belt-large{
-	margin: 0 auto;
-	color: #FFFFFF;
-	width: 90%;
-	padding: 10px 0;
 }
 
 .icon-flipped {
@@ -626,6 +622,12 @@ header{
 	font-size: 0.8em;
 	a{
 		color: $orange-red;
+		
+	}
+	.active{
+		a{
+			color: #e8b95e;
+		}
 	}
 	ul{
 		display: table;

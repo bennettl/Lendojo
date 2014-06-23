@@ -1,5 +1,8 @@
 <div class="indexList row">
 	<%= link_to user do %>
+		<div class="col-xs-1 cell">
+			<div class="text"><%= user.id %></div>
+		</div>
 		<div class="col-xs-2 cell"><%= image_tag user.main_img(:thumb), class: 'userThumb' %></div>
 		<div class="col-xs-3 cell">
 			<div class="text"><%= user.name %></div>

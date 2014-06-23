@@ -1,4 +1,7 @@
 <div class="indexList row">
+	<div class="col-xs-1 cell">
+		<div class="text"><%= link_to lender_application.id, lender_application %></div>
+	</div>
 	<div class="col-xs-2 cell">
 		<div class="status-icon <%= lender_application.status %> tooltip_target" title="<%= lender_application.status.capitalize %>"></div>
 	</div>

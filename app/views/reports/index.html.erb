@@ -10,18 +10,18 @@
 		%>
 		<%= render 'shared/dashboard', { title: 'Dashboard', data: data } %>
 	</div>
-
 	<!-- INDEX -->
 	<div class="col-sm-9">
 		<div class="title">Reports</div>
 		<div class="indexList-header row">
+			<div class="col-xs-1">ID</div>
 			<div class="col-xs-2">Status</div>
 			<div class="col-xs-2">Author</div>
 			<div class="col-xs-2">Type</div>
-			<div class="col-xs-4">Title</div>
+			<div class="col-xs-3">Title</div>
 			<div class="col-xs-2">Last Update</div>
 		</div>
 		<%= render @reports %>
+		<%= will_paginate @reports %>
 	</div>
-
 </div>

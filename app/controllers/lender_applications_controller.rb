@@ -2,7 +2,7 @@ class LenderApplicationsController < ApplicationController
 
 	# Displays a list of lender applications
 	def index
-		@lenderApps = LenderApplication.all.order("updated_at DESC")
+		@lenderApps = LenderApplication.all.order("updated_at DESC").paginate( per_page: 5, page: params[:page] )
 	end
 
 	# Displays a form for 
@@ -32,18 +32,17 @@ class LenderApplicationsController < ApplicationController
 	def update
 		@lenderApp = LenderApplication.find(params[:id])
 
-		# If lenderApp is sucessfully updated, redirect to index path, else re-render edit
-		if @lenderApp.update_attributes(lender_application_params)
-			flash[:success] = "Application has been successfully update"
+		# Change the user's lender status base on the lender application status
+		data = (params[:lender_application][:status] == 'approved') ? { lender: true, belt: 'white'} : { lender: false, belt: 'N/A' } 
 
-			# Change the user's lender status base on the lender application status
-			if params[:lender_application][:status] == 'approved'
-				data = { lender: true, belt: 'white'}
-			else
-				data = { lender: false }
+		# If lenderApp AND lender is sucessfully updated, redirect to index path, else re-render edit
+		if @lenderApp.update_attributes(lender_application_params) && @lenderApp.author.update_attributes(data)
+			flash[:success] = "Application has been successfully updated!"
+			
+			# Notify user if status is approved or denied
+			if @lenderApp.status == 'approved' || @lenderApp.status == 'denied'
+				LenderApplicationMailer.set_mail(@lenderApp, @lenderApp.author).deliver
 			end
-
-			@lenderApp.author.update_attributes(data)
 
 			redirect_to lender_applications_path
 		else

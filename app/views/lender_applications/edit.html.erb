@@ -1,20 +1,20 @@
-<div class="box col-xs-8 col-xs-offset-2">
+<div id="editLenderAppBox" class="box col-xs-8 col-xs-offset-2">
 	<div class="title">Lender Application</div>
-	<%= form_for @lenderApp, html: {id: 'editReport', class: 'form-horizontal'} do |f| %>
+	<%= form_for @lenderApp, html: { id: 'editLenderApp', class: 'form-horizontal' } do |f| %>
 		<div class="form-group">
-			<%= f.label 'Author', class: 'control-label col-sm-2' %>
+			<%= f.label 'Author', class: 'col-sm-2' %>
 			<div class="detail col-sm-9"><%= link_to @lenderApp.author.name, @lenderApp.author %></div>
 		</div>
 		<div class="form-group">
-			<%= f.label 'Hours/Week', class: 'control-label col-sm-2' %>
+			<%= f.label 'Hrs/Week', class: 'col-sm-2' %>
 			<div class="detail col-sm-9"><%= @lenderApp.hours %></div>
 		</div>
 		<div class="form-group">
-			<%= f.label 'Categories', class: 'control-label col-sm-2' %>
+			<%= f.label 'Categories', class: 'col-sm-2' %>
 			<div class="detail col-sm-9"><%=  @lenderApp.categories %></div>
 		</div>
 		<div class="form-group">
-			<%= f.label 'Skill Level', class: 'control-label col-sm-2' %>
+			<%= f.label 'Skill Level', class: 'col-sm-2' %>
 			<div class="detail col-sm-9"><%= @lenderApp.skill %></div>
 		</div>
 		<div class="form-group">

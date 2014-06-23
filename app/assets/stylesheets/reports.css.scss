@@ -3,6 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /************************** EDIT **************************/
+#reportEditBox{
+	padding: 15px 50px;
+	.control-label{
+		padding-right: 8px;
+	}
+}
+
 form#editReport{
 	.detail{
 		padding: 7px 0 25px;

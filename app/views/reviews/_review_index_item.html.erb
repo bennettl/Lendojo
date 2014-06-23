@@ -1,13 +1,25 @@
-<div class="indexList row">
-	<%= link_to review do %>
-		<div class="col-xs-2 cell"><%= image_tag review.author.main_img(:thumb), class: 'userThumb tooltip_target', title: review.author.name %></div>
-		<div class="col-xs-3 cell">
-			<div class="text"><%= review.lender.name %></div>
-		</div>
-		<div class="col-xs-3 cell">
+<div class="indexList review-index-item row">
+	<div class="col-xs-1 cell">
+		<div class="text"><%= link_to review.id, review %></div>
+	</div>
+	<div class="col-xs-2 cell">
+		<%= link_to review.author do %>
+			<%= image_tag review.author.main_img(:thumb), class: 'userThumb tooltip_target', title: review.author.name %>
+		<% end %>
+	</div>
+	<div class="col-xs-2 cell">
+		<%= link_to review.lender do %>
+			<%= image_tag review.lender.main_img(:thumb), class: 'userThumb tooltip_target', title: review.lender.name %>
+		<% end %>
+	</div>
+	<div class="col-xs-3 cell">
+		<%= link_to review do %>
 			<div class="text">
-			<div class="raty" data-stars="<%= review.stars %>"></div>
+				<div class="raty" data-stars="<%= review.stars %>"></div>
 			</div>
-		</div>
-	<% end %>
+		<% end %>
+	</div>
+	<div class="col-xs-3 cell">
+		<div class="text"><%= time_ago_in_words(review.created_at) %> ago</div>
+	</div>
 </div>

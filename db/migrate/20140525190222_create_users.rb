@@ -144,6 +144,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.integer :reportable_id  # id of user, product, or service
 			t.string :reportable_type # 'user', 'product', 'service'
 			t.string :reason # spam or misleading content, fraud, 
+			t.string :action # n/a, warn, suspend , ban
 			t.text :summary
 			t.text :staff_notes # notes by staff
 			t.string :status, default: 'pending' # pending, active, resolved
