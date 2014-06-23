@@ -1,0 +1,41 @@
+<div class="box col-xs-8 col-xs-offset-2">
+	<div class="title">Lender Application</div>
+	<%= form_for @lenderApp, html: {id: 'editReport', class: 'form-horizontal'} do |f| %>
+		<div class="form-group">
+			<%= f.label 'Author', class: 'control-label col-sm-2' %>
+			<div class="detail col-sm-9"><%= link_to @lenderApp.author.name, @lenderApp.author %></div>
+		</div>
+		<div class="form-group">
+			<%= f.label 'Hours/Week', class: 'control-label col-sm-2' %>
+			<div class="detail col-sm-9"><%= @lenderApp.hours %></div>
+		</div>
+		<div class="form-group">
+			<%= f.label 'Categories', class: 'control-label col-sm-2' %>
+			<div class="detail col-sm-9"><%=  @lenderApp.categories %></div>
+		</div>
+		<div class="form-group">
+			<%= f.label 'Skill Level', class: 'control-label col-sm-2' %>
+			<div class="detail col-sm-9"><%= @lenderApp.skill %></div>
+		</div>
+		<div class="form-group">
+			<%= f.label 'Summary', class: 'control-label col-sm-2' %>
+			<div class="detail col-sm-9" style="border: none;"><%= @lenderApp.summary %></div>
+		</div>
+		<div class="form-group">	
+		 	<%= f.label 'Status', class: 'control-label col-sm-2' %>
+			<div class="col-sm-9">
+				<%= f.select :status, options_for_select( [ ["Pending", 'pending'], ["Approve", 'approved'], ["Deny", 'denied'] ], @lenderApp.status ), {}, { class: 'form-control' } %>
+			</div>
+		</div>
+		<div class="form-group">
+		 	<%= f.label 'Staff Notes', class: 'control-label col-sm-2' %>
+			<div class="col-sm-9">
+				<%= f.text_area :staff_notes, value: @lenderApp.staff_notes, placeholder: "Write Notes About The Report Here...", class: 'form-control' %>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<%= f.submit 'Update', class: 'button center' %>
+		</div>
+	<% end %>
+</div>

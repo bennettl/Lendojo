@@ -9,7 +9,6 @@ class CreateUsers < ActiveRecord::Migration
 
 	# All tables and columns for database
 	def change
-
 		# Users
 		create_table :users do |t|
 			# Basic
@@ -23,8 +22,9 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :phone			
 			# Lender
 			t.boolean :lender
-			t.string :belt, default: 'white' # color: white, green, blue, red, black
+			t.string :belt, default: 'N/A' # color: white, green, blue, red, black
 			t.string :skill_level # skill level of lender
+			t.integer :score # tatal score, use for leaderboards
 			t.text :summary
 			# Location
 			t.string :location # more specific, i.e. USC or 711 W. 27th Street
@@ -32,6 +32,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :state
 			t.string :zip
 			# Payment
+			t.decimal :credits, precision: 8, scale: 2, default: 0
 			t.string :stripe_customer_id
 			# Status
 			t.string :status, default: :inactive # inactive, active, admin, warned, suspended, banned

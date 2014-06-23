@@ -8,6 +8,7 @@
 //= require date.format
 //= require ratings
 
+// Datetimepicker : http://eonasdan.github.io/bootstrap-datetimepicker/
 // Date: date.format formats a unix timestamp
 // http://blog.stevenlevithan.com/archives/date-time-format
 
@@ -49,8 +50,17 @@ function checkList(){
 
     schedule_option.datetimepicker(); // datetimepicker initialized
 
+	// When .option.schedule is clicked, make add the active class (so when the datepicker hides, we know which form to submit)
+    schedule_option.on("dp.show", function(e){
+    	var s = $(e.currentTarget);
+    	// Toggle active class
+    	$('.option.schedule.active').removeClass('active');
+    	s.addClass('active');
+    });
+
     // When the DateTimePicker changes, .schedule_date changes
     schedule_option.on("dp.change", function(e){
+    	console.log(e);
     	// Grab the datetime, format it, and update the .schedule_date cell
 		var schedule_date_div 	=  $(this).parents("tr.check").find(".schedule_date")
     	var unix_timestamp 		= e.date;
@@ -76,8 +86,8 @@ function checkList(){
     	var ar_formatted_date 	= dateFormat(date, "yyyy-mm-dd HH:MM:ss");
     	$('input[name="user_service[scheduled_date]"]').val(ar_formatted_date);
 
-    	// Submit the form to update the user_service
-    	update_schedule_form.submit();
+    	// Find the acive scheudle and submit the form to update the user_service
+    	$('.option.schedule.active').parents("form").submit();
     });
 
 	/********************************** SCHEDULE_DATE OPTION **********************************/

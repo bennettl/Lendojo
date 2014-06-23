@@ -71,6 +71,7 @@ class User < ActiveRecord::Base
 	validates_attachment_content_type :main_img, :content_type => /\Aimage\/.*\Z/
 
 	################################## VALIDATION ##################################
+
 	# validates :main_img, presence: true #profile image
 	validates :first_name, presence: true
 	validates :last_name, presence: true
@@ -88,6 +89,8 @@ class User < ActiveRecord::Base
 	# Handles password 
 	has_secure_password
 
+	################################## SESSION ##################################
+
 	# Create a random string 
 	def self.new_remember_token
 	    SecureRandom.urlsafe_base64
@@ -98,6 +101,74 @@ class User < ActiveRecord::Base
 	    Digest::SHA1.hexdigest(token.to_s)
 	end
 
+	################################## RAKNING ##################################
+
+
+	# Ranking Algorithm 
+	# Ranking is base on 3 dimensions
+		# 1. Number of sessions (amount of commitment)
+		# 2. Number of ratings (gives ratings more validity)
+		# 3. Quality of ratings (feedback on work)
+	# Upper-bound. Lenders who past this threshold will recieve a black belt. Each one counts as 100% 
+		# 1. 3 sessions/week * 4 weeks/month * 10 months = 120 sessions
+		# 2. 40 ratings
+		# 3. 4.5 stars
+	# Weight. How important is each dimension
+		# 1. 0.70
+		# 2. 0.15
+		# 3. 0.15
+	# Belt Distribution
+		# Black : 90% 
+		# Red 	: 70%
+		# Blue 	: 40%
+		# Green : 10%
+		# White : 0%
+	# Example cases
+		# Black : 120 services | 20 ratings | 4.5 avg rating 	= 0.7 + 0.07 + 0.15 	= 0.92
+		# Red 	: 100 services | 20 ratings | 4.5 avg rating 	= 0.58 + 0.07 + .15 	= 0.80
+ 		# Blue 	: 60 services  | 29 ratings | 4.5 avg rating  	= 0.35 + 0.11 + 0.15 	= 0.61
+		# Green : 30 services  | 10 ratings | 4.5 avg rating 	= 0.175 + 0.0375 + 0.15 = 0.36
+		# White : 10 services  |  3 ratings | 4.5 avg rating 	= 0.06 + 0.01 + 0.15 	= 0.22
+
+	# Upper bound
+	@@UPPER_BOUND_SESSION		= 120
+	@@UPPER_BOUND_RATINGS		= 40
+	@@UPPER_BOUND_AVG_RATING 	= 4.5
+	# Weight
+	@@WEIGHT_SESSION			= 0.15
+	@@WEIGHT_RATINGS 			= 0.15
+	@@WEIGHT_AVG_RATINGS		= 0.15
+
+	# Update the score of the user and the belt
+	def update_score
+		# sessions_score = /@@UPPER_BOUND_SESSION
+		# ratings_score = /@@UPPER_BOUND_RATINGS
+		# avg_ratings_score = /@@UPPER_BOUND_AVG_RATING
+		score = sessions_score + ratings_score + avg_ratings_score
+		
+		self.update_attribute('score', score)
+		update_belt()
+	end
+
+	# Update the belt base on the score
+	def update_belt		
+		if self.score < 10
+			belt = 'white'
+		elsif self.score < 20
+			belt = 'green'		
+		elsif self.score < 30
+			belt = 'blue'
+		elsif self.score < 40
+			belt = 'red'
+		else 
+			belt = 'black'
+		end
+
+		# Update the belt
+		self.update_attribute('belt', belt)
+	end
+
+	################################## CLASS METHODS ##################################
 
 	# Searches users base similar (LIKE) to search hash
 	def self.search(search)
@@ -118,6 +189,8 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	################################## INSTANCE METHODS ##################################
+
 	# Returns full name
 	def name
 		"#{first_name} #{last_name}"
@@ -134,10 +207,9 @@ class User < ActiveRecord::Base
 	end
 
 
-	################################################### BELT ###################################################
+	################################## BELT ##################################
 	
-
-	################################################### USER - SERVICE ###################################################
+	################################## USER - SERVICE ##################################
 	
 	# Charge user's credit card for a specified amount
 	def charge!(amount)
@@ -181,6 +253,8 @@ class User < ActiveRecord::Base
 	def pin?(service)
 		self.lendee_user_services.find_by(service_id: service.id, relationship_type: 'pin')
 	end
+
+	################################## PRIVATE ##################################
 
 	private
 

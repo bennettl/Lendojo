@@ -70,12 +70,13 @@ namespace :db do
 
 	# Populate services and attach ratings/reviews to them
 	def populate_services
-		users = User.limit(5)
-		
+		users 	= User.limit(5)
+		switch	= true
+
 		# Loop through each user
 		users.each do |u|
 			# Each user will create 8 services
-			8.times do |n|
+			15.times do |n|
 				service_hash 	= random_service_hash
 				title 			= "#{n} " + service_hash[:desc][:title]
 				headline 		= service_hash[:desc][:headline]
@@ -84,6 +85,8 @@ namespace :db do
 				price 			= service_hash[:price]
 				category 		= service_hash[:desc][:category]
 				tags 			= service_hash[:desc][:tag]
+				
+				# Create the service
 				u.services.create!(title: title, 
 										headline: headline, 
 										summary: summary, 
@@ -91,8 +94,13 @@ namespace :db do
 										price: price,
 										category: category, 
 										tags: tags )
-				# Each service will have five ratings/reviews
-				review_lender(u)
+				# Every other service will get 5 reviews and ratings
+				if switch
+					review_lender(u)
+					switch = false
+				else
+					switch = true
+				end
 			end
 		end
 	end
@@ -191,6 +199,7 @@ namespace :db do
 		price 		= [*10..200].sample
 		desc 		= [ { title: 'Cheap Guitar Lessons', category: 'Music', tag: 'Guitar', headline: 'Experience professional teaching guitar'},
 						{ title: 'Piano Lessons!', category: 'Music', tag: 'Piano', headline: 'Can teach beginners to experienced people'},
+						{ title: 'Rock and Roll!', category: 'Music', tag: 'Guitar', headline: 'Teaching rock and rock style guitar'},
 						{ title: 'Dog Walking All Day', category: 'Errands', tag: 'Dog Walking', headline: 'I love spending time with dogs!'},
 						{ title: 'How to Ride A Bike', category: 'Sports/Fitness', tag:'Biking', headline: 'Teaching you how to ride a bike in one day!'}, 
 						{ title: 'BUAD 425 Tutoring Session', category: 'Education', tag: 'Tutoring', headline: 'Helping students with BUAD 425' },

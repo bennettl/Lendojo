@@ -1,0 +1,8 @@
+<div id="reviewListSection">
+	<div class="reviewList">
+		<%= @reviews.each do |r| %>
+			<%=	render 'review_index_item', review: r %>
+		<% end %>
+	</div>
+	<%= will_paginate @reviews %>
+</div>

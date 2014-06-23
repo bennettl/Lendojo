@@ -25,7 +25,7 @@ function initFilterSystem(){
 	g_filter_data.belts			= []; // white, green, blue, red, black
 	g_filter_data.keywords		= []; // Babysitting
 
-	// Set filter data and .current_filters to the first filter (if user has one)
+	// Set filter data and .current_filters_tags to the first filter (if user has one)
 	var default_filter = $(".my-filter-row.body").eq(0);
 	if (default_filter.length > 0){
 		var l_filter_data = default_filter.data().filter_data;
@@ -115,8 +115,8 @@ function initFilterSystem(){
 		if (e.keyCode == 13){
 			// Empty input
 			$(this).val("");
-			// Add filter to g_filter_data and DOM
-			addFilterItem(key, value);
+			// Add filter tag to g_filter_data and DOM
+			addFilterTag(key, value);
 			// Hide the dropdown menu if there is one
 			$(this).parents("li.dimension.dropdown.open").removeClass("open");
 	    }
@@ -129,15 +129,15 @@ function initFilterSystem(){
 
 	/******* FILTER ITEMS *******/
 
-	// Adding a filter item
+	// When user selects a filter item
 	filter_container.on('click', '.filter-item a', function(){
 		var dropdown 	= $(this).parents(".dropdown");
 		var filter 		= $(this).parents(".filter-item");
 		var key 		= filter.data().key;
 		var value 		= filter.data().value; 
 
-		// Add filter (both to g_filter_data object and .current-filters div)
-		addFilterItem(key, value);
+		// Add filter tag (both to g_filter_data object and .current-filters div)
+		addFilterTag(key, value);
 		// Hide the dropdown menu
 		dropdown.removeClass('open');
 		console.log(g_filter_data);
@@ -146,17 +146,17 @@ function initFilterSystem(){
 	});
 
 	// Removing a filter item
-	filter_container.on('click','.filter-remove', function(){
-		var filter 	= $(this).parents(".filter");
-		var key 	= filter.data().key;
-		var value 	= filter.data().value;
+	filter_container.on('click','.filter-remove', function(e){
+		var filterTag 	= $(this).parents(".filter-tag");
+		var key 		= filterTag.data().key;
+		var value 		= filterTag.data().value;
 
 		// Remove the value from g_filter_data
 		g_filter_data[key].remove(value);
 		// Refresh the index page with new g_filter_data information
 		refreshIndex();
 		// Remove the filter's HTML
-		filter.remove();
+		filterTag.remove();
 		e.stopPropagation();
 		console.log(g_filter_data);
 	});
@@ -172,13 +172,13 @@ function initFilterSystem(){
 	// Sets the current 'g_filter_data' object to 'l_filter_data', changes the HTML accordingly, and refreshes the index/list of services
 	function setGlobalFilterData(l_filter_data){
 		// Container for current filters
-		var current_filters 	= filter_container.find(".current-filters");
+		var current_filters_tags 	= filter_container.find(".current-filter-tags");
 
 		// Set global filter_data to l_filter_data
 		g_filter_data = l_filter_data;
 
 		// Empty current filters
-		current_filters.html('');
+		current_filters_tags.html('');
 
 		// Generate new .filter HTML and append them to current_filter
 		for (var dimensionName in g_filter_data) { // dimensionName: locations, belts, prices, etc. 
@@ -187,8 +187,8 @@ function initFilterSystem(){
 			for (var i = 0; i < dimensionArray.length; i++){ // i: 0, 1, 2
 				var dimensionValue = dimensionArray[i] // dimensionValue: Los Angeles, USC, etc.
 				// Create the HTML
-				var filter_HTML = $('<div class="filter" data-key="' + dimensionName +'" data-value="' + dimensionValue + '">' + dimensionValue + '<span class="filter-remove glyphicon glyphicon-remove"></span></div>');
-				current_filters.append(filter_HTML);
+				var filter_HTML = $('<div class="filter-tag" data-key="' + dimensionName +'" data-value="' + dimensionValue + '">' + dimensionValue + '<span class="filter-remove glyphicon glyphicon-remove"></span></div>');
+				current_filters_tags.append(filter_HTML);
 			}
 		}
 		// Refrehes the services list with the current 'g_filter_data' object
@@ -210,7 +210,7 @@ function initFilterSystem(){
 	}
 
 	// Add filter item data (key, value) to g_filter_data and appends new div to .current-filters
-	function addFilterItem(key, value){
+	function addFilterTag(key, value){
 
 		// Make sure g_filter_data has key dimension
 		if (g_filter_data[key] ===  undefined){
@@ -228,16 +228,17 @@ function initFilterSystem(){
 		refreshIndex();
 
 		// Create the HTML markup
-		var filter_html = $('<div class="filter" data-key="' + key + '" data-value="' + value + '">' + value + '<span class="filter-remove glyphicon glyphicon-remove"></span></div>');
+		var current_filter_tags  	= filter_container.find('.current-filter-tags');
+		var filterTag 				= $('<div class="filter-tag" data-key="' + key + '" data-value="' + value + '">' + value + '<span class="filter-remove glyphicon glyphicon-remove"></span></div>');
 
 		// Place HTML after the last current filter with the same key so filters are grouped logically
-		var last_filter = filter_container.find('.current-filters .filter[data-key="' + key + '"]').last();
-		
+		var last_filter 			=  current_filter_tags.find('.filter-tag[data-key="' + key + '"]').last();
+
 		// If there are no filter-items with the same dimension to insert after, append to .current-filters
 		if  (last_filter.length == 0){
-			filter_html.appendTo(filter_container.find('.current-filters'));
+			filterTag.appendTo(current_filter_tags);
 		} else{
-			filter_html.insertAfter(last_filter);			
+			filterTag.insertAfter(last_filter);			
 		}
 
 		console.log(last_filter);

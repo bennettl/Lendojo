@@ -15,15 +15,17 @@
 					<!-- CONFIRM -->
 					<%=	form_for checklist_item, remote: true, html: { class: 'update_confirmation_form' } do |f|  %>
 						<%= f.hidden_field :status, value: 'schedule_confirmed' %>
-						<span class="option confirm glyphicon glyphicon-ok"></span>
+						<span class="option tooltip_target confirm glyphicon glyphicon-ok" data-toggle="tooltip" title="Confirm" ></span>
 					<% end %>
 			<% when 'schedule_confirmed' %>
 				<% # Schedule_confirmed: lendee can call lender %>
-				<span class="option call glyphicon glyphicon-earphone"></span>
+				<span class="option call tooltip glyphicon glyphicon-earphone" data-toggle="tooltip" title="<%= checklist_item.lender.phone %>"></span>
 			<% when 'complete' %>
-				<% # Coplete, lendee can rate lender %>
-				<%= link_to new_rating_user_path(checklist_item.lender) do %>
-					<span class="rate glyphicon glyphicon-star"></span>
+				<% # Complete, lendee can rate lender  ONLY IF user has not rated lende before %>
+				<% unless current_user.given_rating_to?(checklist_item.lender) %>
+					<%= link_to new_rating_user_path(checklist_item.lender) do %>
+						<span class="rate tooltip_target glyphicon glyphicon-star" data-toggle="tooltip" title="Rate"></span>
+					<% end %>
 				<% end %>
 		<% end %>
 	</td>
@@ -44,12 +46,11 @@
 	<td class="schedule_date col-xs-2">
 		<span><%= checklist_item.scheduled_date_text %></span>
 	</td>
-	<td class="serviceTitle col-xs-2">
-		<%= link_to s.title, s %>
+	<td class="serviceTitle col-xs-4">
+		<%= link_to s.title %><br />
+		<small>Lender: <%= link_to s.lender.name, s.lender %></small>
 	</td>
-	<td class="lender col-xs-2">
-		<%= link_to s.lender.name, s.lender %>
-	</td>
+	
 	<td class="price col-xs-2">
 		$<%= s.price %>
 	</td>

@@ -2,7 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/******************************* About *******************************/
+
+#revisionBlurb{
+    margin-top: 30px;
+    text-align: right;
+}
+
+/******************************* ABOUT *******************************/
 #about{
 	background: url("/images/about.png") no-repeat scroll 0 0 / cover #ffffff;
     min-height: 955px;
@@ -20,9 +26,23 @@
     }
 }
 
-/******************************* Contact *******************************/
+/******************************* CONTACT *******************************/
 #contactBox{
+    min-height: 0;
 	input, select{
 		margin: 20px 0;
 	}
+}
+
+/******************************* PRIVACY *******************************/
+#privacyBox{
+    padding: 20px 50px 50px;
+    min-height: 0;
+}
+
+.subTitle{
+    font-size: 1.3em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 300;       
 }

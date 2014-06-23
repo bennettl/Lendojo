@@ -2,12 +2,12 @@
 	<div class="title">Report Debrief</div>
 	<%= form_for @report, html: {id: 'editReport', class: 'form-horizontal'} do |f| %>
 		<div class="form-group">
-			<%= f.label 'Target', class: 'control-label col-sm-2' %>
-			<div class="detail col-sm-9"><%= link_to @reportable.report_title, @reportable %></div>
+			<%= f.label 'Author', class: 'control-label col-sm-2' %>
+			<div class="detail col-sm-9"><%= link_to @report.author.name, @report.author %></div>
 		</div>
 		<div class="form-group">
-			<%= f.label 'Type', class: 'control-label col-sm-2' %>
-			<div class="detail col-sm-9"><%= @report.reportable_type %></div>
+			<%= f.label 'Reporting', class: 'control-label col-sm-2' %>
+			<div class="detail col-sm-9">(<%= @report.reportable_type %>) <%= link_to @reportable.report_title, @reportable %></div>
 		</div>
 		<div class="form-group">
 			<%= f.label 'Reason', class: 'control-label col-sm-2' %>
@@ -20,12 +20,14 @@
 		<div class="form-group">	
 		 	<%= f.label 'Status', class: 'control-label col-sm-2' %>
 			<div class="col-sm-9">
-				<%= f.select :status, options_for_select([ ["pending", 'Pending'], ["active", 'Active'], ["resolved", 'Resolved']]), {} , {class: 'form-control'} %>
+				<%= f.select :status, options_for_select( [ ["Pending", 'pending'], ["Active", 'active'], ["Resolved", 'resolved'] ], @report.status ), {}, { class: 'form-control' } %>
 			</div>
 		</div>
 		<div class="form-group">
 		 	<%= f.label 'Staff Notes', class: 'control-label col-sm-2' %>
-			<div class="col-sm-9"><%= f.text_area :staff_notes, value: @report.staff_notes, placeholder: "Write Notes About The Report Here...", class: 'form-control' %></div>
+			<div class="col-sm-9">
+				<%= f.text_area :staff_notes, value: @report.staff_notes, placeholder: "Write Notes About The Report Here...", class: 'form-control' %>
+			</div>
 		</div>
 		
 		<div class="form-group">

@@ -1,9 +1,28 @@
 <div class="indexList row">
-	<%= link_to lender_application do %>
-		<div class="col-xs-3 cell"><%= lender_application.status %></div>
-		<div class="col-xs-2"><%= image_tag lender_application.author.main_img(:thumb), class: 'userThumb' %></div>
-		<div class="col-xs-3 cell"><%= lender_application.lender.name %></div>
-		<div class="col-xs-1 cell"><%= lender_application.hours %></div>
-		<div class="col-xs-2 cell"><%= lender_application.categories %></div>
+	<div class="col-xs-2 cell">
+		<div class="status-icon <%= lender_application.status %> tooltip_target" title="<%= lender_application.status.capitalize %>"></div>
+	</div>
+	<div class="col-xs-2 cell">
+		<%= link_to(lender_application.author) do %>
+			<%= image_tag lender_application.author.main_img(:thumb), class: 'userThumb tooltip_target', title: lender_application.author.name %>
+		<% end %>
+	</div>
+	<%= link_to edit_lender_application_path(lender_application) do %>
+		<div class="col-xs-2 cell">
+			<div class="text">
+				<%= lender_application.hours %>
+			</div>
+		</div>
+		<div class="col-xs-3 cell">
+			<div class="text">
+				<%= lender_application.categories %>
+			</div>
+		</div>
+		
+		<div class="col-xs-2 cell">
+			<div class="text"><%= time_ago_in_words(lender_application.updated_at) %> ago</div>
+		</div>
 	<% end %>
 </div>
+
+		

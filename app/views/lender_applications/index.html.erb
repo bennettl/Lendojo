@@ -1,6 +1,6 @@
 <div class="box col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1">	
-	
-	<div class="col-sm-3" style="margin-top: 120px;">
+	<!-- DASHBOARD -->
+	<div class="col-sm-3">
 		<% 
 			total 		= LenderApplication.all.count
 			pending 	= LenderApplication.where(status: 'pending').count
@@ -8,19 +8,19 @@
 			denied		= LenderApplication.where(status: 'denied').count 
 			data 		= { Total: total, Pending: pending, Approved: approved, Denied: denied }
 		%>
-		<%= dashboard_widget 'Dashboard', data %>
+		<%= render 'shared/dashboard', title: 'Dashboard', data: data %>
 	</div>
 
+	<!-- ANALYTICS -->
 	<div class="col-sm-9">
 		<div class="title">Lender Apps</div>
 		<div class="indexList-header row">
 			<div class="col-xs-2">Status</div>
 			<div class="col-xs-2">Avatar</div>
-			<div class="col-xs-2">Author</div>
 			<div class="col-xs-2">Hrs/Week</div>
-			<div class="col-xs-2">Categories</div>
+			<div class="col-xs-3">Categories</div>
+			<div class="col-xs-2">Last Updated</div>
 		</div>
 		<%= render @lenderApps %>
 	</div>
-
 </div>

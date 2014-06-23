@@ -20,7 +20,6 @@
 
 /********************  VARIABLES ********************/
 
-$brandBlue: gray;
 $lightGray: #eaeaea;
 $gold: #edb337;
 $orange-red: #e28778;
@@ -109,42 +108,77 @@ header{
 	position: absolute;
 }
 
-.mainNav {
+#mainNav {
  padding: 12px 0;
 	background: #F7F7F7;
 	text-transform: uppercase;
 
 	.innerNav {
-		height: 28px;
+		font-size: 1em;
+	    height: 28px;
 	    margin: 0 auto;
 	    text-align: center;
-	    width: 890px;
+	    width: 528px;
+	   
+	    li.nav-list{
+	    	float: left;
+
+	    	.nav-link {
+				color: #808080;
+				float: left;
+				padding: 5px 20px;
+				transition: all 0.25s ease;
+				text-decoration: none;
+				@include border-radius(5px);	
+				&:hover, &.active{
+					background: #707070;
+					color: white;
+				}
+			}
+
+			&.open{
+		    	.nav-link {
+		    	background: #707070;
+					color: white;
+		    	}
+		    }
+	    }
 	}
 
-	a {
-		color: #808080;
-		float: left;
-		padding: 5px 20px;
-		transition: all 0.25s ease;
-		&:hover, &.current {
-			background: $brandBlue;
-			color: white;
-		}
-	}
 }
 
 /******************* BODY ********************/
 
 // Index
-.indexListDashboard{
-	width: 200px;
+.dashboard{
+	margin-top: 50px;
+
+	&:first-child{
+		margin-top: 120px;
+	}
+
+	div.title{
+		text-align: left;
+	}
+
+	table.dashboard-table{
+		width: 200px;
+		tr{
+		   border-top: 1px solid #e6e6e6;
+		}
+		td{
+		   padding: 10px 0;
+		}
+	}
 }
 
 .indexList-header{
-	text-align: center;
-	font-weight: bold;
-	text-decoration: uppercase;
-	margin-top: 20px 0;
+   border-bottom: 1px solid #e6e6e6;
+    font-weight: 500;
+    margin-top: 40px;
+    padding-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .indexList{
@@ -154,7 +188,17 @@ header{
 		background: #f7f7f7;
 	}
 	.cell{
-		padding: 40px 0;
+		padding: 20px 0;
+
+		.userThumb{
+			margin: 0 15px;
+		}
+		.status-icon, .belt-icon, .text{
+			margin-top: 20px;
+		}
+		.text{
+			padding: 0 23px;
+		}
 	}
 	a{
 		color: $orange-red;
@@ -185,8 +229,33 @@ header{
 	}
 }
 
+.status-icon{
+	width: 15px;
+	height: 15px;
+	@include border-radius(50%);
+	margin: 0 auto;
+
+	&.pending{
+		background: #b5b5b5;
+	}
+	&.active, &.approved{
+		background: #f2c846;
+	}
+	&.denied{
+		background: #b11e06;
+	}
+	&.resolved{
+		background: #e28778;
+	}
+}
 
 // Bootstrap dropdown menu for inputs
+
+.dropdown.hover:hover{
+	.dropdown-menu{
+		display: block;
+	}
+}
 .dropdown-menu > li > div{
 	clear: both;
 	color: #333333;
@@ -220,10 +289,10 @@ header{
 }
 
 
+
 .belt-white{
 	color: #ffffff;
 	border-color: $belt-black;
-	background: #FFFFFF;
 	&.large{
 		background: #FFFFFF;		
 	}
@@ -287,7 +356,7 @@ header{
 
 .container{
 	margin-top: 20px;
-	min-height: 400px;
+	min-height: 300px;
 }
 
 .button{
@@ -302,13 +371,17 @@ header{
     text-align: center;
     font-weight: 300;
     text-transform: uppercase;
+    @include border-radius(5px);
     &.center{
-	    width: 34%;
+	    width: 250px;
 	    min-height: 10px;
 	    margin: 40px auto;
     	display: block;
     }
     &:hover{
+    	// For links
+    	color: #FFFFFF;
+    	text-decoration: none;
     	// background: #dcac2f;
     }
 }
@@ -394,9 +467,11 @@ header{
 }
 
 .userThumb{
+	width: 100px;
+	height: 100px;
 	background: #55dfc3;
     @include border-radius(50%);
-    margin: 20px auto;
+    // margin: 20px auto;
 }
 
 .box{
@@ -530,6 +605,9 @@ header{
 	
 	.review-details{
 		
+		.raty{
+			margin-bottom: 10px;
+		}
 		.vote-blurb{
 			color: #5a5a5a;
 			font-size: 1.0em;
@@ -574,11 +652,30 @@ header{
 
 /******************** FOOTER ********************/
 footer{
-	background: #F7F7F7;
+	font-size: 0.9em;
 	padding: 20px 0;
 	text-align: center;
 	clear: both;
-	span{
-		display: inline-block;
+	
+	&.container{
+		margin-top: 0;
+		padding: 20px 0;
+		min-height: 0;	
 	}
+
+	#footerNav{
+		margin-bottom: 15px;
+		.footer-link{
+				border-right: 1px solid #cbcbcb;
+				color: #e28778;
+				display: inline-block;
+				font-size: 0.8em;
+				text-align: center;
+				width: 92px;
+			&:last-child{
+				border: none;
+			}
+		}	
+	}
+	
 }

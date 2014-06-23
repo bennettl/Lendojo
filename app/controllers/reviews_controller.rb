@@ -1,5 +1,15 @@
 class ReviewsController < ApplicationController
-	
+		
+	# Displays a list of reviews
+	def index
+		@reviews = Review.all.paginate(per_page: 5, page: params[:page])
+	end
+
+	# Displays an individual review
+	def show
+		@review = Review.find(params[:id])
+	end
+
 	# Creates a new review
 	def create
 	    msg = { status: "Review Created!" }

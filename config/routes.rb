@@ -4,9 +4,11 @@
     root 'static_pages#home'
 
     # Static pages
-    match   'about',    to: 'static_pages#about',       via: 'get'
-    match   'contact',  to: 'static_pages#contact',     via: 'get'
-    match   'contact_form_submit', to: 'static_pages#contact_form_submit', via: 'post'
+    match   'about',                    to: 'static_pages#about',                   via: 'get'
+    match   'contact',                  to: 'static_pages#contact',                 via: 'get'
+    match   'guidelines',               to: 'static_pages#guidelines',              via: 'get'
+    match   'privacy',                  to: 'static_pages#privacy',                 via: 'get'
+    match   'contact_form_submit',      to: 'static_pages#contact_form_submit',     via: 'post'
 
     # Sessions
     match   'signin',   to: 'sessions#new',             via: 'get'
@@ -53,8 +55,9 @@
     resources :ratings,             only: [:create]
 
     # Reviews
-    resources :reviews, only: [:create, :destroy, :update] do
+    resources :reviews do
         post    'vote',                 on: :member
+        resources 'reports',          only: [:new, :create]
     end
 
     # Reports

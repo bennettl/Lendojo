@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
 		@reportable = find_reportable
 
 		# If there are no speicfic reportables, then show all
-		@reports = (@reportable.nil?) ? Report.all : @reportable.reports_recieved
+		@reports = (@reportable.nil?) ? Report.all.order('updated_at DESC') : @reportable.reports_recieved.order('updated_at DESC')
 	end
 
 	# Displays a form to create a new report

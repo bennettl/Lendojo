@@ -2,8 +2,12 @@ class ServicesController < ApplicationController
 	
 	# List all services
 	def index
+
+		@myFilters 		= current_user.filters
+		# If there are no search parameters and user has filters, use the first filter to search
+		search_params 	= (search_params().empty? && !@myFilters.nil?) ? @myFilters.first : search_params()
+
 		@services = Service.search(search_params).paginate(per_page: 9, page: params[:page])
-		@myFilters = current_user.filters
 
 		respond_to do |format|
 		    format.html

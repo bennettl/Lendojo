@@ -1,5 +1,5 @@
 <div class="box col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1">	
-	<div class="col-sm-3" style="margin-top: 120px;">
+	<div class="col-sm-3">
 		<%  
 			# Data for user dashboard
 			all_users 		= User.all.count
@@ -8,12 +8,12 @@
 			total_pins 		= UserService.where(relationship_type: 'pin').count
 			data 			= { Users: all_users, Lenders: total_lenders, Checks: total_checks, Pins: total_pins } 
 		%>
-		<%= dashboard_widget 'Dashboard', data %>
+		<%= render 'shared/dashboard', { title: 'Dashboard', data: data } %>
 		<%  
 			# Data for user dashboard
 			data 			= { White: '39%', Green: '20%', Blue: '30%', Red: '10%', Black: '5%' } 
 		%>
-		<%= dashboard_widget 'Rank', data %>
+		<%= render 'shared/dashboard', { title: 'Rank', data: data } %>
 	</div>
 	<div class="col-sm-9">
 		<div class="title">Users</div>

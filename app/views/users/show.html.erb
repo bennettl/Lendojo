@@ -1,4 +1,4 @@
-<div class="box col-sm-10 col-sm-offset-1">
+<div id="userShowBox" class="box col-sm-10 col-sm-offset-1">
 	<!-- Overview -->
 	<div class="row">
 		<!-- Snapshot -->
@@ -28,10 +28,7 @@
 						<span class="glyphicon glyphicon-align-left"></span>
 						<span>Summary</span>
 					</div>
-					<p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat.</p>
+					<p><%= @user.summary %></p>
 				</div>
 			</div>
 
@@ -39,7 +36,7 @@
 	</div>
 	<!-- Services Offered -->
 	<div class="row service">
-		<div class="row"><div class="sectionTitle">Services Offered</div></div>
+		<div class="serviceWidget row"><div class="sectionTitle">Services Offered</div></div>
 		<% @services = Service.where(id: 1..3) %>
 		<%= render @services %>
 	</div>
@@ -48,7 +45,7 @@
 
 	<!-- Latest Servies tried -->
 	<div class="row service">
-		<div class="row"><div class="sectionTitle">Services Tried</div></div>
+		<div class="serviceWidget row"><div class="sectionTitle">Services Tried</div></div>
 		<% @services = Service.where(id: 1..3) %>
 		<%= render @services %>
 	</div>

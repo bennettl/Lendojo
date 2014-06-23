@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.raty.js
+//= require bootstrap
 
 // Remove //= require_tree because we don't want to include all javascript files
 
@@ -28,7 +29,6 @@
 
     function initApp(){
     	/**************************  TOOLTIP **************************/
-    	
     	// Activate tooltip for all .tooltip_target, set container to body to prevent divs from mmoving around if tooltip is appended to it
     	$('.tooltip_target').tooltip({container: 'body'});
 

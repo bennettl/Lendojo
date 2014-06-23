@@ -1,0 +1,13 @@
+<% # Use for index pages (i.e. users. lender application, reports) 
+# Returns a dashboard widget for index pages only viewable by admin %>
+<div class="dashboard">
+	<div class="title"><%= title %></div>
+	<table class="dashboard-table">
+		<% data.each do |key, value| %>
+			<tr>
+				<th><%= key %></th>
+				<td><%= value %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
