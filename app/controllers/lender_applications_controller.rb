@@ -12,13 +12,16 @@ class LenderApplicationsController < ApplicationController
 
 	# Creates a new lender application
 	def create
-		@lenderApp = current_user.lender_app.new(lender_application_params)
+		@lenderApp = current_user.build_lender_app(lender_application_params)
 
 		# If a new lenderApp is sucessfully save, redirect ot services index path, else re-render new
 		if @lenderApp.save
 			flash[:success] = "Thanks for the application! We will get back to you shortly."
+			# Notify admin that a new application has been submitted
+			LenderApplicationsMailer.set_created_mail(@lenderApp).deliver
 			redirect_to services_path
 		else
+			flash[:error] = @lenderApp.errors.full_messages
 			render 'new'
 		end
 	end
@@ -41,7 +44,7 @@ class LenderApplicationsController < ApplicationController
 			
 			# Notify user if status is approved or denied
 			if @lenderApp.status == 'approved' || @lenderApp.status == 'denied'
-				LenderApplicationMailer.set_mail(@lenderApp, @lenderApp.author).deliver
+				LenderApplicationsMailer.set_updated_mail(@lenderApp, @lenderApp.author).deliver
 			end
 
 			redirect_to lender_applications_path

@@ -27,10 +27,12 @@ class CreateUsers < ActiveRecord::Migration
 			t.integer :score # tatal score, use for leaderboards
 			t.text :summary
 			# Location
-			t.string :location # more specific, i.e. USC or 711 W. 27th Street
+			t.string :location # i.e. USC or 711 W. 27th Street
 			t.string :city 
 			t.string :state
 			t.string :zip
+			t.float :latitude
+			t.float :longitude
 			# Payment
 			t.decimal :credits, precision: 8, scale: 2, default: 0
 			t.string :stripe_customer_id
@@ -40,6 +42,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :password_digest
 			# Session
 			t.string :remember_token
+			# Timestamp
 			t.timestamps
 			# Indexes
 			t.index :email, unique: true
@@ -53,13 +56,20 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :title
 			t.string :headline # a sentence
 			t.text :summary # full description of service
-			t.string :location #default to user location
 			t.integer :price #per session (required)
 			t.string :category # broad
 			t.string :tags # specific
 			t.boolean :hidden, default: false # hide service
+			# Location: default to user location
+			t.string :location
+			t.string :city 
+			t.string :state
+			t.string :zip
+			t.float :latitude
+			t.float :longitude
 			# rates/discounts
 			# slide show
+			# Timestamp
 			t.timestamps
 		end
 
@@ -71,11 +81,18 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :title
 			t.string :headline # a sentence
 			t.text :summary # full description of service
-			t.string :location #default to user location
 			t.integer :price #per session (required)
 			t.string :category # broad
 			t.string :tags # specific
 			t.boolean :hidden, default: false # hide service
+			# Location: default to user location
+			t.string :location
+			t.string :city 
+			t.string :state
+			t.string :zip
+			t.float :latitude
+			t.float :longitude
+			# Timestamp
 			t.timestamps
 		end
 		
@@ -87,6 +104,7 @@ class CreateUsers < ActiveRecord::Migration
 		 	t.boolean :alert, default: true # Wheather user wants alerts to be shown for new services offered for filters
 		 	# Serialized hash
 		 	t.text :data # location, price, belt, keywords
+			# Timestamp
     		t.timestamps
 	    end
 		
@@ -98,6 +116,14 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :relationship_type # checks, pins, hidden
 			t.string :status, default: 'pending' # pending, scheduled_unconfirm, scheduled_confirmed, complete
 			t.datetime :scheduled_date # date time when service is scheduled
+			# Location: default to service 
+			t.string :location
+			t.string :city 
+			t.string :state
+			t.string :zip
+			t.float :latitude
+			t.float :longitude
+			# Timestamp
 			t.timestamps
 			# Indexes
 			t.index :lender_id
@@ -114,6 +140,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.text :summary
 			t.string :status, default: 'pending' # pending, approve, denied
 			t.text :staff_notes
+			# Timestamp
 			t.timestamps
 		end
 	
@@ -122,6 +149,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.belongs_to :author, class_name: 'User', foreign_key: 'author_id' # author of rating 
 			t.belongs_to :lender, class_name: 'User', foreign_key: 'lender_id' # target of rating
 			t.integer :stars, default: 0
+			# Timestamp
 			t.timestamps
 	    end
 		
@@ -135,6 +163,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.integer :stars, default: 0
 			t.string :category # music, art, education
 			t.string :status, default: 'pending' # pending, approved
+			# Timestamp
 	    	t.timestamps
     	end
 
@@ -148,6 +177,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.text :summary
 			t.text :staff_notes # notes by staff
 			t.string :status, default: 'pending' # pending, active, resolved
+			# Timestamp
 			t.timestamps
 	    end
 	end

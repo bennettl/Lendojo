@@ -21,12 +21,25 @@ class Service < ActiveRecord::Base
 						:path => ":rails_root/public/assets/services/:id/:style/:basename.:extension"
 	validates_attachment_content_type :main_img, :content_type => /\Aimage\/.*\Z/
 
+	################################## GEOCODING ##################################
+
+	# Which method returns object's geocodable address
+	geocoded_by :full_address
+	# Perform geocoding after valiation 
+	after_validation :geocode, if: ->(obj){ obj.location_changed? || obj.city_changed? || obj.state_changed? || obj.zip_changed?  }
+	
+	def full_address
+		"#{city}, #{state} #{zip}"
+	end
+
 	################################## VALIDATION ##################################
 
 	validates :title, presence: true
 	validates :headline, presence: true
 	validates :summary, presence: true
-	validates :location, presence: true
+	validates :city, presence: true
+	validates :state, presence: true
+	validates :zip, presence: true
 	validates :price, presence: true
 	validates :category, presence: true
 

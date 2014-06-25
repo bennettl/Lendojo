@@ -1,0 +1,24 @@
+<html>
+<head>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+	<p>Dear Admin,</p>
+
+	<p>A new lender application has been submitted and needs to be reviewed. Here is a brief summary of the application. </p>
+
+	<p>
+		ID: <%= @lenderApp.id %><br />
+		Author: <%= @lenderApp.author.name %><br />
+		Hrs/Week: <%= @lenderApp.hours %><br />
+		Categories: <%= @lenderApp.categories %><br />
+		Skills: <%= @lenderApp.skill %><br />
+		Summary: <%= @lenderApp.summary %><br />
+	</p>
+	
+	<p>
+		Best,<br />
+		The Lendojo Staff
+	</p>
+</body>
+</html>

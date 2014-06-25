@@ -70,6 +70,17 @@ class User < ActiveRecord::Base
 						:path => ":rails_root/public/assets/users/main_img/:id/:style/:basename.:extension"
 	validates_attachment_content_type :main_img, :content_type => /\Aimage\/.*\Z/
 
+	################################## GEOCODING ##################################
+
+	# Which method returns object's geocodable address
+	geocoded_by :full_address
+	# Perform geocoding after valiation 
+	after_validation :geocode, if: ->(obj){ obj.location_changed? || obj.city_changed? || obj.state_changed? || obj.zip_changed?  }
+	
+	def full_address
+		"#{city}, #{state} #{zip}"
+	end
+
 	################################## VALIDATION ##################################
 
 	# validates :main_img, presence: true #profile image
@@ -77,8 +88,9 @@ class User < ActiveRecord::Base
 	validates :last_name, presence: true
 	validates :headline, presence: true
 	validates :age, presence: true
-	validates :location, presence: true # more specific
 	validates :city, presence: true 
+	validates :state, presence: true # more specific
+	validates :zip, presence: true # more specific
 	validates :password, length: { minimum: 5 }, allow_nil: true
 	
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

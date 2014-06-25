@@ -65,8 +65,9 @@ function checkList(){
 		var schedule_date_div 	=  $(this).parents("tr.check").find(".schedule_date")
     	var unix_timestamp 		= e.date;
         var date 				= new Date(unix_timestamp);
-        var formatted_date 		= dateFormat(date, "mmmm dS, yyyy, dddd @ h:MM TT");
-        
+        var formatted_date 		= dateFormat(date, "mmmm dS, yyyy, . dddd @ h:MM TT |");
+        formatted_date 			= formatted_date.replace(".", "<small>"); // cant insert <small> tags in function, so need to search and replace
+        formatted_date 			= formatted_date.replace("|", "</small>");  // cant insert <small> tags in function, so need to search and replace
         schedule_date_div.html(formatted_date);
     });
 

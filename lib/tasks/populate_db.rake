@@ -17,7 +17,7 @@ namespace :db do
 						headline: "Aspiring Entreprenuer, Veteran Software Developer, Dabbling Musician",
 						summary: Faker::Lorem.paragraphs(2).join("\n\n"),
 						age: '21',
-						email: 'bennettl908@yahoo.com',
+						email: 'bennettl@usc.edu',
 						phone: '800-123-4567',
 						location: 'USC',
 						city: 'Los Angeles',
@@ -81,16 +81,22 @@ namespace :db do
 				title 			= "#{n} " + service_hash[:desc][:title]
 				headline 		= service_hash[:desc][:headline]
 				summary 		= Faker::Lorem.paragraphs(5).join("\n\n")
-				location 		= service_hash[:location]
 				price 			= service_hash[:price]
 				category 		= service_hash[:desc][:category]
 				tags 			= service_hash[:desc][:tag]
+				location 		= service_hash[:location]
+				state 			= Faker::Address.state
+				city			= Faker::Address.city
+				zip 			= Faker::Address.zip
 				
 				# Create the service
 				u.services.create!(title: title, 
 										headline: headline, 
 										summary: summary, 
-										location: location, 
+										location: location,
+										city: city,
+										state: state,
+										zip: zip,
 										price: price,
 										category: category, 
 										tags: tags )
@@ -108,9 +114,9 @@ namespace :db do
 	# Populate filter data for the first User
 	def populate_filters
 		user = User.first
-		user.filters.create(title: 'USC Music', data: { location: ['USC', 'Los Angeles'], price: ['$', '$$'], keywords: ['guitar', 'piano'] } )
-		user.filters.create(title: 'San Francisco Services', data: { location: ['San Francisco', 'Silicon Valley'], price: ['$$', '$$$'] } )
-		user.filters.create(title: 'Cheap Pet Services', data: { location: ['Venice', 'Los Angeles'], price: ['$', '$$'], keywords: ['pets'] } )
+		user.filters.create(title: 'USC Music', data: { locations: ['USC', 'Los Angeles'], prices: ['$', '$$'], keywords: ['guitar', 'piano'] } )
+		user.filters.create(title: 'San Francisco Services', data: { locations: ['San Francisco', 'Silicon Valley'], prices: ['$$', '$$$'] } )
+		user.filters.create(title: 'Cheap Pet Services', data: { locations: ['Venice', 'Los Angeles'], prices: ['$', '$$'], keywords: ['pets'] } )
 	end
 
 	# Populate user services relationships (checks/pins)

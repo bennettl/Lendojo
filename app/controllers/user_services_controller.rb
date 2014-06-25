@@ -21,11 +21,15 @@ class UserServicesController < ApplicationController
 	# Update the user_service attributes (done via AJAX/asynchronously)
 	def update
 		@user_service = UserService.find(params[:id])
-		@user_service.update_attributes(check_params)
 
-		# If the user service is finished, charge the lendee
-		if params[:user_service][:status] == "complete"
-			@user_service.charge!
+		# Continue if update-attribute is sucessful and relationship type is 'check'		
+		if @user_service.update_attributes(check_params) && @user_service.relationship_type == 'check'
+			# Notify lender that a new application has been submitted
+			UserServicesMailer.set_check_updated_mail(@user_service).deliver
+			# If the user service is finished, charge the lendee
+			if params[:user_service][:status] == "complete"
+				@user_service.charge!
+			end
 		end
 	end
 

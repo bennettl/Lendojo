@@ -25,6 +25,11 @@ gem 'bootstrap-will_paginate', '0.0.9'
 # Reputation system
 gem 'activerecord-reputation-system', github: 'NARKOZ/activerecord-reputation-system', branch: 'rails4'
 
+# Maps/Geocoder
+# gem 'underscore-rails', '~> 1.6.0'
+# gem 'gmaps4rails', '~> 2.1.2'
+gem 'geocoder', '~> 1.2.2'
+
 # Date picker
 gem 'momentjs-rails', '~> 2.5.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'
@@ -33,7 +38,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 # Payment Network
-gem 'stripe'
+gem 'stripe', '~> 1.14.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

@@ -293,38 +293,49 @@ header{
 }
 
 .belt-white{
-	border: 1px solid $belt-black;
-	color: $belt-black;
 	@include border-radius(5px);
+	&.xsmall{
+		color: #FFFFFF;
+	}
 	&.large{
+		border: 1px solid $belt-black;
+		color: $belt-black;
 		background: #FFFFFF;		
 	}
 }
 
 .belt-blue{
-	color: $belt-blue;
+	&.xsmall{
+		color: $belt-blue;		
+	}
 	&.large{
 		background: $belt-blue;		
 	}
 }
 
 .belt-green{
-	color: $belt-green;
+	&.xsmall{
+		color: $belt-green;		
+	}
 	&.large{
 		background: $belt-green;		
 	}
 }
 
 .belt-red{
-	color: $belt-red;
+	&.xsmall{
+		color: $belt-red;
+	}
 	&.large{
 		background: $belt-red;		
 	}
 }
 
 .belt-black{
-	color: $belt-black;
-	border-color: #FFFFFF;
+	color: #FFFFFF;
+	&.xsmall{
+		color: $belt-black;		
+	}
 	&.large{
 		background: $belt-black;		
 	}

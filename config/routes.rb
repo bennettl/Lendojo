@@ -8,6 +8,7 @@
     match   'contact',                  to: 'static_pages#contact',                 via: 'get'
     match   'guidelines',               to: 'static_pages#guidelines',              via: 'get'
     match   'privacy',                  to: 'static_pages#privacy',                 via: 'get'
+    match   'faqs',                     to: 'static_pages#faqs',                 via: 'get'
     match   'contact_form_submit',      to: 'static_pages#contact_form_submit',     via: 'post'
 
     # Sessions

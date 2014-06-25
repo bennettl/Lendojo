@@ -4,7 +4,7 @@
 			<%= image_tag service.main_img.url, class: "serviceImage" %>
 			<div class="shadow"></div>
 			<div class="lender">
-				<span class="belt-<%= service.lender.belt %> glyphicon glyphicon-user"></span>
+				<span class="belt-<%= service.lender.belt %> xsmall glyphicon glyphicon-user"></span>
 				<span class="service"><%= service.lender.name %></span>
 			</div>
 			<div class="price"><%= Service.price_to_symbol(service.price) %></div>

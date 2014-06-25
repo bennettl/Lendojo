@@ -17,16 +17,17 @@
 			<div id="glance" class="col-xs-11">
 				<div class="detailTitle row"><span class="glyphicon glyphicon-search"></span> At A Glance</div>
 				<div class="row group">
-					<div class="col-sm-3"><span class="belt-<%= @service.lender.belt %> glyphicon glyphicon-user"></span> Lender</div>
-					<div class="col-sm-5"><%= link_to @service.lender.name, @service.lender %></div>
+					<div class="col-sm-3"><span class="belt-<%= @service.lender.belt %> xsmall glyphicon glyphicon-user"></span> Lender</div>
+					<div class="col-sm-9"><%= link_to @service.lender.name, @service.lender %></div>
 				</div>
 				<div class="row group">
 					<div class="col-sm-3"><span class="glyphicon glyphicon-map-marker"></span> Location</div>
-					<div class="col-sm-5"><%= @service.location %> <small> (0.3 miles) </small></div>
+					<!-- GEOCODER GEM -->
+					<div class="col-sm-9"><%= @service.full_address %> <small> (<%= @service.distance_from(current_user).round(2) %> miles) </small></div>
 				</div>
 				<div class="row group">
 					<div class="col-sm-3"><span class="glyphicon glyphicon glyphicon-usd"></span> Price</div>
-					<div class="col-sm-5"><%= @service.price %></div>
+					<div class="col-sm-9"><%= @service.price %></div>
 				</div>
 			</div>
 		</div>
