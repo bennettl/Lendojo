@@ -1,0 +1,37 @@
+/************************** EDIT **************************/
+/* line 6, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/reports.css.scss */
+#reportEditBox {
+  padding: 15px 50px;
+}
+/* line 8, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/reports.css.scss */
+#reportEditBox .control-label {
+  padding-right: 8px;
+}
+
+/* line 14, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/reports.css.scss */
+form#editReport .detail {
+  padding: 7px 0 25px;
+  border-bottom: 1px solid #e6e6e6;
+  margin-left: 15px;
+}
+
+/************************** NEW **************************/
+/* line 23, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/reports.css.scss */
+.reportBlurb {
+  color: #6c6c6c;
+  display: block;
+  height: 101px;
+  margin: 15px auto;
+  text-align: center;
+  width: 550px;
+}
+
+/* line 32, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/reports.css.scss */
+.form-group {
+  margin: 15px 0;
+}
+
+/* line 36, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/reports.css.scss */
+textarea#report_summary {
+  height: 120px;
+}
