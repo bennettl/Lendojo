@@ -8,7 +8,7 @@ Rails.application.configure do
   Paperclip.options[:command_path] = "/usr/local/bin/"
 
   config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
-  config.assets.precompile += %w( *.css *.js )
+  config.assets.precompile += %w( stylesheets/*.css javascripts/*.js )
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
