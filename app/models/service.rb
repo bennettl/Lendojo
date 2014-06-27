@@ -29,7 +29,7 @@ class Service < ActiveRecord::Base
 	after_validation :geocode, if: ->(obj){ obj.location_changed? || obj.city_changed? || obj.state_changed? || obj.zip_changed?  }
 	
 	def full_address
-		"#{city}, #{state} #{zip}"
+		"#{address} #{city}, #{state} #{zip}"
 	end
 
 	################################## VALIDATION ##################################
@@ -37,9 +37,10 @@ class Service < ActiveRecord::Base
 	validates :title, presence: true
 	validates :headline, presence: true
 	validates :summary, presence: true
+	validates :address, presence: true
 	validates :city, presence: true
-	validates :state, presence: true
-	validates :zip, presence: true
+	validates :state, presence: true, length: {is: 2}
+	validates :zip, presence: true, length: { minimum: 5 }
 	validates :price, presence: true
 	validates :category, presence: true
 
@@ -152,7 +153,7 @@ class Service < ActiveRecord::Base
 			self.joins(:lender).where(query.join(' AND '))
 		else
 			# all users
-			self.all
+			self.scoped
 		end
 	end
 

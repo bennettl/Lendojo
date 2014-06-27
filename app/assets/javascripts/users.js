@@ -40,18 +40,23 @@ function index(){
 // Handles the JS for users/checklist
 function checkList(){
 
+	// If checklist nav exists, select the first tab
+	if ($('#checkListNav').length > 0 ){
+		$('#checkListNav a:first').tab('show')
+	}
+
 	// Green notifciation box for checklist updates made, intially hide it
 	$('.checkList .alert.alert-success').hide();
 
 	/********************************** SCHEDULE_DATE OPTION **********************************/
 	
-	var update_schedule_form = $("form.update_schedule_date_form");
-	var schedule_option 	 = $('form.update_schedule_date_form .schedule'); // calender glyphicon
+	var update_schedule_date_form 	= $("form.update_schedule_date_form");
+	var schedule_date_option 		= $('form.update_schedule_date_form .schedule'); // calender glyphicon
 
-    schedule_option.datetimepicker(); // datetimepicker initialized
+    schedule_date_option.datetimepicker(); // datetimepicker initialized
 
 	// When .option.schedule is clicked, make add the active class (so when the datepicker hides, we know which form to submit)
-    schedule_option.on("dp.show", function(e){
+    schedule_date_option.on("dp.show", function(e){
     	var s = $(e.currentTarget);
     	// Toggle active class
     	$('.option.schedule.active').removeClass('active');
@@ -59,39 +64,66 @@ function checkList(){
     });
 
     // When the DateTimePicker changes, .schedule_date changes
-    schedule_option.on("dp.change", function(e){
+    schedule_date_option.on("dp.change", function(e){
     	console.log(e);
-    	// Grab the datetime, format it, and update the .schedule_date cell
-		var schedule_date_div 	=  $(this).parents("tr.check").find(".schedule_date")
+    	// Change the HTML. Grab the datetime, format it, and update the .schedule_date cell
+		var schedule_date_div 	=  $(this).parents("tr.check").find("td.schedule_date")
     	var unix_timestamp 		= e.date;
         var date 				= new Date(unix_timestamp);
         var formatted_date 		= dateFormat(date, "mmmm dS, yyyy, . dddd @ h:MM TT |");
-        formatted_date 			= formatted_date.replace(".", "<small>"); // cant insert <small> tags in function, so need to search and replace
-        formatted_date 			= formatted_date.replace("|", "</small>");  // cant insert <small> tags in function, so need to search and replace
+        // Cannot insert HTML <br /> and <small> tags in function, so need to search and replace
+        formatted_date 			= formatted_date.replace(".", "<br /> <small>");
+        formatted_date 			= formatted_date.replace("|", "</small>"); 
         schedule_date_div.html(formatted_date);
     });
 
     // When DateTimePicker hides, notified the user and submit the form
-	schedule_option.on("dp.hide", function(e){
+	schedule_date_option.on("dp.hide", function(e){
     	// Prepare the information for notification
-    	var success_box			= $(this).parents(".checkList").find(".alert.alert-success"); // find the lender's success box
     	var unix_timestamp 		= e.date;
         var date 				= new Date(unix_timestamp);
         var formatted_date 		= dateFormat(date, "dddd, mmmm d, yyyy | h:MM TT");
 
-        // Notified user via success_box
-        success_box.show();
-    	success_box.html('Schedule Date Updated to ' + formatted_date);
-
     	// Set the hidden field to date formatted for active record
     	var ar_formatted_date 	= dateFormat(date, "yyyy-mm-dd HH:MM:ss");
-    	$('input[name="user_service[scheduled_date]"]').val(ar_formatted_date);
+    	$('input[name="user_service[date]"]').val(ar_formatted_date);
 
     	// Find the acive scheudle and submit the form to update the user_service
     	$('.option.schedule.active').parents("form").submit();
+
+    	// Notified user via success_box
+    	var success_box			= $(this).parents(".checkList").find(".alert.alert-success"); // find the lender's success box
+        success_box.show();
+    	success_box.html('Schedule Date Updated to ' + formatted_date);
     });
 
-	/********************************** SCHEDULE_DATE OPTION **********************************/
+	/********************************** SCHEDULE_PLACE OPTION **********************************/
+	var update_schedule_place_form 	= $('form.update_schedule_place_form');
+	
+	// Activate the dropdown for any dropdown targets
+	$('.dropdown_target').dropdown();
+	// When the dropdown menu child for .location-dropdown is hidden, modify the HTMl and submit the request
+	$('.location-dropdown').on('hide.bs.dropdown', function(){
+		// Find the parent form associated with the dropdown and submit it
+		var form 				= $(this).parents("form.update_schedule_place_form");
+		form.submit();
+
+		// Change the HTML markup
+		var address 			= $(this).find('input[name="user_service[address]"]').val();
+		var city 				= $(this).find('input[name="user_service[city]"]').val();
+		var state 				= $(this).find('select[name="user_service[state]"]').val();
+		var zip 				= $(this).find('input[name="user_service[zip]"]').val();
+		var full_address_html 	= address + "<br /><small>" + city + ", " + state + " " + zip + "</small>";
+		var schedule_place_div 	= $(this).parents("tr.check").find("td.schedule_place");
+
+		schedule_place_div.html(full_address_html);
+
+		// Notified user via success_box
+    	var success_box			= $(this).parents(".checkList").find(".alert.alert-success"); // find the lender's success box
+        success_box.show();
+    	success_box.html('Schedule place updated to ' + address + " " + city + ", " + state + " " + zip);
+	});
+	
 
 	/********************************** CHARGE OPTION **********************************/
 	var charge_form = $('form.update_charge_form');
@@ -117,8 +149,6 @@ function checkList(){
 
 	});
 	
-	/********************************** CHARGE OPTION **********************************/
-
 	/********************************** CONFIRM OPTION **********************************/
 	var confirm_form = $('form.update_confirmation_form');
 

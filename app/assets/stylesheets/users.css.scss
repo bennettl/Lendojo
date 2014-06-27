@@ -50,6 +50,47 @@ $belt-black: #3a3c3a;
 
 /*********************** CHECKLIST ***********************/
 
+.alert{
+	padding: 20px 0;
+}
+
+#checkListNav{
+	margin-bottom: 30px;
+	li a{
+		color: #aaaaaa;
+	}
+	li.active a{
+		color: #e28778;
+	}
+}
+
+.dropdown-menu{
+
+	.dropdown-location-label{
+		color: #999999;
+	    display: inline-block;
+	    font-size: 12px;
+	    font-weight: normal;
+	    margin: 10px 19px;
+	}
+
+	& > li > input.dropdown-zip-input{
+		display: inline-block;
+	    margin-left: 0;
+	    width: 100px;
+	}
+}
+
+.checkListBox{
+	padding: 30px 0;
+	width: 90%;
+	margin: 0 auto;
+	th{
+	}
+	td.cell{
+		padding: 22px 8px;
+	}
+}
 .bootstrap-datetimepicker-widget ul{
 	font-size: 1.0em;
 }
@@ -58,7 +99,7 @@ $belt-black: #3a3c3a;
 
 	form, .option, a{
 		display: inline-block;
-		margin: 0 5px;
+		margin: 0 5px 3px;
 		cursor: pointer;
 	}
 

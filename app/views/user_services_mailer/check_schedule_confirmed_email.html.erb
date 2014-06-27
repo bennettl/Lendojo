@@ -5,7 +5,7 @@
 <body>
 	<p>Dear <%= @user_service.lender.first_name %>,</p>
 
-	<p>Your Lendee <b><%= @user_service.lendee.first_name %></b> has confirmed <b>"<%= @user_service.service.title %>"</b> at <b><%= @user_service.scheduled_date.strftime("%A, %B %e, %Y @ %l:%M %p") %></b>.</p>
+	<p>Your Lendee <b><%= @user_service.lendee.first_name %></b> has confirmed <b>"<%= @user_service.service.title %>"</b> at <b><%= @user_service.date.strftime("%A, %B %e, %Y @ %l:%M %p") %></b>.</p>
 
 	<p>Please be sure to be there on time! If you need to contact or rescheudle, you can visit your <%= link_to 'Checklist', checklist_users_url %> anytime.</p>
 

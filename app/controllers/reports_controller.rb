@@ -1,13 +1,17 @@
 class ReportsController < ApplicationController
 		
+	# Include sorting params
+	include HeaderFiltersHelper
+	
 	# List all reports under reportable type: user, service, product
 	def index
 		# the (user/service/product) object
 		@reportable = find_reportable
 
 		# If there are no speicfic reportables, then show all
-		@reports = (@reportable.nil?) ? Report.all.order('updated_at DESC') : @reportable.reports_recieved.order('updated_at DESC')
-		@reports = @reports.paginate( per_page: 5, page: params[:page] )
+		@reports = (@reportable.nil?) ? Report.all : @reportable.reports_recieved
+		@reports = @reports.search(search_params)
+		@reports = @reports.order("#{sort_name_param} #{sort_direction_param}").paginate( per_page: 5, page: params[:page] )
 	end
 
 	# Displays a form to create a new report
@@ -96,6 +100,7 @@ class ReportsController < ApplicationController
 
 	end
 
+
 	# Returns object. Loop through the parameters passed to the action to look one called <parent_resource>_id which will enable us to know which of the commentable models we’re dealing with. http://railscasts.com/episodes/154-polymorphic-association?view=asciicast
 	def find_reportable
 		params.each do |name, value|
@@ -112,4 +117,16 @@ class ReportsController < ApplicationController
 	def report_params
 		params.require(:report).permit(:author_id, :reason, :summary, :action, :staff_notes, :status)
 	end
+
+	
+	# Serach params (filter_data)
+	def search_params
+		# If there is no filter data, return empty
+		if params[:filter_data].nil?
+			return ''
+		end
+
+		params.require(:filter_data).permit(statuses: [], reportable_types: [])
+	end
+
 end

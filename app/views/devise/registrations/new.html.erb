@@ -1,0 +1,28 @@
+<% provide(:title, 'Sign Up')	%>
+<div id="signInBox" class="box small col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+	<div class="title">Sign Up</div>
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal', autocomplete: 'off'}) do |f| %>
+		<%= devise_error_messages! %>
+
+		<div class="form-group">
+			<%= f.label :email, 'Email', class: 'col-sm-2 col-sm-offset-1 control-label' %>
+		    <div class="col-sm-8">
+				<%= f.email_field :email, class: 'form-control', autofocus: true %>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.label :email, 'Password', class: 'col-sm-2 col-sm-offset-1 control-label' %>
+		    <div class="col-sm-8">
+				<%= f.password_field :password, class: 'form-control' %>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.label :email, 'Confirm', class: 'col-sm-2 col-sm-offset-1 control-label' %>
+		    <div class="col-sm-8">
+				<%= f.password_field :password_confirmation, class: 'form-control' %>
+			</div>
+		</div>
+		<%= f.submit 'Sign Up', class: 'button', style: 'width: 100%;' %>
+	<% end %>
+</div>
+

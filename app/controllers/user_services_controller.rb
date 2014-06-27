@@ -1,7 +1,7 @@
 class UserServicesController < ApplicationController
 	
 	# Make sure user is signed in before creating/destroying relationships
-	before_action :sign_in_user 
+	before_action :authenticate_user! 
 
 	# Checks service for current_user and replaces "check" with "_uncheck" partial via create.js.erb
 	def create_check
@@ -83,7 +83,7 @@ class UserServicesController < ApplicationController
 	# Strong parameters for check
 
 	def check_params
-		params.require(:user_service).permit(:scheduled_date, :status)
+		params.require(:user_service).permit(:date, :address, :city, :state, :zip, :status)
 	end
 
 end

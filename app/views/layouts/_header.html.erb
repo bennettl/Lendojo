@@ -6,34 +6,36 @@
 			<li class="nav-list"><%= nav_link 'Services', main_app.services_path %></li>
 			<li class="nav-list"><%= nav_link 'Checklist', main_app.checklist_users_path %></li>
 			<li class="nav-list"><%= nav_link 'Pins', main_app.pins_users_path %></li>
-			<li class="nav-list dropdown hover" data-menu="account">
-				<a href="#" class="nav-link" data-toggle="dropdown"> Account <b class="caret"></b></a>
-				<ul data-menu="account" class="dropdown-menu" style="top: 25px;">
-					<li><%= link_to 'Profile', main_app.user_path(current_user) %></li>
-					<li><%= link_to 'Settings', main_app.edit_user_path(current_user) %></li>
-				    <li class="divider"></li>
-					<li><%= link_to 'Sign Out', main_app.signout_path, method: :delete %></li>
-				</ul>
-			</li>
-			<li class="nav-list dropdown hover" data-menu="admin">
-				<a href="#" class="nav-link" data-toggle="dropdown"> Admin <b class="caret"></b></a>
-				<ul data-menu="admin" class="dropdown-menu" style="top: 25px;">
-					<li><%= link_to 'Users', main_app.users_path %></li>
-					<li><%= link_to 'Lender Applications', main_app.lender_applications_path %></li>
-					<li><%= link_to 'Reports', main_app.reports_path %></li>
-					<li><%= link_to 'Reviews', main_app.reviews_path %></li>
-					<li><%= link_to 'Rate', main_app.new_rating_user_path(current_user) %></li>
-				</ul>
-			</li>
+			<% if signed_in? %>
+				<!-- ACCOUNT -->
+				<li class="nav-list dropdown hover" data-menu="account">
+					<a href="#" class="nav-link" data-toggle="dropdown"> Account <b class="caret"></b></a>
+					<ul data-menu="account" class="dropdown-menu" style="top: 25px;">
+						<li><%= link_to 'Profile', main_app.user_path(current_user) %></li>
+						<li><%= link_to 'Settings', main_app.edit_user_path(current_user) %></li>
+					    <li class="divider"></li>
+						<li><%= link_to 'Sign Out', main_app.destroy_user_session_path, method: :delete %></li>
+					</ul>
+				</li>
+				<!-- ADMIN -->
+				<li class="nav-list dropdown hover" data-menu="admin">
+					<a href="#" class="nav-link" data-toggle="dropdown"> Admin <b class="caret"></b></a>
+					<ul data-menu="admin" class="dropdown-menu" style="top: 25px;">
+						<li><%= link_to 'Users', main_app.users_path %></li>
+						<li><%= link_to 'Lender Applications', main_app.lender_applications_path %></li>
+						<li><%= link_to 'Reports', main_app.reports_path %></li>
+						<li><%= link_to 'Reviews', main_app.reviews_path %></li>
+						<li><%= link_to 'Rate', main_app.new_rating_user_path(current_user) %></li>
+					</ul>
+				</li>
+			<% else %>
+				<li class='nav-list'><%= nav_link 'Sign In', main_app.new_user_session_path %></li>
+			<% end %>
 		</ul>
 	</nav>
 
 	<div class="loginIndicator">
-	<% if signed_in? %>
 		<% # "WELCOME #{current_user.first_name.upcase}!" %>
-	<% else %>
-		<%= link_to 'SIGN IN', main_app.signin_path, id: 'sessionText' %>
-	<% end %>
 	</div> 
 	<%= link_to 'Become A Lender', new_lender_application_path, id: 'be_a_lender' %>
 </header>

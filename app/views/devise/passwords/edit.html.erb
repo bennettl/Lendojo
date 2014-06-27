@@ -1,0 +1,20 @@
+<% provide(:title, 'Change Your Password')	%>
+<div id="signInBox" class="box small col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+	<div class="title">Change Your Password</div>
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: 'form-horizontal', method: :put, autocomplete: 'off'}) do |f| %>
+		<%= devise_error_messages! %>
+		<%= f.hidden_field :reset_password_token %>
+
+		<div class="form-group">
+			<%= f.label :password, 'New Password', class: 'col-sm-4 control-label' %>
+		    <div class="col-sm-8">
+				<%= f.password_field :password, class: 'form-control', autofocus: true %>
+			</div>
+			<%= f.label :password_confirmation, 'Confirm', class: 'col-sm-4 control-label' %>
+		    <div class="col-sm-8">
+				<%= f.password_field :password_confirmation, class: 'form-control' %>
+			</div>
+		</div>
+		<%= f.submit 'Change My Password', class: 'button', style: 'width: 100%;' %>
+	<% end %>
+</div>

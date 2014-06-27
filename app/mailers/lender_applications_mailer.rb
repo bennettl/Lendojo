@@ -19,11 +19,10 @@ class LenderApplicationsMailer < ActionMailer::Base
 		template 	= @lenderApp.status + '_email'
 
 		# Change the subject base on @lenderApp status
-		case @lenderApp.status
-			when 'approved'
-				subject = "Lendojo: Lender Application Approved!"
-			when 'denied'
-				subject = "Lendojo: Lender Application Denied"
+		if @lenderApp.approved?
+			subject = "Lendojo: Lender Application Approved!"
+	 	elsif @lenderApp.denied?
+			subject = "Lendojo: Lender Application Denied"
 		end
 
 		mail(to: @user.email, subject: subject) do |format|

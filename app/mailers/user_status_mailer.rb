@@ -8,15 +8,15 @@ class UserStatusMailer < ActionMailer::Base
 		template = @user.status + '_email'
 
 		case @user.status
-			when 'inactive'
+			when User.statuses[:inactive]
 				subject = "Lendojo: Activate Your Account"
-			when 'active'
+			when User.statuses[:active]
 				subject = "Lendojo: Your Account Has Been Activated"
-			when 'warned'
+			when User.statuses[:warned]
 				subject = "Lendojo: Warning"
-			when 'suspended'
+			when User.statuses[:suspended]
 				subject = "Lendojo: Your Account Has Been Suspended"
-			when 'banned'
+			when User.statuses[:banned]
 				subject = "Lendojo: Your Account Has Been Banned"
 		end
 

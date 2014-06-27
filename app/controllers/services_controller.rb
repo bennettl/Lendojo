@@ -71,7 +71,7 @@ class ServicesController < ApplicationController
 		params.require(:service).permit(:main_img, :title, :headline, :description, :location, :price, :category, :tags, :hidden)
 	end
 
-	# Parameters use for searching
+	# Parameters (filter_data) use for searching
 	def search_params
 		# If there is no filter data, return empty
 		if params[:filter_data].nil?

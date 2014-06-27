@@ -1,10 +1,11 @@
     Rails.application.routes.draw do
 
+  devise_for :users
     # Root
     root 'static_pages#home'
 
     # Static pages
-    match   'about',                    to: 'static_pages#about',                   via: 'get'
+    match   'how_it_works',             to: 'static_pages#how_it_works',            via: 'get'
     match   'contact',                  to: 'static_pages#contact',                 via: 'get'
     match   'guidelines',               to: 'static_pages#guidelines',              via: 'get'
     match   'privacy',                  to: 'static_pages#privacy',                 via: 'get'
@@ -12,8 +13,11 @@
     match   'contact_form_submit',      to: 'static_pages#contact_form_submit',     via: 'post'
 
     # Sessions
-    match   'signin',   to: 'sessions#new',             via: 'get'
-    match   'signout',  to: 'sessions#destroy',         via: 'delete'
+    devise_scope :user do 
+        match '/sessions/user', to: 'devise/sessions#create', via: :post
+    end
+    # match   'signin',   to: 'sessions#new',             via: 'get'
+    # match   'signout',  to: 'sessions#destroy',         via: 'delete'
 
     ################################## RESOURCES ##################################
     

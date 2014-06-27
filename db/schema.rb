@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.string   "skill"
     t.integer  "hours"
     t.text     "summary"
-    t.string   "status",      default: "pending"
+    t.integer  "status",      default: 0
     t.text     "staff_notes"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -43,16 +43,16 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.string   "title"
     t.string   "headline"
     t.text     "summary"
+    t.integer  "price"
+    t.string   "category"
+    t.string   "tags"
+    t.boolean  "hidden",                default: false
     t.string   "location"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "price"
-    t.string   "category"
-    t.string   "tags"
-    t.boolean  "hidden",                default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.string   "action"
     t.text     "summary"
     t.text     "staff_notes"
-    t.string   "status",          default: "pending"
+    t.integer  "status",          default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.text     "summary"
     t.integer  "stars",      default: 0
     t.string   "category"
-    t.string   "status",     default: "pending"
+    t.integer  "status",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -143,16 +143,17 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.string   "title"
     t.string   "headline"
     t.text     "summary"
+    t.integer  "price"
+    t.string   "category"
+    t.string   "tags"
+    t.boolean  "hidden",                default: false
     t.string   "location"
+    t.string   "address"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "price"
-    t.string   "category"
-    t.string   "tags"
-    t.boolean  "hidden",                default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -162,9 +163,9 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.integer  "lendee_id"
     t.integer  "service_id"
     t.string   "relationship_type"
-    t.string   "status",            default: "pending"
-    t.datetime "scheduled_date"
-    t.string   "location"
+    t.integer  "status",            default: 0
+    t.datetime "date"
+    t.string   "address"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
@@ -190,25 +191,43 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.string   "email"
     t.string   "phone"
     t.boolean  "lender"
-    t.string   "belt",                                          default: "N/A"
+    t.string   "belt",                                           default: "N/A"
     t.string   "skill_level"
     t.integer  "score"
     t.text     "summary"
     t.string   "location"
+    t.string   "address"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
     t.float    "latitude"
     t.float    "longitude"
-    t.decimal  "credits",               precision: 8, scale: 2, default: 0.0
+    t.decimal  "credits",                precision: 8, scale: 2, default: 0.0
     t.string   "stripe_customer_id"
-    t.string   "status",                                        default: "inactive"
-    t.string   "password_digest"
-    t.string   "remember_token"
+    t.integer  "status",                                         default: 0
+    t.string   "encrypted_password",                             default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                                  default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",                                default: 0,     null: false
+    t.string   "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
 
 end

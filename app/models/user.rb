@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	before_save { self.email = email.downcase }
-	before_create :create_remember_token
+	# before_create :create_remember_token
 
 	################################## ASSOCIATIONS ##################################
 
@@ -57,18 +57,27 @@ class User < ActiveRecord::Base
 	has_many :lender_checks, through: :lender_check_user_services, source: :service, dependent: :destroy
 	# has_many :lender_pins, through: :lender_pin_user_services, source: :service, dependent: :destroy
 
-
 	# Polymorpic associations 
 	has_many :reports_received, class_name: "Report", as: :reportable
 	has_many :reports_given, class_name: "Report", foreign_key: "author_id", dependent: :destroy
 
-	# Attachments: main_img
+	################################## ENUMS #################################
+
+	enum status: [ :inactive, :active, :admin, :warned, :suspended, :banned ]
+
+	################################## ATTACHMENTS ##################################
+
 	has_attached_file :main_img, 
 						:styles => { :medium => "200x200>", :thumb => "100x100>" }, 
 						:default_url => "/images/users/main_img/:style/missing.png", 
 						:url => "/assets/users/main_img/:id/:style/:basename.:extension",
 						:path => ":rails_root/public/assets/users/main_img/:id/:style/:basename.:extension"
 	validates_attachment_content_type :main_img, :content_type => /\Aimage\/.*\Z/
+
+	################################## AUTHENTICATION/SESSION/REGISTRATION ##################################
+
+	# Include default devise modules. Others available are: :confirmable, :lockable, :timeoutable and :omniauthable
+	devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
 	################################## GEOCODING ##################################
 
@@ -78,7 +87,7 @@ class User < ActiveRecord::Base
 	after_validation :geocode, if: ->(obj){ obj.location_changed? || obj.city_changed? || obj.state_changed? || obj.zip_changed?  }
 	
 	def full_address
-		"#{city}, #{state} #{zip}"
+		"#{address} #{city}, #{state} #{zip}"
 	end
 
 	################################## VALIDATION ##################################
@@ -89,8 +98,8 @@ class User < ActiveRecord::Base
 	validates :headline, presence: true
 	validates :age, presence: true
 	validates :city, presence: true 
-	validates :state, presence: true # more specific
-	validates :zip, presence: true # more specific
+	validates :state, presence: true, length: { is: 2 }
+	validates :zip, presence: true, length: { minimum: 5 }
 	validates :password, length: { minimum: 5 }, allow_nil: true
 	
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -98,20 +107,6 @@ class User < ActiveRecord::Base
 	VALID_PHONE_REGEX = /\A[0-9]{3}-[0-9]{3}-[0-9]{4}\z/
 	validates :phone, presence: true, format: { with: VALID_PHONE_REGEX }, uniqueness: { case_sensitive: false }
 
-	# Handles password 
-	has_secure_password
-
-	################################## SESSION ##################################
-
-	# Create a random string 
-	def self.new_remember_token
-	    SecureRandom.urlsafe_base64
-	end
-
-	# Encrpty a string with SHA1
-	def self.encrypt(token)
-	    Digest::SHA1.hexdigest(token.to_s)
-	end
 
 	################################## RAKNING ##################################
 
@@ -197,7 +192,8 @@ class User < ActiveRecord::Base
 			# Search for all fields
 			self.where(query.join(' AND '))
 		else
-			self.all
+			# Empty scope, returns all but doesn't perform the actual query
+			self.scoped
 		end
 	end
 
@@ -238,7 +234,13 @@ class User < ActiveRecord::Base
 
 	# Create a new user_service relationship with service_id and relationship_type = 'check'
 	def check!(service)
-		self.lendee_user_services.create!(service_id: service.id, lender_id: service.lender.id, relationship_type: 'check')
+		self.lendee_user_services.create!(service_id: service.id, 
+											lender_id: service.lender.id, 
+											address: service.address,
+											city: service.city,
+											state: service.state,
+											zip: service.zip,
+											relationship_type: 'check')
 	end
 
 	# Remove an existing user_service relationship with service_id and relationship_type = 'check'
@@ -253,7 +255,13 @@ class User < ActiveRecord::Base
 
 	# Create a new user_service relationship with service_id and relationship type = 'pin'
 	def pin!(service)
-		self.lendee_user_services.create!(service_id: service.id, lender_id: service.lender.id, relationship_type: 'pin')
+		self.lendee_user_services.create!(service_id: service.id, 
+											lender_id: service.lender.id, 
+											address: service.address,
+											city: service.city,
+											state: service.state,
+											zip: service.zip,
+											relationship_type: 'pin')
 	end
 
 	# Remove an existing user_service relationship with service_id and relationship type = 'pin'

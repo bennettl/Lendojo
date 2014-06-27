@@ -23,7 +23,13 @@
 				<div class="row group">
 					<div class="col-sm-3"><span class="glyphicon glyphicon-map-marker"></span> Location</div>
 					<!-- GEOCODER GEM -->
-					<div class="col-sm-9"><%= @service.full_address %> <small> (<%= @service.distance_from(current_user).round(2) %> miles) </small></div>
+					<div class="col-sm-9">
+						<%= @service.full_address %> 
+						<% distance =  @service.distance_from(current_user) %>
+						<% unless distance.nil? %>
+							<small> (<%= distance.round(2) %> miles) </small>
+						<% end %>
+					</div>
 				</div>
 				<div class="row group">
 					<div class="col-sm-3"><span class="glyphicon glyphicon glyphicon-usd"></span> Price</div>

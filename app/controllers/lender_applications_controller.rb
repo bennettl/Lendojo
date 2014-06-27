@@ -1,8 +1,11 @@
 class LenderApplicationsController < ApplicationController
 
+	# Include sorting params
+	include HeaderFiltersHelper
+	
 	# Displays a list of lender applications
 	def index
-		@lenderApps = LenderApplication.all.order("updated_at DESC").paginate( per_page: 5, page: params[:page] )
+		@lenderApps = LenderApplication.all.order("#{sort_name_param} #{sort_direction_param}").paginate( per_page: 5, page: params[:page] )
 	end
 
 	# Displays a form for 

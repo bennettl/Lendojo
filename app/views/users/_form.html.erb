@@ -57,17 +57,22 @@
 				</div>
 				<%
 				label = f.label 'Location'
-				input =  f.text_field :Location, value: @user.location, placeholder: 'USC, 711 W. 27th Street', class: 'form-control' 
+				input =  f.text_field :Location, value: @user.location, placeholder: 'USC', class: 'form-control' 
 				%>
 				<%= row label,input %>
 				<%
-				label = f.label 'State'
-				input =   f.text_field :state, value: @user.state, placeholder: 'CA', required: "required", class: 'form-control'
+				label = f.label 'Address'
+				input =   f.text_field :address, value: @user.address, placeholder: ' 711 W. 27th Street', required: "required", class: 'form-control'
 				%>
 				<%= row label,input %>
 				<%
 				label = f.label 'City'
 				input =  f.text_field :city, value: @user.city, placeholder: 'Los Angeles', required: "required", class: 'form-control'
+				%>
+				<%= row label,input %>
+				<%
+				label = f.label 'State'
+				input = f.select :state, us_states, class: 'form-control'
 				%>
 				<%= row label,input %>
 				<%

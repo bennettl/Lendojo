@@ -20,6 +20,7 @@ namespace :db do
 						email: 'bennettl@usc.edu',
 						phone: '800-123-4567',
 						location: 'USC',
+						address: '711 W. 27th Street',
 						city: 'Los Angeles',
 						state: 'CA',
 						zip: '90007',
@@ -41,10 +42,11 @@ namespace :db do
 			age 			= [*21..50].sample
 			email			= Faker::Internet.email
 			phone			= Faker::Base.numerify('###-###-####')
-			location		= Faker::Address.street_address
-			state 			= Faker::Address.state
-			city			= Faker::Address.city
-			zip 			= Faker::Address.zip
+			location		= Faker::Address.city
+			address			= Faker::Address.street_address
+			state 			= Faker::Address.state_abbr # CA
+			city			= location
+			zip 			= Faker::Address.zip_code # 90007
 			lender 			= [true, false].sample
 			belt 			= (lender) ? random_belt : 'N/A' # don't give user a belt if he's not a lender
 
@@ -57,6 +59,7 @@ namespace :db do
 							email: email,
 							phone: phone,
 							location: location,
+							address: address,
 							city: city,
 							state: state,
 							zip: zip,
@@ -85,15 +88,17 @@ namespace :db do
 				category 		= service_hash[:desc][:category]
 				tags 			= service_hash[:desc][:tag]
 				location 		= service_hash[:location]
-				state 			= Faker::Address.state
+				address 		= Faker::Address.street_address
+				state 			= Faker::Address.state_abbr
 				city			= Faker::Address.city
-				zip 			= Faker::Address.zip
+				zip 			= Faker::Address.zip_code
 				
 				# Create the service
 				u.services.create!(title: title, 
 										headline: headline, 
 										summary: summary, 
 										location: location,
+										address: address,
 										city: city,
 										state: state,
 										zip: zip,
@@ -130,7 +135,14 @@ namespace :db do
 			relationship_type = 'check'
 			services.each do |s|
 				# Swtich between creating services and pins
-				u.lendee_user_services.create!(service_id: s.id, lender_id: s.lender.id ,relationship_type: relationship_type)
+				u.lendee_user_services.create!(service_id: s.id, 
+												lender_id: s.lender.id,
+												address: s.address,
+												city: s.city,
+												state: s.state,
+												zip: s.zip,
+												relationship_type: relationship_type
+												)
 				relationship_type = (relationship_type == 'check') ? 'pin' : 'check'
 			end
 		end 

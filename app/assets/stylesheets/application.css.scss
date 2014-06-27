@@ -11,8 +11,8 @@
  * file per style scope.
  *
  *= require_self
- */
 
+ */
 // Remove  *= require_tree . because we don't want to include all css files
 
 @import "bootstrap";
@@ -47,9 +47,15 @@ body, ul{
 }
 
 a{
+	color: #e28778;
 	text-decoration: none;
+	outline: 0;
 	&:hover{
 		text-decoration: none;
+		color: #c25d4c;
+	}
+	&:focus{
+		outline: 0;
 	}
 }
 
@@ -95,30 +101,31 @@ header{
 	text-align: center;
 }
 
-.alert-error{
+.alert{
+	padding: 20px 0;
+}
+.alert-notice{
+	background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+}
+.alert-error, .alert-alert{
 	text-align: center;
 	background-color: #F2DEDE;
     border-color: #EBCCD1;
     color: #A94442;
 }
 
-.loginIndicator{
-	top: 10px;
-	right: 20px;
-	position: absolute;
-}
-
 #mainNav {
- padding: 12px 0;
+	padding: 12px 0;
 	background: #F7F7F7;
-	text-transform: uppercase;
 
 	.innerNav {
-		font-size: 1em;
+		font-size: 1.1em;
 	    height: 28px;
 	    margin: 0 auto;
 	    text-align: center;
-	    width: 528px;
+	    display: table;
 	   
 	    li.nav-list{
 	    	float: left;
@@ -149,6 +156,19 @@ header{
 
 /******************* BODY ********************/
 
+.caret.asc {
+    border-top-width: 0;
+    border-bottom: 4px solid #e28778;
+}
+
+button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover { 
+	outline: 0;
+	border: 0;
+}
+
+.alert{
+	text-align: center;
+}
 // Index
 .dashboard{
 	margin-top: 50px;
@@ -173,12 +193,17 @@ header{
 }
 
 .indexList-header{
-   border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
     font-weight: 500;
+    color: #e28778;
     margin-top: 40px;
     padding-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
+
+    .dropdown-checkbox-option {
+		text-transform: normal;
+	}
 }
 
 .indexList{
@@ -250,39 +275,49 @@ header{
 }
 
 // Bootstrap dropdown menu for inputs
-.dropdown-menu > li > div{
-	clear: both;
-	color: #333333;
-	display: block;
-	font-weight: normal;
-	line-height: 1.42857;
-	white-space: nowrap;
-	font-size: 0.95em;
-	padding: 5px 20px;
-}
 
-.dropdown-menu > li > input{
-	width: 300px;
-	margin: 8px 17px;
-	clear: both;
-    color: #333333;
-    display: block;
-    font-weight: normal;
-    line-height: 1.42857;
-    padding: 3px 10px;
-    white-space: nowrap;
+.dropdown-menu {
+	& > li{
+		& > a{
+			font-size: 0.95em;
+			padding: 5px 20px;
+		}
+		& > div{
+			clear: both;
+			color: #333333;
+			display: block;
+			font-weight: normal;
+			line-height: 1.42857;
+			white-space: nowrap;
+			font-size: 0.95em;
+			padding: 5px 20px;
+		}
+		& > input{
+			width: 300px;
+			margin: 8px 17px;
+			clear: both;
+			color: #333333;
+			display: block;
+			font-weight: normal;
+			line-height: 1.42857;
+			padding: 3px 10px;
+			white-space: nowrap;
+			
+			&[type="checkbox"]{
+				width: 50px;
+				display: inline-block;
+				padding: 0;
+				margin: 10px 0;
+			}
+		}
+
+	}
+
 }
 
 .dropdown-header{
 	padding: 3px 20px 5px 20px;
 }
-
-.dropdown-menu > li > a{
-	font-size: 0.95em;
-	padding: 5px 20px;
-}
-
-
 
 .belt-large{
 	margin: 0 auto;
@@ -489,6 +524,10 @@ header{
     margin-bottom: 50px;
     min-height: 750px;
 
+    &.small{
+    	min-height: 0
+    }
+
     #headline{
     	margin-bottom: 20px;
     }
@@ -637,7 +676,7 @@ header{
 	}
 	.active{
 		a{
-			color: #e8b95e;
+			color: grey;
 		}
 	}
 	ul{

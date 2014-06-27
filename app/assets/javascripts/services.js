@@ -164,11 +164,6 @@ function initFilterSystem(){
 	
 	/******* HELPER FUNCTIONS *******/
 
-	// Prevents clicking on input from hiding dropdown menu
-	$('.dropdown').on('click','input', function (e) {
-		e.stopPropagation();
-	});
-
 	// Sets the current 'g_filter_data' object to 'l_filter_data', changes the HTML accordingly, and refreshes the index/list of services
 	function setGlobalFilterData(l_filter_data){
 		// Container for current filters
@@ -240,7 +235,6 @@ function initFilterSystem(){
 		} else{
 			filterTag.insertAfter(last_filter);			
 		}
-
 		console.log(last_filter);
 	}
 }

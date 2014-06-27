@@ -1,9 +1,9 @@
-<% provide(:title, 'Sign In')	%>
+<% provide(:title, 'Reset Password')	%>
 
 <div class="box col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 	
 	<div class="title">Sign In</div>
-	<%= form_for :session, url: sessions_url, html: {class: 'form-horizontal'} do |f| %>
+	<%= form_for :session, url: new_user_session_url, html: {class: 'form-horizontal'} do |f| %>
 		<div class="form-group">
 			<%= f.label :email, class: 'col-sm-2 control-label'  %>
 		    <div class="col-sm-10">

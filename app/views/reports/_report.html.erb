@@ -7,7 +7,7 @@
 	</div>
 	<div class="col-xs-2 cell">
 		<%= link_to report.author do %>
-			<%= image_tag report.author.main_img(:thumb), class: 'userThumb tooltip_target', title: report.author.name %>
+			<%= image_tag report.author.main_img(:thumb), class: 'userThumb tooltip_target', data: { toggle: 'tooltip' }, title: report.author.name %>
 		<% end %>
 	</div>
 	<%= link_to edit_report_path(report) do %>

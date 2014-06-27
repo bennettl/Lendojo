@@ -1,0 +1,15 @@
+<% provide(:title, 'Resend Confirmation Instructions')	%>
+<div id="signInBox" class="box small col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+	<div class="title">Resend Confirmation Instructions</div>
+	<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: {class: 'form-horizontal', autocomplete: 'off'}) do |f| %>
+		<%= devise_error_messages! %>
+
+		<div class="form-group">
+			<%= f.label :email, 'Email', class: 'col-sm-2 control-label' %>
+		    <div class="col-sm-8">
+				<%= f.email_field :email, class: 'form-control', autofocus: true %>
+			</div>
+		</div>
+		<%= f.submit 'Send', class: 'button', style: 'width: 100%;' %>
+	<% end %>
+</div>

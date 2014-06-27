@@ -1,8 +1,11 @@
 class ReviewsController < ApplicationController
 		
+	# Include sorting params
+	include HeaderFiltersHelper
+
 	# Displays a list of reviews
 	def index
-		@reviews = Review.all.paginate(per_page: 5, page: params[:page])
+		@reviews = Review.all.order("#{sort_name_param} #{sort_direction_param}").paginate(per_page: 5, page: params[:page])
 	end
 
 	# Displays an individual review

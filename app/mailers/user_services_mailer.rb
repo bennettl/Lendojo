@@ -10,19 +10,18 @@ class UserServicesMailer < ActionMailer::Base
 		# Status: pending, scheduled_unconfirm, scheduled_confirmed, complete
 		template 	= 'check_' + @user_service.status + '_email'
 		# Change the to and subject base on @user_service status
-		case @user_service.status
-			when 'pending'
-				to 		= @user_service.lender.email
-				subject = "Lendojo: #{@user_service.lendee.first_name} Checked Your Service!"
-			when 'schedule_unconfirm'
-				subject = "Lendojo: Please Confirm Schedule Date and Place"
-				to 		= @user_service.lendee.email
-			when 'schedule_confirmed'
-				to 		= @user_service.lender.email
-				subject = "Lendojo: #{@user_service.lendee.first_name} Has Confirmed"
-			when 'complete'
-				to 		= @user_service.lender.email
-				subject = "Lendojo: Service Complete!"
+		if @user_service.pending?
+			to 		= @user_service.lender.email
+			subject = "Lendojo: #{@user_service.lendee.first_name} Checked Your Service!"
+		elsif @user_service.schedule_unconfirm?
+			subject = "Lendojo: Please Confirm Schedule Date and Place"
+			to 		= @user_service.lendee.email
+		elsif @user_service.schedule_confirmed?
+			to 		= @user_service.lender.email
+			subject = "Lendojo: #{@user_service.lendee.first_name} Has Confirmed"
+		elsif @user_service.complete?
+			to 		= @user_service.lender.email
+			subject = "Lendojo: Service Complete!"
 		end
 
 		# Create the mail object

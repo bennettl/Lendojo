@@ -8,6 +8,10 @@ class Review < ActiveRecord::Base
 	# Polymorpic associations 
 	has_many :reports_received, class_name: "Report", as: :reportable
 
+
+	################################## ENUMS ##################################
+	enum status: [ :pending, :approved ]
+
 	################################## VALIDATION ##################################
 
 	validates :title, presence: true

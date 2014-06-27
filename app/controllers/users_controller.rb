@@ -91,10 +91,10 @@ class UsersController < ApplicationController
 	# Display a list of services user has checked
 	def checklist
 
-		@lendee_checkList = current_user.lendee_check_user_services
+		@lendee_checkList = current_user.lendee_check_user_services.paginate(per_page: 8, page: params[:lendee_page])
 
 		if current_user.lender?
-			@lender_checkList = current_user.lender_check_user_services
+			@lender_checkList = current_user.lender_check_user_services.paginate(per_page: 8, page: params[:lender_page])
 		end
 
 	end
@@ -133,6 +133,6 @@ class UsersController < ApplicationController
 		end
 		
 		def user_params
-			params.require(:user).permit(:main_img, :first_name, :last_name, :headline, :age, :email, :phone, :lender, :summary, :location, :city, :state, :zip, :stripe_customer_id, :password, :password_confirmation)
+			params.require(:user).permit(:main_img, :first_name, :last_name, :headline, :age, :email, :phone, :lender, :summary, :location, :address, :city, :state, :zip, :stripe_customer_id, :password, :password_confirmation)
 		end
 end

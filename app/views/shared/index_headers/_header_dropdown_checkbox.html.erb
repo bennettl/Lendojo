@@ -1,0 +1,15 @@
+<div class="header-dropdown-checkbox">
+	<!-- HEADER LABEL -->
+	<a href="#" class="dimension-label" data-toggle="dropdown"> <%= title %> <b class="caret"></b></a>
+	<!-- DROPDOWN MENU -->
+	<ul data-menu="<%= title %>"class="dropdown-menu dropdown">
+		<li class="dropdown-header">Options</li>
+		<!-- OPTIONS -->
+		<% options.each do |key, value| %>
+			<li class="dropdown-checkbox-option">
+				<%= check_box_tag name, value %>
+				<span class="option-label"><%= key %></span>
+			</li>
+		<% end %>
+	</ul>
+</div>

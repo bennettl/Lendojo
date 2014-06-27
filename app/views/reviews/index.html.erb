@@ -1,4 +1,5 @@
 <div class="box col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1">	
+	<!-- DASHBOARD -->
 	<div class="col-sm-3">
 		<% 
 			ratings 	= Rating.all.count
@@ -7,15 +8,33 @@
 		%>
 		<%= render 'shared/dashboard', { title: 'Dashboard', data: data } %>
 	</div>
+	<!-- INDEX -->
 	<div class="col-sm-9">
 		<div class="title">Reviews</div>
-		<div class="indexList-header row">
-			<div class="col-xs-1">ID</div>
-			<div class="col-xs-2">Author</div>
-			<div class="col-xs-2">Lender</div>
-			<div class="col-xs-3">Stars</div>
-			<div class="col-xs-3">Created Date</div>
+		<!-- INDEX HEADER -->
+		<div id="indexHeader" class="indexList-header row">
+			<%= form_for reports_path, html: { id: 'reviewIndexForm' } do |f| %>
+				<%= hidden_field_tag 'sort[name]' %>
+				<%= hidden_field_tag 'sort[direction]' %>
+				<!-- ID (sortable) -->
+				<div class="col-xs-1">
+					<%= render 'shared/index_headers/header_sortable', column_name: 'id', title: 'Id' %>
+				</div>
+				<!-- AUTHOR -->
+				<div class="col-xs-2">Author</div>
+				<!-- LENDER -->
+				<div class="col-xs-2">Lender</div>
+				<!-- STARS (sortable) -->
+				<div class="col-xs-3">
+					<%= render 'shared/index_headers/header_sortable', column_name: 'stars', title: 'Stars' %>
+				</div>
+				<!-- CREATED DATE (sortable) -->
+				<div class="col-xs-3">
+					<%= render 'shared/index_headers/header_sortable', column_name: 'created_at', title: 'Created At' %>
+				</div>
+			<% end %>
 		</div>
+		<!-- INDEX LIST -->
 		<%= render 'review_index_list' %>
 	</div>
 </div>

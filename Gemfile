@@ -5,7 +5,7 @@ ruby '2.0.0'
 gem 'rails', '4.1.0'
 gem 'bcrypt-ruby', '3.1.2'
 gem "autoprefixer-rails"
-gem "sass-rails", "~> 4.0.2"
+gem "sass-rails", "~> 4.0.3"
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
@@ -13,10 +13,13 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 
 # Style
-gem 'bootstrap-sass', '~> 3.1'
+gem 'bootstrap-sass', '~> 3.1.1.1'
 
 # Populate DB for Testing
 gem 'faker', '1.2.0'
+
+# User Authentication/Session system
+gem 'devise', '~> 3.2.4'
 
 # Pagination
 gem 'will_paginate', '3.0.4'
@@ -50,7 +53,6 @@ end
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
-  gem 'factory_girl_rails', '4.2.1'
 end
 
 group :doc do

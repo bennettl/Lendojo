@@ -1,0 +1,6 @@
+<% # Returns the html link with a "sortable-link" class and inner "caret" class %>
+<div class="sortable-header">
+	<%= link_to '#', class: 'sortable-link', data: { column_name: column_name, direction: 'desc' } do %>
+		<%= title %> <b class="caret"></b>
+	<% end %>
+</div>

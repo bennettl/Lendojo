@@ -1,0 +1,17 @@
+<% provide(:title, 'Forgot Your Password')	%>
+<div id="signInBox" class="box small col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+	<div class="title">Forgot Your Password</div>
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
+	  <%= devise_error_messages! %>
+	  <p class="text-center">If your email exists, we'll send your reset password instructions</p>
+		<div class="form-group">
+			<%= f.label :email, class: 'col-sm-2 control-label', autofocus: true  %>
+		    <div class="col-sm-10">
+				<%= f.email_field :email, class: 'form-control', autofocus: true %>
+			</div>
+		</div>
+		<%= f.submit 'Send', class: 'button', style: 'width: 100%;' %>
+	<% end %>
+</div>
+
+

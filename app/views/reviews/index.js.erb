@@ -1,0 +1,4 @@
+jQuery(document).ready(function($) {
+	$("#reviewListSection").replaceWith("<%= escape_javascript(render 'review_index_list') %>");
+	initRatings(); // Initalize raty for reviews (function in application.js)
+});

@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration
 
 	# All tables and columns for database
 	def change
-		# Users
+		#################################### USERS ####################################
 		create_table :users do |t|
 			# Basic
 			t.attachment :main_img
@@ -27,7 +27,8 @@ class CreateUsers < ActiveRecord::Migration
 			t.integer :score # tatal score, use for leaderboards
 			t.text :summary
 			# Location
-			t.string :location # i.e. USC or 711 W. 27th Street
+			t.string :location # alias name
+			t.string :address # Speific address, use for location tracking
 			t.string :city 
 			t.string :state
 			t.string :zip
@@ -37,18 +38,43 @@ class CreateUsers < ActiveRecord::Migration
 			t.decimal :credits, precision: 8, scale: 2, default: 0
 			t.string :stripe_customer_id
 			# Status
-			t.string :status, default: :inactive # inactive, active, admin, warned, suspended, banned
+			t.integer :status, default: 0
+			# Authentication/ Devise
+			t.string :encrypted_password, null: false, default: ""
+			## Recoverable
+			t.string   :reset_password_token
+			t.datetime :reset_password_sent_at
+			## Rememberable
+			t.datetime :remember_created_at
+			## Trackable
+			t.integer  :sign_in_count, default: 0, null: false
+			t.datetime :current_sign_in_at
+			t.datetime :last_sign_in_at
+			t.string   :current_sign_in_ip
+			t.string   :last_sign_in_ip
+			## Confirmable
+			t.string   :confirmation_token
+			t.datetime :confirmed_at
+			t.datetime :confirmation_sent_at
+			t.string   :unconfirmed_email # Only if using reconfirmable
+			## Lockable
+			t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+			t.string   :unlock_token # Only if unlock strategy is :email or :both
+			t.datetime :locked_at
 			# Password
-			t.string :password_digest
+			# t.string :password_digest
 			# Session
-			t.string :remember_token
+			# t.string :remember_token
 			# Timestamp
 			t.timestamps
 			# Indexes
-			t.index :email, unique: true
+			t.index :email,                unique: true
+			t.index :reset_password_token, unique: true
+			t.index :confirmation_token,   unique: true
+			t.index :unlock_token,         unique: true
 		end
 
-		# Services
+		#################################### SERVICES ####################################
 		create_table :services do |t|
 		 	# Association
 			t.belongs_to :lender, class_name: 'User', foreign_key: 'lender_id' # use lender_id instead of user_id
@@ -61,7 +87,8 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :tags # specific
 			t.boolean :hidden, default: false # hide service
 			# Location: default to user location
-			t.string :location
+			t.string :location # Alias name USC
+			t.string :address # needs to be specific: 711 W. 27th Street
 			t.string :city 
 			t.string :state
 			t.string :zip
@@ -96,7 +123,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.timestamps
 		end
 		
-		# Filters 
+		#################################### FILTERS ####################################
 		create_table :filters do |t|
 		 	# Association
 		 	t.belongs_to :user 
@@ -108,16 +135,17 @@ class CreateUsers < ActiveRecord::Migration
     		t.timestamps
 	    end
 		
+		#################################### USER-SERVICES ####################################
 		# User Services: table establishes relationship between users and services
 		create_table :user_services do |t|
 			t.integer :lender_id # owner of the service
 			t.integer :lendee_id
 			t.integer :service_id
 			t.string :relationship_type # checks, pins, hidden
-			t.string :status, default: 'pending' # pending, scheduled_unconfirm, scheduled_confirmed, complete
-			t.datetime :scheduled_date # date time when service is scheduled
+			t.integer :status, default: 0 
+			t.datetime :date # date time when service is scheduled
 			# Location: default to service 
-			t.string :location
+			t.string :address # needs to be specific
 			t.string :city 
 			t.string :state
 			t.string :zip
@@ -131,20 +159,20 @@ class CreateUsers < ActiveRecord::Migration
 			t.index :service_id
 		end
 
-		# Lender Application
+		#################################### LENDER APPLICATION ####################################
 		create_table :lender_applications do |t|
 			t.belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 			t.text :categories # []
 			t.string :skill # skill level of lender
 			t.integer :hours # of hours lender can commit per week
 			t.text :summary
-			t.string :status, default: 'pending' # pending, approve, denied
+			t.integer :status, default: 0
 			t.text :staff_notes
 			# Timestamp
 			t.timestamps
 		end
 	
-    	# Ratings
+		#################################### RATINGS ####################################
     	create_table :ratings do |t|
 			t.belongs_to :author, class_name: 'User', foreign_key: 'author_id' # author of rating 
 			t.belongs_to :lender, class_name: 'User', foreign_key: 'lender_id' # target of rating
@@ -153,7 +181,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.timestamps
 	    end
 		
-		# Reviews
+		#################################### REVIEWS ####################################
 		create_table :reviews do |t|
 			# Association
 			t.belongs_to :author, class_name: 'User', foreign_key: 'author_id' # author of review
@@ -162,12 +190,12 @@ class CreateUsers < ActiveRecord::Migration
 		    t.text :summary
 			t.integer :stars, default: 0
 			t.string :category # music, art, education
-			t.string :status, default: 'pending' # pending, approved
+			t.integer :status, default: 0
 			# Timestamp
 	    	t.timestamps
     	end
 
-    	# Reports
+		#################################### REPORTS ####################################
     	create_table :reports do |t|
 			t.belongs_to :author, class_name: 'User', foreign_key: 'author_id' # author of review
 			t.integer :reportable_id  # id of user, product, or service
@@ -176,7 +204,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :action # n/a, warn, suspend , ban
 			t.text :summary
 			t.text :staff_notes # notes by staff
-			t.string :status, default: 'pending' # pending, active, resolved
+			t.integer :status, default: 0
 			# Timestamp
 			t.timestamps
 	    end

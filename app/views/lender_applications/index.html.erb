@@ -11,18 +11,35 @@
 		<%= render 'shared/dashboard', title: 'Dashboard', data: data %>
 	</div>
 
-	<!-- ANALYTICS -->
+	<!-- INDEX -->
 	<div class="col-sm-9">
 		<div class="title">Lender Apps</div>
-		<div class="indexList-header row">
-			<div class="col-xs-1">ID</div>
-			<div class="col-xs-2">Status</div>
-			<div class="col-xs-2">Avatar</div>
-			<div class="col-xs-2">Hrs/Week</div>
-			<div class="col-xs-3">Categories</div>
-			<div class="col-xs-2">Last Updated</div>
+		<!-- INDEX HEADER -->
+		<div id="indexHeader" class="indexList-header row">
+			<%= form_for reports_path, html: { id: 'lenderAppIndexForm' } do |f| %>
+				<%= hidden_field_tag 'sort[name]' %>
+				<%= hidden_field_tag 'sort[direction]' %>
+				<!-- ID -->
+				<div class="col-xs-1">
+					<%= render 'shared/index_headers/header_sortable', column_name: 'ID', title: 'id' %>
+				</div>
+				<!-- STATUS -->
+				<div class="col-xs-2">Status</div>
+				<!-- AVATAR -->
+				<div class="col-xs-2">Avatar</div>
+				<!-- HRS/WEEK -->
+				<div class="col-xs-2">
+					<%= render 'shared/index_headers/header_sortable', column_name: 'hours', title: 'Hrs/Week' %>
+				</div>
+				<!-- CATEGORIES -->
+				<div class="col-xs-3">Categories</div>
+				<!-- LAST UPDATE -->
+				<div class="col-xs-2">
+					<%= render 'shared/index_headers/header_sortable', column_name: 'updated_at', title: 'Last Update' %>
+				</div>
+			<% end %>
 		</div>
-		<%= render @lenderApps %>
-		<%= will_paginate @lenderApps %>
+		<!-- INDEX LIST -->
+		<%= render 'lender_application_list' %>
 	</div>
 </div>
