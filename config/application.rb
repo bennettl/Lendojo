@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module LendojoApp
   class Application < Rails::Application
+    config.assets.enabled = true
     config.assets.initialize_on_precompile = false
 
     # mail
