@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module LendojoApp
   class Application < Rails::Application
-    # config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = false
 
     # mail
     config.action_mailer.delivery_method = :smtp
