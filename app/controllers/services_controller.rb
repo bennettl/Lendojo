@@ -1,5 +1,8 @@
 class ServicesController < ApplicationController
 	
+	# Swagger documentation
+	swagger_controller :services, "Services"
+
 	# List all services
 	def index
 
@@ -9,6 +12,7 @@ class ServicesController < ApplicationController
 
 		@services = Service.search(search_params).paginate(per_page: 9, page: params[:page])
 
+		# Respond to multiple formats
 		respond_to do |format|
 		    format.html
 		    format.js

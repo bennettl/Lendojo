@@ -1,8 +1,11 @@
 class ReportsController < ApplicationController
 		
-	# Include sorting params
+	# Include sorting params for sortable headers on index page
 	include HeaderFiltersHelper
 	
+	# Swagger documentation
+	swagger_controller :reports, "Reports"
+
 	# List all reports under reportable type: user, service, product
 	def index
 		# the (user/service/product) object

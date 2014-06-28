@@ -1,48 +1,123 @@
 class UsersController < ApplicationController
 
+	# Include sorting params for sortable headers on index page
+	include HeaderFiltersHelper
+	
+	# Swagger documentation
+	swagger_controller :users, "User"
+
 	# List all users
-	def index
-		@users = User.search(search_params).paginate(per_page: 5, page: params[:page])
+	swagger_api :index do
+		summary "Lists all users"
+		response :unauthorized
+		response :not_acceptable
 	end
+	def index
+		@users = User.search(search_params).order("#{sort_name_param} #{sort_direction_param}").paginate(per_page: 5, page: params[:page])
+		
+		# Respond to different formats
+		respond_to do |format|
+		  format.html # index.html.erb
+		  format.js  # index.js.erb
+		  format.json { render json: @users }
+		end
+	end	
 
 	# Show individual user
+	swagger_api :show do 
+		summary "Show Individual User"
+	    param :path, :id, :integer, :required, "User ID"
+	end
 	def show
 		@user = User.find(params[:id])
+		
+		# Respond to different formats
+		respond_to do |format|
+		  format.html # show.html.erb
+		  format.json { render json: @user }
+		end
 	end
-
+	
 	# Display form to create a new user
 	def new
 		@user = User.new
 	end
 
 	# Create a new user
+	swagger_api :create do
+		summary "Create A New user"
+		param :form, 'user[first_name]', :string, :required, "First Name"
+	    param :form, 'user[last_name]', :string, :required, "Last Name"
+		param :form, 'user[city]', :string, :required, "City" 
+		param :form, 'user[state]', :string, :required, "State"
+		param :form, 'user[zip]', :string, :required, "Zip"
+		param :form, 'user[password]', :string, :required, "Password"
+		param :form, 'user[password_confirmation]', :string, :optional, "Password Confirmation"
+	end
 	def create
 		@user = User.new(user_params_post)
+		
 		if @user.save
 			flash[:success] = "User Sucessfully Created"
-			redirect_to new_user_path
+			
+			# Respond to different formats
+			respond_to do |format|
+			  format.html { redirect_to new_user_path }
+			  format.json { render json: { message: "User Sucessfully Created", user: @user } }
+			end
+			
 		else
-			render 'new'
+			# Respond to different formats
+			respond_to do |format|
+			  format.html { render 'new' }
+			  format.json { render json: { message: "User Was Not Sucessfully Created", user: @user } }
+			end
+			
 		end
-	end
-
+	end	
+	
 	# Display form for updating an existing user
 	def edit
 		@user = User.find(params[:id])
 	end
 
 	# Update an existing user
+	swagger_api :update do
+		summary "Update An Existing User"
+		param :path, :id, :integer, :required, "User ID"
+		param :form, 'user[first_name]', :string, :optional, "First Name"
+	    param :form, 'user[last_name]', :string, :optional, "Last Name"
+		param :form, 'user[headline]', :string, :optional, "Headline"
+		param :form, 'user[age]', :string, :optional, "Age"
+		param :form, 'user[city]', :string, :optional, "City" 
+		param :form, 'user[state]', :string, :optional, "State"
+		param :form, 'user[zip]', :string, :optional, "Zip"
+		param :form, 'user[email]', :string, :optional, "Email"
+		param :form, 'user[phone]', :string, :optional, "Phone"
+		param :form, 'user[lender]', :boolean, :optional, "Lender"
+		param :form, 'user[password]', :string, :optional, "Password"
+		param :form, 'user[password_confirmation]', :string, :optional, "Password Confirmation"
+	end
 	def update
 		@user = User.find(params[:id])
 		
 		# If update is sucessful, redirect to user page, else render edit page
 		if @user.update_attributes(user_params)
 			flash[:success] = "Update is successful"
-			redirect_to edit_user_path(@user)
+			# Respond to different formats
+			respond_to do |format|
+			  format.html { redirect_to edit_user_path(@user) }
+			  format.json { render json: { message: "User Sucessfully Updated", user: @user } }
+			end
 		else
-			render 'edit'
+			# Respond to different formats
+			respond_to do |format|
+			  format.html { render 'edit' }
+			  format.json { render json: { message: "User Not Sucessfully Updated", error: @user.errors.full_messages } }
+			end
+			
 		end
-	end
+	end	
 
 	# Displays the form for creating both a rating AND a review
 	def new_rating
@@ -81,14 +156,25 @@ class UsersController < ApplicationController
 	end
 
 	# Destroy an existing user
-	def destroy
-		User.delete(params[:id])
-		flash[:success] = 'User Sucessfully Destroyed'
-		redirect_to users_path
+	swagger_api :destroy do
+		summary "Destroy An Existing User"
+	    param :path, :id, :integer, :required, "User ID"
 	end
-
+	def destroy
+		@user = User.delete(params[:id])
+		flash[:success] = 'User Sucessfully Destroyed'
+		
+		# Respond to different formats
+		respond_to do |format|
+			format.html { redirect_to users_path }
+			format.json { render json: { message: "User Sucessfully Destroyed", user: @user } }
+		end
+	end	
 
 	# Display a list of services user has checked
+	swagger_api :checklist do
+		summary "Displays A List of Services User Has checked"
+	end
 	def checklist
 
 		@lendee_checkList = current_user.lendee_check_user_services.paginate(per_page: 8, page: params[:lendee_page])
@@ -96,10 +182,18 @@ class UsersController < ApplicationController
 		if current_user.lender?
 			@lender_checkList = current_user.lender_check_user_services.paginate(per_page: 8, page: params[:lender_page])
 		end
-
+		
+		# Respond to different formats
+		respond_to do |format|
+			format.html # checklist.html.erb
+			format.json { render json: { lendee_checkList: @lendee_checkList, lender_checkList: @lender_checkList } }
+		end
 	end
 
 	# Display a list of services user had pinned
+	swagger_api :pins do
+		summary "Display A List of Services User Has Pinned"
+	end
 	def pins
 		@services = current_user.lendee_pins
 	end

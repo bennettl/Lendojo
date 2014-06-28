@@ -1,4 +1,7 @@
 class RatingsController < ApplicationController
+	
+	# Swagger documentation
+	swagger_controller :ratings, "Ratings"
 
 	# Creates a new rating
 	def create

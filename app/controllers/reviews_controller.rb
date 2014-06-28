@@ -1,7 +1,10 @@
 class ReviewsController < ApplicationController
 		
-	# Include sorting params
+	# Include sorting params for sortable headers on index page
 	include HeaderFiltersHelper
+
+	# Swagger documentation
+	swagger_controller :reviews, "Reviews"
 
 	# Displays a list of reviews
 	def index

@@ -19,21 +19,21 @@
 			<%= form_for reports_path, html: { id: 'lenderAppIndexForm' } do |f| %>
 				<%= hidden_field_tag 'sort[name]' %>
 				<%= hidden_field_tag 'sort[direction]' %>
-				<!-- ID -->
+				<!-- ID (sortable) -->
 				<div class="col-xs-1">
-					<%= render 'shared/index_headers/header_sortable', column_name: 'ID', title: 'id' %>
+					<%= render 'shared/index_headers/header_sortable', column_name: 'id', title: 'ID' %>
 				</div>
 				<!-- STATUS -->
 				<div class="col-xs-2">Status</div>
 				<!-- AVATAR -->
 				<div class="col-xs-2">Avatar</div>
-				<!-- HRS/WEEK -->
+				<!-- HRS/WEEK (sortable) -->
 				<div class="col-xs-2">
 					<%= render 'shared/index_headers/header_sortable', column_name: 'hours', title: 'Hrs/Week' %>
 				</div>
 				<!-- CATEGORIES -->
 				<div class="col-xs-3">Categories</div>
-				<!-- LAST UPDATE -->
+				<!-- LAST UPDATE (sortable) -->
 				<div class="col-xs-2">
 					<%= render 'shared/index_headers/header_sortable', column_name: 'updated_at', title: 'Last Update' %>
 				</div>

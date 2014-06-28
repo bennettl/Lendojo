@@ -2,7 +2,16 @@
 	<%= link_to service do %>
 		<div class="imageContainer">
 			<%= image_tag service.main_img.url, class: "serviceImage" %>
-			<div class="shadow"></div>
+			<div class="shadow">
+				<div style="position: absolute; bottom: 10px; left: 10px;">
+					<div class="serviceTitle"><%= service.title %></div>
+					<div class="headline"><%= service.headline %></div>
+				</div>
+				
+			</div>
+			
+		</div>
+		<div class="desc">
 			<div class="lender">
 				<span class="belt-<%= service.lender.belt %> xsmall glyphicon glyphicon-user"></span>
 				<span class="service"><%= service.lender.name %></span>
@@ -12,10 +21,6 @@
 				<span class="glyphicon glyphicon-map-marker"></span>
 				<span><%= service.location %></span>
 			</div>
-		</div>
-		<div class="desc">
-			<div class="title"><%= service.title %></div>
-			<div class="headline"><%= service.headline %></div>
 		</div>
 	<% end %>
 </li>

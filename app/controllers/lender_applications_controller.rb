@@ -1,11 +1,24 @@
 class LenderApplicationsController < ApplicationController
 
-	# Include sorting params
+	# Include sorting params for sortable headers on index page
 	include HeaderFiltersHelper
 	
+	# Swagger documentation
+	swagger_controller :lender_applications, "Lender Application"
+
 	# Displays a list of lender applications
+	swagger_api :index do
+		summary "Displays A Lists Of All Lender Applications"
+		param :query, :page, :integer, :optional, "Page Number"
+	end
 	def index
 		@lenderApps = LenderApplication.all.order("#{sort_name_param} #{sort_direction_param}").paginate( per_page: 5, page: params[:page] )
+		
+		# Respond to multiple formats
+		respond_to do |format|
+		    format.html # index.html.erb
+		    format.json { render json: @lenderApps }
+		end
 	end
 
 	# Displays a form for 
@@ -14,6 +27,16 @@ class LenderApplicationsController < ApplicationController
 	end
 
 	# Creates a new lender application
+	swagger_api :create do
+		summary "Creates A New Lender Application"
+		param :form, :author_id, :integer, :required, "Author ID"
+		param :form, :categories, :string, :required, "Categories"
+		param :form, :skill, :string, :required, "Skill"
+		param :form, :hours, :integer, :required, "Hours"
+		param :form, :summary, :string, :required, "Summary"
+		# param_list :form, :status, :status, :optional, "Status", LenderApplication.statuses.keys
+		# param :form, :stat	t.text :staff_notes
+	end
 	def create
 		@lenderApp = current_user.build_lender_app(lender_application_params)
 

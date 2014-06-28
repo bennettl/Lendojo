@@ -226,7 +226,7 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
 		}
 	}
 	a{
-		color: $orange-red;
+		color: #838383;
 	}
 	&:nth-child(even){
 	//	background: #f7f7f7;
@@ -601,29 +601,43 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
 			width: 100%;
 		}
 	}
+	.desc{
+		font-size: 14px;
+	    height: 50px;
+	    margin: 5px auto;
+	    position: relative;
+	    width: 95%;
+	}
 	.lender{
 		position: absolute;
-		left: 10px;
+		left: 0;
 		bottom: 30px;
 	}	
 	.location{
 		position: absolute;
-		left: 10px;
+		left: 0;
 		bottom: 10px;
 	}
 	.price{
 		position: absolute;
-		right: 10px;
-		bottom: 10px;
+		right: 0;
+		top: 10px;
 	}
-	.title{
-		font-size: 1.1em;
-		text-transform: none;
-		margin: 5px 0 3px 0;
+	.serviceTitle{
+		font-size: 22px;
+		text-align: left;
+		color: #FFFFFF;
+		font-weight: 300;
+
+		// font-size: 1.1em;
+		// text-transform: none;
+		// margin: 5px 0 3px 0;
 	}
 	.headline{
-		margin-bottom: 20px;
-		font-size: 0.7em;
+		text-align: left;
+		color: #FFFFFF;
+		// margin-bottom: 20px;
+		// font-size: 0.7em;
 	}
 }
 
@@ -646,20 +660,23 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
 		border-bottom: none;
 	}
 }
-.reviewSection{
-	margin: 0px 40px;
-	
-	.review-details{
+
+#serviceShowBox{
+	#reviewListSection{
+		margin: 0px 40px;
 		
-		.raty{
-			margin-bottom: 10px;
-		}
-		.vote-blurb{
-			color: #5a5a5a;
-			font-size: 1.0em;
-		}
-		.summary{
-			margin: 10px 0;
+		.review-details{
+			
+			.raty{
+				margin-bottom: 10px;
+			}
+			.vote-blurb{
+				color: #5a5a5a;
+				font-size: 1.0em;
+			}
+			.summary{
+				margin: 10px 0;
+			}
 		}
 	}
 }

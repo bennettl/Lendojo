@@ -43,6 +43,9 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 # Payment Network
 gem 'stripe', '~> 1.14.0'
 
+# Swagger 
+gem 'swagger-docs', '~> 0.1.8'
+
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'

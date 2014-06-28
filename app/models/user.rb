@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
 	before_save { self.email = email.downcase }
 	# before_create :create_remember_token
 
@@ -95,8 +96,6 @@ class User < ActiveRecord::Base
 	# validates :main_img, presence: true #profile image
 	validates :first_name, presence: true
 	validates :last_name, presence: true
-	validates :headline, presence: true
-	validates :age, presence: true
 	validates :city, presence: true 
 	validates :state, presence: true, length: { is: 2 }
 	validates :zip, presence: true, length: { minimum: 5 }
@@ -193,7 +192,7 @@ class User < ActiveRecord::Base
 			self.where(query.join(' AND '))
 		else
 			# Empty scope, returns all but doesn't perform the actual query
-			self.scoped
+			self.all
 		end
 	end
 
