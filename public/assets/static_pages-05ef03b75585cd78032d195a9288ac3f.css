@@ -1,0 +1,50 @@
+/* line 6, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/static_pages.css.scss */
+#revisionBlurb {
+  margin-top: 30px;
+  text-align: right;
+}
+
+/******************************* HOME *******************************/
+/* line 12, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/static_pages.css.scss */
+#home {
+  background: url("/images/about.png") no-repeat scroll 0 0/cover white;
+  min-height: 955px;
+  width: 100%;
+  position: relative;
+}
+/* line 18, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/static_pages.css.scss */
+#home .title {
+  padding: 30px 0;
+}
+/* line 21, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/static_pages.css.scss */
+#home .aboutBlurb {
+  height: 200px;
+  margin: 0 auto;
+  text-align: center;
+  width: 500px;
+}
+
+/******************************* CONTACT *******************************/
+/* line 30, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/static_pages.css.scss */
+#contactBox {
+  min-height: 0;
+}
+/* line 32, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/static_pages.css.scss */
+#contactBox input, #contactBox select {
+  margin: 20px 0;
+}
+
+/******************************* PRIVACY *******************************/
+/* line 38, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/static_pages.css.scss */
+#privacyBox {
+  padding: 20px 50px 50px;
+  min-height: 0;
+}
+
+/* line 43, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/static_pages.css.scss */
+.subTitle {
+  font-size: 1.3em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
