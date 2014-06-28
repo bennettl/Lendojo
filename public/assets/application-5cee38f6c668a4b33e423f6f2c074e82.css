@@ -1,0 +1,786 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+/********************  VARIABLES ********************/
+/********************  MIXINS ********************/
+/********************  SITE WIDE ********************/
+/* line 43, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+body, ul {
+  margin: 0;
+  padding: 0;
+  font: 1.4em "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/* line 50, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+a {
+  color: #e28778;
+  text-decoration: none;
+  outline: 0;
+}
+/* line 54, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+a:hover {
+  text-decoration: none;
+  color: #c25d4c;
+}
+/* line 58, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+a:focus {
+  outline: 0;
+}
+
+/* line 63, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+li {
+  list-style-type: none;
+}
+
+/* line 67, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/******************** HEADER ********************/
+/* line 74, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+header {
+  background: none repeat scroll 0 0 #FFFFFF;
+  overflow: inherit;
+  width: 100%;
+  z-index: 100;
+}
+
+/* line 81, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#be_a_lender {
+  color: #FFFFFF;
+  background: #f2c846;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* line 92, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#logo {
+  display: block;
+  width: 300px;
+  height: 110px;
+  margin: 0 auto;
+}
+
+/* line 99, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.error {
+  margin: 20px 0;
+  color: #A94442;
+  text-align: center;
+}
+
+/* line 105, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.alert {
+  padding: 20px 0;
+}
+
+/* line 108, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #3c763d;
+}
+
+/* line 113, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.alert-error, .alert-alert {
+  text-align: center;
+  background-color: #F2DEDE;
+  border-color: #EBCCD1;
+  color: #A94442;
+}
+
+/* line 120, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#mainNav {
+  padding: 12px 0;
+  background: #F7F7F7;
+}
+/* line 124, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#mainNav .innerNav {
+  font-size: 1.1em;
+  height: 28px;
+  margin: 0 auto;
+  text-align: center;
+  display: table;
+}
+/* line 131, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#mainNav .innerNav li.nav-list {
+  float: left;
+}
+/* line 134, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#mainNav .innerNav li.nav-list .nav-link {
+  color: #808080;
+  float: left;
+  padding: 5px 20px;
+  -webkit-transition: all 0.25s ease;
+          transition: all 0.25s ease;
+  text-decoration: none;
+  border-radius: 5px;
+}
+/* line 141, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#mainNav .innerNav li.nav-list .nav-link:hover, #mainNav .innerNav li.nav-list .nav-link.active {
+  background: #707070;
+  color: white;
+}
+/* line 148, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#mainNav .innerNav li.nav-list.open .nav-link {
+  background: #707070;
+  color: white;
+}
+
+/******************* BODY ********************/
+/* line 160, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.caret.asc {
+  border-top-width: 0;
+  border-bottom: 4px solid #e28778;
+}
+
+/* line 165, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+  outline: 0;
+  border: 0;
+}
+
+/* line 170, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.alert {
+  text-align: center;
+}
+
+/* line 174, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.dashboard {
+  margin-top: 50px;
+}
+/* line 177, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.dashboard:first-child {
+  margin-top: 120px;
+}
+/* line 181, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.dashboard div.title {
+  text-align: left;
+}
+/* line 185, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.dashboard table.dashboard-table {
+  width: 200px;
+}
+/* line 187, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.dashboard table.dashboard-table tr {
+  border-top: 1px solid #e6e6e6;
+}
+/* line 190, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.dashboard table.dashboard-table td {
+  padding: 10px 0;
+}
+
+/* line 196, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList-header {
+  border-bottom: 1px solid #e6e6e6;
+  font-weight: 500;
+  color: #e28778;
+  margin-top: 40px;
+  padding-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+/* line 205, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList-header .dropdown-checkbox-option {
+  text-transform: normal;
+}
+
+/* line 210, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList {
+  text-align: center;
+  border-bottom: 1px solid #E6E6E6;
+}
+/* line 213, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList.row:hover {
+  background: #f7f7f7;
+}
+/* line 216, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList .cell {
+  padding: 20px 0;
+}
+/* line 219, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList .cell .userThumb {
+  margin: 0 15px;
+}
+/* line 222, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList .cell .status-icon, .indexList .cell .belt-icon, .indexList .cell .text {
+  margin-top: 20px;
+}
+/* line 225, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList .cell .text {
+  padding: 0 23px;
+}
+/* line 229, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList a {
+  color: #838383;
+}
+/* line 235, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList .belt-icon {
+  width: 90px;
+  height: 20px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+/* line 240, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList .belt-icon.white {
+  border: 1px solid #767676;
+}
+/* line 243, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList .belt-icon.green {
+  background: #489b4a;
+}
+/* line 246, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList .belt-icon.blue {
+  background: #4a66b5;
+}
+/* line 249, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList .belt-icon.red {
+  background: #d14e4e;
+}
+/* line 252, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.indexList .belt-icon.black {
+  background: #3a3c3a;
+}
+
+/* line 258, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.status-icon {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+/* line 264, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.status-icon.pending {
+  background: #b5b5b5;
+}
+/* line 267, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.status-icon.active, .status-icon.approved {
+  background: #f2c846;
+}
+/* line 270, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.status-icon.denied {
+  background: #b11e06;
+}
+/* line 273, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.status-icon.resolved {
+  background: #e28778;
+}
+
+/* line 282, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.dropdown-menu > li > a {
+  font-size: 0.95em;
+  padding: 5px 20px;
+}
+/* line 286, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.dropdown-menu > li > div {
+  clear: both;
+  color: #333333;
+  display: block;
+  font-weight: normal;
+  line-height: 1.42857;
+  white-space: nowrap;
+  font-size: 0.95em;
+  padding: 5px 20px;
+}
+/* line 296, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.dropdown-menu > li > input {
+  width: 300px;
+  margin: 8px 17px;
+  clear: both;
+  color: #333333;
+  display: block;
+  font-weight: normal;
+  line-height: 1.42857;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+/* line 307, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.dropdown-menu > li > input[type="checkbox"] {
+  width: 50px;
+  display: inline-block;
+  padding: 0;
+  margin: 10px 0;
+}
+
+/* line 319, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.dropdown-header {
+  padding: 3px 20px 5px 20px;
+}
+
+/* line 323, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-large {
+  margin: 0 auto;
+  color: #FFFFFF;
+  width: 90%;
+  padding: 10px 0;
+}
+
+/* line 331, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-white {
+  border-radius: 5px;
+}
+/* line 333, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-white.xsmall {
+  color: #FFFFFF;
+}
+/* line 336, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-white.large {
+  border: 1px solid #3a3c3a;
+  color: #3a3c3a;
+  background: #FFFFFF;
+}
+
+/* line 344, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-blue.xsmall {
+  color: #4a66b5;
+}
+/* line 347, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-blue.large {
+  background: #4a66b5;
+}
+
+/* line 353, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-green.xsmall {
+  color: #489b4a;
+}
+/* line 356, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-green.large {
+  background: #489b4a;
+}
+
+/* line 362, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-red.xsmall {
+  color: #d14e4e;
+}
+/* line 365, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-red.large {
+  background: #d14e4e;
+}
+
+/* line 370, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-black {
+  color: #FFFFFF;
+}
+/* line 372, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-black.xsmall {
+  color: #3a3c3a;
+}
+/* line 375, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt-black.large {
+  background: #3a3c3a;
+}
+
+/* line 380, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.icon-flipped {
+  transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+}
+
+/* line 387, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#error_explanation {
+  color: #CE3C3F;
+  font-size: 0.7em;
+  margin: 20px 45px;
+}
+/* line 391, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#error_explanation li {
+  list-style-type: disc;
+}
+
+/* line 396, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.alert.alert-success {
+  text-align: center;
+}
+
+/* line 400, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.container {
+  margin-top: 20px;
+  min-height: 300px;
+}
+
+/* line 405, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.button {
+  background: #edb337;
+  font-size: 18px;
+  margin-top: 30px;
+  padding: 8px 35px;
+  border: none;
+  color: #fbfbfb;
+  width: 200px;
+  display: block;
+  text-align: center;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+/* line 418, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.button.center {
+  width: 250px;
+  min-height: 10px;
+  margin: 40px auto;
+  display: block;
+}
+/* line 424, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.button:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+/* line 432, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.update-button {
+  background: #edb337;
+}
+
+/* line 436, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.button-remove {
+  background: #b55454;
+}
+
+/* line 440, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#snapshot {
+  text-align: center;
+}
+
+/* line 444, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt {
+  color: #ffffff;
+  background: #355488;
+  width: 250px;
+  padding: 10px 0;
+  margin: 10px auto;
+}
+/* line 450, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.belt.level-1 {
+  background: white;
+}
+
+/* line 467, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.options {
+  display: table;
+  margin: -55px auto 25px;
+}
+/* line 470, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.options form {
+  display: inline;
+}
+/* line 473, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.options > a:last-child {
+  margin: 0;
+}
+
+/* line 478, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.options a {
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 30px;
+  z-index: 10;
+  cursor: pointer;
+  opacity: 0.5;
+  float: left;
+  margin-right: 15px;
+}
+/* line 488, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.options a.corner {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+/* line 493, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.options a.check, .options a.uncheck {
+  background: #ebce59;
+}
+/* line 496, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.options a.pin, .options a.unpin {
+  background: #5e9abc;
+}
+/* line 499, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.options a.edit {
+  background: #b7975a;
+}
+/* line 502, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.options a.flag {
+  background: #c25759;
+}
+/* line 505, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.options a:hover {
+  opacity: 1.0;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+/* line 512, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.userThumb {
+  width: 100px;
+  height: 100px;
+  background: #55dfc3;
+  border-radius: 50%;
+}
+
+/* line 520, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.box {
+  border: 1px solid #E6E6E6;
+  overflow: hidden;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 50px;
+  min-height: 750px;
+}
+/* line 528, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.box.small {
+  min-height: 0;
+}
+/* line 532, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.box #headline {
+  margin-bottom: 20px;
+}
+/* line 535, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.box .detailTitle {
+  text-transform: uppercase;
+}
+/* line 539, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.box .boxTitle {
+  font-weight: 300;
+  font-size: 26px;
+  text-align: left;
+  margin-bottom: 5px;
+}
+/* line 546, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.box .sectionTitle {
+  border-bottom: 1px solid #808080;
+  width: 250px;
+  margin: 15px auto;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 300;
+  font-size: 23px;
+}
+/* line 556, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.box > .row {
+  margin-bottom: 20px;
+}
+/* line 560, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.box .row .group {
+  border-bottom: 1px solid #eaeaea;
+  padding: 10px 0;
+}
+/* line 566, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.box .row.group:last-child {
+  border-bottom: none;
+}
+
+/* line 572, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.title {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 300;
+  font-size: 27px;
+  margin-bottom: 20px;
+}
+
+/* Service */
+/* line 582, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.serviceListItem {
+  margin-bottom: 20px;
+  text-align: center;
+}
+/* line 585, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.serviceListItem a {
+  color: #808080;
+}
+/* line 588, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.serviceListItem .imageContainer {
+  color: #ffffff;
+  font-size: 0.7em;
+}
+/* line 591, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.serviceListItem .imageContainer .shadow {
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(4%, rgba(3, 3, 3, 0)), color-stop(99%, rgba(85, 85, 85, 0.65)), color-stop(100%, rgba(86, 86, 86, 0.65)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(3, 3, 3, 0) 4%, rgba(85, 85, 85, 0.65) 99%, rgba(86, 86, 86, 0.65) 100%);
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  /* IE10+ */
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(4%, rgba(3, 3, 3, 0)), color-stop(99%, rgba(85, 85, 85, 0.65)), to(rgba(86, 86, 86, 0.65)));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(3, 3, 3, 0) 4%, rgba(85, 85, 85, 0.65) 99%, rgba(86, 86, 86, 0.65) 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6565656',GradientType=0 );
+  /* IE6-9 */
+  position: absolute;
+  height: 70px;
+  bottom: 0;
+  width: 100%;
+}
+/* line 605, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.serviceListItem .desc {
+  font-size: 14px;
+  height: 50px;
+  margin: 5px auto;
+  position: relative;
+  width: 95%;
+}
+/* line 612, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.serviceListItem .lender {
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+}
+/* line 617, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.serviceListItem .location {
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+}
+/* line 622, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.serviceListItem .price {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+/* line 627, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.serviceListItem .serviceTitle {
+  font-size: 22px;
+  text-align: left;
+  color: #FFFFFF;
+  font-weight: 300;
+}
+/* line 637, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.serviceListItem .headline {
+  text-align: left;
+  color: #FFFFFF;
+}
+
+/* line 645, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.imageContainer {
+  position: relative;
+  width: 95%;
+  max-height: 170px;
+  margin: 0 auto;
+}
+
+/* line 651, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.imageContainer > img, .serviceImage {
+  width: 100%;
+  max-height: 170px;
+}
+
+/* Reviews */
+/* line 657, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.review-list-item.row {
+  border-bottom: 1px solid #eaeaea;
+  padding: 30px 0;
+}
+/* line 660, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.review-list-item.row:last-child {
+  border-bottom: none;
+}
+
+/* line 666, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#serviceShowBox #reviewListSection {
+  margin: 0px 40px;
+}
+/* line 671, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#serviceShowBox #reviewListSection .review-details .raty {
+  margin-bottom: 10px;
+}
+/* line 674, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#serviceShowBox #reviewListSection .review-details .vote-blurb {
+  color: #5a5a5a;
+  font-size: 1.0em;
+}
+/* line 678, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+#serviceShowBox #reviewListSection .review-details .summary {
+  margin: 10px 0;
+}
+
+/* line 685, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.pagination {
+  width: 100%;
+  display: block;
+  clear: both;
+  padding-top: 20px;
+  font-size: 0.8em;
+}
+/* line 691, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.pagination a {
+  color: #e28778;
+}
+/* line 696, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.pagination .active a {
+  color: grey;
+}
+/* line 700, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.pagination ul {
+  display: table;
+  margin: 0 auto;
+}
+/* line 704, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.pagination li {
+  display: table-cell;
+  float: left;
+  margin: 0 7px;
+}
+/* line 708, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.pagination li.active {
+  font-weight: bold;
+}
+
+/* line 714, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+.detailTitle {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid gray;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+/******************** FOOTER ********************/
+/* line 724, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+footer {
+  font-size: 0.9em;
+  padding: 20px 0;
+  text-align: center;
+  clear: both;
+}
+/* line 730, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+footer.container {
+  margin-top: 0;
+  padding: 20px 0;
+  min-height: 0;
+}
+/* line 736, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+footer #footerNav {
+  margin-bottom: 15px;
+}
+/* line 738, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+footer #footerNav .footer-link {
+  border-right: 1px solid #cbcbcb;
+  color: #e28778;
+  display: inline-block;
+  font-size: 0.8em;
+  text-align: center;
+  width: 92px;
+}
+/* line 745, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/application.css.scss */
+footer #footerNav .footer-link:last-child {
+  border: none;
+}

@@ -1,0 +1,578 @@
+/*!
+ * Datetimepicker for Bootstrap v3
+ * https://github.com/Eonasdan/bootstrap-datetimepicker/
+ */
+/* line 6, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget {
+  top: 0;
+  left: 0;
+  width: 250px;
+  padding: 4px;
+  margin-top: 1px;
+  z-index: 99999 !important;
+  border-radius: 4px;
+}
+
+/* line 15, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget.timepicker-sbs {
+  width: 600px;
+}
+
+/* line 18, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget.bottom:before {
+  content: '';
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: -7px;
+  left: 7px;
+}
+
+/* line 29, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget.bottom:after {
+  content: '';
+  display: inline-block;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid white;
+  position: absolute;
+  top: -6px;
+  left: 8px;
+}
+
+/* line 39, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget.top:before {
+  content: '';
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #ccc;
+  border-top-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: -7px;
+  left: 6px;
+}
+
+/* line 50, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget.top:after {
+  content: '';
+  display: inline-block;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid white;
+  position: absolute;
+  bottom: -6px;
+  left: 7px;
+}
+
+/* line 60, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget .dow {
+  width: 14.2857%;
+}
+
+/* line 63, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget.pull-right:before {
+  left: auto;
+  right: 6px;
+}
+
+/* line 67, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget.pull-right:after {
+  left: auto;
+  right: 7px;
+}
+
+/* line 71, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget > ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+/* line 75, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget a[data-action] {
+  padding: 6px 0;
+}
+
+/* line 80, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget .timepicker-hour,
+.bootstrap-datetimepicker-widget .timepicker-minute,
+.bootstrap-datetimepicker-widget .timepicker-second {
+  width: 54px;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 0;
+}
+
+/* line 86, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget button[data-action] {
+  padding: 6px;
+}
+
+/* line 89, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget table[data-hour-format="12"] .separator {
+  width: 4px;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 94, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget .datepicker > div {
+  display: none;
+}
+
+/* line 97, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget .picker-switch {
+  text-align: center;
+}
+
+/* line 100, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget table {
+  width: 100%;
+  margin: 0;
+}
+
+/* line 105, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td,
+.bootstrap-datetimepicker-widget th {
+  text-align: center;
+  border-radius: 4px;
+}
+
+/* line 109, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td {
+  height: 54px;
+  line-height: 54px;
+  width: 54px;
+}
+
+/* line 114, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td.day {
+  height: 20px;
+  line-height: 20px;
+  width: 20px;
+}
+
+/* line 122, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td.day:hover,
+.bootstrap-datetimepicker-widget td.hour:hover,
+.bootstrap-datetimepicker-widget td.minute:hover,
+.bootstrap-datetimepicker-widget td.second:hover {
+  background: #eeeeee;
+  cursor: pointer;
+}
+
+/* line 127, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td.old,
+.bootstrap-datetimepicker-widget td.new {
+  color: #999999;
+}
+
+/* line 130, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td.today {
+  position: relative;
+}
+
+/* line 133, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td.today:before {
+  content: '';
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-bottom: 7px solid #428bca;
+  border-top-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+}
+
+/* line 144, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td.active,
+.bootstrap-datetimepicker-widget td.active:hover {
+  background-color: #428bca;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* line 149, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td.active.today:before {
+  border-bottom-color: #fff;
+}
+
+/* line 153, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td.disabled,
+.bootstrap-datetimepicker-widget td.disabled:hover {
+  background: none;
+  color: #999999;
+  cursor: not-allowed;
+}
+
+/* line 158, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td span {
+  display: block;
+  width: 54px;
+  height: 54px;
+  line-height: 54px;
+  float: left;
+  margin: 2px 1.5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* line 168, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td span:hover {
+  background: #eeeeee;
+}
+
+/* line 171, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td span.active {
+  background-color: #428bca;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* line 176, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td span.old {
+  color: #999999;
+}
+
+/* line 180, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget td span.disabled,
+.bootstrap-datetimepicker-widget td span.disabled:hover {
+  background: none;
+  color: #999999;
+  cursor: not-allowed;
+}
+
+/* line 185, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget th {
+  height: 20px;
+  line-height: 20px;
+  width: 20px;
+}
+
+/* line 190, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget th.switch {
+  width: 145px;
+}
+
+/* line 194, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget th.next,
+.bootstrap-datetimepicker-widget th.prev {
+  font-size: 21px;
+}
+
+/* line 198, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget th.disabled,
+.bootstrap-datetimepicker-widget th.disabled:hover {
+  background: none;
+  color: #999999;
+  cursor: not-allowed;
+}
+
+/* line 203, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget thead tr:first-child th {
+  cursor: pointer;
+}
+
+/* line 206, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget thead tr:first-child th:hover {
+  background: #eeeeee;
+}
+
+/* line 209, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.input-group.date .input-group-addon span {
+  display: block;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+/* line 215, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget.left-oriented:before {
+  left: auto;
+  right: 6px;
+}
+
+/* line 219, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget.left-oriented:after {
+  left: auto;
+  right: 7px;
+}
+
+/* line 223, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+.bootstrap-datetimepicker-widget ul.list-unstyled li div.timepicker div.timepicker-picker table.table-condensed tbody > tr > td {
+  padding: 0px !important;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 227, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/bootstrap3-datetimepicker-rails-3.0.0.1/vendor/assets/stylesheets/bootstrap-datetimepicker.css */
+  .bootstrap-datetimepicker-widget.timepicker-sbs {
+    width: 283px;
+  }
+}
+/************************************ NEW RATING FORM ************************************/
+/* line 7, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/ratings.css.scss */
+#lender {
+  width: 100%;
+  text-align: center;
+  font-size: 1.3em;
+}
+/* line 11, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/ratings.css.scss */
+#lender .imageContainer {
+  width: 300px;
+}
+/* line 14, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/ratings.css.scss */
+#lender .name {
+  font-weight: 300;
+  margin: 15px 0;
+  text-transform: uppercase;
+}
+
+/* line 20, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/ratings.css.scss */
+#newRating {
+  padding-top: 20px;
+}
+/* line 23, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/ratings.css.scss */
+#newRating #ratingBox {
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed #e6e6e6;
+}
+/* line 29, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/ratings.css.scss */
+#newRating #ratingBox #raty-hint {
+  margin-bottom: 5px;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  height: 20px;
+  width: 100%;
+}
+/* line 38, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/ratings.css.scss */
+#newRating #reviewBox {
+  width: 80%;
+  margin: 0 auto;
+}
+/* line 42, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/ratings.css.scss */
+#newRating #reviewBox .title {
+  font-size: 1.2em;
+}
+/* line 45, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/ratings.css.scss */
+#newRating #reviewBox .row {
+  margin-bottom: 20px;
+}
+/* line 48, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/ratings.css.scss */
+#newRating #reviewBox textarea {
+  height: 150px;
+}
+/* line 52, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/ratings.css.scss */
+#newRating .button.center {
+  margin-top: 10px;
+}
+
+/*********************** VARIABLES ***********************/
+/********************  MIXINS ********************/
+/*********************** INDEX ***********************/
+/* line 27, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.searchContainer {
+  border: 1px solid #dfdfdf;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  clear: both;
+  float: left;
+  font-size: 14px;
+  min-height: 43px;
+  padding: 10px 20px;
+  -webkit-transition-duration: 0.1s;
+          transition-duration: 0.1s;
+  -webkit-transition-property: color, background-color;
+          transition-property: color, background-color;
+  width: 100%;
+  margin-bottom: 20px;
+}
+/* line 40, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.searchContainer input {
+  background: #ffffff;
+  border: none;
+  padding: 0;
+  margin-left: 8px;
+  width: 90%;
+}
+
+/*********************** CHECKLIST ***********************/
+/* line 52, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.alert {
+  padding: 20px 0;
+}
+
+/* line 56, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#checkListNav {
+  margin-bottom: 30px;
+}
+/* line 58, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#checkListNav li a {
+  color: #aaaaaa;
+}
+/* line 61, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#checkListNav li.active a {
+  color: #e28778;
+}
+
+/* line 68, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.dropdown-menu .dropdown-location-label {
+  color: #999999;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 10px 19px;
+}
+/* line 76, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.dropdown-menu > li > input.dropdown-zip-input {
+  display: inline-block;
+  margin-left: 0;
+  width: 100px;
+}
+
+/* line 83, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.checkListBox {
+  padding: 30px 0;
+  width: 90%;
+  margin: 0 auto;
+}
+/* line 89, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.checkListBox td.cell {
+  padding: 22px 8px;
+}
+
+/* line 93, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.bootstrap-datetimepicker-widget ul {
+  font-size: 1.0em;
+}
+
+/* line 99, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.options_checklist form, .options_checklist .option, .options_checklist a {
+  display: inline-block;
+  margin: 0 5px 3px;
+  cursor: pointer;
+}
+/* line 105, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.options_checklist form:last-child {
+  margin-right: 0;
+}
+/* line 108, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.options_checklist .glyphicon-remove {
+  color: #A94442;
+  font-size: 1em;
+}
+
+/*********************** EDIT ***********************/
+/* line 117, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+form label {
+  padding-top: 7px;
+}
+
+/* line 122, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#avatarSection {
+  margin-bottom: 20px;
+}
+/* line 124, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#avatarSection .title {
+  font-size: 13px;
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+/* line 131, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#summarySection {
+  padding: 0 35px;
+}
+
+/* line 135, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#user_summary {
+  height: 200px;
+}
+
+/* line 139, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.edit-group {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+/* line 142, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+.edit-group > .group:last-child {
+  border: none;
+}
+
+/* line 148, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#cardContainer {
+  height: 36px;
+  margin: 17px 15px;
+  text-align: center;
+  width: 100%;
+}
+/* line 154, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#cardContainer .card {
+  background: url("/images/logos/credit_card.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  width: 55px;
+  height: 36px;
+  display: inline-block;
+}
+/* line 160, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#cardContainer .card.visa {
+  background-position: 0px 0px;
+}
+/* line 163, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#cardContainer .card.mastercard {
+  background-position: -60px 0px;
+}
+/* line 166, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#cardContainer .card.discover {
+  background-position: -120px 0px;
+}
+/* line 169, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#cardContainer .card.amex {
+  background-position: -180px 0px;
+}
+/* line 173, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#cardContainer .cardLabel {
+  font-size: 0.9em;
+  padding-top: 10px;
+  padding-right: 0;
+}
+
+/*********************** SHOW ***********************/
+/* line 184, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#snapshot img {
+  width: 330px;
+  height: 180px;
+}
+
+/* line 191, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#userShowBox #join_info {
+  color: #979797;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
+/* line 197, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#userShowBox .row.service {
+  padding: 0 30px;
+}
+/* line 203, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#userShowBox .serviceWidget .serviceListItem .serviceImageContainer, #userShowBox .serviceWidget .serviceListItem .serviceImage {
+  width: 98%;
+  height: 151px;
+}
+/* line 207, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#userShowBox .serviceWidget .serviceListItem .title {
+  font-size: 1.3em;
+}
+/* line 210, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/users.css.scss */
+#userShowBox .serviceWidget .serviceListItem .headline {
+  font-weight: bold;
+  padding-bottom: 20px;
+  text-align: center;
+  width: 99%;
+}
