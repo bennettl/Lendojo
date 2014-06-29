@@ -4,6 +4,226 @@
   "basePath": "http://localhost:3000/",
   "resourcePath": "lender_applications",
   "apis": [
-
+    {
+      "path": "lender_applications",
+      "operations": [
+        {
+          "summary": "Show A Lists Of All Lender Applications",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "Page Number",
+              "required": false
+            }
+          ],
+          "method": "get",
+          "nickname": "LenderApplications#index"
+        }
+      ]
+    },
+    {
+      "path": "lender_applications",
+      "operations": [
+        {
+          "summary": "Creates A New Lender Application",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "lender_application[author_id]",
+              "type": "integer",
+              "description": "Author ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[categories]",
+              "type": "string",
+              "description": "Categories",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[skill]",
+              "type": "string",
+              "description": "Skill",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[hours]",
+              "type": "integer",
+              "description": "Hours",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[summary]",
+              "type": "string",
+              "description": "Summary",
+              "required": true
+            }
+          ],
+          "method": "post",
+          "nickname": "LenderApplications#create"
+        }
+      ]
+    },
+    {
+      "path": "lender_applications/{id}",
+      "operations": [
+        {
+          "summary": "Show Indivdual Lender Applications",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "ID",
+              "required": true
+            }
+          ],
+          "method": "get",
+          "nickname": "LenderApplications#show"
+        }
+      ]
+    },
+    {
+      "path": "lender_applications/{id}",
+      "operations": [
+        {
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Application ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[categories]",
+              "type": "string",
+              "description": "Categories",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[skill]",
+              "type": "string",
+              "description": "Skill",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[hours]",
+              "type": "integer",
+              "description": "Hours",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[summary]",
+              "type": "string",
+              "description": "Summary",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[status]",
+              "type": "status",
+              "description": "Status",
+              "required": false,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "pending",
+                  "approve",
+                  "denied"
+                ]
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[staff_notes]",
+              "type": "string",
+              "description": "Staff Notes",
+              "required": true
+            }
+          ],
+          "method": "patch",
+          "nickname": "LenderApplications#update"
+        }
+      ]
+    },
+    {
+      "path": "lender_applications/{id}",
+      "operations": [
+        {
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Application ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[categories]",
+              "type": "string",
+              "description": "Categories",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[skill]",
+              "type": "string",
+              "description": "Skill",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[hours]",
+              "type": "integer",
+              "description": "Hours",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[summary]",
+              "type": "string",
+              "description": "Summary",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[status]",
+              "type": "status",
+              "description": "Status",
+              "required": false,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "pending",
+                  "approve",
+                  "denied"
+                ]
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "lender_application[staff_notes]",
+              "type": "string",
+              "description": "Staff Notes",
+              "required": true
+            }
+          ],
+          "method": "put",
+          "nickname": "LenderApplications#update"
+        }
+      ]
+    }
   ]
 }

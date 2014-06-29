@@ -10,6 +10,8 @@ class Report < ActiveRecord::Base
 	################################## ENUMS ##################################
 
 	enum status: [ :pending, :active, :resolved]
+	enum reason: ["Inappropriate Content", "Fraud", "Misleading Content", "Spam", "Other"]
+	enum action: ["No Action", "Warn", "Suspend", "Ban" ]
 
 	################################## VALIDATION ##################################
 

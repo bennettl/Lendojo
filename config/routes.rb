@@ -23,8 +23,8 @@
     
     # Users
     resources :users do 
-        get     'checklist',            on: :collection
-        get     'pins',                 on: :collection
+        get     'checklist',            on: :member
+        get     'pins',                 on: :member
         get     'new_rating',           on: :member
         patch   'update_card',          on: :collection
         resources 'reports',            only: [:new, :create]
@@ -45,7 +45,11 @@
    
     # Services
     resources :services do
-        resources 'reports',        only: [:new, :create]
+        post        'check',            on: :member
+        delete      'uncheck',          on: :member
+        post        'pin',              on: :member
+        delete      'unpin',            on: :member
+        resources   'reports',          only: [:new, :create]
     end
 
     # Products

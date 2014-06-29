@@ -10,6 +10,9 @@ module LendojoApp
   class Application < Rails::Application
     config.assets.enabled = true
     config.assets.initialize_on_precompile = false
+    
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.assets.precompile += %w( *.css *.js )
 
     # mail
     config.action_mailer.delivery_method = :smtp

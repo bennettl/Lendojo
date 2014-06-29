@@ -4,6 +4,489 @@
   "basePath": "http://localhost:3000/",
   "resourcePath": "services",
   "apis": [
-
+    {
+      "path": "services/{id}/check",
+      "operations": [
+        {
+          "summary": "Check a service",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Service ID",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "type": "integer",
+              "description": "User ID",
+              "required": true
+            }
+          ],
+          "method": "post",
+          "nickname": "Services#check"
+        }
+      ]
+    },
+    {
+      "path": "services/{id}/uncheck",
+      "operations": [
+        {
+          "summary": "Check a service",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Service ID",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "type": "integer",
+              "description": "User ID",
+              "required": true
+            }
+          ],
+          "method": "delete",
+          "nickname": "Services#uncheck"
+        }
+      ]
+    },
+    {
+      "path": "services/{id}/pin",
+      "operations": [
+        {
+          "summary": "Pin a service",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Service ID",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "type": "integer",
+              "description": "User ID",
+              "required": true
+            }
+          ],
+          "method": "post",
+          "nickname": "Services#pin"
+        }
+      ]
+    },
+    {
+      "path": "services/{id}/unpin",
+      "operations": [
+        {
+          "summary": "Unpin a service",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Service ID",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "type": "integer",
+              "description": "User ID",
+              "required": true
+            }
+          ],
+          "method": "delete",
+          "nickname": "Services#unpin"
+        }
+      ]
+    },
+    {
+      "path": "services",
+      "operations": [
+        {
+          "summary": "Shows all services",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "Page Number",
+              "required": false
+            }
+          ],
+          "method": "get",
+          "nickname": "Services#index"
+        }
+      ]
+    },
+    {
+      "path": "services",
+      "operations": [
+        {
+          "summary": "Creates a new service",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "main_img",
+              "type": "string",
+              "description": "Main Image",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "title",
+              "type": "string",
+              "description": "Title",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "headline",
+              "type": "string",
+              "description": "Headline",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "type": "string",
+              "description": "Description",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "location",
+              "type": "string",
+              "description": "Location",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "address",
+              "type": "string",
+              "description": "Address",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "city",
+              "type": "string",
+              "description": "City",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "state",
+              "type": "string",
+              "description": "State",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "zip",
+              "type": "string",
+              "description": "Zip",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "price",
+              "type": "integer",
+              "description": "Price",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "category",
+              "type": "string",
+              "description": "Category",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tags",
+              "type": "string",
+              "description": "Tags",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "hidden",
+              "type": "boolean",
+              "description": "Hidden",
+              "required": false
+            }
+          ],
+          "method": "post",
+          "nickname": "Services#create"
+        }
+      ]
+    },
+    {
+      "path": "services/{id}",
+      "operations": [
+        {
+          "summary": "Shows an individual service",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Service ID",
+              "required": true
+            }
+          ],
+          "method": "get",
+          "nickname": "Services#show"
+        }
+      ]
+    },
+    {
+      "path": "services/{id}",
+      "operations": [
+        {
+          "summary": "Updates a existing service",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Service ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "main_img",
+              "type": "string",
+              "description": "Main Image",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "title",
+              "type": "string",
+              "description": "Title",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "headline",
+              "type": "string",
+              "description": "Headline",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "type": "string",
+              "description": "Description",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "location",
+              "type": "string",
+              "description": "Location",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "address",
+              "type": "string",
+              "description": "Address",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "city",
+              "type": "string",
+              "description": "City",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "state",
+              "type": "string",
+              "description": "State",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "zip",
+              "type": "string",
+              "description": "Zip",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "price",
+              "type": "integer",
+              "description": "Price",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "category",
+              "type": "string",
+              "description": "Category",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tags",
+              "type": "string",
+              "description": "Tags",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "hidden",
+              "type": "boolean",
+              "description": "Hidden",
+              "required": false
+            }
+          ],
+          "method": "patch",
+          "nickname": "Services#update"
+        }
+      ]
+    },
+    {
+      "path": "services/{id}",
+      "operations": [
+        {
+          "summary": "Updates a existing service",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Service ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "main_img",
+              "type": "string",
+              "description": "Main Image",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "title",
+              "type": "string",
+              "description": "Title",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "headline",
+              "type": "string",
+              "description": "Headline",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "type": "string",
+              "description": "Description",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "location",
+              "type": "string",
+              "description": "Location",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "address",
+              "type": "string",
+              "description": "Address",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "city",
+              "type": "string",
+              "description": "City",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "state",
+              "type": "string",
+              "description": "State",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "zip",
+              "type": "string",
+              "description": "Zip",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "price",
+              "type": "integer",
+              "description": "Price",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "category",
+              "type": "string",
+              "description": "Category",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tags",
+              "type": "string",
+              "description": "Tags",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "hidden",
+              "type": "boolean",
+              "description": "Hidden",
+              "required": false
+            }
+          ],
+          "method": "put",
+          "nickname": "Services#update"
+        }
+      ]
+    },
+    {
+      "path": "services/{id}",
+      "operations": [
+        {
+          "summary": "Destroys a existing service",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Service ID",
+              "required": true
+            }
+          ],
+          "method": "delete",
+          "nickname": "Services#destroy"
+        }
+      ]
+    }
   ]
 }

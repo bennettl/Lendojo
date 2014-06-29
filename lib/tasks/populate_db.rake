@@ -171,7 +171,7 @@ namespace :db do
 	def populate_reports
 		author_id 		= [*1..40].sample
 		summary 		= Faker::Lorem.sentences(3).join(' ')
-		reason 			= ["Inappropriate Content", "Fraud", "Misleading Content", "Spam", "Other"].sample
+		reason 			= [*0..4].sample # enum
 		
 		# Report on other users
 		users = User.limit(5)

@@ -5,21 +5,16 @@
 		<!-- SERVICE ONLY -->
 		<% if object.class.name == 'Service' %>
 			<% service = object %>
+			
 			<!-- CHECK -->
 			<% user_service = current_user.check?(service) %>
-			<% if user_service.nil? %>
-				<%= render 'shared/options/check', service_id: service.id %>
-			<% else %>
-				<%= render 'shared/options/uncheck', user_service_id: user_service.id, class_name: "glyphicon glyphicon-minus uncheck" %>
-			<% end %>
+			<% template 	= user_service.nil? ? 'check' : 'uncheck' %>
+			<%= render "shared/options/#{template}", service: @service%>
 
 			<!-- PIN -->
 			<% user_service = current_user.pin?(service) %>
-			<% if user_service.nil? %>
-				<%= render 'shared/options/pin', service_id: service.id %>
-			<% else %>
-				<%= render 'shared/options/unpin', user_service_id: user_service.id %>
-			<% end %>
+			<% template 	= user_service.nil? ? 'pin' : 'unpin' %>
+			<%= render "shared/options/#{template}", service: @service %>
 
 		<% end %>
 		<!-- SERVICE ONLY -->

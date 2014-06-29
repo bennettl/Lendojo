@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
 	include HeaderFiltersHelper
 	
 	# Swagger documentation
-	swagger_controller :reports, "Reports"
+	swagger_controller :reports, "Report operations"
 
 	# List all reports under reportable type: user, service, product
 	def index
@@ -24,6 +24,12 @@ class ReportsController < ApplicationController
 	end
 
 	# Creates a new report
+	# swagger_api :create do
+	# 	summary "Create an existing report"
+	# 	notes "current_user is giving the rating"
+	# 	param_list :form, :reason, :string, :optional, "Reason", Report.reasons.keys
+	# 	param :form, :summary, :string, :optional, "Summary"
+	# end
 	def create
 		# the (user/service/product) the object
 		@reportable = find_reportable
@@ -46,6 +52,14 @@ class ReportsController < ApplicationController
 
 	
 	# Updates an existing report
+	swagger_api :update do
+		summary "Update an existing report"
+		notes "current_user is giving the rating"
+		param :path, :id, :integer, :required, "Report ID"
+		param :form, :staff_notes, :string, :optional, "Staff Notes"
+		param_list :form, :status, :string, :optional, "Status", Report.statuses.keys
+		param_list :form, :action, :string, :optional, "Action", Report.actions.keys
+	end
 	def update
 		@report = Report.find(params[:id])
 		# The (user/service/product) object

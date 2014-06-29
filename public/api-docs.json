@@ -5,23 +5,23 @@
   "apis": [
     {
       "path": "users.{format}",
-      "description": "User"
+      "description": "User operations"
     },
     {
       "path": "reports.{format}",
-      "description": "Reports"
+      "description": "Report operations"
     },
     {
       "path": "services.{format}",
-      "description": "Services"
+      "description": "Service operations"
     },
     {
       "path": "lender_applications.{format}",
-      "description": "Lender Application"
+      "description": "Lender Application operations"
     },
     {
       "path": "ratings.{format}",
-      "description": "Ratings"
+      "description": "Rating operations"
     },
     {
       "path": "reviews.{format}",

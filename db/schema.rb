@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.integer  "author_id"
     t.integer  "reportable_id"
     t.string   "reportable_type"
-    t.string   "reason"
-    t.string   "action"
+    t.integer  "reason",          default: 0
+    t.integer  "action",          default: 0
     t.text     "summary"
     t.text     "staff_notes"
     t.integer  "status",          default: 0

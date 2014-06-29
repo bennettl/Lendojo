@@ -94,21 +94,14 @@
 		
     	/************************** TOOLTIP **************************/
     	// Activate tooltip for all .tooltip_target, set container to body to prevent divs from mmoving around if tooltip is appended to it
-    	$('.tooltip_target').tooltip({container: 'body'});
-
-    	/************************** OPTIONS **************************/
-		// Use for shared/_options partial
-		// When user clicks <a> on #options, if a parent form exist, submit it
-		$('.options').on('click','a.option', function(){ 
-			var form 			= $(this).parents("form");		
-
-			// If for exists, submit it and return false
-			if (form.length != 0){
-				form.submit();
-				return false;
-			}
-			
-		});
+    	$('body').tooltip({
+    		container: 'body',
+    		selector: '.tooltip_target'
+    	});
+    	// Whenever a link is click, remove tooltip
+    	$(document).on('click', 'a', function(){
+	    	$('.tooltip').remove();
+    	});
 	}
 
 }());

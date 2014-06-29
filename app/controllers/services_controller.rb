@@ -1,9 +1,15 @@
 class ServicesController < ApplicationController
 	
 	# Swagger documentation
-	swagger_controller :services, "Services"
+	swagger_controller :services, "Service operations"
 
-	# List all services
+	##################################################### RESOURCES #####################################################
+
+	# Shows all services
+	swagger_api :index do
+		summary "Shows all services"
+		param :query, :page, :integer, :optional, "Page Number"
+	end
 	def index
 
 		@myFilters 		= current_user.filters
@@ -14,15 +20,26 @@ class ServicesController < ApplicationController
 
 		# Respond to multiple formats
 		respond_to do |format|
-		    format.html
-		    format.js
+		    format.html # index.html.erb
+		    format.js # index.js.erb
+		    format.json { render json: @services }
 		end
 	end
 
-	# Display individual service
+	# Shows an individual service
+	swagger_api :show do
+		summary "Shows an individual service"
+		param :path, :id, :integer, :required, "Service ID"
+	end
 	def show
 		@service = Service.find(params[:id])
 		@reviews = @service.lender.reviews_recieved.paginate(per_page: 4, page: params[:review_page])
+
+		# Respond to multiple formats
+		respond_to do |format|
+		    format.html # show.html.erb
+		    format.json { render json: @service }
+		end
 	end
 
 	# Displays a form to create a new service
@@ -30,14 +47,40 @@ class ServicesController < ApplicationController
 		@service = Service.new
 	end
 
-	# Creates the new service
+	# Creates a new service
+	swagger_api :create do
+		summary "Creates a new service"
+		param :form, :main_img, :string, :required, 'Main Image'
+		param :form, :title, :string, :required, 'Title'
+		param :form, :headline, :string, :required, 'Headline'
+		param :form, :description, :string, :required, 'Description'
+		param :form, :location, :string, :required, 'Location'
+		param :form, :address, :string, :required, 'Address'
+		param :form, :city, :string, :required, 'City'
+		param :form, :state, :string, :required, 'State'
+		param :form, :zip, :string, :required, 'Zip'
+		param :form, :price, :integer, :required, 'Price'
+		param :form, :category, :string, :optional, 'Category'
+		param :form, :tags, :string, :optional, 'Tags'
+		param :form, :hidden, :boolean, :optional, 'Hidden'
+	end
 	def create
 		@service = Service.new(service_params)
 		if @servce.save
 			flash[:success] = "Service Successfully Created!"
-			redirect_to @service
+			# Respond to multiple formats
+			respond_to do |format|
+			    format.html { redirect_to @service }
+			    format.json { render json: @service }
+			end
 		else
-			render 'new'
+			flash[:error] = @service.errors.full_messages
+			# Respond to multiple formats
+			respond_to do |format|
+			    format.html { render 'new' }
+			    format.json { render json: { message: "Service Was Not Successfully Created", error: flash[:error] } }
+			end
+			
 		end
 	end
 
@@ -47,14 +90,40 @@ class ServicesController < ApplicationController
 	end
 
 	# Updates an existing service
+	swagger_api :update do
+		summary "Updates a existing service"
+		param :path, :id, :integer, :required, 'Service ID'
+		param :form, :main_img, :string, :optoinal, 'Main Image'
+		param :form, :title, :string, :optoinal, 'Title'
+		param :form, :headline, :string, :optoinal, 'Headline'
+		param :form, :description, :string, :optoinal, 'Description'
+		param :form, :location, :string, :optoinal, 'Location'
+		param :form, :address, :string, :optoinal, 'Address'
+		param :form, :city, :string, :optoinal, 'City'
+		param :form, :state, :string, :optoinal, 'State'
+		param :form, :zip, :string, :optoinal, 'Zip'
+		param :form, :price, :integer, :optoinal, 'Price'
+		param :form, :category, :string, :optional, 'Category'
+		param :form, :tags, :string, :optional, 'Tags'
+		param :form, :hidden, :boolean, :optional, 'Hidden'
+	end
 	def update
 		@service = Service.find(params[:id])
 
 		if @service.update_attributes(service_params)
 			flash[:success] = "Service Successfully Updated!"
-			redirect_to @service
+			# Respond to multiple formats
+			respond_to do |format|
+			    format.html { redirect_to @service }
+			    format.json { render json: @service }
+			end
 		else
-			render 'edit'
+			flash[:error] = @service.errors.full_messages
+			# Respond to multiple formats
+			respond_to do |format|
+			    format.html { render 'edit' }
+			    format.json { render json: { message: "Service Was Not Successfully Updated", error: flash[:error] } }
+			end
 		end
 	end
 
@@ -64,15 +133,126 @@ class ServicesController < ApplicationController
 	end
 	
 	# Destroys the existing service
+	swagger_api :destroy do
+		summary "Destroys a existing service"
+		param :path, :id, :integer, :required, 'Service ID'
+	end
 	def destroy
 		Service.destroy(params[:id])
+		# Respond to multiple formats
+		respond_to do |format|
+		    format.json { render json: { message: "Service Is Successfully Destroyed" } }
+		end
 	end
+
+	##################################################### CHECK/PIN #####################################################
+
+	# Check a service
+	swagger_api :check do
+		summary "Check a service"
+		param :path, :id, :integer, :required, "Service ID"
+		param :query, :user_id, :integer, :required, "User ID"
+	end
+	def check
+		user 		= User.find(params[:user_id])	
+		@service 	= Service.find(params[:id])
+
+		# Create the appropriate JSON
+		if @user_service = user.check!(@service)
+			@json = @user_service
+		else
+			@json = { message: "Check Service Unsuccessful", error: @user_service.errors.full_messages }
+		end
+
+		# Respond to different formats
+		respond_to do |format|
+			format.js # check.js.erb
+			format.json { render json: @json }
+		end
+
+	end
+
+	# Uncheck a service
+	swagger_api :uncheck do
+		summary "Check a service"
+		param :path, :id, :integer, :required, "Service ID"
+		param :query, :user_id, :integer, :required, "User ID"
+	end
+	def uncheck
+		user 		= User.find(params[:user_id])	
+		@service 	= Service.find(params[:id])
+
+		# Create the appropriate JSON
+		if @user_service = user.uncheck!(@service)
+			@json = @user_service
+		else
+			@json = { message: "Uncheck Service Unsuccessful", error: @user_service.errors.full_messages }
+		end
+
+		# Respond to different formats
+		respond_to do |format|
+			format.js # check.js.erb
+			format.json { render json: @json }
+		end
+	end
+
+	# Pin a service
+	swagger_api :pin do
+		summary "Pin a service"
+		param :path, :id, :integer, :required, "Service ID"
+		param :query, :user_id, :integer, :required, "User ID"
+	end
+	def pin
+		user 		= User.find(params[:user_id])
+		@service 	= Service.find(params[:id])
+		
+		# Create the appropriate JSON
+		if @user_service = user.pin!(@service)
+			@json 	= @user_service
+		else
+			@json 	= { message: "Pin Service Unsuccessful", error: @user_service.errors.full_messages }
+		end
+
+		# Respond to different formats
+		respond_to do |format|
+			format.js # pin.js.erb
+			format.json { render json: @json }
+		end
+
+	end
+
+	# Unpin a service
+	swagger_api :unpin do
+		summary "Unpin a service"
+		param :path, :id, :integer, :required, "Service ID"
+		param :query, :user_id, :integer, :required, "User ID"
+	end
+	def unpin
+		user 		= User.find(params[:user_id])
+		@service 	= Service.find(params[:id])
+		
+		# Create the appropriate JSON
+		if @user_service = user.unpin!(@service)
+			@json 	= @user_service
+		else
+			@json 	= { message: "Unpin Service Unsuccessful", error: @user_service.errors.full_messages }
+		end
+
+		# Respond to different formats
+		respond_to do |format|
+			format.js # unpin.js.erb
+			format.json { render json: @json }
+		end
+
+	end
+
+	##################################################### PRIVATE #####################################################
 
 	private
 
 	# Strong parameters
 	def service_params
-		params.require(:service).permit(:main_img, :title, :headline, :description, :location, :price, :category, :tags, :hidden)
+		params.require(:service).permit(:main_img, :title, :headline, :description, :location, :address, :city, :state, :zip, :price, :category, :tags, :hidden)
 	end
 
 	# Parameters (filter_data) use for searching

@@ -233,13 +233,14 @@ class User < ActiveRecord::Base
 
 	# Create a new user_service relationship with service_id and relationship_type = 'check'
 	def check!(service)
-		self.lendee_user_services.create!(service_id: service.id, 
-											lender_id: service.lender.id, 
-											address: service.address,
-											city: service.city,
-											state: service.state,
-											zip: service.zip,
-											relationship_type: 'check')
+		
+		return self.lendee_user_services.create!(service_id: service.id, 
+												lender_id: service.lender.id, 
+												address: service.address,
+												city: service.city,
+												state: service.state,
+												zip: service.zip,
+												relationship_type: 'check')
 	end
 
 	# Remove an existing user_service relationship with service_id and relationship_type = 'check'

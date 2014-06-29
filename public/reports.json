@@ -4,6 +4,121 @@
   "basePath": "http://localhost:3000/",
   "resourcePath": "reports",
   "apis": [
-
+    {
+      "path": "reports/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Report ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "staff_notes",
+              "type": "string",
+              "description": "Staff Notes",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "status",
+              "type": "string",
+              "description": "Status",
+              "required": false,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "pending",
+                  "active",
+                  "resolved"
+                ]
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "action",
+              "type": "string",
+              "description": "Action",
+              "required": false,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "No Action",
+                  "Warn",
+                  "Suspend",
+                  "Ban"
+                ]
+              }
+            }
+          ],
+          "notes": "current_user is giving the rating",
+          "method": "patch",
+          "nickname": "Reports#update"
+        }
+      ]
+    },
+    {
+      "path": "reports/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Report ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "staff_notes",
+              "type": "string",
+              "description": "Staff Notes",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "status",
+              "type": "string",
+              "description": "Status",
+              "required": false,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "pending",
+                  "active",
+                  "resolved"
+                ]
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "action",
+              "type": "string",
+              "description": "Action",
+              "required": false,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "No Action",
+                  "Warn",
+                  "Suspend",
+                  "Ban"
+                ]
+              }
+            }
+          ],
+          "notes": "current_user is giving the rating",
+          "method": "put",
+          "nickname": "Reports#update"
+        }
+      ]
+    }
   ]
 }

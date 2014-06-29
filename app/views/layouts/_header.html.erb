@@ -3,10 +3,10 @@
 	<nav id="mainNav" role="navigation">
 		<ul class="innerNav">
 			<% # nav_link 'Products', main_app.products_path %>
-			<li class="nav-list"><%= nav_link 'Services', main_app.services_path %></li>
-			<li class="nav-list"><%= nav_link 'Checklist', main_app.checklist_users_path %></li>
-			<li class="nav-list"><%= nav_link 'Pins', main_app.pins_users_path %></li>
 			<% if signed_in? %>
+				<li class="nav-list"><%= nav_link 'Services', main_app.services_path %></li>
+				<li class="nav-list"><%= nav_link 'Checklist', main_app.checklist_user_path(current_user) %></li>
+				<li class="nav-list"><%= nav_link 'Pins', main_app.pins_user_path(current_user) %></li>
 				<!-- ACCOUNT -->
 				<li class="nav-list dropdown hover" data-menu="account">
 					<a href="#" class="nav-link" data-toggle="dropdown"> Account <b class="caret"></b></a>

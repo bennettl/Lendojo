@@ -4,6 +4,32 @@
   "basePath": "http://localhost:3000/",
   "resourcePath": "ratings",
   "apis": [
-
+    {
+      "path": "ratings",
+      "operations": [
+        {
+          "summary": "Creates A New Rating",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "lender_id",
+              "type": "integer",
+              "description": "Lender ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "stars",
+              "type": "integer",
+              "description": "Stars",
+              "required": true
+            }
+          ],
+          "notes": "current_user is giving the rating",
+          "method": "post",
+          "nickname": "Ratings#create"
+        }
+      ]
+    }
   ]
 }

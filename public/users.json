@@ -5,20 +5,22 @@
   "resourcePath": "users",
   "apis": [
     {
-      "path": "users/checklist",
+      "path": "users/{id}/checklist",
       "operations": [
         {
-          "summary": "Displays A List of Services User Has checked",
+          "summary": "Displays a list of services user has checked",
+          "notes": "Checklist belongs to current_user",
           "method": "get",
           "nickname": "Users#checklist"
         }
       ]
     },
     {
-      "path": "users/pins",
+      "path": "users/{id}/pins",
       "operations": [
         {
-          "summary": "Display A List of Services User Has Pinned",
+          "summary": "Show a list of services user has pinned",
+          "notes": "Pins belong to current_user",
           "method": "get",
           "nickname": "Users#pins"
         }
@@ -29,14 +31,13 @@
       "operations": [
         {
           "summary": "Lists all users",
-          "responseMessages": [
+          "parameters": [
             {
-              "code": 401,
-              "message": "Unauthorized"
-            },
-            {
-              "code": 406,
-              "message": "Not Acceptable"
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "Page Number",
+              "required": false
             }
           ],
           "method": "get",
@@ -48,7 +49,7 @@
       "path": "users",
       "operations": [
         {
-          "summary": "Create A New user",
+          "summary": "Create a new user",
           "parameters": [
             {
               "paramType": "form",
@@ -109,7 +110,7 @@
       "path": "users/{id}",
       "operations": [
         {
-          "summary": "Show Individual User",
+          "summary": "Show individual sser",
           "parameters": [
             {
               "paramType": "path",
@@ -128,7 +129,7 @@
       "path": "users/{id}",
       "operations": [
         {
-          "summary": "Update An Existing User",
+          "summary": "Update an existing user",
           "parameters": [
             {
               "paramType": "path",
@@ -231,7 +232,7 @@
       "path": "users/{id}",
       "operations": [
         {
-          "summary": "Update An Existing User",
+          "summary": "Update an existing user",
           "parameters": [
             {
               "paramType": "path",
@@ -334,7 +335,7 @@
       "path": "users/{id}",
       "operations": [
         {
-          "summary": "Destroy An Existing User",
+          "summary": "Destroy an existing user",
           "parameters": [
             {
               "paramType": "path",

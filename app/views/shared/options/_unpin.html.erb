@@ -1,7 +1,6 @@
-<%  # Remote: true uses ajax 
-	# Find an existing user service 
-	user_service = UserService.find(user_service_id)
-%>
-<%=	form_for user_service, remote: true, html: {method: :delete, id: 'unpin_form' }, url: { controller:'user_services', action: 'destroy_pin', id: user_service_id } do |f|  %>
-	<%= link_to('', '#', class: "option tooltip_target glyphicon glyphicon-minus pin",  data: {toggle: 'tooltip'}, title: "Unpin")  %>
-<% end %>
+<%= link_to('', unpin_service_path(@service, user_id: current_user.id), 
+				remote: true,
+				method: :delete,
+				class: "option unpin tooltip_target glyphicon glyphicon-minus",  
+				data: { toggle: 'tooltip' }, 
+				title: "Unpin")  %>

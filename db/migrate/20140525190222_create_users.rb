@@ -38,7 +38,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.decimal :credits, precision: 8, scale: 2, default: 0
 			t.string :stripe_customer_id
 			# Status
-			t.integer :status, default: 0
+			t.integer :status, default: 0 # enum
 			# Authentication/ Devise
 			t.string :encrypted_password, null: false, default: ""
 			## Recoverable
@@ -142,7 +142,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.integer :lendee_id
 			t.integer :service_id
 			t.string :relationship_type # checks, pins, hidden
-			t.integer :status, default: 0 
+			t.integer :status, default: 0  # enum
 			t.datetime :date # date time when service is scheduled
 			# Location: default to service 
 			t.string :address # needs to be specific
@@ -166,7 +166,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :skill # skill level of lender
 			t.integer :hours # of hours lender can commit per week
 			t.text :summary
-			t.integer :status, default: 0
+			t.integer :status, default: 0 # enum
 			t.text :staff_notes
 			# Timestamp
 			t.timestamps
@@ -190,7 +190,7 @@ class CreateUsers < ActiveRecord::Migration
 		    t.text :summary
 			t.integer :stars, default: 0
 			t.string :category # music, art, education
-			t.integer :status, default: 0
+			t.integer :status, default: 0 # enum
 			# Timestamp
 	    	t.timestamps
     	end
@@ -200,8 +200,8 @@ class CreateUsers < ActiveRecord::Migration
 			t.belongs_to :author, class_name: 'User', foreign_key: 'author_id' # author of review
 			t.integer :reportable_id  # id of user, product, or service
 			t.string :reportable_type # 'user', 'product', 'service'
-			t.string :reason # spam or misleading content, fraud, 
-			t.string :action # n/a, warn, suspend , ban
+			t.integer :reason, default: 0 # enum
+			t.integer :action, default: 0 # enum
 			t.text :summary
 			t.text :staff_notes # notes by staff
 			t.integer :status, default: 0

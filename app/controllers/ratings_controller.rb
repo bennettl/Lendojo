@@ -1,23 +1,27 @@
 class RatingsController < ApplicationController
 	
 	# Swagger documentation
-	swagger_controller :ratings, "Ratings"
+	swagger_controller :ratings, "Rating operations"
 
 	# Creates a new rating
+	swagger_api :create do
+		summary "Creates A New Rating"
+		notes "current_user is giving the rating"
+		param :form, :lender_id, :integer, :required, "Lender ID"
+		param :form, :stars, :integer, :required, "Stars"
+	end
 	def create
-	    msg = { status: "Rating Created!" }
-
-	    # Create the rating
-		current_user.ratings_given.create!(rating_params)
-		
-		# Respond with JSON
-		# respond_to do |format|
-		#     format.json  { render :json => msg }
-		# end
-
 		# Once a ratings is created, it will direct user back to checklist_users_path
 		flash[:success] = "Thanks for your rating!"
-		redirect_to checklist_users_path
+
+	    # Create the rating
+		@rating = current_user.ratings_given.create!(rating_params)
+		
+		# Respond to different formats
+		respond_to do |format|
+			format.html { redirect_to checklist_users_path }
+		    format.json  { render json: @rating }
+		end
 	end
 
 	private

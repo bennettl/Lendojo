@@ -4,13 +4,14 @@ class UsersController < ApplicationController
 	include HeaderFiltersHelper
 	
 	# Swagger documentation
-	swagger_controller :users, "User"
+	swagger_controller :users, "User operations"
+
+	##################################################### RESOURCES #####################################################
 
 	# List all users
 	swagger_api :index do
 		summary "Lists all users"
-		response :unauthorized
-		response :not_acceptable
+		param :query, :page, :integer, :optional, "Page Number"
 	end
 	def index
 		@users = User.search(search_params).order("#{sort_name_param} #{sort_direction_param}").paginate(per_page: 5, page: params[:page])
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
 
 	# Show individual user
 	swagger_api :show do 
-		summary "Show Individual User"
+		summary "Show individual sser"
 	    param :path, :id, :integer, :required, "User ID"
 	end
 	def show
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
 
 	# Create a new user
 	swagger_api :create do
-		summary "Create A New user"
+		summary "Create a new user"
 		param :form, 'user[first_name]', :string, :required, "First Name"
 	    param :form, 'user[last_name]', :string, :required, "Last Name"
 		param :form, 'user[city]', :string, :required, "City" 
@@ -67,10 +68,11 @@ class UsersController < ApplicationController
 			end
 			
 		else
+			flash[:error] = @lenderApp.errors.full_messages
 			# Respond to different formats
 			respond_to do |format|
 			  format.html { render 'new' }
-			  format.json { render json: { message: "User Was Not Sucessfully Created", user: @user } }
+			  format.json { render json: { message: "User Was Not Sucessfully Created", error: flash[:error] } }
 			end
 			
 		end
@@ -83,7 +85,7 @@ class UsersController < ApplicationController
 
 	# Update an existing user
 	swagger_api :update do
-		summary "Update An Existing User"
+		summary "Update an existing user"
 		param :path, :id, :integer, :required, "User ID"
 		param :form, 'user[first_name]', :string, :optional, "First Name"
 	    param :form, 'user[last_name]', :string, :optional, "Last Name"
@@ -103,17 +105,18 @@ class UsersController < ApplicationController
 		
 		# If update is sucessful, redirect to user page, else render edit page
 		if @user.update_attributes(user_params)
-			flash[:success] = "Update is successful"
+			flash[:success] = "Update Is Successful"
 			# Respond to different formats
 			respond_to do |format|
 			  format.html { redirect_to edit_user_path(@user) }
-			  format.json { render json: { message: "User Sucessfully Updated", user: @user } }
+			  format.json { render json: { message: flash[:success] , user: @user } }
 			end
 		else
+			flash[:error] = @user.errors.full_messages
 			# Respond to different formats
 			respond_to do |format|
 			  format.html { render 'edit' }
-			  format.json { render json: { message: "User Not Sucessfully Updated", error: @user.errors.full_messages } }
+			  format.json { render json: { message: "User Update Not Sucessful ", error: flash[:error] } }
 			end
 			
 		end
@@ -157,7 +160,7 @@ class UsersController < ApplicationController
 
 	# Destroy an existing user
 	swagger_api :destroy do
-		summary "Destroy An Existing User"
+		summary "Destroy an existing user"
 	    param :path, :id, :integer, :required, "User ID"
 	end
 	def destroy
@@ -167,20 +170,23 @@ class UsersController < ApplicationController
 		# Respond to different formats
 		respond_to do |format|
 			format.html { redirect_to users_path }
-			format.json { render json: { message: "User Sucessfully Destroyed", user: @user } }
+			format.json { render json: { message: flash[:success], user: @user } }
 		end
 	end	
 
+	##################################################### CHECKLIST/PINS #####################################################
+
 	# Display a list of services user has checked
 	swagger_api :checklist do
-		summary "Displays A List of Services User Has checked"
+		summary "Displays a list of services user has checked"
+		notes "Checklist belongs to current_user"
 	end
 	def checklist
-
-		@lendee_checkList = current_user.lendee_check_user_services.paginate(per_page: 8, page: params[:lendee_page])
+		@user = User.find(params[:id])
+		@lendee_checkList = @user.lendee_check_user_services.paginate(per_page: 8, page: params[:lendee_page])
 
 		if current_user.lender?
-			@lender_checkList = current_user.lender_check_user_services.paginate(per_page: 8, page: params[:lender_page])
+			@lender_checkList = @user.lender_check_user_services.paginate(per_page: 8, page: params[:lender_page])
 		end
 		
 		# Respond to different formats
@@ -192,11 +198,15 @@ class UsersController < ApplicationController
 
 	# Display a list of services user had pinned
 	swagger_api :pins do
-		summary "Display A List of Services User Has Pinned"
+		summary "Show a list of services user has pinned"
+		notes "Pins belong to current_user"
 	end
 	def pins
 		@services = current_user.lendee_pins
 	end
+
+
+	##################################################### REPORT #####################################################
 
 	# Report an existing user
 	def report
@@ -218,6 +228,8 @@ class UsersController < ApplicationController
 		# Return a JSON formatted data
 		render json: result
 	end
+
+	##################################################### PRIVATE #####################################################
 
 	private
 		

@@ -47,7 +47,7 @@
 		<div class="form-group">	
 		 	<%= f.label 'Action', class: 'control-label col-sm-2' %>
 			<div class="col-sm-9">
-				<%= f.select :action, options_for_select( [ ["No Action", 'n/a'], ["Issue Warning", 'warn'], ["Suspend User", 'suspend'], ["Ban user", "ban"] ], @report.action ), {}, { class: 'form-control' } %>
+				<%= f.select :action, options_for_select(Report.actions, @report.action ), {}, { class: 'form-control' } %>
 			</div>
 		</div>
 		<!-- STAFF NOTES -->

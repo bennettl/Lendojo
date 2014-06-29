@@ -1,9 +1,6 @@
-<%  # Remote: true uses ajax 
-	# Find an existing user service 
-	user_service = UserService.find(user_service_id)
-%>
-<%=	form_for user_service, remote: true, html: {method: :delete, id: 'uncheck_form' }, url: { controller:'user_services', action: 'destroy_check', id: user_service_id } do |f|  %>
-	<% # Set default values for class_name variable %>
-	<% class_name ||=  "uncheck glyphicon glyphicon-minus" %>
-	<%= link_to('', '#', class: "option #{class_name} tooltip_target",  data: {toggle: 'tooltip'}, title: "Remove From Checklist")  %>
-<% end %>
+<%= link_to('', uncheck_service_path(@service, user_id: current_user.id), 
+				method: :delete, 
+				remote: true,
+				class: "option uncheck tooltip_target glyphicon glyphicon-minus",  
+				data: { toggle: 'tooltip' }, 
+				title: "Remove From Checklist")  %>

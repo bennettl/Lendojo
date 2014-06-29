@@ -4,28 +4,47 @@ class ReviewsController < ApplicationController
 	include HeaderFiltersHelper
 
 	# Swagger documentation
-	swagger_controller :reviews, "Reviews"
+	swagger_controller :reviews, "Review operations"
 
-	# Displays a list of reviews
+	# Shows a list of reviews
+	swagger_api :index do
+		summary "Shows a list of reviews"
+		param :path, :id, :integer, :required, "Review ID"
+	end
 	def index
 		@reviews = Review.all.order("#{sort_name_param} #{sort_direction_param}").paginate(per_page: 5, page: params[:page])
 	end
 
-	# Displays an individual review
+	# Shows an individual review
+	swagger_api :show do
+		summary "Shows an individual review"
+		param :path, :id, :integer, :required, "Review ID"
+	end
 	def show
 		@review = Review.find(params[:id])
+		# Respond to different formats
+		respond_to do |format|
+			format.html # show.html.erb
+		    format.json  { render json: @review }
+		end
 	end
 
 	# Creates a new review
+	swagger_api :create do
+		summary "Creates a new review"
+		notes "current_user is giving the review"
+		param :form, :lender_id, :integer, :required, "Lender ID"
+		param :form, :title, :string, :required, "Title"
+		param :form, :summary, :string, :required, "Summary"
+		param :form, :stars, :string, :required, "Stars"
+	end
 	def create
-	    msg = { status: "Review Created!" }
-
 	    # Create the review
-		current_user.reviews_given.create!(review_params)
+		@review = current_user.reviews_given.create!(review_params)
 
-		# Respond with JSON
+		# Respond to JSON
 		respond_to do |format|
-		    format.json  { render :json => msg }
+		    format.json  { render json: @review}
 		end
 	end
 
@@ -48,7 +67,7 @@ class ReviewsController < ApplicationController
 
 	# Strong parameters
 	def review_params
-		params.require(:review).permit(:title, :summary, :stars, :lender_id)
+		params.require(:review).permit(:lender_id, :title, :summary, :stars)
 	end
 
 end

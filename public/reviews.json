@@ -4,6 +4,65 @@
   "basePath": "http://localhost:3000/",
   "resourcePath": "reviews",
   "apis": [
-
+    {
+      "path": "reviews",
+      "operations": [
+        {
+          "summary": "Creates A New Review",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "lender_id",
+              "type": "integer",
+              "description": "Lender ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "title",
+              "type": "string",
+              "description": "Title",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "summary",
+              "type": "string",
+              "description": "Summary",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "stars",
+              "type": "string",
+              "description": "Stars",
+              "required": true
+            }
+          ],
+          "notes": "current_user is giving the review",
+          "method": "post",
+          "nickname": "Reviews#create"
+        }
+      ]
+    },
+    {
+      "path": "reviews/{id}",
+      "operations": [
+        {
+          "summary": "Shows An individual Review",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Review ID",
+              "required": true
+            }
+          ],
+          "method": "get",
+          "nickname": "Reviews#show"
+        }
+      ]
+    }
   ]
 }
