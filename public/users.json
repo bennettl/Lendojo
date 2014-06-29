@@ -8,8 +8,16 @@
       "path": "users/{id}/checklist",
       "operations": [
         {
-          "summary": "Displays a list of services user has checked",
-          "notes": "Checklist belongs to current_user",
+          "summary": "Show a list of services user has checked",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "User ID",
+              "required": true
+            }
+          ],
           "method": "get",
           "nickname": "Users#checklist"
         }
@@ -20,7 +28,15 @@
       "operations": [
         {
           "summary": "Show a list of services user has pinned",
-          "notes": "Pins belong to current_user",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "User ID",
+              "required": true
+            }
+          ],
           "method": "get",
           "nickname": "Users#pins"
         }
@@ -30,7 +46,7 @@
       "path": "users",
       "operations": [
         {
-          "summary": "Lists all users",
+          "summary": "Show all users",
           "parameters": [
             {
               "paramType": "query",
@@ -110,7 +126,7 @@
       "path": "users/{id}",
       "operations": [
         {
-          "summary": "Show individual sser",
+          "summary": "Show an individual user",
           "parameters": [
             {
               "paramType": "path",

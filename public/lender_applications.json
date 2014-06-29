@@ -74,13 +74,13 @@
       "path": "lender_applications/{id}",
       "operations": [
         {
-          "summary": "Show Indivdual Lender Applications",
+          "summary": "Show indivdual lender applications",
           "parameters": [
             {
               "paramType": "path",
               "name": "id",
               "type": "integer",
-              "description": "ID",
+              "description": "Lender Application ID",
               "required": true
             }
           ],
@@ -222,6 +222,25 @@
           ],
           "method": "put",
           "nickname": "LenderApplications#update"
+        }
+      ]
+    },
+    {
+      "path": "lender_applications/{id}",
+      "operations": [
+        {
+          "summary": "Destroy an existing lender application",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Lender Application ID",
+              "required": true
+            }
+          ],
+          "method": "delete",
+          "nickname": "LenderApplications#destroy"
         }
       ]
     }

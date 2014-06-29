@@ -30,6 +30,25 @@
           "nickname": "Ratings#create"
         }
       ]
+    },
+    {
+      "path": "ratings/{id}",
+      "operations": [
+        {
+          "summary": "Destroy an existing rating",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Rating ID",
+              "required": true
+            }
+          ],
+          "method": "delete",
+          "nickname": "Ratings#destroy"
+        }
+      ]
     }
   ]
 }

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	# Requires users to sign in before accessing action
+	# before_filter :authenticate_user!
 
 	# Include sorting params for sortable headers on index page
 	include HeaderFiltersHelper
@@ -8,9 +10,9 @@ class UsersController < ApplicationController
 
 	##################################################### RESOURCES #####################################################
 
-	# List all users
+	# Show all users
 	swagger_api :index do
-		summary "Lists all users"
+		summary "Show all users"
 		param :query, :page, :integer, :optional, "Page Number"
 	end
 	def index
@@ -24,18 +26,24 @@ class UsersController < ApplicationController
 		end
 	end	
 
-	# Show individual user
+	# Show an individual user
 	swagger_api :show do 
-		summary "Show individual sser"
+		summary "Show an individual user"
 	    param :path, :id, :integer, :required, "User ID"
 	end
 	def show
-		@user = User.find(params[:id])
-		
-		# Respond to different formats
-		respond_to do |format|
-		  format.html # show.html.erb
-		  format.json { render json: @user }
+		if @user = User.find_by(id: params[:id])
+			# Respond to different formats
+			respond_to do |format|
+			  format.html # show.html.erb
+			  format.json { render json: @user }
+			end
+		else
+			# Respond to different formats
+			respond_to do |format|
+			  format.html { redirect_to :back }
+			  format.json { render json: { message: "User does not exist" } }
+			end
 		end
 	end
 	
@@ -47,12 +55,12 @@ class UsersController < ApplicationController
 	# Create a new user
 	swagger_api :create do
 		summary "Create a new user"
-		param :form, 'user[first_name]', :string, :required, "First Name"
-	    param :form, 'user[last_name]', :string, :required, "Last Name"
-		param :form, 'user[city]', :string, :required, "City" 
-		param :form, 'user[state]', :string, :required, "State"
-		param :form, 'user[zip]', :string, :required, "Zip"
-		param :form, 'user[password]', :string, :required, "Password"
+		param :form, 'user[first_name]', 			:string, :required, "First Name"
+	    param :form, 'user[last_name]', 			:string, :required, "Last Name"
+		param :form, 'user[city]', 					:string, :required, "City" 
+		param :form, 'user[state]', 				:string, :required, "State"
+		param :form, 'user[zip]', 					:string, :required, "Zip"
+		param :form, 'user[password]', 				:string, :required, "Password"
 		param :form, 'user[password_confirmation]', :string, :optional, "Password Confirmation"
 	end
 	def create
@@ -164,22 +172,16 @@ class UsersController < ApplicationController
 	    param :path, :id, :integer, :required, "User ID"
 	end
 	def destroy
-		@user = User.delete(params[:id])
-		flash[:success] = 'User Sucessfully Destroyed'
-		
-		# Respond to different formats
-		respond_to do |format|
-			format.html { redirect_to users_path }
-			format.json { render json: { message: flash[:success], user: @user } }
-		end
+		@user = User.destroy(params[:id])		
+		render json: { message: 'User Sucessfully Destroyed' , user: @user }
 	end	
 
 	##################################################### CHECKLIST/PINS #####################################################
 
 	# Display a list of services user has checked
 	swagger_api :checklist do
-		summary "Displays a list of services user has checked"
-		notes "Checklist belongs to current_user"
+		summary "Show a list of services user has checked"
+		param :path, :id, :integer, :required, "User ID"
 	end
 	def checklist
 		@user = User.find(params[:id])
@@ -199,46 +201,25 @@ class UsersController < ApplicationController
 	# Display a list of services user had pinned
 	swagger_api :pins do
 		summary "Show a list of services user has pinned"
-		notes "Pins belong to current_user"
+		param :path, :id, :integer, :required, "User ID"
 	end
 	def pins
-		@services = current_user.lendee_pins
-	end
-
-
-	##################################################### REPORT #####################################################
-
-	# Report an existing user
-	def report
 		@user = User.find(params[:id])
+		@services = @user.lendee_pins
 	end
 
-
-	# Autocompletion
-	def autocomplete
-		# Default values
-		column 	= params[:column] || 'major'
-		value 	= params[:value] || '5'
-		# Select unique column values base on value variable
-		users 	= User.select(column).where("#{column} LIKE '%#{value}%'").uniq
-		# Only get the column value (not the id) in the users set
-		result 	= users.collect do |u|
-			    	u[column].to_s
-			    end
-		# Return a JSON formatted data
-		render json: result
-	end
 
 	##################################################### PRIVATE #####################################################
 
 	private
 		
-		# Strong parameters
-		def search_params
-			params.permit(:name)
-		end
-		
-		def user_params
-			params.require(:user).permit(:main_img, :first_name, :last_name, :headline, :age, :email, :phone, :lender, :summary, :location, :address, :city, :state, :zip, :stripe_customer_id, :password, :password_confirmation)
-		end
+	# Search parameters
+	def search_params
+		params.permit(:name)
+	end
+	
+	# Strong Parameters
+	def user_params
+		params.require(:user).permit(:main_img, :first_name, :last_name, :headline, :age, :email, :phone, :lender, :summary, :location, :address, :city, :state, :zip, :stripe_customer_id, :password, :password_confirmation)
+	end
 end

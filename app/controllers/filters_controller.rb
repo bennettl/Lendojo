@@ -1,5 +1,7 @@
 class FiltersController < ApplicationController
-
+	# Requires users to sign in before accessing action
+	# before_filter :authenticate_user!
+	
 	# Will handle creating AND updating a filter
 	def create
 		# If filter with title exists, return the object, else create one with .new 

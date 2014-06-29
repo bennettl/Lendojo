@@ -13,11 +13,10 @@
     match   'contact_form_submit',      to: 'static_pages#contact_form_submit',     via: 'post'
 
     # Sessions
+    resources :sessions
     devise_scope :user do 
         match '/sessions/user', to: 'devise/sessions#create', via: :post
     end
-    # match   'signin',   to: 'sessions#new',             via: 'get'
-    # match   'signout',  to: 'sessions#destroy',         via: 'delete'
 
     ################################## RESOURCES ##################################
     
@@ -27,7 +26,8 @@
         get     'pins',                 on: :member
         get     'new_rating',           on: :member
         patch   'update_card',          on: :collection
-        resources 'reports',            only: [:new, :create]
+        get     'report',               on: :member, to: 'reports#new'
+        post    'report',               on: :member, to: 'reports#create'
     end
     
     # User Serivces
@@ -49,31 +49,30 @@
         delete      'uncheck',          on: :member
         post        'pin',              on: :member
         delete      'unpin',            on: :member
-        resources   'reports',          only: [:new, :create]
+        get         'report',           on: :member, to: 'reports#new'
+        post        'report',           on: :member, to: 'reports#create'
     end
 
     # Products
     resources :products do
-        resources 'reports',        only: [:new, :create]
+        resources   'report',           on: :member
     end
 
     # Lender Application
     resources :lender_applications
     
     # Ratings
-    resources :ratings,             only: [:create]
+    resources :ratings,             only: [:create, :destroy]
 
     # Reviews
     resources :reviews do
         post    'vote',                 on: :member
-        resources 'reports',          only: [:new, :create]
+        get         'report',           on: :member, to: 'reports#new'
+        post        'report',           on: :member, to: 'reports#create'
     end
 
     # Reports
-    resources :reports, only: [:index, :edit, :update]
-
-    # Sessions
-    resources :sessions, only: [:new, :create, :destroy]
+    resources :reports
 
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".

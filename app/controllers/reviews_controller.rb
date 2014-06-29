@@ -1,10 +1,14 @@
 class ReviewsController < ApplicationController
-		
+	# Requires users to sign in before accessing action
+	# before_filter :authenticate_user!
+	
 	# Include sorting params for sortable headers on index page
 	include HeaderFiltersHelper
 
 	# Swagger documentation
 	swagger_controller :reviews, "Review operations"
+
+	##################################################### RESOURCES #####################################################
 
 	# Shows a list of reviews
 	swagger_api :index do
@@ -21,11 +25,18 @@ class ReviewsController < ApplicationController
 		param :path, :id, :integer, :required, "Review ID"
 	end
 	def show
-		@review = Review.find(params[:id])
-		# Respond to different formats
-		respond_to do |format|
-			format.html # show.html.erb
-		    format.json  { render json: @review }
+		if @review = Review.find_by(id: params[:id])
+			# Respond to different formats
+			respond_to do |format|
+			  format.html # show.html.erb
+			  format.json { render json: @review }
+			end
+		else
+			# Respond to different formats
+			respond_to do |format|
+			  format.html { redirect_to :back }
+			  format.json { render json: { message: "Review does not exist" } }
+			end
 		end
 	end
 
@@ -48,6 +59,16 @@ class ReviewsController < ApplicationController
 		end
 	end
 
+	# Destroy an existing review
+	swagger_api :destroy do
+		summary "Destroy an existing review"
+		param :path, :id, :integer, :required, 'Review ID'
+	end
+	def destroy
+		@review = Review.destroy(params[:id])
+	    render json: { message: "Review Successfully Destroyed", review: @review }
+	end
+
 	# Update the voute count
 	def vote
 		@review = Review.find(params[:id])
@@ -62,6 +83,8 @@ class ReviewsController < ApplicationController
 		flash[:success] = "Thanks for voting!"
 		redirect_to :back
 	end
+
+	##################################################### PRIVATE #####################################################
 
 	private 
 

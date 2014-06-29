@@ -5,6 +5,288 @@
   "resourcePath": "reports",
   "apis": [
     {
+      "path": "users/{id}/report",
+      "operations": [
+        {
+          "summary": "Create a report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Reportable ID",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "author_id",
+              "type": "integer",
+              "description": "Author ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "report[reportable_type]",
+              "type": "string",
+              "description": "Reportable Type",
+              "required": true,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "User",
+                  "Service",
+                  "Review"
+                ]
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "report[reason]",
+              "type": "integer",
+              "description": "Reason",
+              "required": true,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "Inappropriate Content",
+                  "Fraud",
+                  "Misleading Content",
+                  "Spam",
+                  "Other"
+                ]
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "report[summary]",
+              "type": "string",
+              "description": "Summary",
+              "required": true
+            }
+          ],
+          "method": "post",
+          "nickname": "Reports#create"
+        }
+      ]
+    },
+    {
+      "path": "services/{id}/report",
+      "operations": [
+        {
+          "summary": "Create a report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Reportable ID",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "author_id",
+              "type": "integer",
+              "description": "Author ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "report[reportable_type]",
+              "type": "string",
+              "description": "Reportable Type",
+              "required": true,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "User",
+                  "Service",
+                  "Review"
+                ]
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "report[reason]",
+              "type": "integer",
+              "description": "Reason",
+              "required": true,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "Inappropriate Content",
+                  "Fraud",
+                  "Misleading Content",
+                  "Spam",
+                  "Other"
+                ]
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "report[summary]",
+              "type": "string",
+              "description": "Summary",
+              "required": true
+            }
+          ],
+          "method": "post",
+          "nickname": "Reports#create"
+        }
+      ]
+    },
+    {
+      "path": "reviews/{id}/report",
+      "operations": [
+        {
+          "summary": "Create a report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Reportable ID",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "author_id",
+              "type": "integer",
+              "description": "Author ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "report[reportable_type]",
+              "type": "string",
+              "description": "Reportable Type",
+              "required": true,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "User",
+                  "Service",
+                  "Review"
+                ]
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "report[reason]",
+              "type": "integer",
+              "description": "Reason",
+              "required": true,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "Inappropriate Content",
+                  "Fraud",
+                  "Misleading Content",
+                  "Spam",
+                  "Other"
+                ]
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "report[summary]",
+              "type": "string",
+              "description": "Summary",
+              "required": true
+            }
+          ],
+          "method": "post",
+          "nickname": "Reports#create"
+        }
+      ]
+    },
+    {
+      "path": "reports",
+      "operations": [
+        {
+          "summary": "Show a list of reports",
+          "method": "get",
+          "nickname": "Reports#index"
+        }
+      ]
+    },
+    {
+      "path": "reports",
+      "operations": [
+        {
+          "summary": "Create a report",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "author_id",
+              "type": "integer",
+              "description": "Author ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "report[reportable_type]",
+              "type": "string",
+              "description": "Reportable Type",
+              "required": true,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "User",
+                  "Service",
+                  "Review"
+                ]
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "report[reason]",
+              "type": "integer",
+              "description": "Reason",
+              "required": true,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "Inappropriate Content",
+                  "Fraud",
+                  "Misleading Content",
+                  "Spam",
+                  "Other"
+                ]
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "report[summary]",
+              "type": "string",
+              "description": "Summary",
+              "required": true
+            }
+          ],
+          "method": "post",
+          "nickname": "Reports#create"
+        }
+      ]
+    },
+    {
+      "path": "reports/{id}",
+      "operations": [
+        {
+          "summary": "Show an individual report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Report ID",
+              "required": true
+            }
+          ],
+          "method": "get",
+          "nickname": "Reports#show"
+        }
+      ]
+    },
+    {
       "path": "reports/{id}",
       "operations": [
         {
@@ -19,14 +301,14 @@
             },
             {
               "paramType": "form",
-              "name": "staff_notes",
+              "name": "report[staff_notes]",
               "type": "string",
               "description": "Staff Notes",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "status",
+              "name": "report[status]",
               "type": "string",
               "description": "Status",
               "required": false,
@@ -41,7 +323,7 @@
             },
             {
               "paramType": "form",
-              "name": "action",
+              "name": "report[action]",
               "type": "string",
               "description": "Action",
               "required": false,
@@ -77,14 +359,14 @@
             },
             {
               "paramType": "form",
-              "name": "staff_notes",
+              "name": "report[staff_notes]",
               "type": "string",
               "description": "Staff Notes",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "status",
+              "name": "report[status]",
               "type": "string",
               "description": "Status",
               "required": false,
@@ -99,7 +381,7 @@
             },
             {
               "paramType": "form",
-              "name": "action",
+              "name": "report[action]",
               "type": "string",
               "description": "Action",
               "required": false,
@@ -117,6 +399,25 @@
           "notes": "current_user is giving the rating",
           "method": "put",
           "nickname": "Reports#update"
+        }
+      ]
+    },
+    {
+      "path": "reports/{id}",
+      "operations": [
+        {
+          "summary": "Destroy an existing report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Report ID",
+              "required": true
+            }
+          ],
+          "method": "delete",
+          "nickname": "Reports#destroy"
         }
       ]
     }

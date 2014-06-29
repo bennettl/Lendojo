@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
 
 	# Polymorpic associations 
 	has_many :reports_received, class_name: "Report", as: :reportable
-	has_many :reports_given, class_name: "Report", foreign_key: "author_id", dependent: :destroy
+	has_many :reports_given, 	class_name: "Report", foreign_key: "author_id", dependent: :destroy
 
 	################################## ENUMS #################################
 
@@ -216,7 +216,6 @@ class User < ActiveRecord::Base
 
 	################################## BELT ##################################
 	
-	################################## USER - SERVICE ##################################
 	
 	# Charge user's credit card for a specified amount
 	def charge!(amount)
@@ -242,6 +241,8 @@ class User < ActiveRecord::Base
 												zip: service.zip,
 												relationship_type: 'check')
 	end
+
+	################################## USER - SERVICE ##################################
 
 	# Remove an existing user_service relationship with service_id and relationship_type = 'check'
 	def uncheck!(service)
@@ -273,6 +274,18 @@ class User < ActiveRecord::Base
 	def pin?(service)
 		self.lendee_user_services.find_by(service_id: service.id, relationship_type: 'pin')
 	end
+
+	################################## REPORT ##################################
+	
+	def report!(reportable, report_params)
+		# Reports received sets 
+		report_hash 	= { reportable_id: reportable.id, reportable_type: reportable.class.name }
+		reportable_hash 		= report_params
+		merged_hash	 			= report_hash.merge(reportable_hash) 
+		# convert reason to an integer
+		self.reports_given.create!(merged_hash)
+	end
+
 
 	################################## PRIVATE ##################################
 

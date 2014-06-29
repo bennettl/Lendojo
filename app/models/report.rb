@@ -15,7 +15,6 @@ class Report < ActiveRecord::Base
 
 	################################## VALIDATION ##################################
 
-	validates :reason, presence: true
 	validates :summary, presence: true
 
 	################################## REPORTS ##################################

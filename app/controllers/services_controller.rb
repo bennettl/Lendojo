@@ -1,4 +1,6 @@
 class ServicesController < ApplicationController
+	# Requires users to sign in before accessing action
+	before_filter :authenticate_user!
 	
 	# Swagger documentation
 	swagger_controller :services, "Service operations"
@@ -32,13 +34,19 @@ class ServicesController < ApplicationController
 		param :path, :id, :integer, :required, "Service ID"
 	end
 	def show
-		@service = Service.find(params[:id])
-		@reviews = @service.lender.reviews_recieved.paginate(per_page: 4, page: params[:review_page])
-
-		# Respond to multiple formats
-		respond_to do |format|
-		    format.html # show.html.erb
-		    format.json { render json: @service }
+		if @service = Service.find_by(id: params[:id])
+			@reviews = @service.lender.reviews_recieved.paginate(per_page: 4, page: params[:review_page])
+			# Respond to different formats
+			respond_to do |format|
+			  format.html # show.html.erb
+			  format.json { render json: @service }
+			end
+		else
+			# Respond to different formats
+			respond_to do |format|
+			  format.html { redirect_to :back }
+			  format.json { render json: { message: "Service does not exist" } }
+			end
 		end
 	end
 
@@ -50,19 +58,19 @@ class ServicesController < ApplicationController
 	# Creates a new service
 	swagger_api :create do
 		summary "Creates a new service"
-		param :form, :main_img, :string, :required, 'Main Image'
-		param :form, :title, :string, :required, 'Title'
-		param :form, :headline, :string, :required, 'Headline'
-		param :form, :description, :string, :required, 'Description'
-		param :form, :location, :string, :required, 'Location'
-		param :form, :address, :string, :required, 'Address'
-		param :form, :city, :string, :required, 'City'
-		param :form, :state, :string, :required, 'State'
-		param :form, :zip, :string, :required, 'Zip'
-		param :form, :price, :integer, :required, 'Price'
-		param :form, :category, :string, :optional, 'Category'
-		param :form, :tags, :string, :optional, 'Tags'
-		param :form, :hidden, :boolean, :optional, 'Hidden'
+		param :form, 'service[main_img]', :string, :required, 'Main Image'
+		param :form, 'service[title]', :string, :required, 'Title'
+		param :form, 'service[headline]', :string, :required, 'Headline'
+		param :form, 'service[description]', :string, :required, 'Description'
+		param :form, 'service[location]', :string, :required, 'Location'
+		param :form, 'service[address]', :string, :required, 'Address'
+		param :form, 'service[city]', :string, :required, 'City'
+		param :form, 'service[state]', :string, :required, 'State'
+		param :form, 'service[zip]', :string, :required, 'Zip'
+		param :form, 'service[price]', :integer, :required, 'Price'
+		param :form, 'service[category]', :string, :optional, 'Category'
+		param :form, 'service[tags]', :string, :optional, 'Tags'
+		param :form, 'service[hidden]', :boolean, :optional, 'Hidden'
 	end
 	def create
 		@service = Service.new(service_params)
@@ -92,20 +100,20 @@ class ServicesController < ApplicationController
 	# Updates an existing service
 	swagger_api :update do
 		summary "Updates a existing service"
-		param :path, :id, :integer, :required, 'Service ID'
-		param :form, :main_img, :string, :optoinal, 'Main Image'
-		param :form, :title, :string, :optoinal, 'Title'
-		param :form, :headline, :string, :optoinal, 'Headline'
-		param :form, :description, :string, :optoinal, 'Description'
-		param :form, :location, :string, :optoinal, 'Location'
-		param :form, :address, :string, :optoinal, 'Address'
-		param :form, :city, :string, :optoinal, 'City'
-		param :form, :state, :string, :optoinal, 'State'
-		param :form, :zip, :string, :optoinal, 'Zip'
-		param :form, :price, :integer, :optoinal, 'Price'
-		param :form, :category, :string, :optional, 'Category'
-		param :form, :tags, :string, :optional, 'Tags'
-		param :form, :hidden, :boolean, :optional, 'Hidden'
+		param :path, 'service[id]', :integer, :required, 'Service ID'
+		param :form, 'service[main_img]', :string, :optoinal, 'Main Image'
+		param :form, 'service[title]', :string, :optoinal, 'Title'
+		param :form, 'service[headline]', :string, :optoinal, 'Headline'
+		param :form, 'service[description]', :string, :optoinal, 'Description'
+		param :form, 'service[location]', :string, :optoinal, 'Location'
+		param :form, 'service[address]', :string, :optoinal, 'Address'
+		param :form, 'service[city]', :string, :optoinal, 'City'
+		param :form, 'service[state]', :string, :optoinal, 'State'
+		param :form, 'service[zip]', :string, :optoinal, 'Zip'
+		param :form, 'service[price]', :integer, :optoinal, 'Price'
+		param :form, 'service[category]', :string, :optional, 'Category'
+		param :form, 'service[tags]', :string, :optional, 'Tags'
+		param :form, 'service[hidden]', :boolean, :optional, 'Hidden'
 	end
 	def update
 		@service = Service.find(params[:id])
@@ -126,24 +134,17 @@ class ServicesController < ApplicationController
 			end
 		end
 	end
-
-	# Reports an existing service
-	def report
-		@service = Service.find(params[:id]) 
-	end
 	
-	# Destroys the existing service
+	# Destroy an existing service
 	swagger_api :destroy do
-		summary "Destroys a existing service"
+		summary "Destroy an existing service"
 		param :path, :id, :integer, :required, 'Service ID'
 	end
 	def destroy
-		Service.destroy(params[:id])
-		# Respond to multiple formats
-		respond_to do |format|
-		    format.json { render json: { message: "Service Is Successfully Destroyed" } }
-		end
+		@service = Service.destroy(params[:id])
+	    render json: { message: "Service Is Successfully Destroyed", service: @service }
 	end
+
 
 	##################################################### CHECK/PIN #####################################################
 
@@ -253,6 +254,11 @@ class ServicesController < ApplicationController
 	# Strong parameters
 	def service_params
 		params.require(:service).permit(:main_img, :title, :headline, :description, :location, :address, :city, :state, :zip, :price, :category, :tags, :hidden)
+	end
+
+	# Strong parameters
+	def report_params
+		params.require(:report).permit(:reason, :summary, :action, :staff_notes, :status)
 	end
 
 	# Parameters (filter_data) use for searching

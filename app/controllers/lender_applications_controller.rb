@@ -1,10 +1,15 @@
 class LenderApplicationsController < ApplicationController
 
+	# Requires users to sign in before accessing action
+	before_filter :authenticate_user!
+	
 	# Include sorting params for sortable headers on index page
 	include HeaderFiltersHelper
 	
 	# Swagger documentation
 	swagger_controller :lender_applications, "Lender Application operations"
+
+	##################################################### RESOURCES #####################################################
 
 	# Shows a list of lender applications
 	swagger_api :index do
@@ -23,14 +28,22 @@ class LenderApplicationsController < ApplicationController
 
 	# Shows an individual lender application
 	swagger_api :show do
-		summary "Show Indivdual Lender Applications"
-		param :path, :id, :integer, :required, "ID"
+		summary "Show indivdual lender applications"
+		param :path, :id, :integer, :required, "Lender Application ID"
 	end
 	def show
-		@lenderApp = LenderApplication.find(params[:id])
-		# Respond to JSON
-		respond_to do |format|
-		    format.json { render json: @lenderApp }
+		if @lenderApp = LenderApplication.find_by(id: params[:id])
+			# Respond to different formats
+			respond_to do |format|
+			  format.html # show.html.erb
+			  format.json { render json: @lenderApp }
+			end
+		else
+			# Respond to different formats
+			respond_to do |format|
+			  format.html { redirect_to :back }
+			  format.json { render json: { message: "Lender Application does not exist" } }
+			end
 		end
 	end
 
@@ -118,6 +131,18 @@ class LenderApplicationsController < ApplicationController
 		end
 
 	end
+
+	# Destroy an existing lender application
+	swagger_api :destroy do
+		summary "Destroy an existing lender application"
+		param :path, :id, :integer, :required, 'Lender Application ID'
+	end
+	def destroy
+		@lenderApp = LenderApplication.destroy(params[:id])
+	    render json: { message: "Lender Application Successfully Destroyed", lender_application: @lenderApp }
+	end
+
+	##################################################### PRIVATE #####################################################
 
 	private
 

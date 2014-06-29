@@ -8,7 +8,20 @@
       "path": "reviews",
       "operations": [
         {
-          "summary": "Creates A New Review",
+          "summary": "Shows a list of reviews",
+          "parameters": [
+
+          ],
+          "method": "get",
+          "nickname": "Reviews#index"
+        }
+      ]
+    },
+    {
+      "path": "reviews",
+      "operations": [
+        {
+          "summary": "Creates a new review",
           "parameters": [
             {
               "paramType": "form",
@@ -49,7 +62,7 @@
       "path": "reviews/{id}",
       "operations": [
         {
-          "summary": "Shows An individual Review",
+          "summary": "Shows an individual review",
           "parameters": [
             {
               "paramType": "path",
@@ -61,6 +74,25 @@
           ],
           "method": "get",
           "nickname": "Reviews#show"
+        }
+      ]
+    },
+    {
+      "path": "reviews/{id}",
+      "operations": [
+        {
+          "summary": "Destroy an existing review",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Review ID",
+              "required": true
+            }
+          ],
+          "method": "delete",
+          "nickname": "Reviews#destroy"
         }
       ]
     }

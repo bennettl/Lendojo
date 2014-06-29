@@ -6,7 +6,7 @@
 			<%= render 'shared/options/options', 
 						object: @service, 
 						edit_path: edit_service_path(@service), 
-						report_path: new_service_report_path(@service) %>
+						report_path: report_service_path(@service) %>
 			<%= render 'shared/belt', user: @service.lender %>
 		</div>
 		

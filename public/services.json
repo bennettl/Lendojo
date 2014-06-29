@@ -135,91 +135,91 @@
           "parameters": [
             {
               "paramType": "form",
-              "name": "main_img",
+              "name": "service[main_img]",
               "type": "string",
               "description": "Main Image",
               "required": true
             },
             {
               "paramType": "form",
-              "name": "title",
+              "name": "service[title]",
               "type": "string",
               "description": "Title",
               "required": true
             },
             {
               "paramType": "form",
-              "name": "headline",
+              "name": "service[headline]",
               "type": "string",
               "description": "Headline",
               "required": true
             },
             {
               "paramType": "form",
-              "name": "description",
+              "name": "service[description]",
               "type": "string",
               "description": "Description",
               "required": true
             },
             {
               "paramType": "form",
-              "name": "location",
+              "name": "service[location]",
               "type": "string",
               "description": "Location",
               "required": true
             },
             {
               "paramType": "form",
-              "name": "address",
+              "name": "service[address]",
               "type": "string",
               "description": "Address",
               "required": true
             },
             {
               "paramType": "form",
-              "name": "city",
+              "name": "service[city]",
               "type": "string",
               "description": "City",
               "required": true
             },
             {
               "paramType": "form",
-              "name": "state",
+              "name": "service[state]",
               "type": "string",
               "description": "State",
               "required": true
             },
             {
               "paramType": "form",
-              "name": "zip",
+              "name": "service[zip]",
               "type": "string",
               "description": "Zip",
               "required": true
             },
             {
               "paramType": "form",
-              "name": "price",
+              "name": "service[price]",
               "type": "integer",
               "description": "Price",
               "required": true
             },
             {
               "paramType": "form",
-              "name": "category",
+              "name": "service[category]",
               "type": "string",
               "description": "Category",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "tags",
+              "name": "service[tags]",
               "type": "string",
               "description": "Tags",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "hidden",
+              "name": "service[hidden]",
               "type": "boolean",
               "description": "Hidden",
               "required": false
@@ -256,99 +256,92 @@
           "summary": "Updates a existing service",
           "parameters": [
             {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Service ID",
-              "required": true
-            },
-            {
               "paramType": "form",
-              "name": "main_img",
+              "name": "service[main_img]",
               "type": "string",
               "description": "Main Image",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "title",
+              "name": "service[title]",
               "type": "string",
               "description": "Title",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "headline",
+              "name": "service[headline]",
               "type": "string",
               "description": "Headline",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "description",
+              "name": "service[description]",
               "type": "string",
               "description": "Description",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "location",
+              "name": "service[location]",
               "type": "string",
               "description": "Location",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "address",
+              "name": "service[address]",
               "type": "string",
               "description": "Address",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "city",
+              "name": "service[city]",
               "type": "string",
               "description": "City",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "state",
+              "name": "service[state]",
               "type": "string",
               "description": "State",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "zip",
+              "name": "service[zip]",
               "type": "string",
               "description": "Zip",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "price",
+              "name": "service[price]",
               "type": "integer",
               "description": "Price",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "category",
+              "name": "service[category]",
               "type": "string",
               "description": "Category",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "tags",
+              "name": "service[tags]",
               "type": "string",
               "description": "Tags",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "hidden",
+              "name": "service[hidden]",
               "type": "boolean",
               "description": "Hidden",
               "required": false
@@ -366,99 +359,92 @@
           "summary": "Updates a existing service",
           "parameters": [
             {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Service ID",
-              "required": true
-            },
-            {
               "paramType": "form",
-              "name": "main_img",
+              "name": "service[main_img]",
               "type": "string",
               "description": "Main Image",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "title",
+              "name": "service[title]",
               "type": "string",
               "description": "Title",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "headline",
+              "name": "service[headline]",
               "type": "string",
               "description": "Headline",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "description",
+              "name": "service[description]",
               "type": "string",
               "description": "Description",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "location",
+              "name": "service[location]",
               "type": "string",
               "description": "Location",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "address",
+              "name": "service[address]",
               "type": "string",
               "description": "Address",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "city",
+              "name": "service[city]",
               "type": "string",
               "description": "City",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "state",
+              "name": "service[state]",
               "type": "string",
               "description": "State",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "zip",
+              "name": "service[zip]",
               "type": "string",
               "description": "Zip",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "price",
+              "name": "service[price]",
               "type": "integer",
               "description": "Price",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "category",
+              "name": "service[category]",
               "type": "string",
               "description": "Category",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "tags",
+              "name": "service[tags]",
               "type": "string",
               "description": "Tags",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "hidden",
+              "name": "service[hidden]",
               "type": "boolean",
               "description": "Hidden",
               "required": false
@@ -473,7 +459,7 @@
       "path": "services/{id}",
       "operations": [
         {
-          "summary": "Destroys a existing service",
+          "summary": "Destroy an existing service",
           "parameters": [
             {
               "paramType": "path",

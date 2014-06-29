@@ -1,45 +1,103 @@
 class ReportsController < ApplicationController
 		
+	# Requires users to sign in before accessing action
+	# before_filter :authenticate_user!
+	
 	# Include sorting params for sortable headers on index page
 	include HeaderFiltersHelper
 	
 	# Swagger documentation
 	swagger_controller :reports, "Report operations"
 
-	# List all reports under reportable type: user, service, product
-	def index
-		# the (user/service/product) object
-		@reportable = find_reportable
+	################################################ RESOURCES #######################################################
 
+	# List all reports
+	swagger_api :index do
+		summary "Show a list of reports"
+	end
+	def index
 		# If there are no speicfic reportables, then show all
-		@reports = (@reportable.nil?) ? Report.all : @reportable.reports_recieved
-		@reports = @reports.search(search_params)
+		@reports = Report.all.search(search_params)
 		@reports = @reports.order("#{sort_name_param} #{sort_direction_param}").paginate( per_page: 5, page: params[:page] )
+		# Respond to multiple formats
+		respond_to do |format|
+			format.html # index.html.erb
+		    format.json { render json: @reports }
+		end
+	end
+
+	# List all reports
+	swagger_api :show do
+		summary "Show an individual report"
+		param :path, :id, :integer, :required, "Report ID"
+	end
+	def show
+		if @report = Report.find_by(id: params[:id])
+			# Respond to different formats
+			respond_to do |format|
+			  format.html # show.html.erb
+			  format.json { render json: @report }
+			end
+		else
+			# Respond to different formats
+			respond_to do |format|
+			  format.html { redirect_to :back }
+			  format.json { render json: { message: "Report does not exist" } }
+			end
+		end
 	end
 
 	# Displays a form to create a new report
 	def new
 		 # the (user/service/product) the object
 		@reportable = find_reportable
-	end
 
+		case @reportable.class.name
+			when 'User'
+				@reportable_path = report_user_path(@reportable, author_id: current_user.id)
+			when 'Service'
+				@reportable_path = report_service_path(@reportable, author_id: current_user.id)
+			when 'Product'
+				@reportable_path = report_product_path(@reportable, author_id: current_user.id)
+			when 'Review'
+				@reportable_path = report_review_path(@reportable, author_id: current_user.id)
+		end
+
+	end
+		
 	# Creates a new report
-	# swagger_api :create do
-	# 	summary "Create an existing report"
-	# 	notes "current_user is giving the rating"
-	# 	param_list :form, :reason, :string, :optional, "Reason", Report.reasons.keys
-	# 	param :form, :summary, :string, :optional, "Summary"
-	# end
+	swagger_api :create do
+		summary "Create a report"
+		param :path, 		:id, 							:integer,	:required, 'Reportable ID'
+		param :query, 		'author_id', 					:integer, 	:required, 'Author ID'
+		param_list :form, 	'report[reportable_type]', 		:string, 	:required, 'Reportable Type', ['User', 'Service', 'Review']
+		param_list :form, 	'report[reason]', 				:integer, 	:required, "Reason", Report.reasons.keys
+		param :form, 		'report[summary]', 				:string, 	:required, "Summary"
+	end
 	def create
 		# the (user/service/product) the object
-		@reportable = find_reportable
+		user 		= User.find(params[:author_id])
 
-		if @reportable.reports_recieved.create!(report_params)
+		# the (user/service/product) the object
+		@reportable = params[:report][:reportable_type].classify.constantize.find(params[:id])
+
+		# If report creation was successful
+		if @report = user.report!(@reportable, report_params)
 			flash[:success] = "Thank you for submitting the report! We will review it shortly."
-			redirect_to @reportable
+			# Respond to multiple formats
+			respond_to do |format|
+				format.html { redirect_to @reportable }
+			    format.json { render json: @report }
+			end
+
+			
 		else
-			flash[:error].now = "There's an error processing your report"
-			render 'edit'
+			flash[:error].now = @report.errors.full_messages
+			# Respond to multiple formats
+			respond_to do |format|
+				format.html { render 'edit' }
+			    format.json { render json: { message: 'Service Report Unsuccessful', error: flash[:error] } }
+			end
 		end
 	end
 
@@ -55,10 +113,10 @@ class ReportsController < ApplicationController
 	swagger_api :update do
 		summary "Update an existing report"
 		notes "current_user is giving the rating"
-		param :path, :id, :integer, :required, "Report ID"
-		param :form, :staff_notes, :string, :optional, "Staff Notes"
-		param_list :form, :status, :string, :optional, "Status", Report.statuses.keys
-		param_list :form, :action, :string, :optional, "Action", Report.actions.keys
+		param 		:path, 'id', 					:integer, 	:required, "Report ID"
+		param 		:form, 'report[staff_notes]', 	:string, 	:optional, "Staff Notes"
+		param_list 	:form, 'report[status]', 		:string, 	:optional, "Status", Report.statuses.keys
+		param_list 	:form, 'report[action]', 		:string, 	:optional, "Action", Report.actions.keys
 	end
 	def update
 		@report = Report.find(params[:id])
@@ -72,16 +130,37 @@ class ReportsController < ApplicationController
 			process_staff_action
 
 			flash[:success] = "Sucessfully updated report!"
-
-			redirect_to reports_path
+			
+			# Respond to multiple formats
+			respond_to do |format|
+				format.html { redirect_to reports_path }
+			    format.json { render json: @report }
+			end
+			
 		else
-			flash[:error].now = "There's a problem updating the report"
-			render 'edit'
+			flash[:error].now = @report.errors.full_messages
+			# Respond to multiple formats
+			respond_to do |format|
+				format.html { render 'edit' }
+			    format.json { render json: { message: 'Report Update Unsuccessful', error: flash[:error].now } }
+			end
 		end
 	end
 
+	# Destroy an existing service
+	swagger_api :destroy do
+		summary "Destroy an existing report"
+		param :path, :id, :integer, :required, 'Report ID'
+	end
+	def destroy
+		@report = Report.destroy(params[:id])
+		respond_to do |format|
 
-	############################## HELPER FUNCTION ##############################
+			format.html { render json: { message: "Report Successfully Destroyed", report: @report } }
+		end
+	end
+
+	################################################ HELPER FUNCTIONS #######################################################
 	
 	# Base on the action chosen by the staff ('n/a', 'warn', 'suspend', 'ban'), change user status and notify user of action
 	def process_staff_action
@@ -120,19 +199,15 @@ class ReportsController < ApplicationController
 
 	# Returns object. Loop through the parameters passed to the action to look one called <parent_resource>_id which will enable us to know which of the commentable models we’re dealing with. http://railscasts.com/episodes/154-polymorphic-association?view=asciicast
 	def find_reportable
-		params.each do |name, value|
-			if name =~ /(.+)_id$/
-			  return $1.classify.constantize.find(value)
-			end
-		end
-		nil
+		# http://localhost:3000/services/18/report?author_id=1  -> services -> service -> Service
+		request.original_url.split("/")[3].singularize.capitalize.classify.constantize.find(params[:id])		
 	end
 
 	private
 
 	# Strong parameters
 	def report_params
-		params.require(:report).permit(:author_id, :reason, :summary, :action, :staff_notes, :status)
+		params.require(:report).permit(:reason, :summary, :action, :staff_notes, :status)
 	end
 
 	

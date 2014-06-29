@@ -4,19 +4,19 @@
 		We take great pride in ensuring the integerity of the Lendojo community. Reported content are reviewed by Lendojo staff 24 hours a day, seven days a week to determine whether they violate the Community Guidelines. Accounts are penalized for Community Guidelines violations and serious or repeated violations can lead to account termination.
 	</div>
 	<div class="col-xs-10 col-xs-offset-1">
-		<%= form_for [@reportable, Report.new], autocomplete: :off, id: 'reportForm' do |f| %>
+		<%= form_for Report.new, url: @reportable_path, autocomplete: :off, id: 'reportForm' do |f| %>
+			<%= f.hidden_field :reportable_type, value: @reportable.class.name %>
 		 	<div class="form-group">
 		 		<b>Reporting:</b> <%= @reportable.report_title %>
 		 	</div>
 		 	<div class="form-group">
 			 	<%= f.label 'Reason' %>
-			 	<%= f.select :reason, options_for_select(Report.reasons), {} , {class: 'form-control'} %>
+			 	<%= f.select :reason, options_for_select(Report.reasons.keys), {} , {class: 'form-control'} %>
 			 </div>
 		 	<div class="form-group">
 			 	<%= f.label 'Summary' %>
 			 	<%= f.text_area :summary, required: true, placeholder: 'A short summary of the report...', class: 'form-control' %>
 		 	</div>
-		 	<%= f.hidden_field :author_id, value: current_user.id %>
 		 	<%= f.submit 'Report', class: 'button center' %>
 		<% end %>
 	</div>
