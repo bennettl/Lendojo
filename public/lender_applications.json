@@ -8,7 +8,7 @@
       "path": "lender_applications",
       "operations": [
         {
-          "summary": "Show A Lists Of All Lender Applications",
+          "summary": "Show a lists of all lender applications",
           "parameters": [
             {
               "paramType": "query",
@@ -27,11 +27,11 @@
       "path": "lender_applications",
       "operations": [
         {
-          "summary": "Creates A New Lender Application",
+          "summary": "Create a new lender application",
           "parameters": [
             {
-              "paramType": "form",
-              "name": "lender_application[author_id]",
+              "paramType": "query",
+              "name": "author_id",
               "type": "integer",
               "description": "Author ID",
               "required": true
@@ -93,6 +93,7 @@
       "path": "lender_applications/{id}",
       "operations": [
         {
+          "summary": "Update an existing lender application",
           "parameters": [
             {
               "paramType": "path",
@@ -106,28 +107,28 @@
               "name": "lender_application[categories]",
               "type": "string",
               "description": "Categories",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
               "name": "lender_application[skill]",
               "type": "string",
               "description": "Skill",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
               "name": "lender_application[hours]",
               "type": "integer",
               "description": "Hours",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
               "name": "lender_application[summary]",
               "type": "string",
               "description": "Summary",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -139,7 +140,7 @@
                 "valueType": "LIST",
                 "values": [
                   "pending",
-                  "approve",
+                  "approved",
                   "denied"
                 ]
               }
@@ -149,7 +150,7 @@
               "name": "lender_application[staff_notes]",
               "type": "string",
               "description": "Staff Notes",
-              "required": true
+              "required": false
             }
           ],
           "method": "patch",
@@ -161,6 +162,7 @@
       "path": "lender_applications/{id}",
       "operations": [
         {
+          "summary": "Update an existing lender application",
           "parameters": [
             {
               "paramType": "path",
@@ -174,28 +176,28 @@
               "name": "lender_application[categories]",
               "type": "string",
               "description": "Categories",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
               "name": "lender_application[skill]",
               "type": "string",
               "description": "Skill",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
               "name": "lender_application[hours]",
               "type": "integer",
               "description": "Hours",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
               "name": "lender_application[summary]",
               "type": "string",
               "description": "Summary",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -207,7 +209,7 @@
                 "valueType": "LIST",
                 "values": [
                   "pending",
-                  "approve",
+                  "approved",
                   "denied"
                 ]
               }
@@ -217,7 +219,7 @@
               "name": "lender_application[staff_notes]",
               "type": "string",
               "description": "Staff Notes",
-              "required": true
+              "required": false
             }
           ],
           "method": "put",

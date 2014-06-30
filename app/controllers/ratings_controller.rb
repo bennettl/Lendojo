@@ -7,6 +7,18 @@ class RatingsController < ApplicationController
 
 	##################################################### RESOURCES #####################################################
 	
+	# Shows a list of ratings
+	swagger_api :index do
+		summary "Shows a list of ratings"
+		param :path, :id, :integer, :required, "Rating ID"
+		param :query, :page, :integer, :optional, "Page Number"
+	end
+	def index
+		@ratings = Rating.all.order("created_at desc").paginate(per_page: 5, page: params[:page])
+		# JRespond to JSON
+		render json: @ratings
+	end
+
 	# Shows an individual rating
 	swagger_api :show do
 		summary "Show indivdual rating"
@@ -30,22 +42,31 @@ class RatingsController < ApplicationController
 
 	# Creates a new rating
 	swagger_api :create do
-		summary "Creates A New Rating"
-		notes "current_user is giving the rating"
-		param :form, :lender_id, :integer, :required, "Lender ID"
-		param :form, :stars, :integer, :required, "Stars"
+		summary "Creates a new rating"
+		param :path, 	:id, :integer, 		:required, "Lender ID"
+		param :query, 	:author_id, 		:integer, :required, "Author ID"
+		param :form, 	'rating[stars]', 	:integer, :required, "Stars"
 	end
 	def create
-		# Once a ratings is created, it will direct user back to checklist_users_path
-		flash[:success] = "Thanks for your rating!"
+		@lender = User.find_by(id: params[:id])
+		@author = User.find_by(id: params[:author_id])
 
-	    # Create the rating
-		@rating = current_user.ratings_given.create!(rating_params)
+		if @rating = @author.rate!(@lender, rating_params)
+			flash[:success] = "Thanks for your feedback!"
+			
+			# Respond to different formats
+			respond_to do |format|
+				format.html { redirect_to checklist_users_path }
+			    format.json  { render json: @rating }
+			end
+		else
+			flash[:error] = @rating.errors.full_messages
+			# Respond to different formats
+			respond_to do |format|
+				format.html { redirect_to checklist_users_path }
+			    format.json  { render json: { message: "Unable to create rating", error: flash[:error] } }
+			end
 		
-		# Respond to different formats
-		respond_to do |format|
-			format.html { redirect_to checklist_users_path }
-		    format.json  { render json: @rating }
 		end
 	end
 
@@ -56,8 +77,11 @@ class RatingsController < ApplicationController
 		param :path, :id, :integer, :required, 'Rating ID'
 	end
 	def destroy
-		@rating = Rating.destroy(params[:id])
-	    render json: { message: "Rating Successfully Destroyed", rating: @rating }
+		if @rating = Rating.find_by(id: params[:id])
+			render json: @rating.destroy
+		else
+			render json: { message: "Rating Not Found" }
+		end
 	end
 
 	##################################################### PRIVATE #####################################################
@@ -66,7 +90,7 @@ class RatingsController < ApplicationController
 
 	# Strong parameters
 	def rating_params
-		params.require(:rating).permit(:lender_id, :stars)
+		params.require(:rating).permit(:stars)
 	end
 
 end

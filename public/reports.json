@@ -204,6 +204,15 @@
       "operations": [
         {
           "summary": "Show a list of reports",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "Page Number",
+              "required": false
+            }
+          ],
           "method": "get",
           "nickname": "Reports#index"
         }

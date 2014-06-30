@@ -3,7 +3,9 @@
 	
 	<div id="lenderAppBlurb">Your journey as a lender begins here. Lenders are the centerpiece of Lendojo. The are people who dedicate their time in giving back to the community and offering their skills. The more you give back to your community, the faster you will advance up the ranks in your Dojo. Those who are master lenders will be awarded the black belt, the most distinct form of honor in the Lendojo community.</div>
 
-	<%= form_for @lenderApp, html: { class: 'form-horizontal', autocomplete: :off } do |f| %>
+
+	<%= form_for @lenderApp, url: lender_applications_path(@lenderApp, author_id: current_user.id),
+							 html: { class: 'form-horizontal', autocomplete: :off } do |f| %>
 		<div class="form-group">
 			<%= f.label 'Name', class: 'control-label col-sm-2' %>
 			<div class="detail col-sm-9">

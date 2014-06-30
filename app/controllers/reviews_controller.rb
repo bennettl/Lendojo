@@ -14,9 +14,15 @@ class ReviewsController < ApplicationController
 	swagger_api :index do
 		summary "Shows a list of reviews"
 		param :path, :id, :integer, :required, "Review ID"
+		param :query, :page, :integer, :optional, "Page Number"
 	end
 	def index
 		@reviews = Review.all.order("#{sort_name_param} #{sort_direction_param}").paginate(per_page: 5, page: params[:page])
+		# Respond to different formats
+		respond_to do |format|
+		  format.html # index.html.erb
+		  format.json { render json: @reviews }
+		end
 	end
 
 	# Shows an individual review
@@ -40,23 +46,27 @@ class ReviewsController < ApplicationController
 		end
 	end
 
+
 	# Creates a new review
 	swagger_api :create do
 		summary "Creates a new review"
-		notes "current_user is giving the review"
-		param :form, :lender_id, :integer, :required, "Lender ID"
-		param :form, :title, :string, :required, "Title"
-		param :form, :summary, :string, :required, "Summary"
-		param :form, :stars, :string, :required, "Stars"
+		param :path, 	:id, 				:integer,	:required, "Lender ID"
+		param :query, 	:author_id, 		:integer, 	:required, "Author ID"
+		param :form, 	'review[title]', 	:string, 	:required, "Title"
+		param :form, 	'review[summary]', 	:string, 	:required, "Summary"
+		param :form, 	'review[stars]', 	:string, 	:required, "Stars"
 	end
 	def create
-	    # Create the review
-		@review = current_user.reviews_given.create!(review_params)
+	    @lender = User.find_by(id: params[:id])
+		@author = User.find_by(id: params[:author_id])
 
-		# Respond to JSON
-		respond_to do |format|
-		    format.json  { render json: @review}
+		# Rating responds to HTML reviews will respond with JSON
+		if @review = @author.review!(@lender, review_params)
+			render json: @review
+		else
+			render json:  {message: "Unable to create review", error: @review.errors.full_messages }
 		end
+		
 	end
 
 	# Destroy an existing review
@@ -65,8 +75,11 @@ class ReviewsController < ApplicationController
 		param :path, :id, :integer, :required, 'Review ID'
 	end
 	def destroy
-		@review = Review.destroy(params[:id])
-	    render json: { message: "Review Successfully Destroyed", review: @review }
+		if @review = Review.find_by(id: params[:id])
+			render json: @review.destroy
+		else
+			render json: { message: "Review Not Found" }
+		end
 	end
 
 	# Update the voute count

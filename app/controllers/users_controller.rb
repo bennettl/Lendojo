@@ -57,14 +57,16 @@ class UsersController < ApplicationController
 		summary "Create a new user"
 		param :form, 'user[first_name]', 			:string, :required, "First Name"
 	    param :form, 'user[last_name]', 			:string, :required, "Last Name"
+		param :form, 'user[email]', 				:string, :required, "Email"
+		param :form, 'user[phone]', 				:string, :required, "Phone"
 		param :form, 'user[city]', 					:string, :required, "City" 
 		param :form, 'user[state]', 				:string, :required, "State"
 		param :form, 'user[zip]', 					:string, :required, "Zip"
 		param :form, 'user[password]', 				:string, :required, "Password"
-		param :form, 'user[password_confirmation]', :string, :optional, "Password Confirmation"
+		param :form, 'user[password_confirmation]', :string, :required, "Password Confirmation"
 	end
 	def create
-		@user = User.new(user_params_post)
+		@user = User.new(user_params)
 		
 		if @user.save
 			flash[:success] = "User Sucessfully Created"
@@ -76,7 +78,7 @@ class UsersController < ApplicationController
 			end
 			
 		else
-			flash[:error] = @lenderApp.errors.full_messages
+			flash[:error] = @user.errors.full_messages
 			# Respond to different formats
 			respond_to do |format|
 			  format.html { render 'new' }
@@ -98,6 +100,7 @@ class UsersController < ApplicationController
 		param :form, 'user[first_name]', :string, :optional, "First Name"
 	    param :form, 'user[last_name]', :string, :optional, "Last Name"
 		param :form, 'user[headline]', :string, :optional, "Headline"
+		param :form, 'user[summary]', :string, :optional, "Summary"
 		param :form, 'user[age]', :string, :optional, "Age"
 		param :form, 'user[city]', :string, :optional, "City" 
 		param :form, 'user[state]', :string, :optional, "State"
@@ -131,8 +134,8 @@ class UsersController < ApplicationController
 	end	
 
 	# Displays the form for creating both a rating AND a review
-	def new_rating
-		@user 	= User.find(params[:id])
+	def feedback
+		@lender	= User.find_by(id: params[:id])
 		@rating = Rating.new
 		@review = Review.new
 	end
@@ -172,8 +175,11 @@ class UsersController < ApplicationController
 	    param :path, :id, :integer, :required, "User ID"
 	end
 	def destroy
-		@user = User.destroy(params[:id])		
-		render json: { message: 'User Sucessfully Destroyed' , user: @user }
+		if @user = User.find_by(id: params[:id])
+			render json: @user.destroy
+		else
+			render json: { message: "User Not Found" }
+		end
 	end	
 
 	##################################################### CHECKLIST/PINS #####################################################
@@ -182,12 +188,14 @@ class UsersController < ApplicationController
 	swagger_api :checklist do
 		summary "Show a list of services user has checked"
 		param :path, :id, :integer, :required, "User ID"
+		param :query, :lendee_page, :integer, :optional, "Lendee Page Number"
+		param :query, :lender_page, :integer, :optional, "Lender Page Number"
 	end
 	def checklist
-		@user = User.find(params[:id])
+		@user = User.find_by(id: params[:id])
 		@lendee_checkList = @user.lendee_check_user_services.paginate(per_page: 8, page: params[:lendee_page])
 
-		if current_user.lender?
+		if @user.lender?
 			@lender_checkList = @user.lender_check_user_services.paginate(per_page: 8, page: params[:lender_page])
 		end
 		
@@ -202,10 +210,16 @@ class UsersController < ApplicationController
 	swagger_api :pins do
 		summary "Show a list of services user has pinned"
 		param :path, :id, :integer, :required, "User ID"
+		param :query, :page, :integer, :optional, "Page Number"
 	end
 	def pins
-		@user = User.find(params[:id])
-		@services = @user.lendee_pins
+		@user 		= User.find_by(id: params[:id])
+		@services 	= @user.lendee_pins.paginate(per_page: 8, page: params[:page])
+		# Respond to different formats
+		respond_to do |format|
+			format.html # pins.html.erb
+			format.json { render json: @services }
+		end
 	end
 
 

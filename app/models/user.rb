@@ -77,8 +77,8 @@ class User < ActiveRecord::Base
 
 	################################## AUTHENTICATION/SESSION/REGISTRATION ##################################
 
-	# Include default devise modules. Others available are: :confirmable, :lockable, :timeoutable and :omniauthable
-	devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+	# Include default devise modules. Others available are: :confirmable, :lockable, :timeoutable and :omniauthable, :registerable
+	devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
 	################################## GEOCODING ##################################
 
@@ -274,18 +274,33 @@ class User < ActiveRecord::Base
 	def pin?(service)
 		self.lendee_user_services.find_by(service_id: service.id, relationship_type: 'pin')
 	end
+	
+	################################## RATE/REVIEW ##################################
+	# Rate a lender. Accepts 2 arguments, lender and rating_params (information about the rating)
+	def rate!(lender, rating_params)
+		# Combine the two hash and create the rating
+		lender_hash = { lender_id: lender.id } 
+		merged_hash = lender_hash.merge(rating_params)
+		self.ratings_given.create!(merged_hash)
+	end
+
+	# Review a lender. Accepts 2 arguments, lender and rating_params (information about the rating)
+	def review!(lender, review_params)
+		# Combine the two hash and create the review
+		lender_hash = { lender_id: lender.id }
+		merged_hash = lender_hash.merge(review_params)
+		self.reviews_given.create!(merged_hash)
+	end
 
 	################################## REPORT ##################################
 	
+	# Reports a reportable object. Accepts 2 arguments, reportable and report_params (information about the report)
 	def report!(reportable, report_params)
-		# Reports received sets 
-		report_hash 	= { reportable_id: reportable.id, reportable_type: reportable.class.name }
-		reportable_hash 		= report_params
-		merged_hash	 			= report_hash.merge(reportable_hash) 
-		# convert reason to an integer
+		# Combine the two hash and create the report
+		report_hash 		= { reportable_id: reportable.id, reportable_type: reportable.class.name }
+		merged_hash	 		= report_hash.merge(report_params) 
 		self.reports_given.create!(merged_hash)
 	end
-
 
 	################################## PRIVATE ##################################
 

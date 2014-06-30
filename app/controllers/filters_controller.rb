@@ -31,7 +31,11 @@ class FiltersController < ApplicationController
 	# Destroy an existing filter
 	# If have time, check to see if user has permission to remove filter
 	def destroy
-		Filter.find(params[:id]).destroy
+		if @filter = Filter.find_by(id: params[:id])
+			render json: @filter.destroy
+		else
+			render json: { message: "Filter Not Found" }
+		end
 	end
 
 	private

@@ -5,29 +5,99 @@
   "resourcePath": "ratings",
   "apis": [
     {
-      "path": "ratings",
+      "path": "users/{id}/rate",
       "operations": [
         {
-          "summary": "Creates A New Rating",
+          "summary": "Creates a new rating",
           "parameters": [
             {
-              "paramType": "form",
-              "name": "lender_id",
+              "paramType": "path",
+              "name": "id",
               "type": "integer",
               "description": "Lender ID",
               "required": true
             },
             {
+              "paramType": "query",
+              "name": "author_id",
+              "type": "integer",
+              "description": "Author ID",
+              "required": true
+            },
+            {
               "paramType": "form",
-              "name": "stars",
+              "name": "rating[stars]",
               "type": "integer",
               "description": "Stars",
               "required": true
             }
           ],
-          "notes": "current_user is giving the rating",
           "method": "post",
           "nickname": "Ratings#create"
+        }
+      ]
+    },
+    {
+      "path": "ratings",
+      "operations": [
+        {
+          "summary": "Shows a list of ratings",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "Page Number",
+              "required": false
+            }
+          ],
+          "method": "get",
+          "nickname": "Ratings#index"
+        }
+      ]
+    },
+    {
+      "path": "ratings",
+      "operations": [
+        {
+          "summary": "Creates a new rating",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "author_id",
+              "type": "integer",
+              "description": "Author ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "rating[stars]",
+              "type": "integer",
+              "description": "Stars",
+              "required": true
+            }
+          ],
+          "method": "post",
+          "nickname": "Ratings#create"
+        }
+      ]
+    },
+    {
+      "path": "ratings/{id}",
+      "operations": [
+        {
+          "summary": "Show indivdual rating",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Rating ID",
+              "required": true
+            }
+          ],
+          "method": "get",
+          "nickname": "Ratings#show"
         }
       ]
     },

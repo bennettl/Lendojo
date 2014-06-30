@@ -134,6 +134,13 @@
           "summary": "Creates a new service",
           "parameters": [
             {
+              "paramType": "query",
+              "name": "id",
+              "type": "integer",
+              "description": "Lender ID",
+              "required": true
+            },
+            {
               "paramType": "form",
               "name": "service[main_img]",
               "type": "string",
@@ -256,6 +263,13 @@
           "summary": "Updates a existing service",
           "parameters": [
             {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Service ID",
+              "required": true
+            },
+            {
               "paramType": "form",
               "name": "service[main_img]",
               "type": "string",
@@ -358,6 +372,13 @@
         {
           "summary": "Updates a existing service",
           "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Service ID",
+              "required": true
+            },
             {
               "paramType": "form",
               "name": "service[main_img]",

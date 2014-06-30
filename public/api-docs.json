@@ -8,6 +8,14 @@
       "description": "User operations"
     },
     {
+      "path": "ratings.{format}",
+      "description": "Rating operations"
+    },
+    {
+      "path": "reviews.{format}",
+      "description": "Review operations"
+    },
+    {
       "path": "reports.{format}",
       "description": "Report operations"
     },
@@ -18,14 +26,6 @@
     {
       "path": "lender_applications.{format}",
       "description": "Lender Application operations"
-    },
-    {
-      "path": "ratings.{format}",
-      "description": "Rating operations"
-    },
-    {
-      "path": "reviews.{format}",
-      "description": "Review operations"
     }
   ]
 }

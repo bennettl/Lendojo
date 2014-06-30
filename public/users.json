@@ -16,6 +16,20 @@
               "type": "integer",
               "description": "User ID",
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "lendee_page",
+              "type": "integer",
+              "description": "Lendee Page Number",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "lender_page",
+              "type": "integer",
+              "description": "Lender Page Number",
+              "required": false
             }
           ],
           "method": "get",
@@ -35,6 +49,13 @@
               "type": "integer",
               "description": "User ID",
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "Page Number",
+              "required": false
             }
           ],
           "method": "get",
@@ -83,6 +104,20 @@
             },
             {
               "paramType": "form",
+              "name": "user[email]",
+              "type": "string",
+              "description": "Email",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user[phone]",
+              "type": "string",
+              "description": "Phone",
+              "required": true
+            },
+            {
+              "paramType": "form",
               "name": "user[city]",
               "type": "string",
               "description": "City",
@@ -114,7 +149,7 @@
               "name": "user[password_confirmation]",
               "type": "string",
               "description": "Password Confirmation",
-              "required": false
+              "required": true
             }
           ],
           "method": "post",
@@ -173,6 +208,13 @@
               "name": "user[headline]",
               "type": "string",
               "description": "Headline",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[summary]",
+              "type": "string",
+              "description": "Summary",
               "required": false
             },
             {
@@ -276,6 +318,13 @@
               "name": "user[headline]",
               "type": "string",
               "description": "Headline",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[summary]",
+              "type": "string",
+              "description": "Summary",
               "required": false
             },
             {

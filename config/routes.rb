@@ -20,22 +20,24 @@
 
     ################################## RESOURCES ##################################
     
+    # Note: :collection, no id require.  :member, needs an id
+
     # Users
     resources :users do 
+        patch   'update_card',          on: :collection
         get     'checklist',            on: :member
         get     'pins',                 on: :member
-        get     'new_rating',           on: :member
-        patch   'update_card',          on: :collection
+        get     'feedback',             on: :member
+        post    'rate',                 on: :member, to: 'ratings#create'
+        post    'review',               on: :member, to: 'reviews#create'
         get     'report',               on: :member, to: 'reports#new'
         post    'report',               on: :member, to: 'reports#create'
     end
     
     # User Serivces
     resources :user_services, only: [:create, :destroy, :update] do
-        # :collection, no id require
         post    'create_check',         on: :collection
         post    'create_pin',           on: :collection
-        # :member, needs an id
         delete  'destroy_check',        on: :member
         delete  'destroy_pin',          on: :member
     end
@@ -62,11 +64,11 @@
     resources :lender_applications
     
     # Ratings
-    resources :ratings,             only: [:create, :destroy]
+    resources :ratings
 
     # Reviews
     resources :reviews do
-        post    'vote',                 on: :member
+        post        'vote',                 on: :member
         get         'report',           on: :member, to: 'reports#new'
         post        'report',           on: :member, to: 'reports#create'
     end

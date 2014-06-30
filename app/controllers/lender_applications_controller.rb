@@ -1,7 +1,7 @@
 class LenderApplicationsController < ApplicationController
 
 	# Requires users to sign in before accessing action
-	before_filter :authenticate_user!
+	# before_filter :authenticate_user!
 	
 	# Include sorting params for sortable headers on index page
 	include HeaderFiltersHelper
@@ -13,7 +13,7 @@ class LenderApplicationsController < ApplicationController
 
 	# Shows a list of lender applications
 	swagger_api :index do
-		summary "Show A Lists Of All Lender Applications"
+		summary "Show a lists of all lender applications"
 		param :query, :page, :integer, :optional, "Page Number"
 	end
 	def index
@@ -54,15 +54,16 @@ class LenderApplicationsController < ApplicationController
 
 	# Creates a new lender application
 	swagger_api :create do
-		summary "Creates A New Lender Application"
-		param :form, 'lender_application[author_id]', :integer, :required, "Author ID"
+		summary "Create a new lender application"
+		param :query, 'author_id', :integer, :required, "Author ID"
 		param :form, 'lender_application[categories]', :string, :required, "Categories"
 		param :form, 'lender_application[skill]', :string, :required, "Skill"
 		param :form, 'lender_application[hours]', :integer, :required, "Hours"
 		param :form, 'lender_application[summary]', :string, :required, "Summary"
 	end
 	def create
-		@lenderApp = current_user.build_lender_app(lender_application_params)
+		user 		= User.find_by(id: params[:author_id])
+		@lenderApp 	= user.build_lender_app(lender_application_params)
 
 		# If a new lenderApp is sucessfully save, redirect ot services index path, else re-render new
 		if @lenderApp.save
@@ -91,18 +92,19 @@ class LenderApplicationsController < ApplicationController
 		@lenderApp = LenderApplication.find(params[:id])
 	end
 
-	# Update the lender application
+	# Update an existing lender application
 	swagger_api :update do
-		param :path, 'id', :integer, :required, "Application ID"
-		param :form, 'lender_application[categories]', :string, :required, "Categories"
-		param :form, 'lender_application[skill]', :string, :required, "Skill"
-		param :form, 'lender_application[hours]', :integer, :required, "Hours"
-		param :form, 'lender_application[summary]', :string, :required, "Summary"
-		param_list :form, 'lender_application[status]', :status, :optional, "Status", LenderApplication.statuses.keys
-		param :form, 'lender_application[staff_notes]', :string, :required, "Staff Notes"
+		summary "Update an existing lender application"
+		param :path, 		'id', 								:integer, :required, "Application ID"
+		param :form, 		'lender_application[categories]', 	:string,  :optional, "Categories"
+		param :form, 		'lender_application[skill]', 		:string,  :optional, "Skill"
+		param :form, 		'lender_application[hours]', 		:integer, :optional, "Hours"
+		param :form, 		'lender_application[summary]', 		:string,  :optional, "Summary"
+		param_list :form, 	'lender_application[status]', 		:status,  :optional, "Status", LenderApplication.statuses.keys
+		param :form, 		'lender_application[staff_notes]', 	:string,  :optional, "Staff Notes"
 	end
 	def update
-		@lenderApp = LenderApplication.find(params[:id])
+		@lenderApp = LenderApplication.find_by(id: params[:id])
 
 		# Change the user's lender status base on the lender application status
 		data = (params[:lender_application][:status] == 'approved') ? { lender: true, belt: 'white'} : { lender: false, belt: 'N/A' } 
@@ -112,14 +114,14 @@ class LenderApplicationsController < ApplicationController
 			flash[:success] = "Application has been successfully updated!"
 			
 			# Notify user if status is approved or denied
-			if @lenderApp.status == 'approved' || @lenderApp.status == 'denied'
+			if @lenderApp.approved? || @lenderApp.denied?
 				LenderApplicationsMailer.set_updated_mail(@lenderApp, @lenderApp.author).deliver
 			end
 
 			# Respond to multiple formats
 			respond_to do |format|
 			    format.html { redirect_to lender_applications_path }
-			    format.json { render json: @lenderApps }
+			    format.json { render json: @lenderApp }
 			end
 		else
 			flash[:error] = @lenderApp.errors.full_messages
@@ -138,8 +140,11 @@ class LenderApplicationsController < ApplicationController
 		param :path, :id, :integer, :required, 'Lender Application ID'
 	end
 	def destroy
-		@lenderApp = LenderApplication.destroy(params[:id])
-	    render json: { message: "Lender Application Successfully Destroyed", lender_application: @lenderApp }
+		if @lenderApp = LenderApplication.find_by(id: params[:id])
+			render json: @lenderApp.destroy
+		else
+			render json: { message: "Lender Application Not Found" }
+		end
 	end
 
 	##################################################### PRIVATE #####################################################

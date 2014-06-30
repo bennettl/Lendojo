@@ -6,7 +6,7 @@ class LenderApplication < ActiveRecord::Base
 
 	################################## ENUMS ##################################
 	
-	enum status: [ :pending, :approve, :denied ]
+	enum status: [ :pending, :approved, :denied ]
 
 	################################## VALIDATION ##################################
 

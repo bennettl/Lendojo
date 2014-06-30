@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
 	# Requires users to sign in before accessing action
-	before_filter :authenticate_user!
+	# before_filter :authenticate_user!
 	
 	# Swagger documentation
 	swagger_controller :services, "Service operations"
@@ -58,6 +58,7 @@ class ServicesController < ApplicationController
 	# Creates a new service
 	swagger_api :create do
 		summary "Creates a new service"
+		param :query, 'id', :integer, :required, 'Lender ID'
 		param :form, 'service[main_img]', :string, :required, 'Main Image'
 		param :form, 'service[title]', :string, :required, 'Title'
 		param :form, 'service[headline]', :string, :required, 'Headline'
@@ -100,7 +101,7 @@ class ServicesController < ApplicationController
 	# Updates an existing service
 	swagger_api :update do
 		summary "Updates a existing service"
-		param :path, 'service[id]', :integer, :required, 'Service ID'
+		param :path, 'id', :integer, :required, 'Service ID'
 		param :form, 'service[main_img]', :string, :optoinal, 'Main Image'
 		param :form, 'service[title]', :string, :optoinal, 'Title'
 		param :form, 'service[headline]', :string, :optoinal, 'Headline'
@@ -116,7 +117,7 @@ class ServicesController < ApplicationController
 		param :form, 'service[hidden]', :boolean, :optional, 'Hidden'
 	end
 	def update
-		@service = Service.find(params[:id])
+		@service = Service.find_by(id: params[:id])
 
 		if @service.update_attributes(service_params)
 			flash[:success] = "Service Successfully Updated!"
@@ -141,8 +142,11 @@ class ServicesController < ApplicationController
 		param :path, :id, :integer, :required, 'Service ID'
 	end
 	def destroy
-		@service = Service.destroy(params[:id])
-	    render json: { message: "Service Is Successfully Destroyed", service: @service }
+		if @service = Service.find_by(id: params[:id])
+			render json: @service.destroy
+		else
+			render json: { message: "Service Not Found" }
+		end
 	end
 
 

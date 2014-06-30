@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.integer  "hours"
     t.text     "summary"
     t.integer  "status",      default: 0
-    t.text     "staff_notes"
+    t.text     "staff_notes", default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
   end

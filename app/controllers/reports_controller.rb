@@ -14,6 +14,7 @@ class ReportsController < ApplicationController
 	# List all reports
 	swagger_api :index do
 		summary "Show a list of reports"
+		param :query, :page, :integer, :optional, "Page Number"
 	end
 	def index
 		# If there are no speicfic reportables, then show all
@@ -82,7 +83,7 @@ class ReportsController < ApplicationController
 		@reportable = params[:report][:reportable_type].classify.constantize.find(params[:id])
 
 		# If report creation was successful
-		if @report = user.report!(@reportable, report_params)
+		if @report 	= user.report!(@reportable, report_params)
 			flash[:success] = "Thank you for submitting the report! We will review it shortly."
 			# Respond to multiple formats
 			respond_to do |format|
@@ -153,10 +154,10 @@ class ReportsController < ApplicationController
 		param :path, :id, :integer, :required, 'Report ID'
 	end
 	def destroy
-		@report = Report.destroy(params[:id])
-		respond_to do |format|
-
-			format.html { render json: { message: "Report Successfully Destroyed", report: @report } }
+		if @report = Report.find_by(id: params[:id])
+			render json: @report.destroy
+		else
+			render json: { message: "Report Not Found" }
 		end
 	end
 

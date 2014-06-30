@@ -28,8 +28,11 @@ class ProductsController < ApplicationController
 		param :path, :id, :integer, :required, 'Product ID'
 	end
 	def destroy
-		@product = Product.destroy(params[:id])
-	    render json: { message: "Product Successfully Destroyed", product: @product }
+		if @product = Product.find_by(id: params[:id])
+			render json: @product.destroy
+		else
+			render json: { message: "Product Not Found" }
+		end
 	end
 
 end
