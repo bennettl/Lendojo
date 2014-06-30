@@ -1,6 +1,9 @@
-<div class="box col-sm-10 col-sm-offset-1">
+<div id="pinsBox" class="box">
 	<div class="title">My Pins</div>
-	<ul>
-		<%= render @services %>
+	<ul id="serviceList">
+		<% @services.each do |s| %>
+			<%= render '/services/service_widget', service: s %>
+		<% end %>
 	</ul>
+	<%= will_paginate @services %>
 </div>

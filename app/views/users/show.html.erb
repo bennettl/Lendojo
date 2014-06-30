@@ -1,17 +1,20 @@
 <div id="userShowBox" class="box col-sm-10 col-sm-offset-1">
 	<!-- Overview -->
 	<div class="row">
-		<!-- Snapshot -->
+		<!-- SNAPSHOT -->
 		<div id="snapshot" class="col-sm-5">
-			<% # user_img @user %>
-			<%= render 'shared/options/options', 
-						object: @user, 
-						edit_path: edit_user_path(@user),
-						report_path: report_user_path(@user) %>
+			<div class="imageContainer">
+				<%= image_tag @user.main_img.url, class: 'mainImage' %>
+				<!-- OPTIONS -->
+				<%= render 'shared/options/options', object: @user, 
+							edit_object_path: edit_user_path(@user),
+							report_object_path: report_user_path(@user) %>
+			</div>
+			<!-- BELT -->
 			<%= render 'shared/belt', user: @user %>
 		</div>
 
-		<!-- Detail  -->
+		<!-- DETAIL  -->
 		<div id="detail" class="col-sm-7">
 			<div class="row">
 				<span class="title" style="text-transform:  none;"><%= @user.name %></span><br />
@@ -49,5 +52,4 @@
 		<% @services = Service.where(id: 1..3) %>
 		<%= render @services %>
 	</div>
-	
 </div>

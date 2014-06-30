@@ -94,21 +94,21 @@ class User < ActiveRecord::Base
 	################################## VALIDATION ##################################
 
 	# validates :main_img, presence: true #profile image
-	validates :first_name, presence: true
-	validates :last_name, presence: true
-	validates :city, presence: true 
-	validates :state, presence: true, length: { is: 2 }
-	validates :zip, presence: true, length: { minimum: 5 }
-	validates :password, length: { minimum: 5 }, allow_nil: true
+	validates :first_name, 	presence: true
+	validates :last_name, 	presence: true
+	validates :headline,	allow_nil: true, length: { maximum: 40 }
+	validates :city, 		presence: true 
+	validates :state, 		presence: true, length: { is: 2 }
+	validates :zip, 		presence: true, length: { minimum: 5 }
+	validates :password, 	allow_nil: true, length: { minimum: 5 }
 	
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+	validates :email, 		presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 	VALID_PHONE_REGEX = /\A[0-9]{3}-[0-9]{3}-[0-9]{4}\z/
-	validates :phone, presence: true, format: { with: VALID_PHONE_REGEX }, uniqueness: { case_sensitive: false }
+	validates :phone, 		presence: true, format: { with: VALID_PHONE_REGEX }, uniqueness: { case_sensitive: false }
 
 
 	################################## RAKNING ##################################
-
 
 	# Ranking Algorithm 
 	# Ranking is base on 3 dimensions
@@ -213,6 +213,9 @@ class User < ActiveRecord::Base
 		self.ratings_given.find_by(lender_id: other_user.id)
 	end
 
+	def belongs_to?(user)
+		self === user
+	end
 
 	################################## BELT ##################################
 	

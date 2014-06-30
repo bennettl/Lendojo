@@ -34,15 +34,15 @@ class Service < ActiveRecord::Base
 
 	################################## VALIDATION ##################################
 
-	validates :title, presence: true
-	validates :headline, presence: true
-	validates :summary, presence: true
-	validates :address, presence: true
-	validates :city, presence: true
-	validates :state, presence: true, length: {is: 2}
-	validates :zip, presence: true, length: { minimum: 5 }
-	validates :price, presence: true
-	validates :category, presence: true
+	validates :title, 		presence: true, length: { maximum: 25 }
+	validates :headline, 	presence: true, length: { maximum: 40 }
+	validates :summary,	 	presence: true
+	validates :address, 	presence: true
+	validates :city, 		presence: true
+	validates :state, 		presence: true, length: { is: 2 }
+	validates :zip, 		presence: true, length: { minimum: 5 }
+	validates :price, 		presence: true
+	validates :category, 	presence: true
 
 
 	# Returns the title use for reports
@@ -90,6 +90,8 @@ class Service < ActiveRecord::Base
 			"$$$$"
 		end
 	end
+
+	################################## SEARCH ##################################
 
 	# Searches members base on filter data, return all members if no filter_data is present
 	# Ex. filter_data = { locations: ['San Francisco'], prices: ['$$', '$$$'], belts: [], keywords: [] }
@@ -152,11 +154,15 @@ class Service < ActiveRecord::Base
 			# Where combines all queries with 'AND'
 			self.joins(:lender).where(query.join(' AND '))
 		else
-			# all users
-			self.scoped
+			# all services
+			self.all
 		end
 	end
 
+	################################## HELPER ##################################
+	def belongs_to?(user)
+		self.lender.id == user.id
+	end
 end
 
 

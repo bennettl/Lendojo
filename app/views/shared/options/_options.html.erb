@@ -1,27 +1,26 @@
-<div class="imageContainer">
-	<%= image_tag object.main_img.url %>
-	<div class="options">
+<div class="options">
+	<!-- SERVICE ONLY -->
+	<% if object.class.name == 'Service' %>
+		<% service = object %>
 		
-		<!-- SERVICE ONLY -->
-		<% if object.class.name == 'Service' %>
-			<% service = object %>
-			
-			<!-- CHECK -->
-			<% user_service = current_user.check?(service) %>
-			<% template 	= user_service.nil? ? 'check' : 'uncheck' %>
-			<%= render "shared/options/#{template}", service: @service%>
+		<!-- CHECK -->
+		<% user_service = current_user.check?(service) %>
+		<% template 	= user_service.nil? ? 'check' : 'uncheck' %>
+		<%= render "shared/options/#{template}", service: service,  glyphicon_name: "glyphicon-remove" %>
 
-			<!-- PIN -->
-			<% user_service = current_user.pin?(service) %>
-			<% template 	= user_service.nil? ? 'pin' : 'unpin' %>
-			<%= render "shared/options/#{template}", service: @service %>
+		<!-- PIN -->
+		<% user_service = current_user.pin?(service) %>
+		<% template 	= user_service.nil? ? 'pin' : 'unpin' %>
+		<%= render "shared/options/#{template}", service: service %>
+	<% end %>
 
-		<% end %>
-		<!-- SERVICE ONLY -->
+	<!-- SERVICE ONLY -->
 
-		<!-- OTHER OPTIONS -->
-		<%= link_to('', edit_path, class: "edit tooltip_target glyphicon glyphicon-pencil", data: {toggle: 'tooltip'}, title: 'Edit')  %>
-		<%= link_to('', report_path, class: "flag tooltip_target glyphicon glyphicon-flag", data: {toggle: 'tooltip'}, title: 'Report') %>
-	</div>
+	<!-- OTHER OPTIONS (not shown in widget) -->
+	<% if defined?(edit_object_path) && (current_user.admin? || object.belongs_to?(current_user)) %>
+		<%= link_to('', edit_object_path, class: "edit tooltip_target glyphicon glyphicon-pencil", data: {toggle: 'tooltip'}, title: 'Edit')  %>
+	<% end %>
+	<% if defined?(report_object_path) %>
+		<%= link_to('', report_object_path, class: "flag tooltip_target glyphicon glyphicon-flag", data: {toggle: 'tooltip'}, title: 'Report') %>
+	<% end %>
 </div>
-

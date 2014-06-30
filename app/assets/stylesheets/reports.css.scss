@@ -2,23 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/************************** EDIT **************************/
-#reportEditBox{
-	padding: 15px 50px;
-	.control-label{
-		padding-right: 8px;
-	}
-}
-
-form#editReport{
-	.detail{
-		padding: 7px 0 25px;
-		border-bottom: 1px solid #e6e6e6;
-		margin-left: 15px; 
-	}
-}
-
 /************************** NEW **************************/
+#reportBox{
+    min-height: 0;
+}
 
 .reportBlurb{
 	color: #6c6c6c;
@@ -35,4 +22,20 @@ form#editReport{
 
 textarea#report_summary{
 	height: 120px;
+}
+
+/************************** EDIT **************************/
+#reportEditBox{
+	padding: 15px 50px;
+	.control-label{
+		padding-right: 8px;
+	}
+}
+
+form#editReport{
+	.detail{
+		padding: 7px 0 25px;
+		border-bottom: 1px solid #e6e6e6;
+		margin-left: 15px; 
+	}
 }

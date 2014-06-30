@@ -508,14 +508,6 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
     }
 }
 
-.userThumb{
-	width: 100px;
-	height: 100px;
-	background: #55dfc3;
-    @include border-radius(50%);
-    // margin: 20px auto;
-}
-
 .box{
 	border: 1px solid #E6E6E6;
     overflow: hidden;
@@ -581,9 +573,8 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
 .serviceListItem{
 	margin-bottom: 20px;
 	text-align: center;
-	a{
-		color: #808080;
-	}
+	position: relative;
+
 	.imageContainer{
 		color: #ffffff;
 		font-size: 0.7em;
@@ -607,6 +598,7 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
 	    margin: 5px auto;
 	    position: relative;
 	    width: 95%;
+    	color: #808080;
 	}
 	.lender{
 		position: absolute;
@@ -639,6 +631,23 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
 		// margin-bottom: 20px;
 		// font-size: 0.7em;
 	}
+
+	// Widget version
+	&.widget{
+		.serviceTitle{
+			font-size: 18px;
+		}
+		.headline{
+			font-size: 11px;
+		}
+		.options{
+			position: absolute;
+		    right: 12px;
+		    top: 10px;
+		    margin: 0;
+		}
+
+	}
 }
 
 .imageContainer{
@@ -652,6 +661,17 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
 	max-height: 170px;
 }
 
+.mainImage{
+	width: 330px;
+	height: 180px;
+}
+.thumbImage{
+	width: 100px;
+	height: 100px;
+	background: #55dfc3;
+    @include border-radius(50%);
+}
+
 /* Reviews */
 .review-list-item.row{
 	border-bottom: 1px solid $lightGray;
@@ -661,22 +681,20 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
 	}
 }
 
-#serviceShowBox{
-	#reviewListSection{
-		margin: 0px 40px;
+#reviewListSection{
+	margin: 0px 40px;
+	
+	.review-details{
 		
-		.review-details{
-			
-			.raty{
-				margin-bottom: 10px;
-			}
-			.vote-blurb{
-				color: #5a5a5a;
-				font-size: 1.0em;
-			}
-			.summary{
-				margin: 10px 0;
-			}
+		.raty{
+			margin-bottom: 10px;
+		}
+		.vote-blurb{
+			color: #5a5a5a;
+			font-size: 1.0em;
+		}
+		.summary{
+			margin: 10px 0;
 		}
 	}
 }

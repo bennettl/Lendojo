@@ -9,11 +9,11 @@
 					<span>Avatar</span>
 				</div>
 				<div class="col-xs-5">
-					<%= image_tag @user.main_img.url, id: "userImg" %>
+					<%= image_tag @user.main_img.url, id: "userImg", class: 'mainImage' %>
 					<div class="title">Main Image (330 x 180)</div>
 				</div>
 				<div class="col-xs-2">
-					<%= image_tag @user.main_img.url(:thumb), class: 'userThumb' %>
+					<%= image_tag @user.main_img.url(:thumb), class: 'thumbImage' %>
 					<div class="title">Thumbnail <br />(100 x 100)</div>
 				</div>
 				<div class="col-xs-2">

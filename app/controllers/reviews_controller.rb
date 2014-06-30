@@ -20,8 +20,9 @@ class ReviewsController < ApplicationController
 		@reviews = Review.all.order("#{sort_name_param} #{sort_direction_param}").paginate(per_page: 5, page: params[:page])
 		# Respond to different formats
 		respond_to do |format|
-		  format.html # index.html.erb
-		  format.json { render json: @reviews }
+			format.html # index.html.erb
+			format.js # index.js.erb
+			format.json { render json: @reviews }
 		end
 	end
 

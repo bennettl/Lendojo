@@ -23,6 +23,7 @@ class ReportsController < ApplicationController
 		# Respond to multiple formats
 		respond_to do |format|
 			format.html # index.html.erb
+		    format.js # index.js.erb
 		    format.json { render json: @reports }
 		end
 	end

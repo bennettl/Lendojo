@@ -1,16 +1,21 @@
 <div id="serviceShowBox" class="box col-sm-10 col-sm-offset-1">
-	<!-- Overview -->
+	<!-- OVERVIEW -->
 	<div class="row">
-		<!-- Service/User info -->
+		<!-- SNAPSHOT -->
 		<div id="snapshot" class="col-sm-5">
-			<%= render 'shared/options/options', 
-						object: @service, 
-						edit_path: edit_service_path(@service), 
-						report_path: report_service_path(@service) %>
+			<div class="imageContainer">
+				<%= image_tag @service.main_img.url %>
+				<!-- OPTIONS -->
+				<%= render 'shared/options/options', 
+							object: @service, 
+							edit_object_path: edit_service_path(@service), 
+							report_object_path: report_service_path(@service) %>
+			</div>
+			<!-- BELT -->
 			<%= render 'shared/belt', user: @service.lender %>
 		</div>
 		
-		<!-- At A Glance -->
+		<!-- AT A GLANCE -->
 		<div id="detail" class="col-sm-7">
 			<div class="boxTitle"><%= @service.title %></div>
 			<div id="headline"><%= @service.headline %></div>
@@ -38,7 +43,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Description -->
+	<!-- SUMMARY -->
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="sectionTitle">
@@ -48,7 +53,7 @@
 		</div>
 	</div>
 
-	<!-- Reviews -->
+	<!-- REVIEW -->
 	<%= render 'reviews/review_list' %>
 	
 </div>

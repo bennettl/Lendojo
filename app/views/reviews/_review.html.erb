@@ -1,12 +1,14 @@
 <div class="review-list-item row">
 	<!-- User Avatar -->
 	<div class="col-sm-2">
-		<%= image_tag review.lender.main_img(:thumb), class: 'userThumb' %>
+		<%= link_to review.lender do %>
+			<%= image_tag review.lender.main_img(:thumb), class: 'thumbImage' %>
+		<% end %>
 	</div>
 	<!--  Review Details -->
 	<div class="review-details col-sm-10">
 		<h4><%= review.title %> <small>| <%= review.created_at.strftime("%B %e, %Y") %></small><br /> 
-			<small>By <%= review.author.name %></small>
+			<small>By <%= link_to review.author.name, review.author %></small>
 		</h4>
 		<div class="raty" data-stars="<%= review.stars %>"></div>
 		<div class="vote-blurb">

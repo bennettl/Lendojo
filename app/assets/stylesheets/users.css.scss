@@ -80,7 +80,7 @@ $belt-black: #3a3c3a;
 	}
 }
 
-.checkListBox{
+#checkListBox, #pinsBox{
 	padding: 30px 0;
 	width: 90%;
 	margin: 0 auto;
@@ -88,6 +88,10 @@ $belt-black: #3a3c3a;
 	}
 	td.cell{
 		padding: 22px 8px;
+
+		&.options_checklist{
+			padding-left: 16px;
+		}
 	}
 }
 .bootstrap-datetimepicker-widget ul{
@@ -96,9 +100,12 @@ $belt-black: #3a3c3a;
 
 .options_checklist{
 
-	form, .option, a{
+	form{
 		display: inline-block;
-		margin: 0 5px 3px;
+	}
+	.option, a{
+		display: inline-block;
+		margin: 0 8px 7px;
 		cursor: pointer;
 	}
 
@@ -179,13 +186,6 @@ form{
 
 
 /*********************** SHOW ***********************/
-
-#snapshot{
-	img{
-		width: 330px;
-		height: 180px;
-	}
-}
 
 #userShowBox{
 	#join_info{

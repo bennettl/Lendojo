@@ -1,6 +1,6 @@
-<%= link_to('', uncheck_service_path(@service, user_id: current_user.id), 
+<%= link_to('', uncheck_service_path(service, user_id: current_user.id), 
 				method: :delete, 
 				remote: true,
-				class: "option uncheck tooltip_target glyphicon glyphicon-minus",  
+				class: "option uncheck tooltip_target glyphicon #{glyphicon_name}",  
 				data: { toggle: 'tooltip' }, 
 				title: "Remove From Checklist")  %>
