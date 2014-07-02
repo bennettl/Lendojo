@@ -43,6 +43,12 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 # Payment Network
 gem 'stripe', '~> 1.14.0'
 
+# Authentication
+gem 'omniauth', '~> 1.2.1'
+gem 'omniauth-facebook', '~> 1.6.0'
+gem 'omniauth-twitter', '~> 1.0.1'
+gem 'omniauth-google-oauth2', '~> 0.2.4'
+
 # Swagger 
 gem 'swagger-docs', '~> 0.1.8'
 
