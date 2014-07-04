@@ -229,6 +229,24 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
+
+  # Keys and secrets
+  ENV['FACEBOOK_KEY']           = '250307078491268'
+  ENV['FACEBOOK_SECRET']        = '81b5013d7c38274f7ebc651644289a7b'
+  ENV['TWITTER_KEY']            = 'kdftnRXOliUcB6VHCvUscpLol'
+  ENV['TWITTER_SECRET']         = 'qq86ZUIN7aE9iLOl5TgkR0nioTqLNQlr9tyX0BUWmV0MZpMDFB'
+  ENV["GOOGLE_CLIENT_ID"]       = '483134901437-6gqb19hra2i2q16arlqchjvbrqqp129t.apps.googleusercontent.com'
+  ENV["GOOGLE_CLIENT_SECRET"]   = 'DSFDltjsDx9QoVzYVht8kXPM'
+  # Providers
+  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: "email,user_birthday,user_location", image_size: {width: 330}, 
+                                                                          display: "popup", secure_image_url: true
+  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'], secure_image_url: 'true', 
+                                                                        image_size: 'original'
+
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"], scope: "email, profile, plus.me", 
+                                                                                        image_size: { width: 330 },
+                                                                                        redirect_uri:'http://localhost:3000/users/auth/google_oauth2/callback'
+
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   # ==> Warden configuration

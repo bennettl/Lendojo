@@ -72,7 +72,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.index 		:email,                unique: true
 			t.index 		:reset_password_token, unique: true
 			t.index 		:confirmation_token,   unique: true
-			t.index 		:unlock_token,         unique: true
+			# t.index 		:unlock_token,         unique: true
 		end
 
 		#################################### SERVICES ####################################
@@ -162,6 +162,7 @@ class CreateUsers < ActiveRecord::Migration
 
 		#################################### LENDER APPLICATION ####################################
 		create_table :lender_applications do |t|
+			# Association
 			t.belongs_to 	:author, class_name: 'User', foreign_key: 'author_id'
 			t.text 			:categories # []
 			t.string 		:skill # skill level of lender
@@ -169,7 +170,6 @@ class CreateUsers < ActiveRecord::Migration
 			t.text 			:summary
 			t.integer 		:status, default: 0 # enum
 			t.text 			:staff_notes, default: ''
-			# Timestamp
 			t.timestamps
 		end
 	
@@ -178,7 +178,6 @@ class CreateUsers < ActiveRecord::Migration
 			t.belongs_to 	:author, class_name: 'User', foreign_key: 'author_id' # author of rating 
 			t.belongs_to 	:lender, class_name: 'User', foreign_key: 'lender_id' # target of rating
 			t.integer 		:stars, default: 0
-			# Timestamp
 			t.timestamps
 	    end
 		
@@ -192,12 +191,12 @@ class CreateUsers < ActiveRecord::Migration
 			t.integer 		:stars, default: 0
 			t.string 		:category # music, art, education
 			t.integer 		:status, default: 0 # enum
-			# Timestamp
 	    	t.timestamps
     	end
 
 		#################################### REPORTS ####################################
     	create_table :reports do |t|
+			# Association
 			t.belongs_to 	:author, class_name: 'User', foreign_key: 'author_id' # author of review
 			t.integer 		:reportable_id  # id of user, product, or service
 			t.string 		:reportable_type # 'user', 'product', 'service'
@@ -206,8 +205,14 @@ class CreateUsers < ActiveRecord::Migration
 			t.text 			:summary
 			t.text 			:staff_notes # notes by staff
 			t.integer 		:status, default: 0
-			# Timestamp
 			t.timestamps
 	    end
+
+		#################################### TAGS ####################################
+		create_table :tags do |t|
+			t.string 	:category
+			t.string 	:name
+			t.integer 	:count, default: 0
+		end
 	end
 end

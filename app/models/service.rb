@@ -35,7 +35,7 @@ class Service < ActiveRecord::Base
 	################################## VALIDATION ##################################
 
 	validates :title, 		presence: true, length: { maximum: 25 }
-	validates :headline, 	presence: true, length: { maximum: 40 }
+	validates :headline, 	presence: true, length: { maximum: 45 }
 	validates :summary,	 	presence: true
 	validates :address, 	presence: true
 	validates :city, 		presence: true

@@ -98,7 +98,7 @@ class ServicesController < ApplicationController
 		@service = Service.find(params[:id])
 	end
 
-	# Updates an existing service
+	# Update an existing service
 	swagger_api :update do
 		summary "Updates a existing service"
 		param :path, 'id', :integer, :required, 'Service ID'

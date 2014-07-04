@@ -46,7 +46,6 @@
               "required": true
             }
           ],
-          "notes": "current_user is giving the review",
           "method": "post",
           "nickname": "Reviews#create"
         }
@@ -106,7 +105,6 @@
               "required": true
             }
           ],
-          "notes": "current_user is giving the review",
           "method": "post",
           "nickname": "Reviews#create"
         }

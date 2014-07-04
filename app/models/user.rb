@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+	# For us states parsing
+	include ApplicationHelper
+
 	before_save { self.email = email.downcase }
 	# before_create :create_remember_token
 
@@ -77,8 +80,8 @@ class User < ActiveRecord::Base
 
 	################################## AUTHENTICATION/SESSION/REGISTRATION ##################################
 
-	# Include default devise modules. Others available are: :confirmable, :lockable, :timeoutable and , :registerable
-	devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
+	# Include default devise modules. Others available are: :confirmable, :lockable, :timeoutable
+	devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable, :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
 
 	################################## GEOCODING ##################################
 
@@ -91,21 +94,76 @@ class User < ActiveRecord::Base
 		"#{address} #{city}, #{state} #{zip}"
 	end
 
+	################################## OMNIAUTH ##################################
+
+	# Tries to find an existing user by the provider and uid fields. If no user is found, a new one is created with a random password and some extra information.
+	def self.from_omniauth(auth)
+		self.where(auth.slice(:provider, :uid)).first_or_create do |user|
+
+			case user.provider
+				when 'facebook'
+					# Basic Info
+					user.first_name		= auth.info.first_name
+					user.last_name		= auth.info.last_name
+					user.birthday 		= Date.strptime(auth.extra.raw_info.birthday, "%m/%d/%Y")
+					# Location (need to parse: i.e. Venice, California)
+					location_arr		= auth.info.location.split(', ')
+					user.city			= location_arr[0]
+					user.state			= user.us_state_initials_from_name(location_arr[1])
+					# Contact
+					user.email 			= auth.info.email
+					user.phone 			= auth.info.phone
+				when 'twitter'
+					# Basic Info
+					name_arr 			= auth.info.name.split(" ")
+					user.first_name		= name_arr.first
+					user.last_name 		= name_arr.last
+					user.headline 		= auth.extra.raw_info.description[0..38]
+					# Location
+					user.location 		= auth.info.location
+				when 'google_oauth2'
+					# Basic Info
+					user.first_name		= auth.info.first_name
+					user.last_name		= auth.info.last_name
+					user.birthday 		= Date.strptime(auth.extra.raw_info.birthday, "%m/%d/%Y")
+					# Contact
+					user.email 			= auth.info.email
+
+			end
+
+			user.main_img 				= URI.parse(auth.info.image)
+			# Authentication/ Devise
+			user.password 				= Devise.friendly_token[0,20]
+			user.password_confirmation 	= user.password
+		end
+	end
+
+ 	# If we need to copy data from session whenever a user is initialized before sign up, we just need to implement new_with_session in our model. Here is an example that copies the facebook email if available:
+	def self.new_with_session(params, session)
+		super.tap do |user|
+			if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+				user.email = data["email"] if user.email.blank?
+			end
+		end
+	end
+
+	################################## ATTACHMENT ##################################
+
 	################################## VALIDATION ##################################
 
 	# validates :main_img, presence: true #profile image
 	validates :first_name, 	presence: true
 	validates :last_name, 	presence: true
-	validates :headline,	allow_nil: true, length: { maximum: 40 }
-	validates :city, 		presence: true 
-	validates :state, 		presence: true, length: { is: 2 }
-	validates :zip, 		presence: true, length: { minimum: 5 }
+	validates :headline,	allow_nil: true, length: { maximum: 90 }
+	validates :state, 		allow_nil: true, presence: true, length: { is: 2 }
+	validates :zip, 		allow_nil: true, presence: true, length: { minimum: 5 }
 	validates :password, 	allow_nil: true, length: { minimum: 5 }
 	
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, 		presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 	VALID_PHONE_REGEX = /\A[0-9]{3}-[0-9]{3}-[0-9]{4}\z/
-	validates :phone, 		presence: true, format: { with: VALID_PHONE_REGEX }, uniqueness: { case_sensitive: false }
+	validates :phone, 		allow_nil: true, format: { with: VALID_PHONE_REGEX }, uniqueness: { case_sensitive: false }
+
 
 
 	################################## RAKNING ##################################
@@ -186,6 +244,7 @@ class User < ActiveRecord::Base
 			# Concatinate columns with || so search[:name] can search both columns
 			query.push((search[:name].blank?) ? '' : "(first_name || ' ' || last_name) #{like} '%#{search[:name]}%'")
 			
+			# Remove nil queries
 			query.reject! {|q| q.empty? }
 
 			# Search for all fields

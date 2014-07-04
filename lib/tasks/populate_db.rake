@@ -8,6 +8,7 @@ namespace :db do
 		populate_user_services
 		populate_lender_applications
 		populate_reports
+		populate_tags
 	end	
 
 	# Populate Administrator
@@ -16,7 +17,7 @@ namespace :db do
 						last_name: 'Lee',
 						headline: "Aspiring Entreprenuer, Veteran Software Developer, Dabbling Musician",
 						summary: Faker::Lorem.paragraphs(2).join("\n\n"),
-						age: '21',
+						birthday: Date.strptime("09/08/1992", "%m/%d/%Y"),
 						email: 'bennettl@usc.edu',
 						phone: '800-123-4567',
 						location: 'USC',
@@ -37,9 +38,9 @@ namespace :db do
 		40.times do |n|
 			first_name 		= Faker::Name.first_name
 			last_name 		= Faker::Name.last_name
-			headline 		= Faker::Lorem.sentences(3).join(' ')
+			headline 		= Faker::Lorem.sentences(1).join(' ')
 			summary 	    = Faker::Lorem.paragraphs(2).join("\n\n")
-			age 			= [*21..50].sample
+			birthday		= Date.strptime("09/08/1992", "%m/%d/%Y"),
 			email			= Faker::Internet.email
 			phone			= Faker::Base.numerify('###-###-####')
 			location		= Faker::Address.city
@@ -55,7 +56,7 @@ namespace :db do
 							last_name: last_name,
 							headline: headline,
 							summary: summary,
-							age: age,
+							# birthday: birthday,
 							email: email,
 							phone: phone,
 							location: location,
@@ -184,7 +185,58 @@ namespace :db do
 		services.each do|s|
 			s.reports_received.create!(author_id: author_id, reason: reason, summary: summary)
 		end
+	end
 
+	# Populate tags
+	def populate_tags
+		# Location
+		Tag.create!(category: "Location", name: "Silicon Valley")
+		Tag.create!(category: "Location", name: "Southern California")
+		Tag.create!(category: "Location", name: "Venice")
+		Tag.create!(category: "Location", name: "Los Angeles")
+		Tag.create!(category: "Location", name: "Huntington Park")
+		Tag.create!(category: "Location", name: "Orange County")
+		Tag.create!(category: "Location", name: "San Jose")
+		Tag.create!(category: "Location", name: "Mountain View")
+		Tag.create!(category: "Location", name: "San Francisco")
+		Tag.create!(category: "Location", name: "Oakland")
+		Tag.create!(category: "Location", name: "Beverley Hills")
+		Tag.create!(category: "Location", name: "Hollywood")
+		Tag.create!(category: "Location", name: "Northern California")
+		Tag.create!(category: "Location", name: "University of Southern California")
+		Tag.create!(category: "Location", name: "Santa Monica")
+		# Keyword
+		Tag.create!(category: "Keyword", name: "Dog Walking")
+		Tag.create!(category: "Keyword", name: "Hair Cutting")
+		Tag.create!(category: "Keyword", name: "Guitar")
+		Tag.create!(category: "Keyword", name: "Piano")
+		Tag.create!(category: "Keyword", name: "Apple")
+		Tag.create!(category: "Keyword", name: "Surfing")
+		Tag.create!(category: "Keyword", name: "Skiing")
+		Tag.create!(category: "Keyword", name: "Basketball")
+		Tag.create!(category: "Keyword", name: "BUAD 425")
+		Tag.create!(category: "Keyword", name: "Photos")
+		Tag.create!(category: "Keyword", name: "Cooking")
+		Tag.create!(category: "Keyword", name: "Meals")
+		Tag.create!(category: "Keyword", name: "Computers")
+		Tag.create!(category: "Keyword", name: "Science")
+		Tag.create!(category: "Keyword", name: "Rock and Roll")
+		# Category
+		Tag.create!(category: "Category", name: "Music")
+		Tag.create!(category: "Category", name: "Education")
+		Tag.create!(category: "Category", name: "Fitness/Sports")
+		Tag.create!(category: "Category", name: "Errands")
+		Tag.create!(category: "Category", name: "Freelance")
+		Tag.create!(category: "Category", name: "Ridesharing")
+		Tag.create!(category: "Category", name: "Cooking")
+		Tag.create!(category: "Category", name: "Photography")
+		Tag.create!(category: "Category", name: "Business")
+		Tag.create!(category: "Category", name: "Entertainment")
+		Tag.create!(category: "Category", name: "Technology")
+		Tag.create!(category: "Category", name: "Finance")
+		Tag.create!(category: "Category", name: "Dance")
+		Tag.create!(category: "Category", name: "Art")
+		Tag.create!(category: "Category", name: "Health")
 	end
 
 	########################################## HELPER FUNCTIONS #################################################
@@ -216,12 +268,12 @@ namespace :db do
 		location 	= ['Los Angeles', 'USC', 'Southern California', 'Silicon Valley', 'San Francisco', 'Boston', 'United States'].sample
 		price 		= [*10..200].sample
 		desc 		= [ { title: 'Cheap Guitar Lessons', category: 'Music', tag: 'Guitar', headline: 'Experience professional teaching guitar'},
-						{ title: 'Piano Lessons!', category: 'Music', tag: 'Piano', headline: 'Can teach beginners to experienced people'},
+						{ title: 'Piano Lessons!', category: 'Music', tag: 'Piano', headline: 'Can teach beginners to experienced'},
 						{ title: 'Rock and Roll!', category: 'Music', tag: 'Guitar', headline: 'Teaching rock and rock style guitar'},
 						{ title: 'Dog Walking All Day', category: 'Errands', tag: 'Dog Walking', headline: 'I love spending time with dogs!'},
-						{ title: 'How to Ride A Bike', category: 'Sports/Fitness', tag:'Biking', headline: 'Teaching you how to ride a bike in one day!'}, 
-						{ title: 'BUAD 425 Tutoring Session', category: 'Education', tag: 'Tutoring', headline: 'Helping students with BUAD 425' },
-						{ title: 'Joes Car Washing Service', category: 'Errands', tag: 'Car Wash', headline: "We've been doing this for a long time!"} ].sample
+						{ title: 'How to Ride A Bike', category: 'Sports/Fitness', tag:'Biking', headline: 'Teaching you how to ride a bike!'}, 
+						{ title: 'BUAD Tutor Session', category: 'Education', tag: 'Tutoring', headline: 'Helping students with BUAD 425' },
+						{ title: 'Car Washing Service', category: 'Errands', tag: 'Car Wash', headline: "We've been doing this for a long time!"} ].sample
 		hash 		= { belt: belt, location: location, price: price, desc: desc }
 
 		hash

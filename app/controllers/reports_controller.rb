@@ -11,7 +11,7 @@ class ReportsController < ApplicationController
 
 	################################################ RESOURCES #######################################################
 
-	# List all reports
+	# Show a list of reports
 	swagger_api :index do
 		summary "Show a list of reports"
 		param :query, :page, :integer, :optional, "Page Number"
@@ -28,7 +28,7 @@ class ReportsController < ApplicationController
 		end
 	end
 
-	# List all reports
+	# Show an individual report
 	swagger_api :show do
 		summary "Show an individual report"
 		param :path, :id, :integer, :required, "Report ID"

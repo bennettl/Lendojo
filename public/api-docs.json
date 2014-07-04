@@ -26,6 +26,10 @@
     {
       "path": "lender_applications.{format}",
       "description": "Lender Application operations"
+    },
+    {
+      "path": "tags.{format}",
+      "description": "Tag Operations"
     }
   ]
 }

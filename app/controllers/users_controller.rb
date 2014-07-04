@@ -10,14 +10,6 @@ class UsersController < ApplicationController
 
 	##################################################### RESOURCES #####################################################
 
-	def auth
-		@hash = auth_hash
-	end
-
-	def auth_hash
-	    request.env['omniauth.auth']
-	end
-
 	# Show all users
 	swagger_api :index do
 		summary "Show all users"

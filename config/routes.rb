@@ -1,6 +1,5 @@
-    Rails.application.routes.draw do
+Rails.application.routes.draw do
 
-  devise_for :users
     # Root
     root 'static_pages#home'
 
@@ -9,19 +8,23 @@
     match   'contact',                  to: 'static_pages#contact',                 via: 'get'
     match   'guidelines',               to: 'static_pages#guidelines',              via: 'get'
     match   'privacy',                  to: 'static_pages#privacy',                 via: 'get'
-    match   'faqs',                     to: 'static_pages#faqs',                 via: 'get'
+    match   'faqs',                     to: 'static_pages#faqs',                    via: 'get'
     match   'contact_form_submit',      to: 'static_pages#contact_form_submit',     via: 'post'
 
     # Authentication
     # get '/auth/:provider/callback',     to: 'users#auth'
-    
-    devise_for :users
+    # Devise / Omniauth
+    devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' } do
+        get "/login", :to => "devise/sessions#new", :as => :login
+        get "/signup", :to => "devise/registration#new", :as => :signup
+        get "/logout", :to => "devise/sessions#destroy", :as => :logout
+    end
 
     # Sessions
     resources :sessions
-    devise_scope :user do 
-        match '/sessions/user', to: 'devise/sessions#create', via: :post
-    end
+    # devise_scope :user do 
+        # match '/sessions/user', to: 'devise/sessions#create', via: :post
+    # end
 
     ################################## RESOURCES ##################################
     
@@ -80,6 +83,9 @@
 
     # Reports
     resources :reports
+
+    # Tags
+    resources :tags
 
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".

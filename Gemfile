@@ -49,6 +49,9 @@ gem 'omniauth-facebook', '~> 1.6.0'
 gem 'omniauth-twitter', '~> 1.0.1'
 gem 'omniauth-google-oauth2', '~> 0.2.4'
 
+# Saving image from omniauth - paperclip
+gem 'open_uri_redirections'
+
 # Swagger 
 gem 'swagger-docs', '~> 0.1.8'
 

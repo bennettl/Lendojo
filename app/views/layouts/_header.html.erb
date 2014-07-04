@@ -30,6 +30,9 @@
 				</li>
 			<% else %>
 				<li class='nav-list'><%= nav_link 'Sign In', main_app.new_user_session_path %></li>
+				<li class='nav-list'><%= nav_link 'Facebook', main_app.user_omniauth_authorize_path(:facebook) %></li>
+				<li class='nav-list'><%= nav_link 'Twitter', main_app.user_omniauth_authorize_path(:twitter) %></li>
+				<li class='nav-list'><%= nav_link 'Google+', main_app.user_omniauth_authorize_path(:google_oauth2) %></li>
 			<% end %>
 		</ul>
 	</nav>
