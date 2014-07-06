@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+	##################################################### FILTERS #####################################################
+
+	##################################################### RESOURCES #####################################################
 	# Requires users to sign in before accessing action
 	# before_filter :authenticate_user!
 

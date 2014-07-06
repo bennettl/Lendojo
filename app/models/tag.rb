@@ -1,4 +1,5 @@
 class Tag < ActiveRecord::Base
+	before_save { |tag| tag.category = tag.category.downcase }
 
 	################################## VALIDATION ##################################
 	validates :category, 	presence: true
@@ -23,22 +24,22 @@ class Tag < ActiveRecord::Base
 			
 			# Category: Push category to query
 			unless search[:category].nil? || search[:category].empty?
-				query.push("lower(category) = '#{search[:category].downcase}'")
+				query.push("lower(category) = '#{search[:category].downcase.singularize}'")
 			end  
 
 			# Name: Push name query
 			unless search[:name].nil? || search[:name].empty?
-				query.push("lower(name) #{like} = '%#{search[:name].downcase}%'",)
+				query.push("lower(name) #{like} '%#{search[:name].downcase}%'",)
 			end  
 
 			# Remove nil queries
 			query.reject! {|q| q.empty? }
 
 			# Search for all fields
-			self.where(query.join(' AND '))
+			self.where(query.join(' AND ')).limit(5)
 		else
 			# Empty scope, returns all but doesn't perform the actual query
-			self.all
+			self.all.limit(5)
 		end
 	end
 

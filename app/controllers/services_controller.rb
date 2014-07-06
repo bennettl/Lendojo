@@ -1,8 +1,14 @@
 class ServicesController < ApplicationController
+	##################################################### FILTERS #####################################################
+	
 	# Requires users to sign in before accessing action
 	# before_filter :authenticate_user!
+
+	# Check to see if user signed up is complete before accessing actions of controller
+	before_filter :ensure_signup_complete
 	
-	# Swagger documentation
+	##################################################### SWAGGER #####################################################
+
 	swagger_controller :services, "Service operations"
 
 	##################################################### RESOURCES #####################################################
@@ -265,20 +271,20 @@ class ServicesController < ApplicationController
 		params.require(:report).permit(:reason, :summary, :action, :staff_notes, :status)
 	end
 
-	# Parameters (filter_data) use for searching
+	# Parameters (tag_data) use for searching
 	def search_params
 		# If there is no filter data, return empty
-		if params[:filter_data].nil?
+		if params[:tag_data].nil?
 			return ''
 		end
 		
 		# Fixes error when any of the array is nil by setting default to an empty array
-		params[:filter_data][:locations] ||= []
-		params[:filter_data][:prices] ||= []
-		params[:filter_data][:belts] ||= []
-		params[:filter_data][:keywords] ||= []
+		params[:tag_data][:location] ||= []
+		params[:tag_data][:price] ||= []
+		params[:tag_data][:belt] ||= []
+		params[:tag_data][:keyword] ||= []
 
-		params.require(:filter_data).permit(locations: [], prices: [], belts: [], keywords: [])
+		params.require(:tag_data).permit(location: [], price: [], belt: [], keyword: [])
 	end
 
 end

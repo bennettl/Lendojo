@@ -1,12 +1,15 @@
 class ReportsController < ApplicationController
-		
+	
+	##################################################### FILTERS #####################################################
+	
 	# Requires users to sign in before accessing action
 	# before_filter :authenticate_user!
 	
 	# Include sorting params for sortable headers on index page
 	include HeaderFiltersHelper
-	
-	# Swagger documentation
+
+	##################################################### SWAGGER #####################################################
+
 	swagger_controller :reports, "Report operations"
 
 	################################################ RESOURCES #######################################################

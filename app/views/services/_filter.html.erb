@@ -6,16 +6,16 @@
 			<!-- SEARCH ICON -->
 			<span class="searchIcon glyphicon glyphicon-search icon-flipped"></span>
 			<!-- CURRENT FILTERS -->
-			<div class="current-filter-tags">
-				<!-- <div class="filter-tag" data-key="locations" data-value="Southern California">
+			<div  id="tag-container" class="current-filter-tags">
+				<!-- <div class="tag-box" data-key="locations" data-name="Southern California">
 					Southern California
-					<span class="filter-remove glyphicon glyphicon-remove"></span>
+					<span class="tag-remove glyphicon glyphicon-remove"></span>
 				</div> -->
 			</div>
 			<!-- CURRENT FILTERS -->
 			<!-- KEYWORD BOX -->
 			<div class="keyword-box" style="display: none;">
-				<input type="text" placeholder="Enter a keyword" class="input keyword-input" name="keywords">
+				<input type="text" placeholder="Enter a keyword" class="input keyword-input tag-input" name="keywords">
 				<div class="fontello-cancel-circle close"></div>
 			</div>
 			<!-- KEYWORD BOX -->
@@ -28,7 +28,7 @@
 				<ul class="dropdown-menu" role="menu" style="left: -240px;">
 					<li class="dropdown-header">Filter Name</li>
 					<li class="dropdown">
-						<input type="text" placeholder="Cheap Car Washes @ LA" class="location-input ui-autocomplete-input form-control" autocomplete="off" name="filter_title" />
+						<input type="text" placeholder="Cheap Car Washes @ LA" class="form-control" autocomplete="off" name="filter_title" />
 					</li>
 					<li>
 						<button type="button" class="btn btn-default save-current-filters">Save Filter</button>
@@ -41,46 +41,46 @@
 	<div class="filter-menus">
 		<ul class="filter-dimensions">
 			<!-- DIMENSION -->
-			<li class="dimension dropdown" data-menu="locations">
+			<li class="dimension dropdown tag-dropdown" data-menu="location">
 				<!-- DIMENSION LABEL -->
 				<a href="#" class="dimension-label" data-toggle="dropdown"> Locations <b class="caret"></b></a>
 				<!-- DROPDOWN MENU -->
-				<ul data-menu="locations" class="dropdown-menu">
+				<ul data-menu="location" class="dropdown-menu">
 					<li class="dropdown-header">Top locations</li>
 					<li>
-						<input type="text" placeholder="Enter A Location" class="ui-autocomplete-input form-control" autocomplete="off" name="locations" />
+						<input type="text" placeholder="Enter A Location" class="tag-input form-control" autocomplete="off" name="location" />
 					</li>
 					<li class="dropdown-header">Top locations</li>
-					<li data-value="Los Angeles" data-key="locations" class="filter-item"><a href="#">Los Angeles</a></li>
-					<li data-value="San Francisco" data-key="locations" class="filter-item"><a href="#">San Francisco</a></li>
-					<li data-value="Southern California" data-key="locations" class="filter-item"><a href="#">Southern California</a></li>
-					<li data-value="Silicon Valley" data-key="locations" class="filter-item"><a href="#">Silicon Valley</a></li>
-					<li data-value="United States" data-key="locations" class="filter-item"><a href="#">United States</a></li>
+					<li><a href="#" data-name="Los Angeles" data-category="location" class="tag-item">Los Angeles</a></li>
+					<li><a href="#" data-name="San Francisco" data-category="location" class="tag-item">San Francisco</a></li>
+					<li><a href="#" data-name="Southern California" data-category="location" class="tag-item">Southern California</a></li>
+					<li><a href="#" data-name="Silicon Valley" data-category="location" class="tag-item">Silicon Valley</a></li>
+					<li><a href="#" data-name="United States" data-category="location" class="tag-item">United States</a></li>
 				</ul>
 			</li>
 
-			<li class="dimension dropdown" data-menu="prices">
+			<li class="dimension dropdown tag-dropdown" data-menu="price">
 				<a href="#" class="dimension-label" data-toggle="dropdown"> Price <b class="caret"></b></a>
 				<!-- DROPDOWN MENU -->
 				<ul data-menu="price" class="dropdown-menu">
-					<li data-value="$" data-key="prices" class="filter-item"><a href="#">$</a></li>
-					<li data-value="$$" data-key="prices" class="filter-item"><a href="#">$$</a></li>
-					<li data-value="$$$" data-key="prices" class="filter-item"><a href="#">$$$</a></li>
-					<li data-value="$$$$" data-key="prices" class="filter-item"><a href="#">$$$$</a></li>
+					<li><a href="#" data-name="$" data-category="price" class="tag-item">$</a></li>
+					<li><a href="#" data-name="$$" data-category="price" class="tag-item">$$</a></li>
+					<li><a href="#" data-name="$$$" data-category="price" class="tag-item">$$$</a></li>
+					<li><a href="#" data-name="$$$$" data-category="price" class="tag-item">$$$$</a></li>
 				</ul>
 			</li>
-			<li class="dimension dropdown" data-menu="ranks">
+			<li class="dimension dropdown tag-dropdown" data-menu="belt">
 				<a href="#" class="dimension-label" data-toggle="dropdown"> Rank <b class="caret"></b></a>
 				<!-- DROPDOWN MENU -->
 				<ul data-menu="price" class="dropdown-menu">
-					<li data-value="black" data-key="belts" class="filter-item"><a href="#">Black</a></li>
-					<li data-value="red" data-key="belts" class="filter-item"><a href="#">Red</a></li>
-					<li data-value="blue" data-key="belts" class="filter-item"><a href="#">Blue</a></li>
-					<li data-value="green" data-key="belts" class="filter-item"><a href="#">Green</a></li>				
-					<li data-value="white" data-key="belts" class="filter-item"><a href="#">White</a></li>
+					<li><a href="#" data-name="black" data-category="belt" class="tag-item">Black</a></li>
+					<li><a href="#" data-name="red" data-category="belt" class="tag-item">Red</a></li>
+					<li><a href="#" data-name="blue" data-category="belt" class="tag-item">Blue</a></li>
+					<li><a href="#" data-name="green" data-category="belt" class="tag-item">Green</a></li>				
+					<li><a href="#" data-name="white" data-category="belt" class="tag-item">White</a></li>
 				</ul>
 			</li>
-			<li class="dimension dropdown" data-menu="keywords">
+			<li class="dimension dropdown tag-dropdown" data-menu="keyword">
 				<a href="#" class="dimension-label" data-toggle="dropdown"> Keywords <b class="caret"></b></a>
 				<!-- DROPDOWN MENU -->
 				<ul data-menu="keywords" class="dropdown-menu">
@@ -88,11 +88,11 @@
 						<input type="text" placeholder="Enter Keywords" class="keyword-input ui-autocomplete-input form-control" autocomplete="off" name="keywords" />
 					</li>
 					<li class="dropdown-header">Top Keywords</li>
-					<li data-value="Dog Walking" data-key="keywords" class="filter-item"><a href="#">Dog Walking</a></li>
-					<li data-value="Grocery Shopping" data-key="keywords" class="filter-item"><a href="#">Grocery Shopping</a></li>
-					<li data-value="Hair Cutting" data-key="keywords" class="filter-item"><a href="#">Hair Cutting</a></li>
-					<li data-value="Tutoring" data-key="keywords" class="filter-item"><a href="#">Tutoring</a></li>				
-					<li data-value="Guitar Lessons" data-key="keywords" class="filter-item"><a href="#">Guitar Lessons</a></li>
+					<li><a href="#" data-name="Dog Walking" data-category="keyword" class="tag-item">Dog Walking</a></li>
+					<li><a href="#" data-name="Grocery Shopping" data-category="keyword" class="tag-item">Grocery Shopping</a></li>
+					<li><a href="#" data-name="Hair Cutting" data-category="keyword" class="tag-item">Hair Cutting</a></li>
+					<li><a href="#" data-name="Tutoring" data-category="keyword" class="tag-item">Tutoring</a></li>				
+					<li><a href="#" data-name="Guitar Lessons" data-category="keyword" class="tag-item">Guitar Lessons</a></li>
 				</ul>
 			</li>
 			<li class="dropdown my-filters" date-menu="filters">

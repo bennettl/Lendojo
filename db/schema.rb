@@ -194,8 +194,8 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.string   "last_name"
     t.string   "headline",                                       default: ""
     t.date     "birthday"
-    t.string   "email"
-    t.string   "phone"
+    t.string   "email",                                          default: ""
+    t.string   "phone",                                          default: ""
     t.boolean  "lender",                                         default: false
     t.string   "belt",                                           default: "N/A"
     t.string   "skill_level"
@@ -203,9 +203,9 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.text     "summary",                                        default: ""
     t.string   "location",                                       default: ""
     t.string   "address",                                        default: ""
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
+    t.string   "city",                                           default: ""
+    t.string   "state",                                          default: ""
+    t.string   "zip",                                            default: ""
     t.float    "latitude"
     t.float    "longitude"
     t.decimal  "credits",                precision: 8, scale: 2, default: 0.0
@@ -220,18 +220,12 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.string   "provider"
-    t.string   "uid"
+    t.string   "provider",                                       default: ""
+    t.string   "uid",                                            default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

@@ -14,6 +14,7 @@ gem 'jbuilder', '1.0.2'
 
 # Style
 gem 'bootstrap-sass', '~> 3.1.1.1'
+gem 'font-awesome-rails', '~> 4.1.0.0'
 
 # Populate DB for Testing
 gem 'faker', '1.2.0'

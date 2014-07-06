@@ -30,7 +30,6 @@ function initUser(){
 function index(){
 	// Reloads list in real time every time the user types
     $('input[name="user_full_name"]').keyup(function(event) {
-        var memberSearchForm = $("#member_search");
         var path = '/users/';
         var info = { 'name': $(this).val() };
         $.get(path, info, null, "script");

@@ -18,21 +18,29 @@
 		<div id="detail" class="col-sm-7">
 			<div class="row">
 				<span class="title" style="text-transform:  none;"><%= @user.name %></span><br />
-				<span id="location">
-					<span class="glyphicon glyphicon-map-marker"></span> 
-					<%= @user.city %>
-				</span>
+				<% unless @user.city.empty? %>
+					<span id="location">
+						<span class="glyphicon glyphicon-map-marker"></span> 
+						<%= @user.city %>
+					</span>
+				<% end %>
 				<div id="join_info"> 
 					<span class="glyphicon glyphicon-time"></span> 
 					Joined <%= time_ago_in_words(@user.created_at) %></div>
-				<div id="headline"><span class="glyphicon glyphicon-pushpin"></span> <%= @user.headline %></div>
-				<div id="summary">
-					<div class="detailTitle">
-						<span class="glyphicon glyphicon-align-left"></span>
-						<span>Summary</span>
+				<% unless @user.headline.empty? %>
+					<div id="headline">
+						<span class="glyphicon glyphicon-pushpin"></span> <%= @user.headline %>
 					</div>
-					<p><%= @user.summary %></p>
-				</div>
+				<% end %>
+				<% unless @user.summary.empty? %>
+					<div id="summary">
+						<div class="detailTitle">
+							<span class="glyphicon glyphicon-align-left"></span>
+							<span>Summary</span>
+						</div>
+						<p><%= @user.summary %></p>
+					</div>
+				<% end %>
 			</div>
 
 		</div>

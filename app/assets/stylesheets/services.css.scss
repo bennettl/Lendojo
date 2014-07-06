@@ -56,36 +56,6 @@ $orange-red: #e28778;
 		    padding: 16px 16px 10px;
 		    width: 85%;
 		    
-		    .current-filter-tags{
-		    	display: inline-block;
-			    vertical-align: middle;
-			    width: 95%;
-			    
-			    .filter-tag{
-					background-color: #F59E8F;
-				    color: #FFFFFF;
-				    float: left;
-				    font-weight: 500;
-				    height: 32px;
-				    line-height: 28px;
-				    margin: 0 8px 8px 0;
-				    padding: 2px 8px 7px 13px;
-				    white-space: nowrap;
-				    @include border-radius(3px);
-
-				    .filter-remove{
-				    	font-size: 0.8em;
-				    	margin: 0 2px;
-				    	cursor: pointer;
-				    	opacity: 0.7;
-			    
-			    		&:hover{
-			    			opacity: 1.0;
-			    		}
-				    }
-				}
-		    }
-
 		    .keyword-box{
 		    	border-top: 1px dashed #4b4b4b;
 			    margin-left: 22px;

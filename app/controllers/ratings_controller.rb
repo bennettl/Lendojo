@@ -1,7 +1,11 @@
 class RatingsController < ApplicationController
+	##################################################### FILTERS #####################################################
+	
 	# Requires users to sign in before accessing action
 	# before_filter :authenticate_user!
-	
+
+	##################################################### SWAGGER #####################################################
+
 	# Swagger documentation
 	swagger_controller :ratings, "Rating operations"
 

@@ -26,7 +26,6 @@
 
     jQuery(document).on('page:change, page:load', initApp);
 
-
     function initApp(){
 
     	initRatings(); // Initalize raty for reviewsList
@@ -106,6 +105,181 @@
 
 }());
 
+// Autocomplete object, when initialize, attaches event handler. g_tag_data
+var AutoComplete = {
+
+   	g_tag_data: {}, // Initalize (global) g_tag_data
+	
+	/******* INITIALIZATION *******/
+
+    init: function(){
+
+        var that = this; // Store reference here for callback
+
+    	// Set filter data and .current_filters_tags to the first filter (if user has one)
+		var default_filter = $(".my-filter-row.body").eq(0);
+		if (default_filter.length > 0){
+			var l_filter_data = default_filter.data().tag_data;
+			this.setGlobalTagData(l_filter_data);
+			this.refreshServiceIndex();
+		}
+
+		// Autocomplete for input.tag-input. Reloads tagList in real time every time the user types
+	    $('.container').on('keyup', 'input.tag-input', function(e) {
+	    	// Key up, down, enter
+			switch (e.keyCode){
+				case 38: // up
+					var prev 	= $(".tag-item.active").removeClass('active').prev();
+					prev 		= (prev.length > 0) ? prev : $(".tag-item").last(); // if there's no previous, set prev to last
+					prev.addClass('active');
+					break;
+				case 40: // down
+					var next 	= $(".tag-item.active").removeClass('active').next();
+					next 		= (next.length > 0) ? next : $(".tag-item").first(); // if there's no next, set prev to first
+					next.addClass('active');
+					break;
+				case 13: //enter
+					// Either get the category/name from .tag-item active or from the input
+					var category 	= ($(".tag-item.active").length > 0) ? $(".tag-item.active").data('category') : $(this).attr('name');
+					var name 		= ($(".tag-item.active").length > 0) ? $(".tag-item.active").data('name') : $(this).val();
+					that.addTag($(this), category, name); // add tag
+					break;
+			}
+			if (e.keyCode == 38 || e.keyCode == 40 || e.keyCode == 13){
+				return;
+			}
+
+			// Autocomplete
+
+	    	// Append tag_list to parent
+	    	$(this).parent().append($("#tag-list"));
+
+	    	// Get CSS properties of input
+	    	var top 		= parseInt($(this).css('margin-top')) + $(this).position().top + parseInt($(this).css('height')) + 2;  // top + margin-top
+	    	var left 		= $(this).position().left + + parseInt($(this).css('margin-left')); // left + margin-left
+	    	var width 		= $(this).css('width');
+
+	    	// GET request to /tags
+	        var path 		= '/tags/';
+	        var category 	= $(this).attr("name"); // tag[location]
+	        var name 		= $(this).val(); // tag[San Francisco]
+	        var info = { 'tag[category]':  category, 'tag[name]': name };
+	        $.get(path, info, function(){
+				// Show/hide #tag-List depending if items are inside
+				if ($("#tag-list .tag-item").length == 0){
+					$("#tag-list").hide();
+				} else{
+					// Set tag_list css properties and the first tag-list item as active class
+			    	$("#tag-list").css( {top: top, left: left, width: width} );
+			    	$("#tag-list .tag-item").eq(0).addClass('active');	
+					$("#tag-list").show();
+				}
+	        }, "script");
+	    });
+
+		// Adding a tag item on click
+		$('.container').on('click', '.tag-item', function(){		
+			var category 	= $(this).data('category');
+			var name 		= $(this).data('name');
+			// Add filter tag (both to g_tag_data object and .current-filters div)
+			that.addTag($(this), category, name);
+			return false;
+		});
+
+		// // Removing a tag item
+		$('.tag-box').on('click','.tag-remove', function(e){
+			// Find the parent tag_box's category and name
+			var category 	= $(this).parents(".tag-box").data('category');
+			var name 		= $(this).parents(".tag-box").data('name');
+			that.removeTag(category, name);
+			e.stopPropagation(); // prevent keyword box from popping up
+		});
+
+		return this;
+    },
+    // Add tag data (category, name) to g_tag_data and appends new div to #tagContainer
+	addTag: function(tag_input, category, name){
+
+		var tag_container = $("#tag-container"); // container that contain all tags
+				
+		tag_input.val(""); // empty input
+
+		// Hide the tag-dropdown, need a class because Bootstrap dropdowns are tag dropdowns
+		$(".tag-dropdown.open").removeClass("open");
+
+		// Make sure g_tag_data has category dimension
+		if (this.g_tag_data[category] ===  undefined){
+			this.g_tag_data[category] = [];
+		}
+
+		// Only add if it doesn't exist
+		if (this.g_tag_data[category].indexOf(name) != -1){
+			return false;
+		}
+
+		// Push the name to the appropriate g_tag_data[category] array
+		this.g_tag_data[category].push(name);
+
+
+		// Create the HTML
+		var tag_container  	= $("#tag-container");
+		var tag_box 		= $('<div class="tag-box" data-category="' + category + '" data-name="' + name + '">' + name + '<span class="tag-remove glyphicon glyphicon-remove"></span></div>');
+
+		// Place HTML after the last tag-box with the same category so tags are grouped logically
+		var last_filter 			=  tag_container.find('.tag-box[data-category="' + category + '"]').last();
+
+		// If there are no filter-items with the same dimension to insert after, append to .current-filters
+		if  (last_filter.length == 0){
+			tag_box.appendTo(tag_container);
+		} else{
+			tag_box.insertAfter(last_filter);			
+		}
+		console.log(this.g_tag_data);
+		this.refreshServiceIndex();
+	},
+	// Remove tag data (category, name) to g_tag_data and appends new div to #tagContainer
+	removeTag: function(category, name){
+		// Remove the tag_box HTML
+		$('.tag-box[data-category="' + category + '"][data-name="' + name + '"]').remove();
+		// Remove the value from g_tag_data
+		this.g_tag_data[category].remove(name);
+		console.log(this.g_tag_data);
+		this.refreshServiceIndex();
+	},
+	// Sets the current 'g_tag_data' (global) object to 'l_tag_data' (local), changes the HTML accordingly, and refreshes the index/list of services
+	setGlobalTagData: function(l_tag_data){
+		// Container for current filters
+		var tag_container 	= $('#tag-container');
+
+		// Set global filter_data to l_filter_data
+		this.g_tag_data = l_tag_data;
+
+		// Empty current filters
+		tag_container.html('');
+
+		// Generate new .filter HTML and append them to current_filter
+		for (var category in this.g_tag_data) { // category: locations, belts, prices, etc. 
+			var categoryArr = this.g_tag_data[category];
+			
+			for (var i = 0; i < categoryArr.length; i++){ // i: 0, 1, 2
+				var name = categoryArr[i] // name: Los Angeles, USC, etc.
+				// Create the HTML
+				var tag_HTML = $('<div class="tag-box" data-category="' + category +'" data-name="' + name + '">' + name + '<span class="tag-remove glyphicon glyphicon-remove"></span></div>');
+				tag_container.append(tag_HTML);
+			}
+		}
+		// Refrehes the services list with the current 'g_tag_data' object
+		console.log(this.g_tag_data);
+		this.refreshServiceIndex();
+	}, 
+
+	// Calls the server for services index base on the current 'g_tag_data' object and refreshes the list
+	refreshServiceIndex: function (){
+		// Make an asynchronous call to get a list of services
+		$.get('/services', { 'tag_data': this.g_tag_data }, null, "script");
+	}
+};
+
 // Initalize raty for reviewsList
 function initRatings(){
 	/************************** REVIEW LIST **************************/
@@ -128,5 +302,20 @@ function initRatings(){
 		});
 	}
 }
+
+
+/********************************** HELPER FUNCTIONS **********************************/
+
+// Remove an item from an array
+Array.prototype.remove = function() {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
+};
 
 

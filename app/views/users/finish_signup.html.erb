@@ -1,0 +1,33 @@
+<% provide(:title, 'Finish Signup')   %>
+
+<div id="signInBox" class="box small col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <div class="title">Finish Signup</div>
+    <div class="text-center" style="margin-bottom: 25px;">Almost there! Just make sure to fill in these fields before proceeding</div>
+    <%= form_for @user, html: { autocomplete: 'off', class: 'form-horizontal' } do |f| %>
+        <%= render 'shared/error_messages', object: f.object  %>
+        <div class="form-group">
+            <%= f.label 'Email', class: 'col-sm-2 control-label' %>
+            <div class="col-sm-10">
+                <%= f.email_field :email, class: 'form-control',  autofocus: true  %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.label 'Password', class: 'col-sm-2 control-label' %>
+            <div class="col-sm-10">
+                <%= f.password_field :password, class: 'form-control' %>
+            </div>
+        </div>
+           <div class="form-group">
+            <%= f.label 'Confirm Password', class: 'col-sm-2 control-label' %>
+            <div class="col-sm-10">
+                <%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
+        </div>
+
+            <%= f.submit 'Continue', class: 'button', style: 'width: 100%;' %>
+    <% end %>
+</div>
+
+
+       
+     

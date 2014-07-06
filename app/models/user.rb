@@ -2,9 +2,8 @@ class User < ActiveRecord::Base
 
 	# For us states parsing
 	include ApplicationHelper
-
+	
 	before_save { self.email = email.downcase }
-	# before_create :create_remember_token
 
 	################################## ASSOCIATIONS ##################################
 
@@ -81,7 +80,7 @@ class User < ActiveRecord::Base
 	################################## AUTHENTICATION/SESSION/REGISTRATION ##################################
 
 	# Include default devise modules. Others available are: :confirmable, :lockable, :timeoutable
-	devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable, :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
+	devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable, :omniauthable, :omniauth_providers => [:facebook, :twitter, :google]
 
 	################################## GEOCODING ##################################
 
@@ -96,10 +95,10 @@ class User < ActiveRecord::Base
 
 	################################## OMNIAUTH ##################################
 
-	# Tries to find an existing user by the provider and uid fields. If no user is found, a new one is created with a random password and some extra information.
+	# Tries to find an existing user by the provider and uid fields. If no user is found, a new one is initialize with a random password and some extra information.
 	def self.from_omniauth(auth)
-		self.where(auth.slice(:provider, :uid)).first_or_create do |user|
-
+		self.where(auth.slice(:provider, :uid)).first_or_initialize do |user|
+			# Populate fields differently depending on provider
 			case user.provider
 				when 'facebook'
 					# Basic Info
@@ -121,14 +120,13 @@ class User < ActiveRecord::Base
 					user.headline 		= auth.extra.raw_info.description[0..38]
 					# Location
 					user.location 		= auth.info.location
-				when 'google_oauth2'
+				when 'google'
 					# Basic Info
 					user.first_name		= auth.info.first_name
 					user.last_name		= auth.info.last_name
-					user.birthday 		= Date.strptime(auth.extra.raw_info.birthday, "%m/%d/%Y")
+					user.birthday 		= Date.strptime(auth.extra.raw_info.birthday, "%m/%d/%Y") unless auth.extra.raw_info.birthday.nil?
 					# Contact
 					user.email 			= auth.info.email
-
 			end
 
 			user.main_img 				= URI.parse(auth.info.image)
@@ -147,6 +145,14 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	# Ensure email is required only if provider is absent (twitter!)
+	def email_required?
+		super && provider.blank?
+	end
+	def password_required?
+		super && provider.blank?
+	end
+
 	################################## ATTACHMENT ##################################
 
 	################################## VALIDATION ##################################
@@ -154,16 +160,15 @@ class User < ActiveRecord::Base
 	# validates :main_img, presence: true #profile image
 	validates :first_name, 	presence: true
 	validates :last_name, 	presence: true
-	validates :headline,	allow_nil: true, length: { maximum: 90 }
-	validates :state, 		allow_nil: true, presence: true, length: { is: 2 }
-	validates :zip, 		allow_nil: true, presence: true, length: { minimum: 5 }
+	validates :headline,	allow_nil: true, allow_blank: true, length: { maximum: 90 }
+	validates :state, 		allow_nil: true, allow_blank: true, length: { is: 2 }
+	validates :zip, 		allow_nil: true, allow_blank: true, length: { minimum: 5 }
 	validates :password, 	allow_nil: true, length: { minimum: 5 }
 	
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	validates :email, 		presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+	validates :email, 		allow_nil: true, allow_blank: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false } # allow nil for twitter!
 	VALID_PHONE_REGEX = /\A[0-9]{3}-[0-9]{3}-[0-9]{4}\z/
-	validates :phone, 		allow_nil: true, format: { with: VALID_PHONE_REGEX }, uniqueness: { case_sensitive: false }
-
+	validates :phone, 		allow_nil: true, allow_blank: true, format: { with: VALID_PHONE_REGEX }, uniqueness: { case_sensitive: false }
 
 
 	################################## RAKNING ##################################

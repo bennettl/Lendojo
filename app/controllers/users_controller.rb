@@ -1,11 +1,17 @@
 class UsersController < ApplicationController
+	
+	##################################################### FILTERS #####################################################
 	# Requires users to sign in before accessing action
-	# before_filter :authenticate_user!
+	before_filter :authenticate_user!
+
+	# Check to see if user signed up is complete before accessing actions of controller
+	before_filter :ensure_signup_complete, except: [:update]
 
 	# Include sorting params for sortable headers on index page
 	include HeaderFiltersHelper
 	
-	# Swagger documentation
+	##################################################### SWAGGER #####################################################
+
 	swagger_controller :users, "User operations"
 
 	##################################################### RESOURCES #####################################################
@@ -87,6 +93,11 @@ class UsersController < ApplicationController
 			
 		end
 	end	
+
+	# Display form for finishing user signup from omniauth signups
+	def finish_signup
+		@user = User.find(params[:id])
+	end
 	
 	# Display form for updating an existing user
 	def edit
@@ -116,7 +127,13 @@ class UsersController < ApplicationController
 		
 		# If update is sucessful, redirect to user page, else render edit page
 		if @user.update_attributes(user_params)
-			flash[:success] = "Update Is Successful"
+			flash[:success] = "Update Is Successful" + current_user.inspect
+
+			# If email changed, sign the user in with new credentials
+			unless user_params[:email].nil?
+				sign_in @user
+			end
+
 			# Respond to different formats
 			respond_to do |format|
 			  format.html { redirect_to edit_user_path(@user) }

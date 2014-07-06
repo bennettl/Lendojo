@@ -18,8 +18,8 @@ class CreateUsers < ActiveRecord::Migration
 			t.string 		:headline, default: ''
 			t.date 			:birthday
 			# Contact/Social
-			t.string 		:email
-			t.string 		:phone			
+			t.string 		:email, default: ''
+			t.string 		:phone, default: ''			
 			# Lender
 			t.boolean 		:lender, default: false
 			t.string 		:belt, default: 'N/A' # color: white, green, blue, red, black
@@ -29,9 +29,9 @@ class CreateUsers < ActiveRecord::Migration
 			# Location
 			t.string 		:location, default: '' # alias name
 			t.string 		:address, default: '' # Speific address, use for location tracking
-			t.string 		:city 
-			t.string 		:state
-			t.string 		:zip
+			t.string 		:city, default: '' 
+			t.string 		:state, default: ''
+			t.string 		:zip, default: ''
 			t.float 		:latitude
 			t.float 		:longitude
 			# Payment
@@ -53,25 +53,25 @@ class CreateUsers < ActiveRecord::Migration
 			t.string   		:current_sign_in_ip
 			t.string   		:last_sign_in_ip
 			## Confirmable
-			t.string   		:confirmation_token
-			t.datetime 		:confirmed_at
-			t.datetime 		:confirmation_sent_at
-			t.string   		:unconfirmed_email # Only if using reconfirmable
+			# t.string   		:confirmation_token
+			# t.datetime 		:confirmed_at
+			# t.datetime 		:confirmation_sent_at
+			# t.string   		:unconfirmed_email # Only if using reconfirmable
 			## Lockable
 			# t.integer  		:failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
 			# t.string   		:unlock_token # Only if unlock strategy is :email or :both
 			# t.datetime 		:locked_at
 			## Omniauthable
-			t.string 		:provider
-			t.string		:uid
+			t.string 		:provider, default: ''
+			t.string		:uid, default: ''
 			# Password
 			# t.string 		:password_digest
 			# Timestamp
 			t.timestamps
 			# Indexes
-			t.index 		:email,                unique: true
+			t.index 		:email                
 			t.index 		:reset_password_token, unique: true
-			t.index 		:confirmation_token,   unique: true
+			# t.index 		:confirmation_token,   unique: true
 			# t.index 		:unlock_token,         unique: true
 		end
 
@@ -131,7 +131,7 @@ class CreateUsers < ActiveRecord::Migration
 		 	t.string :title
 		 	t.boolean :alert, default: true # Wheather user wants alerts to be shown for new services offered for filters
 		 	# Serialized hash
-		 	t.text :data # location, price, belt, keywords
+		 	t.text :data # location, price, belt, keyword
 			# Timestamp
     		t.timestamps
 	    end

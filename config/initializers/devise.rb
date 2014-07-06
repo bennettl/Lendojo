@@ -237,15 +237,11 @@ Devise.setup do |config|
   ENV['TWITTER_SECRET']         = 'qq86ZUIN7aE9iLOl5TgkR0nioTqLNQlr9tyX0BUWmV0MZpMDFB'
   ENV["GOOGLE_CLIENT_ID"]       = '483134901437-6gqb19hra2i2q16arlqchjvbrqqp129t.apps.googleusercontent.com'
   ENV["GOOGLE_CLIENT_SECRET"]   = 'DSFDltjsDx9QoVzYVht8kXPM'
+  
   # Providers
-  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: "email,user_birthday,user_location", image_size: {width: 330}, 
-                                                                          display: "popup", secure_image_url: true
-  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'], secure_image_url: 'true', 
-                                                                        image_size: 'original'
-
-  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"], scope: "email, profile, plus.me", 
-                                                                                        image_size: { width: 330 },
-                                                                                        redirect_uri:'http://localhost:3000/users/auth/google_oauth2/callback'
+  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: "email,user_birthday,user_location", image_size: {width: 330}, display: "popup", secure_image_url: true
+  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'], secure_image_url: 'true', image_size: 'original'
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"], name: "google", scope: "email, profile, plus.me", image_size: { width: 330 }
 
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 

@@ -29,7 +29,7 @@
 						<li><%= f.text_field :city, value: checklist_item.city, class: 'form-control' %></li>
 						<li>
 							<%= f.label 'State', class: 'dropdown-location-label' %>
-							<%= f.select :state, us_states, class: 'form-control' %>
+							<%= f.select :state, us_states_initials, class: 'form-control' %>
 							<%= f.label 'Zip', class: 'dropdown-location-label' %>
 							<%= f.text_field :zip, value: checklist_item.zip, class: 'form-control dropdown-zip-input' %>
 						</li>

@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
 	
-	# Swagger documentation
+	##################################################### SWAGGER #####################################################
+
 	swagger_controller :tags, "Tag Operations"
 
 	##################################################### RESOURCES #####################################################
