@@ -15,8 +15,8 @@
     # Authentication
     # get '/auth/:provider/callback',     to: 'users#auth'
     
-    devise_for :users
-
+    # devise_for :users
+# 
     # Sessions
     resources :sessions
     devise_scope :user do 
