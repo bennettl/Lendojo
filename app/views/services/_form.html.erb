@@ -2,8 +2,8 @@
 	<div class="title"> <%= title %> Service</div>
 
 	<%= form_for @service, html: { multipart: true, class: 'form-horizontal',  autocomplete: :off } do |f| %>
-  	<%= render 'shared/error_messages', object: f.object  %>
-	<div class="row">
+	  	<%= render 'shared/error_messages', object: f.object  %>
+		<div class="row">
 		<!-- AVATAR  -->
 		<div class="col-md-5 text-center">
 			<%= image_tag @service.main_img.url, class: "serviceImage img-responsive" %>

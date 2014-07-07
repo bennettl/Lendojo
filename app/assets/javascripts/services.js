@@ -11,101 +11,95 @@ jQuery(document).ready(function($) {
 jQuery(document).on('page:change, page:load', initService);
 
 function initService(){
-	initFilterSystem();
+	var a = AutoComplete.init(); // initalize autocomplete system
+	Filter.init(a); // intialize filter system with autocomplete object
 }
 
-/********************************** FILTER SYSTEM **********************************/
-function initFilterSystem(){
+/********************************** FILTER SYSTEM (SINGLETON) **********************************/
 
-	// If autcomplete input exists
-	if ($('input.tag-input').length == 0){
-		return;
-	}
-
-	 AutoComplete.init(); // initalize autocomplete
-	
+var Filter = {
 
 	/******* INITIALIZATION *******/
+	autocomplete: {},
+	init: function (autocomplete){
 
-	// Container for entire filter system
-	var filter_container = $('#filter-container');
 
-	/******* FILTERS *******/
+		// Container for entire filter system
+		var filter_container = $('#filter-container');
 
-	// A new my-filter is saved. Will be created or updated (base on title)
-	filter_container.on('click', '.save-current-filters', function(e){
-		var title = filter_container.find('input[name="filter_title"]').val();
-	
+		// If filter-container exists, continue
+		if (filter_container.length == 0){
+			return;
+		}
 
-		// Empty filter title input
-		$('input[name="filter_title"]').val("");
+	    var that 				= this; // Store reference here for callback
+		this.autocomplete 		= autocomplete; // Will reference this tag_data from now on
 
-		// Make an asynchronous call to create filter
-        $.post('/filters', {'title':  title ,'filter_data': Autocomplete.g_tag_data}, function(response){
-          
-           	// Create a new HTML for my_filter and append it to .my-filters-dropdown
-			console.log(response);
-			var my_filter 		= response.my_filter;
-			var my_filter_HTML 	= $('<li data-filter_id="' + my_filter.id + '" data-tag_data="' + g_tag_data + ' "class="my-filter-row body"><div><span class="my-filter-name">' + my_filter.title + '</span><span class="my-filter-alert"><input type="checkbox" checked="checked" name="filter-alert"></span><span class="my-filter-remove glyphicon glyphicon-remove"></span></div></li>');
-			filter_container.find('.my-filters-dropdown').append(my_filter_HTML);
-			console.log(my_filter.data);
-        }, 'json');
-	});
+		// Save a new filter or update an existing one base on it's name
+		filter_container.on('click', '.save-current-filters', function(e){
+			// Get the filter title's value and empty it
+			var title = filter_container.find('input[name="filter_title"]').val();
+			$('input[name="filter_title"]').val("");
 
-	// Update alert for my-filter
-	filter_container.on('change', 'input[name="filter-alert"]', function(){		
-		var myFilter 		= $(this).parents('.my-filter-row');
-		var filter_id 		= myFilter.data().filter_id;
-		var data 			= { 'alert': $(this).is(":checked") };
+			var data = {'title':  title ,'filter_data': that.autocomplete.tag_data}
 
-		// Make a asynchronous call to update filter (speficially alert)
-		$.ajax({
-			type: "PATCH",
-			url: "/filters/" + filter_id,
-			data: {'filter_data' : data},
-			dataType:'json'
-		}).done(function(data){
-			// console.log(msg);
+			console.log('data post to filters', data);
+			// Create a filter
+	        $.post('/filters', data , function(response){	          
+	           	// Create a new HTML for my_filter and append it to .my-filters-dropdown
+				var my_filter 		= response.my_filter;
+				var my_filter_HTML 	= $('<li data-filter_id="' + my_filter.id + '" data-tag_data="' + that.autocomplete.tag_data + ' "class="my-filter-row body"><div><span class="my-filter-name">' + my_filter.title + '</span><span class="my-filter-alert"><input type="checkbox" checked="checked" name="filter-alert"></span><span class="my-filter-remove glyphicon glyphicon-remove"></span></div></li>');
+				filter_container.find('.my-filters-dropdown').append(my_filter_HTML);
+				console.log(my_filter.data);
+	        }, 'json');
 		});
-	});
 
-	// Remove my-filter
-	filter_container.on('click', '.my-filter-remove', function(e){
-		var myFilter 	= $(this).parents('.my-filter-row');
-		var filter_id 	= myFilter.data().filter_id;
+		// Update alert for my-filter
+		filter_container.on('change', 'input[name="filter-alert"]', function(){		
+			// Grab the filter id and alert checkbox value
+			var myFilter 		= $(this).parents('.my-filter-row');
+			var filter_id 		= myFilter.data().filter_id;
+			var alert 			= { 'alert': $(this).is(":checked") };
 
-		// Remove the HTML .my-filter-row
-		myFilter.remove();
-
-		// Make an asynchronous call to delete filter
-		$.ajax({
-			type: "DELETE",
-			url: "/filters/" + filter_id,
-			data: '',
-			dataType:'script'
-		}).done(function(msg){
-			// console.log(msg);
+			// Make a asynchronous call to update filter (speficially alert)
+			$.ajax({ type: "PATCH", url: "/filters/" + filter_id, data: {'filter_data' : alert}, dataType:'json' }).done(function(data){
+				// console.log(msg);
+			});
 		});
-	});
 
-	// Custom filter is selected
-	filter_container.on('click', '.my-filter-row', function(){
-		var tag_data 	= $(this).data().tag_data;
-		AutoComplete.setGlobalTagData(tag_data);		
-	});
+		// Remove my-filter
+		filter_container.on('click', '.my-filter-remove', function(e){
+			// Grab the filter id and remove it
+			var myFilter 	= $(this).parents('.my-filter-row');
+			var filter_id 	= myFilter.data().filter_id;
 
-	/******* KEYWORD BOX *******/
-	// When .current-filters (top filter box) is clicked, focus on the keyword-input-box
-	filter_container.on('click', '.filter-box', function(e){
-		filter_container.find(".keyword-box").slideDown(300);
-		$('input.keyword-input').focus();
-		console.log('hey');
-	});
+			// Remove the HTML
+			myFilter.remove();
+
+			// Make an asynchronous call to delete filter
+			$.ajax({ type: "DELETE", url: "/filters/" + filter_id, data: '', dataType:'script' }).done(function(msg){
+				// console.log(msg);
+			});
+		});
+
+		// Custom filter is selected
+		filter_container.on('click', '.my-filter-row', function(){
+			var tag_data 	= $(this).data().tag_data;
+			that.autocomplete.setTagData(tag_data);		
+		});
+
+		/******* KEYWORD BOX *******/
+		// When .current-filters (top filter box) is clicked, focus on the keyword-input-box
+		filter_container.on('click', '.filter-box', function(e){
+			filter_container.find(".keyword-box").slideDown(300);
+			$('input.keyword-input').focus();
+			console.log('hey');
+		});
 
 
-	// On the keyword input is on blur, slide up the keyword-box
-	filter_container.on('blur', 'input.keyword-input', function(){
-		$(this).parents(".keyword-box").slideUp(300);
-	});
-	
-}
+		// On the keyword input is on blur, slide up the keyword-box
+		filter_container.on('blur', 'input.keyword-input', function(){
+			$(this).parents(".keyword-box").slideUp(300);
+		});
+	}
+}	

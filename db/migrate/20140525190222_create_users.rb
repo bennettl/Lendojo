@@ -164,7 +164,7 @@ class CreateUsers < ActiveRecord::Migration
 		create_table :lender_applications do |t|
 			# Association
 			t.belongs_to 	:author, class_name: 'User', foreign_key: 'author_id'
-			t.text 			:categories # []
+			t.text 			:keyword # []
 			t.string 		:skill # skill level of lender
 			t.integer 		:hours # of hours lender can commit per week
 			t.text 			:summary

@@ -2,15 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 #revisionBlurb{
     margin-top: 30px;
     text-align: right;
 }
 
 /******************************* HOME *******************************/
+.container{
+    width: 100%;
+}
+
 #home{
-	background: url("/images/about.png") no-repeat scroll 0 0 / cover #ffffff;
+	background: url("/images/about.jpg") no-repeat scroll 0 0 / cover #ffffff;
     min-height: 955px;
     width: 100%;
     position: relative;
@@ -18,12 +21,24 @@
     .title{
     	padding: 30px 0;
     }
-    .aboutBlurb{
-    	height: 200px;
-	    margin: 0 auto;
-	    text-align: center;
-	    width: 500px;
+
+}
+
+#aboutBlurb{
+    margin: 0 auto;
+    min-height: 300px;
+    padding: 10px 30px;
+    text-align: center;
+    width: 524px;
+    .title{
+        margin-bottom: 0;
     }
+}
+
+/******************************* FAQs *******************************/
+
+.panel-default > .panel-heading{
+    // background: none;
 }
 
 /******************************* CONTACT *******************************/

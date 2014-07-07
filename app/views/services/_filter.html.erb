@@ -6,16 +6,13 @@
 			<!-- SEARCH ICON -->
 			<span class="searchIcon glyphicon glyphicon-search icon-flipped"></span>
 			<!-- CURRENT FILTERS -->
-			<div  id="tag-container" class="current-filter-tags">
-				<!-- <div class="tag-box" data-key="locations" data-name="Southern California">
-					Southern California
-					<span class="tag-remove glyphicon glyphicon-remove"></span>
-				</div> -->
+			<div  id="tag-container">
+				<!-- <div class="tag-box" data-key="locations" data-name="Southern California">Southern California<span class="tag-remove glyphicon glyphicon-remove"></span></div> -->
 			</div>
 			<!-- CURRENT FILTERS -->
 			<!-- KEYWORD BOX -->
 			<div class="keyword-box" style="display: none;">
-				<input type="text" placeholder="Enter a keyword" class="input keyword-input tag-input" name="keywords">
+				<input type="text" name="keyword" data-category="keyword" class="input keyword-input tag-input" placeholder="Enter a keyword">
 				<div class="fontello-cancel-circle close"></div>
 			</div>
 			<!-- KEYWORD BOX -->
@@ -48,7 +45,7 @@
 				<ul data-menu="location" class="dropdown-menu">
 					<li class="dropdown-header">Top locations</li>
 					<li>
-						<input type="text" placeholder="Enter A Location" class="tag-input form-control" autocomplete="off" name="location" />
+						<input type="text" name="location" data-category="location" class="tag-input form-control" autocomplete="off" placeholder="Enter A Location" />
 					</li>
 					<li class="dropdown-header">Top locations</li>
 					<li><a href="#" data-name="Los Angeles" data-category="location" class="tag-item">Los Angeles</a></li>
@@ -84,8 +81,8 @@
 				<a href="#" class="dimension-label" data-toggle="dropdown"> Keywords <b class="caret"></b></a>
 				<!-- DROPDOWN MENU -->
 				<ul data-menu="keywords" class="dropdown-menu">
-					<li>
-						<input type="text" placeholder="Enter Keywords" class="keyword-input ui-autocomplete-input form-control" autocomplete="off" name="keywords" />
+					<li> 
+						<input type="text" name="keyword" data-category="keyword" class="keyword-input tag-input form-control" autocomplete="off" placeholder="Enter Keywords" />
 					</li>
 					<li class="dropdown-header">Top Keywords</li>
 					<li><a href="#" data-name="Dog Walking" data-category="keyword" class="tag-item">Dog Walking</a></li>

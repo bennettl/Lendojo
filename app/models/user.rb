@@ -95,7 +95,8 @@ class User < ActiveRecord::Base
 
 	################################## OMNIAUTH ##################################
 
-	# Tries to find an existing user by the provider and uid fields. If no user is found, a new one is initialize with a random password and some extra information.
+	# Finds an existing user by provider and uid. If no user is found, a new one is initialize with information provided by omniauth
+	# Providers: 'facebook', 'twitter', 'google'
 	def self.from_omniauth(auth)
 		self.where(auth.slice(:provider, :uid)).first_or_initialize do |user|
 			# Populate fields differently depending on provider

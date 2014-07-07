@@ -159,7 +159,7 @@ class LenderApplicationsController < ApplicationController
 
 	# Strong parameters
 	def lender_application_params
-		params.require(:lender_application).permit(:categories, :skill, :hours, :summary, :status, :staff_notes)
+		params.require(:lender_application).permit(:keyword, :skill, :hours, :summary, :status, :staff_notes)
 	end
 
 end

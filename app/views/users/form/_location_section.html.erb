@@ -1,0 +1,37 @@
+<div id="locationSection" class="col-md-6 edit-group">
+	<div class="detailTitle">
+		<span class="glyphicon glyphicon-map-marker"></span>
+		<span>Location</span>
+	</div>
+	<% # Not require for finish_signup %>
+	<% if !finish_signup %>
+		<%
+		label = f.label 'Location'
+		input =  f.text_field :Location, value: @user.location, placeholder: 'USC', class: 'form-control' 
+		%>
+		<%= row label,input %>
+		<%
+		label = f.label 'Address'
+		input =   f.text_field :address, value: @user.address, placeholder: ' 711 W. 27th Street', class: 'form-control'
+		%>
+		<%= row label,input %>
+	<% end %>
+	<%
+	label = f.label 'City'
+	input =  f.text_field :city, value: @user.city, placeholder: 'Los Angeles', required: true, class: 'form-control'
+	%>
+	<%= row label,input %>
+	<%
+	label = f.label 'State'
+	input = f.select :state, us_states_initials, class: 'form-control'
+	%>
+	<%= row label,input %>
+	<% # zip is not require for finish_signup %>
+	<% if !finish_signup %>
+		<%
+			label = f.label 'Zip'
+			input = f.text_field :zip, value: @user.zip, placeholder: '90007', class: 'form-control'
+		%>
+		<%= row label,input %>
+	<% end %>
+</div>

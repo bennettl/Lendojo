@@ -4,12 +4,12 @@
 	</div>
 	<div class="col-xs-2 cell">
 		<%= link_to review.author do %>
-			<%= image_tag review.author.main_img(:thumb), class: 'userThumb tooltip_target', data: { toggle: 'tooltip' }, title: review.author.name %>
+			<%= image_tag review.author.main_img(:thumb), class: 'thumbImage tooltip_target', data: { toggle: 'tooltip' }, title: review.author.name %>
 		<% end %>
 	</div>
 	<div class="col-xs-2 cell">
 		<%= link_to review.lender do %>
-			<%= image_tag review.lender.main_img(:thumb), class: 'userThumb tooltip_target', data: { toggle: 'tooltip' }, title: review.lender.name %>
+			<%= image_tag review.lender.main_img(:thumb), class: 'thumbImage tooltip_target', data: { toggle: 'tooltip' }, title: review.lender.name %>
 		<% end %>
 	</div>
 	<div class="col-xs-3 cell">

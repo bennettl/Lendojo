@@ -1,36 +1,38 @@
 <% provide(:title, 'Sign Up')	%>
-<div id="signInBox" class="box small col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+<div id="signInBox" class="box small col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
 	<div class="title">Sign Up</div>
-	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal', autocomplete: 'off'}) do |f| %>
+	<%= form_for(User.new, html: {class: 'form-horizontal', autocomplete: 'off'}) do |f| %>
 		<%= devise_error_messages! %>
+		<div class="row">
+		   <div class="col-sm-6">
+				<%= f.text_field :first_name, class: 'form-control', required: true, placeholder: "First Name" %>
+			</div>
+		    <div class="col-sm-6">
+				<%= f.text_field :last_name, class: 'form-control', required: true, placeholder: "Last Name" %>
+			</div>
+		</div>
+ 		<div class="row">
+		    <div class="col-sm-12">
+				<%= f.email_field :email, class: 'form-control', required: true, placeholder: "Email" %>
+			</div>
+		</div>
+		<div class="row">
+		    <div class="col-sm-12">
+				<%= f.password_field :password, class: 'form-control', required: true, placeholder: "Password" %>
+			</div>
+		</div>
+		<div class="row">
+		    <div class="col-sm-12">
+				<%= f.password_field :password_confirmation, class: 'form-control', required: true, placeholder: "Re-enter Password" %>
+			</div>
+		</div>
+		<%= f.submit 'Sign Up', class: 'button', style: 'width: 100%; margin: 15px 0 25px;' %>
 
-		<div class="form-group">
-			<%= f.label :first_name, 'First Name', class: 'col-sm-2 col-sm-offset-1 control-label' %>
-		    <div class="col-sm-8">
-				<%= f.text_field :first_name, class: 'form-control', autofocus: true %>
-			</div>
-			<%= f.label :last_name, 'Last Name', class: 'col-sm-2 col-sm-offset-1 control-label' %>
-		    <div class="col-sm-8">
-				<%= f.text_field :last_name, class: 'form-control', autofocus: true %>
-			</div>
-
-			<%= f.label :email, 'Email', class: 'col-sm-2 col-sm-offset-1 control-label' %>
-		    <div class="col-sm-8">
-				<%= f.email_field :email, class: 'form-control' %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :email, 'Password', class: 'col-sm-2 col-sm-offset-1 control-label' %>
-		    <div class="col-sm-8">
-				<%= f.password_field :password, class: 'form-control' %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :email, 'Confirm', class: 'col-sm-2 col-sm-offset-1 control-label' %>
-		    <div class="col-sm-8">
-				<%= f.password_field :password_confirmation, class: 'form-control' %>
-			</div>
-		</div>
-		<%= f.submit 'Sign Up', class: 'button', style: 'width: 100%;' %>
+		<% User.omniauth_providers.each do |provider| %>
+	        <% provide_class = (provider.to_s == "google") ? "google-plus" : provider.to_s; %>
+	        <%= link_to user_omniauth_authorize_path(provider), class: "btn btn-block btn-social btn-#{provide_class} "  do %>
+	            <i class="fa fa-<%= provide_class %>"></i> <%= "Sign up with #{provider.to_s.titleize}" %>
+	    	<% end %>
+	    <% end %>
 	<% end %>
 </div>

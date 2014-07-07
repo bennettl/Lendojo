@@ -1,21 +1,26 @@
 <div id="checkListBox" class="box">
 	<div class="title">Checklist</div>
 	
-	<!-- Nav tabs -->
-	<ul id="checkListNav" class="nav nav-tabs nav-justified" role="tablist">
-		<li class="active"><a href="#lenderPane" role="tab" data-toggle="tab">Lender</a></li>
-		<li><a href="#lendeePane" role="tab" data-toggle="tab">Lendee</a></li>
-	</ul>
+	<!-- NAV TABS -->
+	<% if current_user.lender? %>
+		<ul id="checkListNav" class="nav nav-tabs nav-justified" role="tablist">
+			<li class="active"><a href="#lenderPane" role="tab" data-toggle="tab">Lender</a></li>
+			<li><a href="#lendeePane" role="tab" data-toggle="tab">Lendee</a></li>
+		</ul>
+	<% end %>
 
-	<!-- Tab panes -->
-	<div class="tab-content">
-
-		<!-- LENDER CHECKLIST -->	
-		<% if current_user.lender? %>
-			<%= render 'users/checklist/lender_checklist' %>
-		<% end %>
-
-		<!-- LENDEE CHECKLIST -->
-		<%= render 'users/checklist/lendee_checklist' %>
-	</div>
+	<% # If there is nothing on the user's check, display a message %>
+	<% if @lendee_checkList.empty? && ( @lender_checkList.nil? || @lender_checkList.empty?) %>
+		<div style="width: 80%; margin: 0 auto;" class="text-center">This is your checklist. The place where you manage all the services you requested. You can get your lender information and schedule a place and time of the service requested. </div>
+	<% else %>
+		<!-- TAB PANES -->
+		<div class="tab-content">
+			<!-- LENDER CHECKLIST -->	
+			<% if current_user.lender? %>
+				<%= render 'users/checklist/lender_checklist' %>
+			<% end %>
+			<!-- LENDEE CHECKLIST -->
+			<%= render 'users/checklist/lendee_checklist' %>
+		</div>
+	<% end %>
 </div>

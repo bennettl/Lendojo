@@ -7,7 +7,7 @@
 	</div>
 	<div class="col-xs-2 cell">
 		<%= link_to(lender_application.author) do %>
-			<%= image_tag lender_application.author.main_img(:thumb), class: 'userThumb tooltip_target', title: lender_application.author.name %>
+			<%= image_tag lender_application.author.main_img(:thumb), class: 'thumbImage tooltip_target', title: lender_application.author.name %>
 		<% end %>
 	</div>
 	<%= link_to edit_lender_application_path(lender_application) do %>
@@ -18,7 +18,7 @@
 		</div>
 		<div class="col-xs-3 cell">
 			<div class="text">
-				<%= lender_application.categories %>
+				<%= lender_application.keyword %>
 			</div>
 		</div>
 		

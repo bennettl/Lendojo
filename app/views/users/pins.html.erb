@@ -1,9 +1,14 @@
 <div id="pinsBox" class="box">
 	<div class="title">My Pins</div>
-	<ul id="serviceList">
-		<% @services.each do |s| %>
-			<%= render '/services/service_widget', service: s %>
-		<% end %>
-	</ul>
-	<%= will_paginate @services %>
+	<% # Disyplay a message if pins are empty %>
+	<% if @services.empty? %>
+		<div style="width: 80%; margin: 0 auto;" class="text-center">These are your pins. Pins are services that you are interested in and want to save for later. </div>
+	<% else %>
+		<ul id="serviceList">
+			<% @services.each do |s| %>
+				<%= render '/services/service_widget', service: s %>
+			<% end %>
+		</ul>
+		<%= will_paginate @services %>
+	<% end %> 
 </div>

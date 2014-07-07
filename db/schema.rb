@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140619184735) do
 
   create_table "lender_applications", force: true do |t|
     t.integer  "author_id"
-    t.text     "categories"
+    t.text     "keyword"
     t.string   "skill"
     t.integer  "hours"
     t.text     "summary"
@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.datetime "updated_at"
   end
 
+  add_index "users", ["email"], name: "index_users_on_email"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

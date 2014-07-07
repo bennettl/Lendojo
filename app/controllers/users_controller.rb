@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	
 	##################################################### FILTERS #####################################################
 	# Requires users to sign in before accessing action
-	before_filter :authenticate_user!
+	# before_filter :authenticate_user!
 
 	# Check to see if user signed up is complete before accessing actions of controller
 	before_filter :ensure_signup_complete, except: [:update]
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
 			
 			# Respond to different formats
 			respond_to do |format|
-			  format.html { redirect_to new_user_path }
+			  format.html { redirect_to finish_signup_user(@user) }
 			  format.json { render json: { message: "User Sucessfully Created", user: @user } }
 			end
 			
@@ -94,7 +94,7 @@ class UsersController < ApplicationController
 		end
 	end	
 
-	# Display form for finishing user signup from omniauth signups
+	# Display form for finishing user signup for unfinished fields
 	def finish_signup
 		@user = User.find(params[:id])
 	end

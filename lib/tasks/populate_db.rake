@@ -157,13 +157,13 @@ namespace :db do
 
 		# For each user, create a lender application
 		users.each do |u|
-			categories 		= ['music', 'education', 'art', 'errands', 'pets', 'sports/fitness'].sample
+			keyword 		= ['music', 'education', 'art', 'errands', 'pets', 'sports/fitness'].sample
 			skill 			= ['amateur', 'intermediate', 'expert'].sample
 			hours 			= [*3...23].sample
 			summary 		= Faker::Lorem.sentences(4).join(' ')
 
 			# Method use to create for has_one association
-			u.create_lender_app(categories: categories, skill: skill, hours: hours, summary: summary)
+			u.create_lender_app(keyword: keyword, skill: skill, hours: hours, summary: summary)
 		end
 
 	end

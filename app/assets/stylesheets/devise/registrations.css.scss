@@ -1,0 +1,28 @@
+@import "font-awesome";
+@import "bootstrap-social";
+
+#signInBox{
+	padding: 50px 53px;
+	.row{
+		margin-bottom: 15px;
+	}
+}
+.form-control{
+    height: 49px;
+}
+
+// Bootstrap social
+/* Custom stuff */
+.btn-social *:first-child{
+    font-size: 1.7em;
+    line-height: 18px;
+    padding-top: 13px;
+    width: 60px;
+    height: 100px;
+}
+
+.btn-social{
+    font-size: 14px;
+    padding: 10px 0 10px 91px;
+    margin-bottom: 15px;
+}
