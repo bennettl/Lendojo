@@ -1,0 +1,62 @@
+<% provide(:title, 'Finish Signup')   %>
+
+<div id="finishSignupBox" class="box col-sm-10 col-sm-offset-1">
+    <div class="title">Finish Signup</div>
+    <div class="text-center" style="margin-bottom: 25px;">Almost there! Just make sure to fill in these fields before proceeding. </div>
+    <%= form_for @user, html: { autocomplete: 'off', class: 'form-horizontal' } do |f| %>
+        <%= render 'shared/error_messages', object: f.object  %>
+        
+        <!-- AVATAR  -->
+        <%= render 'users/form/avatar_section', f: f %>
+
+        <div id="basicSection" class="col-md-12">
+        <div id="headline" class="group col-xs-12">
+            <div class="col-md-4 col-sm-5">
+                <%= f.label 'Headline' %>                       
+            </div>
+            <div class="col-md-8 col-sm-7">
+                <%= f.text_field :headline, value: @user.headline, placeholder: 'Dabbling Musician, Veteran Software Developer, Recent Graduate', class: 'form-control' %>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 15px;">
+            <!-- CONTACT  -->
+            <div id="contactSection" class="col-md-6 edit-group">
+                <div class="detailTitle">                       
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span>Basic Info</span>
+                </div>
+                <% # If the user has a provider (omniauth), then he will need to verify email/password  %>
+                <% unless @user.provider.empty? %>
+                    <!-- EMAIL -->
+                     <%
+                        label = f.label 'Email'
+                        input = f.text_field :email, value: @user.email, placeholder: 'anne@lendojo.com', required: true, class: 'form-control'
+                    %>
+                    <%= row label,input %>
+                    <%
+                        label = f.label 'Password'
+                        input = f.password_field :password, placeholder: 'secret_12', required: true, class: 'form-control'
+                    %>
+                    <%= row label,input %>
+                    <%
+                        label = f.label 'Confirm Password'
+                        input = f.password_field :password_confirmation, placeholder: 'secret_12', required: true, class: 'form-control'
+                    %>
+                    <%= row label,input %>
+                <% end %>
+
+                <%
+                label = f.label 'Phone'
+                input = f.text_field :phone, value: @user.phone, placeholder: '415-891-2051', class: 'form-control'
+                %>
+                <%= row label,input %>
+            </div>
+
+            <!-- LOCATION -->
+            <%= render 'users/form/location_section', f: f, finish_signup: true %>
+
+        </div>
+        
+        <%= f.submit 'Continue', class: 'button', style: 'width: 100%; margin-top: 15px;' %>
+    <% end %>
+</div>

@@ -1,8 +1,13 @@
 class LenderApplicationsController < ApplicationController
 
+	##################################################### FILTERS #####################################################
+
 	# Requires users to sign in before accessing action
 	# before_filter :authenticate_user!
 	
+	# Check to see if user signed up is complete before accessing actions of controller
+	before_filter :ensure_signup_complete
+
 	# Include sorting params for sortable headers on index page
 	include HeaderFiltersHelper
 	
@@ -154,7 +159,7 @@ class LenderApplicationsController < ApplicationController
 
 	# Strong parameters
 	def lender_application_params
-		params.require(:lender_application).permit(:categories, :skill, :hours, :summary, :status, :staff_notes)
+		params.require(:lender_application).permit(:keyword, :skill, :hours, :summary, :status, :staff_notes)
 	end
 
 end

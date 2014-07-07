@@ -92,6 +92,8 @@ GEM
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
+    font-awesome-rails (4.1.0.0)
+      railties (>= 3.2, < 5.0)
     geocoder (1.2.2)
     hashie (2.1.2)
     hike (1.2.3)
@@ -143,6 +145,7 @@ GEM
     omniauth-twitter (1.0.1)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
+    open_uri_redirections (0.1.4)
     orm_adapter (0.5.0)
     pg (0.15.1)
     polyglot (0.3.5)
@@ -250,6 +253,7 @@ DEPENDENCIES
   coffee-rails (= 4.0.1)
   devise (~> 3.2.4)
   faker (= 1.2.0)
+  font-awesome-rails (~> 4.1.0.0)
   geocoder (~> 1.2.2)
   hirb (= 0.7.1)
   jbuilder (= 1.0.2)
@@ -259,6 +263,7 @@ DEPENDENCIES
   omniauth-facebook (~> 1.6.0)
   omniauth-google-oauth2 (~> 0.2.4)
   omniauth-twitter (~> 1.0.1)
+  open_uri_redirections
   paperclip!
   pg (= 0.15.1)
   rails (= 4.1.0)

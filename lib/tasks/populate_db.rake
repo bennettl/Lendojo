@@ -8,6 +8,7 @@ namespace :db do
 		populate_user_services
 		populate_lender_applications
 		populate_reports
+		populate_tags
 	end	
 
 	# Populate Administrator
@@ -16,7 +17,7 @@ namespace :db do
 						last_name: 'Lee',
 						headline: "Aspiring Entreprenuer, Veteran Software Developer, Dabbling Musician",
 						summary: Faker::Lorem.paragraphs(2).join("\n\n"),
-						age: '21',
+						birthday: Date.strptime("09/08/1992", "%m/%d/%Y"),
 						email: 'bennettl@usc.edu',
 						phone: '800-123-4567',
 						location: 'USC',
@@ -37,9 +38,9 @@ namespace :db do
 		40.times do |n|
 			first_name 		= Faker::Name.first_name
 			last_name 		= Faker::Name.last_name
-			headline 		= Faker::Lorem.sentences(3).join(' ')
+			headline 		= Faker::Lorem.sentences(1).join(' ')
 			summary 	    = Faker::Lorem.paragraphs(2).join("\n\n")
-			age 			= [*21..50].sample
+			birthday		= Date.strptime("09/08/1992", "%m/%d/%Y"),
 			email			= Faker::Internet.email
 			phone			= Faker::Base.numerify('###-###-####')
 			location		= Faker::Address.city
@@ -55,7 +56,7 @@ namespace :db do
 							last_name: last_name,
 							headline: headline,
 							summary: summary,
-							age: age,
+							# birthday: birthday,
 							email: email,
 							phone: phone,
 							location: location,
@@ -119,9 +120,9 @@ namespace :db do
 	# Populate filter data for the first User
 	def populate_filters
 		user = User.first
-		user.filters.create(title: 'USC Music', data: { locations: ['USC', 'Los Angeles'], prices: ['$', '$$'], keywords: ['guitar', 'piano'] } )
-		user.filters.create(title: 'San Francisco Services', data: { locations: ['San Francisco', 'Silicon Valley'], prices: ['$$', '$$$'] } )
-		user.filters.create(title: 'Cheap Pet Services', data: { locations: ['Venice', 'Los Angeles'], prices: ['$', '$$'], keywords: ['pets'] } )
+		user.filters.create(title: 'USC Music', data: { location: ['USC', 'Los Angeles'], price: ['$', '$$'], keyword: ['guitar', 'piano'] } )
+		user.filters.create(title: 'San Francisco Services', data: { location: ['San Francisco', 'Silicon Valley'], price: ['$$', '$$$'] } )
+		user.filters.create(title: 'Cheap Pet Services', data: { location: ['Venice', 'Los Angeles'], price: ['$', '$$'], keyword: ['pets'] } )
 	end
 
 	# Populate user services relationships (checks/pins)
@@ -156,13 +157,13 @@ namespace :db do
 
 		# For each user, create a lender application
 		users.each do |u|
-			categories 		= ['music', 'education', 'art', 'errands', 'pets', 'sports/fitness'].sample
+			keyword 		= ['music', 'education', 'art', 'errands', 'pets', 'sports/fitness'].sample
 			skill 			= ['amateur', 'intermediate', 'expert'].sample
 			hours 			= [*3...23].sample
 			summary 		= Faker::Lorem.sentences(4).join(' ')
 
 			# Method use to create for has_one association
-			u.create_lender_app(categories: categories, skill: skill, hours: hours, summary: summary)
+			u.create_lender_app(keyword: keyword, skill: skill, hours: hours, summary: summary)
 		end
 
 	end
@@ -184,7 +185,58 @@ namespace :db do
 		services.each do|s|
 			s.reports_received.create!(author_id: author_id, reason: reason, summary: summary)
 		end
+	end
 
+	# Populate tags
+	def populate_tags
+		# Location
+		Tag.create!(category: "location", name: "Silicon Valley")
+		Tag.create!(category: "location", name: "Southern California")
+		Tag.create!(category: "location", name: "Venice")
+		Tag.create!(category: "location", name: "Los Angeles")
+		Tag.create!(category: "location", name: "Huntington Park")
+		Tag.create!(category: "location", name: "Orange County")
+		Tag.create!(category: "location", name: "San Jose")
+		Tag.create!(category: "location", name: "Mountain View")
+		Tag.create!(category: "location", name: "San Francisco")
+		Tag.create!(category: "location", name: "Oakland")
+		Tag.create!(category: "location", name: "Beverley Hills")
+		Tag.create!(category: "location", name: "Hollywood")
+		Tag.create!(category: "location", name: "Northern California")
+		Tag.create!(category: "location", name: "University of Southern California")
+		Tag.create!(category: "location", name: "Santa Monica")
+		# Keyword
+		Tag.create!(category: "keyword", name: "Dog Walking")
+		Tag.create!(category: "keyword", name: "Hair Cutting")
+		Tag.create!(category: "keyword", name: "Guitar")
+		Tag.create!(category: "keyword", name: "Piano")
+		Tag.create!(category: "keyword", name: "Apple")
+		Tag.create!(category: "keyword", name: "Surfing")
+		Tag.create!(category: "keyword", name: "Skiing")
+		Tag.create!(category: "keyword", name: "Basketball")
+		Tag.create!(category: "keyword", name: "BUAD 425")
+		Tag.create!(category: "keyword", name: "Photos")
+		Tag.create!(category: "keyword", name: "Cooking")
+		Tag.create!(category: "keyword", name: "Meals")
+		Tag.create!(category: "keyword", name: "Computers")
+		Tag.create!(category: "keyword", name: "Science")
+		Tag.create!(category: "keyword", name: "Rock and Roll")
+		# Category
+		Tag.create!(category: "category", name: "Music")
+		Tag.create!(category: "category", name: "Education")
+		Tag.create!(category: "category", name: "Fitness/Sports")
+		Tag.create!(category: "category", name: "Errands")
+		Tag.create!(category: "category", name: "Freelance")
+		Tag.create!(category: "category", name: "Ridesharing")
+		Tag.create!(category: "category", name: "Cooking")
+		Tag.create!(category: "category", name: "Photography")
+		Tag.create!(category: "category", name: "Business")
+		Tag.create!(category: "category", name: "Entertainment")
+		Tag.create!(category: "category", name: "Technology")
+		Tag.create!(category: "category", name: "Finance")
+		Tag.create!(category: "category", name: "Dance")
+		Tag.create!(category: "category", name: "Art")
+		Tag.create!(category: "category", name: "Health")
 	end
 
 	########################################## HELPER FUNCTIONS #################################################
@@ -216,12 +268,12 @@ namespace :db do
 		location 	= ['Los Angeles', 'USC', 'Southern California', 'Silicon Valley', 'San Francisco', 'Boston', 'United States'].sample
 		price 		= [*10..200].sample
 		desc 		= [ { title: 'Cheap Guitar Lessons', category: 'Music', tag: 'Guitar', headline: 'Experience professional teaching guitar'},
-						{ title: 'Piano Lessons!', category: 'Music', tag: 'Piano', headline: 'Can teach beginners to experienced people'},
+						{ title: 'Piano Lessons!', category: 'Music', tag: 'Piano', headline: 'Can teach beginners to experienced'},
 						{ title: 'Rock and Roll!', category: 'Music', tag: 'Guitar', headline: 'Teaching rock and rock style guitar'},
 						{ title: 'Dog Walking All Day', category: 'Errands', tag: 'Dog Walking', headline: 'I love spending time with dogs!'},
-						{ title: 'How to Ride A Bike', category: 'Sports/Fitness', tag:'Biking', headline: 'Teaching you how to ride a bike in one day!'}, 
-						{ title: 'BUAD 425 Tutoring Session', category: 'Education', tag: 'Tutoring', headline: 'Helping students with BUAD 425' },
-						{ title: 'Joes Car Washing Service', category: 'Errands', tag: 'Car Wash', headline: "We've been doing this for a long time!"} ].sample
+						{ title: 'How to Ride A Bike', category: 'Sports/Fitness', tag:'Biking', headline: 'Teaching you how to ride a bike!'}, 
+						{ title: 'BUAD Tutor Session', category: 'Education', tag: 'Tutoring', headline: 'Helping students with BUAD 425' },
+						{ title: 'Car Washing Service', category: 'Errands', tag: 'Car Wash', headline: "We've been doing this for a long time!"} ].sample
 		hash 		= { belt: belt, location: location, price: price, desc: desc }
 
 		hash

@@ -1,0 +1,178 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000/",
+  "resourcePath": "tags",
+  "apis": [
+    {
+      "path": "tags",
+      "operations": [
+        {
+          "summary": "Show a list of tags",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "tag[category]",
+              "type": "string",
+              "description": "Category",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "tag[name]",
+              "type": "string",
+              "description": "Name",
+              "required": false
+            }
+          ],
+          "method": "get",
+          "nickname": "Tags#index"
+        }
+      ]
+    },
+    {
+      "path": "tags",
+      "operations": [
+        {
+          "summary": "Create a new tag",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "tag[category]",
+              "type": "string",
+              "description": "Category",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "tag[name]",
+              "type": "string",
+              "description": "Name",
+              "required": true
+            }
+          ],
+          "method": "post",
+          "nickname": "Tags#create"
+        }
+      ]
+    },
+    {
+      "path": "tags/{id}",
+      "operations": [
+        {
+          "summary": "Show an individual tag",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Tag ID",
+              "required": true
+            }
+          ],
+          "method": "get",
+          "nickname": "Tags#show"
+        }
+      ]
+    },
+    {
+      "path": "tags/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing tag",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Tag ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "tag[category]",
+              "type": "string",
+              "description": "Category",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tag[name]",
+              "type": "string",
+              "description": "Name",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tag[count]",
+              "type": "string",
+              "description": "Count",
+              "required": false
+            }
+          ],
+          "method": "patch",
+          "nickname": "Tags#update"
+        }
+      ]
+    },
+    {
+      "path": "tags/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing tag",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Tag ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "tag[category]",
+              "type": "string",
+              "description": "Category",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tag[name]",
+              "type": "string",
+              "description": "Name",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tag[count]",
+              "type": "string",
+              "description": "Count",
+              "required": false
+            }
+          ],
+          "method": "put",
+          "nickname": "Tags#update"
+        }
+      ]
+    },
+    {
+      "path": "tags/{id}",
+      "operations": [
+        {
+          "summary": "Destroy an existing tag",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Tag ID",
+              "required": true
+            }
+          ],
+          "method": "delete",
+          "nickname": "Tags#destroy"
+        }
+      ]
+    }
+  ]
+}

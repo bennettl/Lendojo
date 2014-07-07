@@ -35,7 +35,7 @@ class Service < ActiveRecord::Base
 	################################## VALIDATION ##################################
 
 	validates :title, 		presence: true, length: { maximum: 25 }
-	validates :headline, 	presence: true, length: { maximum: 40 }
+	validates :headline, 	presence: true, length: { maximum: 45 }
 	validates :summary,	 	presence: true
 	validates :address, 	presence: true
 	validates :city, 		presence: true
@@ -93,18 +93,18 @@ class Service < ActiveRecord::Base
 
 	################################## SEARCH ##################################
 
-	# Searches members base on filter data, return all members if no filter_data is present
-	# Ex. filter_data = { locations: ['San Francisco'], prices: ['$$', '$$$'], belts: [], keywords: [] }
-	def self.search(filter_data)
-		if !filter_data.empty?
+	# Searches members base on filter data, return all members if no tag_data is present
+	# Ex. tag_data = { location: ['San Francisco'], price: ['$$', '$$$'], belt: [], keyword: [] }
+	def self.search(tag_data)
+		if !tag_data.nil? && !tag_data.empty?
 			# Parameters
 			query 	= [] # init array
 			like 	= Rails.env.development? ? 'LIKE' : 'ILIKE' ; #case insensitive for postgres
 
 			# Location: Push individual location queries to array, then join with 'OR'
-			unless filter_data[:locations].nil? || filter_data[:locations].empty?
+			unless tag_data[:location].nil? || tag_data[:location].empty?
 				query_location = [] # init subarray
-				filter_data[:locations].each do |l|
+				tag_data[:location].each do |l|
 					query_location.push("services.location = '#{l}'")
 				end
 				# Join subqueries with 'OR' and wrap entire query string with parenthesis
@@ -113,9 +113,9 @@ class Service < ActiveRecord::Base
 
 
 			# Price: Grab the price range base on the price symbol, push individual price queries to array, then join with 'OR'
-			unless filter_data[:prices].nil? || filter_data[:prices].empty?
+			unless tag_data[:price].nil? || tag_data[:price].empty?
 				query_price = [] # init subarray
-				filter_data[:prices].each do |price_symbol|
+				tag_data[:price].each do |price_symbol|
 					range = Service.price_range(price_symbol)
 					query_price.push("(services.price >= '#{range[:min]}' AND services.price <= '#{range[:max]}')")
 				end
@@ -124,9 +124,9 @@ class Service < ActiveRecord::Base
 			end
 
 			# Rank: Push individual belt queries to array, then join with 'OR'
-			unless filter_data[:belts].nil? || filter_data[:belts].empty?
+			unless tag_data[:belt].nil? || tag_data[:belt].empty?
 				query_belt = [] # init subarray
-				filter_data[:belts].each do |r|
+				tag_data[:belt].each do |r|
 					query_belt.push("users.belt = '#{r}'")
 				end
 				# Join sub-queries with 'OR' and wrap entire query string with parenthesis
@@ -134,20 +134,20 @@ class Service < ActiveRecord::Base
 			end
 
 			# Keyword: Push individual queries to array, then join with 'OR'. Searches both title and headline
-			unless filter_data[:keywords].nil? || filter_data[:keywords].empty?
-				query_keywords = [] # init subarray
+			unless tag_data[:keyword].nil? || tag_data[:keyword].empty?
+				query_keyword = [] # init subarray
 				# Search title AND headline
-				filter_data[:keywords].each do |k|
+				tag_data[:keyword].each do |k|
 					# Case insensitive
-					query_keywords.push("lower(services.title) #{like} '%#{k.downcase}%'")
-					query_keywords.push("lower(services.headline) #{like} '%#{k.downcase}%'")
+					query_keyword.push("lower(services.title) #{like} '%#{k.downcase}%'")
+					query_keyword.push("lower(services.headline) #{like} '%#{k.downcase}%'")
 				end
 				# Join sub-queries with 'OR' and prepend/append parenthesis to string
-				query_keywords = query_keywords.join(' OR ').insert(0, '(').insert(-1, ')')
+				query_keyword = query_keyword.join(' OR ').insert(0, '(').insert(-1, ')')
 			end
 
 			# Place all subqueries in an array
-			query = [query_location, query_price, query_belt, query_keywords]
+			query = [query_location, query_price, query_belt, query_keyword]
 			 # Remove nil queries
 			query.reject! {|q| q.nil? }
 			# .joins(:lender) because we need to INNER JOIN users table to filter by belt field

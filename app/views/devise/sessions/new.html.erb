@@ -1,7 +1,9 @@
 <% provide(:title, 'Sign In')	%>
+
 <div id="signInBox" class="box small col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 	<div class="title">Sign In</div>
 	<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
+        <%= render 'shared/error_messages', object: f.object  %>
 		<div class="form-group">
 			<%= f.label :email, class: 'col-sm-2 control-label', autofocus: true  %>
 		    <div class="col-sm-10">
@@ -17,11 +19,12 @@
 		<div class="form-group">
 		    <div class="col-sm-10 col-sm-offset-2">
 				<% if devise_mapping.rememberable? -%>
-				<div><%= f.check_box :remember_me, checked: true %> <%= f.label :remember_me %></div>
-			<% end -%>
+					<div><%= f.check_box :remember_me, checked: true %> <%= f.label :remember_me %></div>
+				<% end -%>
+				<%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
 			</div>
 		</div>
-		<%= f.submit 'Sign In', class: 'button', style: 'width: 100%;' %>
+		<%= f.submit 'Sign In', id: 'sign-in-button', class: 'button', style: 'width: 100%;' %>
 	<% end %>
 	<%= render "devise/shared/links" %>
 </div>

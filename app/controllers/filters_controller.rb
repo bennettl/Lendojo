@@ -1,7 +1,10 @@
 class FiltersController < ApplicationController
+	
+	##################################################### FILTERS #####################################################
 	# Requires users to sign in before accessing action
 	# before_filter :authenticate_user!
 	
+	##################################################### RESOURCES #####################################################
 	# Will handle creating AND updating a filter
 	def create
 		# If filter with title exists, return the object, else create one with .new 
@@ -42,7 +45,7 @@ class FiltersController < ApplicationController
 
 	# Strong parameters
 	def filter_params
-		params.require(:filter_data).permit(:alert, locations: [], prices: [], belts: [], keywords: [])
+		params.require(:filter_data).permit(:alert, location: [], price: [], belt: [], keyword: [])
 	end
 
 end

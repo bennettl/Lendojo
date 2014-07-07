@@ -14,6 +14,7 @@ gem 'jbuilder', '1.0.2'
 
 # Style
 gem 'bootstrap-sass', '~> 3.1.1.1'
+gem 'font-awesome-rails', '~> 4.1.0.0'
 
 # Populate DB for Testing
 gem 'faker', '1.2.0'
@@ -48,6 +49,9 @@ gem 'omniauth', '~> 1.2.1'
 gem 'omniauth-facebook', '~> 1.6.0'
 gem 'omniauth-twitter', '~> 1.0.1'
 gem 'omniauth-google-oauth2', '~> 0.2.4'
+
+# Saving image from omniauth - paperclip
+gem 'open_uri_redirections'
 
 # Swagger 
 gem 'swagger-docs', '~> 0.1.8'

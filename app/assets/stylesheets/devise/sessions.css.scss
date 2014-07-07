@@ -1,4 +1,23 @@
+
+@import "font-awesome";
+@import "bootstrap-social";
+
 #signInBox{
 	min-height: 340px;
 	padding: 25px 45px 45px 45px;
+}
+
+
+/* Bootstrap Social  */
+.btn-social *:first-child{
+	font-size: 1.7em;
+    line-height: 36px;
+    padding-top: 13px;
+    width: 70px;
+    height: 100px;
+}
+
+.btn-social{
+	font-size: 14px;
+	padding: 20px 0 20px 91px;
 }

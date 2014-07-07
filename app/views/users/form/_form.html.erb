@@ -1,28 +1,9 @@
 <div class="row">
 	<%= form_for @user, html: {multipart: true, autocomplete: 'off', class: 'form-horizontal'} do |f| %>
   	<%= render 'shared/error_messages', object: f.object  %>
-		<div id="avatarSection" class="col-xs-12">
-			<!-- AVATAR  -->
-			<div class="col-xs-12">
-				<div class="detailTitle">
-					<span class="glyphicon glyphicon-picture"></span>
-					<span>Avatar</span>
-				</div>
-				<div class="col-xs-5">
-					<%= image_tag @user.main_img.url, id: "userImg", class: 'mainImage' %>
-					<div class="title">Main Image (330 x 180)</div>
-				</div>
-				<div class="col-xs-2">
-					<%= image_tag @user.main_img.url(:thumb), class: 'thumbImage' %>
-					<div class="title">Thumbnail <br />(100 x 100)</div>
-				</div>
-				<div class="col-xs-2">
-					<%= f.label 'Upload Image' %>
-					<%= f.file_field :main_img %>
-				</div>
-			</div>
-			<!-- AVATAR  -->
-		</div>
+		<!-- AVATAR  -->
+        <%= render 'users/form/avatar_section', f: f %>
+		<!-- AVATAR  -->
 		<div class="col-xs-12">
 			<!-- BASIC INFO  -->
 			<div id="basicSection" class="edit-group col-md-6">
@@ -35,8 +16,8 @@
 						<%= f.label 'Name' %>
 					</div>
 					<div class="col-md-8 col-sm-7">
-						<%= f.text_field :first_name, value: @user.first_name, placeholder: 'James', required: "required", class: 'pull-left form-control', style: "margin: 0 10px 15px 0;" %>
-						<%= f.text_field :last_name, value: @user.last_name, placeholder:'Smith', required: "required", class: 'pull-left form-control', style: "margin-bottom: 15px;" %>
+						<%= f.text_field :first_name, value: @user.first_name, placeholder: 'James', required: true, class: 'pull-left form-control', style: "margin: 0 10px 15px 0;" %>
+						<%= f.text_field :last_name, value: @user.last_name, placeholder:'Smith', required: true, class: 'pull-left form-control', style: "margin-bottom: 15px;" %>
 					</div>
 				</div>
 				<div id="headline" class="group col-xs-12">
@@ -50,37 +31,7 @@
 			</div>
 			<!-- BASIC INFO  -->
 			<!-- LOCATION -->
-			<div id="locationSection" class="col-md-6 edit-group">
-				<div class="detailTitle">
-					<span class="glyphicon glyphicon-map-marker"></span>
-					<span>Location</span>
-				</div>
-				<%
-				label = f.label 'Location'
-				input =  f.text_field :Location, value: @user.location, placeholder: 'USC', class: 'form-control' 
-				%>
-				<%= row label,input %>
-				<%
-				label = f.label 'Address'
-				input =   f.text_field :address, value: @user.address, placeholder: ' 711 W. 27th Street', required: "required", class: 'form-control'
-				%>
-				<%= row label,input %>
-				<%
-				label = f.label 'City'
-				input =  f.text_field :city, value: @user.city, placeholder: 'Los Angeles', required: "required", class: 'form-control'
-				%>
-				<%= row label,input %>
-				<%
-				label = f.label 'State'
-				input = f.select :state, us_states, class: 'form-control'
-				%>
-				<%= row label,input %>
-				<%
-				label = f.label 'Zip'
-				input = f.text_field :zip, value: @user.zip, placeholder: '90007', class: 'form-control'
-				%>
-				<%= row label,input %>
-			</div>
+            <%= render 'users/form/location_section', f: f, finish_signup: false %>
 			<!-- LOCATION -->
 		</div>
 		<div class="col-xs-12">
@@ -92,12 +43,12 @@
 				</div>
 				<%
 				label = f.label 'Phone'
-				input = f.text_field :phone, value: @user.phone, placeholder: '415-891-2051', required: "required", class: 'form-control'
+				input = f.text_field :phone, value: @user.phone, placeholder: '415-891-2051', required: true, class: 'form-control'
 				%>
 				<%= row label,input %>
 					<%
 				label = f.label 'Email'
-				input = f.text_field :email, value: @user.email, placeholder: 'ben@lendojo.com', required: "required", class: 'form-control'
+				input = f.text_field :email, value: @user.email, placeholder: 'ben@lendojo.com', required: true, class: 'form-control'
 				%>
 				<%= row label,input %>
 			</div>
