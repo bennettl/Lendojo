@@ -1,0 +1,7 @@
+// Update reviews container asynchronously
+jQuery(document).ready(function($) {
+	// Replace reviewList Section
+    $("#reviewListSection").html("<%= escape_javascript(render 'reviews/review_list', reviews: @reviews)%>");
+    // Jump back to the title
+	location.href = '#reviewListTitle';
+});

@@ -71,7 +71,7 @@
 			});
     	}
     	
-    	// AJAX for pagination links
+    	// AJAX for pagination
 		$('.box').on('click', '.pagination a', function(){
 			$.get($(this).attr('href'), null, null, "script");
 			return false;

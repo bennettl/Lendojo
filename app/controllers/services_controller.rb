@@ -45,6 +45,7 @@ class ServicesController < ApplicationController
 			# Respond to different formats
 			respond_to do |format|
 			  format.html # show.html.erb
+			  format.js # show.js.erb
 			  format.json { render json: @service }
 			end
 		else
