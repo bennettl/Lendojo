@@ -38,7 +38,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.decimal 		:credits, precision: 8, scale: 2, default: 0
 			t.string 		:stripe_customer_id
 			# Referrals
-			t.string		:referral_code
+			t.string		:referral_code, unique: true
 			# Status
 			t.integer 		:status, default: 0 # enum
 			# Authentication/ Devise
@@ -196,13 +196,19 @@ class CreateUsers < ActiveRecord::Migration
 	    	t.timestamps
     	end
 
-		#################################### REVIEWS ####################################
+		#################################### REFFERALS ####################################
 		create_table :referrals do |t|
 			# Association 
 			t.belongs_to 	:referrer, class_name: 'User', foreign_key: 'referrer_id' # creator of the referral
 			t.belongs_to 	:referree, class_name: 'User', foreign_key: 'referree_id' # person being referred
 			t.integer 		:status, default: 0 # enum
 		    t.timestamps
+	    end
+
+		#################################### COUPONS ####################################
+		 create_table :coupons do |t|
+
+			t.timestamps
 	    end
 
 		#################################### TAGS ####################################

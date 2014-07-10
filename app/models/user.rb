@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
 	# For us states parsing
 	include ApplicationHelper
 	
-	before_save { self.email = email.downcase }
+	before_save :before_save_callback
+	after_create :after_create_callback
+
 
 	################################## ASSOCIATIONS ##################################
 
@@ -280,6 +282,18 @@ class User < ActiveRecord::Base
 
 	def belongs_to?(user)
 		self === user
+	end
+
+	# Make sure email is lower case
+	def before_save_callback
+		self.email = email.downcase
+	end
+	
+	# Create referral code
+	def after_create_callback
+		count 			= User.where("first_name = '#{self.first_name}'").count.to_s
+		referral_code 	= self.first_name.downcase + count
+		update_attribute('referral_code', referral_code)
 	end
 
 	################################## BELT ##################################
