@@ -1,0 +1,3249 @@
+/*!
+ *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("/assets/fontawesome-webfont.eot");
+  src: url("/assets/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), url("/assets/fontawesome-webfont.woff") format("woff"), url("/assets/fontawesome-webfont.ttf") format("truetype"), url("/assets/fontawesome-webfont.svg#fontawesomeregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 19, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* makes the font 33% larger relative to the icon container */
+/* line 29, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-lg {
+  font-size: 1.33333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+
+/* line 34, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-2x {
+  font-size: 2em;
+}
+
+/* line 37, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-3x {
+  font-size: 3em;
+}
+
+/* line 40, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-4x {
+  font-size: 4em;
+}
+
+/* line 43, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-5x {
+  font-size: 5em;
+}
+
+/* line 46, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-fw {
+  width: 1.28571429em;
+  text-align: center;
+}
+
+/* line 50, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-ul {
+  padding-left: 0;
+  margin-left: 2.14285714em;
+  list-style-type: none;
+}
+
+/* line 55, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-ul > li {
+  position: relative;
+}
+
+/* line 58, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-li {
+  position: absolute;
+  left: -2.14285714em;
+  width: 2.14285714em;
+  top: 0.14285714em;
+  text-align: center;
+}
+
+/* line 65, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-li.fa-lg {
+  left: -1.85714286em;
+}
+
+/* line 68, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-border {
+  padding: .2em .25em .15em;
+  border: solid 0.08em #eeeeee;
+  border-radius: .1em;
+}
+
+/* line 73, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.pull-right {
+  float: right;
+}
+
+/* line 76, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.pull-left {
+  float: left;
+}
+
+/* line 79, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa.pull-left {
+  margin-right: .3em;
+}
+
+/* line 82, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa.pull-right {
+  margin-left: .3em;
+}
+
+/* line 85, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-spin {
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+
+@-webkit-keyframes spin {
+  /* line 100, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  /* line 103, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+  100% {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+@keyframes spin {
+  /* line 116, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 120, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+/* line 125, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-rotate-90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+/* line 133, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-rotate-180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/* line 141, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-rotate-270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+
+/* line 149, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-flip-horizontal {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+  -webkit-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+
+/* line 157, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-flip-vertical {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
+  -webkit-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+
+/* line 165, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-stack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle;
+}
+
+/* line 174, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-stack-1x,
+.fa-stack-2x {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 180, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-stack-1x {
+  line-height: inherit;
+}
+
+/* line 183, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-stack-2x {
+  font-size: 2em;
+}
+
+/* line 186, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-inverse {
+  color: #ffffff;
+}
+
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+/* line 191, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-glass:before {
+  content: "\f000";
+}
+
+/* line 194, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-music:before {
+  content: "\f001";
+}
+
+/* line 197, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-search:before {
+  content: "\f002";
+}
+
+/* line 200, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-envelope-o:before {
+  content: "\f003";
+}
+
+/* line 203, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-heart:before {
+  content: "\f004";
+}
+
+/* line 206, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-star:before {
+  content: "\f005";
+}
+
+/* line 209, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-star-o:before {
+  content: "\f006";
+}
+
+/* line 212, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-user:before {
+  content: "\f007";
+}
+
+/* line 215, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-film:before {
+  content: "\f008";
+}
+
+/* line 218, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-th-large:before {
+  content: "\f009";
+}
+
+/* line 221, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-th:before {
+  content: "\f00a";
+}
+
+/* line 224, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-th-list:before {
+  content: "\f00b";
+}
+
+/* line 227, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-check:before {
+  content: "\f00c";
+}
+
+/* line 230, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-times:before {
+  content: "\f00d";
+}
+
+/* line 233, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-search-plus:before {
+  content: "\f00e";
+}
+
+/* line 236, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-search-minus:before {
+  content: "\f010";
+}
+
+/* line 239, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-power-off:before {
+  content: "\f011";
+}
+
+/* line 242, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-signal:before {
+  content: "\f012";
+}
+
+/* line 246, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-gear:before,
+.fa-cog:before {
+  content: "\f013";
+}
+
+/* line 249, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-trash-o:before {
+  content: "\f014";
+}
+
+/* line 252, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-home:before {
+  content: "\f015";
+}
+
+/* line 255, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file-o:before {
+  content: "\f016";
+}
+
+/* line 258, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-clock-o:before {
+  content: "\f017";
+}
+
+/* line 261, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-road:before {
+  content: "\f018";
+}
+
+/* line 264, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-download:before {
+  content: "\f019";
+}
+
+/* line 267, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrow-circle-o-down:before {
+  content: "\f01a";
+}
+
+/* line 270, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrow-circle-o-up:before {
+  content: "\f01b";
+}
+
+/* line 273, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-inbox:before {
+  content: "\f01c";
+}
+
+/* line 276, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-play-circle-o:before {
+  content: "\f01d";
+}
+
+/* line 280, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-rotate-right:before,
+.fa-repeat:before {
+  content: "\f01e";
+}
+
+/* line 283, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-refresh:before {
+  content: "\f021";
+}
+
+/* line 286, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-list-alt:before {
+  content: "\f022";
+}
+
+/* line 289, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-lock:before {
+  content: "\f023";
+}
+
+/* line 292, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-flag:before {
+  content: "\f024";
+}
+
+/* line 295, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-headphones:before {
+  content: "\f025";
+}
+
+/* line 298, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-volume-off:before {
+  content: "\f026";
+}
+
+/* line 301, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-volume-down:before {
+  content: "\f027";
+}
+
+/* line 304, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-volume-up:before {
+  content: "\f028";
+}
+
+/* line 307, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-qrcode:before {
+  content: "\f029";
+}
+
+/* line 310, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-barcode:before {
+  content: "\f02a";
+}
+
+/* line 313, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-tag:before {
+  content: "\f02b";
+}
+
+/* line 316, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-tags:before {
+  content: "\f02c";
+}
+
+/* line 319, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-book:before {
+  content: "\f02d";
+}
+
+/* line 322, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bookmark:before {
+  content: "\f02e";
+}
+
+/* line 325, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-print:before {
+  content: "\f02f";
+}
+
+/* line 328, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-camera:before {
+  content: "\f030";
+}
+
+/* line 331, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-font:before {
+  content: "\f031";
+}
+
+/* line 334, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bold:before {
+  content: "\f032";
+}
+
+/* line 337, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-italic:before {
+  content: "\f033";
+}
+
+/* line 340, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-text-height:before {
+  content: "\f034";
+}
+
+/* line 343, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-text-width:before {
+  content: "\f035";
+}
+
+/* line 346, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-align-left:before {
+  content: "\f036";
+}
+
+/* line 349, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-align-center:before {
+  content: "\f037";
+}
+
+/* line 352, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-align-right:before {
+  content: "\f038";
+}
+
+/* line 355, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-align-justify:before {
+  content: "\f039";
+}
+
+/* line 358, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-list:before {
+  content: "\f03a";
+}
+
+/* line 362, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-dedent:before,
+.fa-outdent:before {
+  content: "\f03b";
+}
+
+/* line 365, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-indent:before {
+  content: "\f03c";
+}
+
+/* line 368, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-video-camera:before {
+  content: "\f03d";
+}
+
+/* line 373, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-photo:before,
+.fa-image:before,
+.fa-picture-o:before {
+  content: "\f03e";
+}
+
+/* line 376, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-pencil:before {
+  content: "\f040";
+}
+
+/* line 379, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-map-marker:before {
+  content: "\f041";
+}
+
+/* line 382, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-adjust:before {
+  content: "\f042";
+}
+
+/* line 385, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-tint:before {
+  content: "\f043";
+}
+
+/* line 389, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-edit:before,
+.fa-pencil-square-o:before {
+  content: "\f044";
+}
+
+/* line 392, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-share-square-o:before {
+  content: "\f045";
+}
+
+/* line 395, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-check-square-o:before {
+  content: "\f046";
+}
+
+/* line 398, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrows:before {
+  content: "\f047";
+}
+
+/* line 401, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-step-backward:before {
+  content: "\f048";
+}
+
+/* line 404, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-fast-backward:before {
+  content: "\f049";
+}
+
+/* line 407, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-backward:before {
+  content: "\f04a";
+}
+
+/* line 410, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-play:before {
+  content: "\f04b";
+}
+
+/* line 413, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-pause:before {
+  content: "\f04c";
+}
+
+/* line 416, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-stop:before {
+  content: "\f04d";
+}
+
+/* line 419, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-forward:before {
+  content: "\f04e";
+}
+
+/* line 422, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-fast-forward:before {
+  content: "\f050";
+}
+
+/* line 425, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-step-forward:before {
+  content: "\f051";
+}
+
+/* line 428, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-eject:before {
+  content: "\f052";
+}
+
+/* line 431, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-chevron-left:before {
+  content: "\f053";
+}
+
+/* line 434, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-chevron-right:before {
+  content: "\f054";
+}
+
+/* line 437, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-plus-circle:before {
+  content: "\f055";
+}
+
+/* line 440, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-minus-circle:before {
+  content: "\f056";
+}
+
+/* line 443, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-times-circle:before {
+  content: "\f057";
+}
+
+/* line 446, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-check-circle:before {
+  content: "\f058";
+}
+
+/* line 449, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-question-circle:before {
+  content: "\f059";
+}
+
+/* line 452, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-info-circle:before {
+  content: "\f05a";
+}
+
+/* line 455, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-crosshairs:before {
+  content: "\f05b";
+}
+
+/* line 458, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-times-circle-o:before {
+  content: "\f05c";
+}
+
+/* line 461, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-check-circle-o:before {
+  content: "\f05d";
+}
+
+/* line 464, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-ban:before {
+  content: "\f05e";
+}
+
+/* line 467, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrow-left:before {
+  content: "\f060";
+}
+
+/* line 470, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrow-right:before {
+  content: "\f061";
+}
+
+/* line 473, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrow-up:before {
+  content: "\f062";
+}
+
+/* line 476, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrow-down:before {
+  content: "\f063";
+}
+
+/* line 480, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-mail-forward:before,
+.fa-share:before {
+  content: "\f064";
+}
+
+/* line 483, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-expand:before {
+  content: "\f065";
+}
+
+/* line 486, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-compress:before {
+  content: "\f066";
+}
+
+/* line 489, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-plus:before {
+  content: "\f067";
+}
+
+/* line 492, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-minus:before {
+  content: "\f068";
+}
+
+/* line 495, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-asterisk:before {
+  content: "\f069";
+}
+
+/* line 498, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-exclamation-circle:before {
+  content: "\f06a";
+}
+
+/* line 501, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-gift:before {
+  content: "\f06b";
+}
+
+/* line 504, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-leaf:before {
+  content: "\f06c";
+}
+
+/* line 507, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-fire:before {
+  content: "\f06d";
+}
+
+/* line 510, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-eye:before {
+  content: "\f06e";
+}
+
+/* line 513, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-eye-slash:before {
+  content: "\f070";
+}
+
+/* line 517, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-warning:before,
+.fa-exclamation-triangle:before {
+  content: "\f071";
+}
+
+/* line 520, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-plane:before {
+  content: "\f072";
+}
+
+/* line 523, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-calendar:before {
+  content: "\f073";
+}
+
+/* line 526, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-random:before {
+  content: "\f074";
+}
+
+/* line 529, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-comment:before {
+  content: "\f075";
+}
+
+/* line 532, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-magnet:before {
+  content: "\f076";
+}
+
+/* line 535, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-chevron-up:before {
+  content: "\f077";
+}
+
+/* line 538, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-chevron-down:before {
+  content: "\f078";
+}
+
+/* line 541, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-retweet:before {
+  content: "\f079";
+}
+
+/* line 544, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-shopping-cart:before {
+  content: "\f07a";
+}
+
+/* line 547, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-folder:before {
+  content: "\f07b";
+}
+
+/* line 550, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-folder-open:before {
+  content: "\f07c";
+}
+
+/* line 553, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrows-v:before {
+  content: "\f07d";
+}
+
+/* line 556, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrows-h:before {
+  content: "\f07e";
+}
+
+/* line 559, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bar-chart-o:before {
+  content: "\f080";
+}
+
+/* line 562, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-twitter-square:before {
+  content: "\f081";
+}
+
+/* line 565, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-facebook-square:before {
+  content: "\f082";
+}
+
+/* line 568, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-camera-retro:before {
+  content: "\f083";
+}
+
+/* line 571, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-key:before {
+  content: "\f084";
+}
+
+/* line 575, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-gears:before,
+.fa-cogs:before {
+  content: "\f085";
+}
+
+/* line 578, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-comments:before {
+  content: "\f086";
+}
+
+/* line 581, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-thumbs-o-up:before {
+  content: "\f087";
+}
+
+/* line 584, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-thumbs-o-down:before {
+  content: "\f088";
+}
+
+/* line 587, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-star-half:before {
+  content: "\f089";
+}
+
+/* line 590, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-heart-o:before {
+  content: "\f08a";
+}
+
+/* line 593, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sign-out:before {
+  content: "\f08b";
+}
+
+/* line 596, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-linkedin-square:before {
+  content: "\f08c";
+}
+
+/* line 599, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-thumb-tack:before {
+  content: "\f08d";
+}
+
+/* line 602, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-external-link:before {
+  content: "\f08e";
+}
+
+/* line 605, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sign-in:before {
+  content: "\f090";
+}
+
+/* line 608, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-trophy:before {
+  content: "\f091";
+}
+
+/* line 611, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-github-square:before {
+  content: "\f092";
+}
+
+/* line 614, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-upload:before {
+  content: "\f093";
+}
+
+/* line 617, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-lemon-o:before {
+  content: "\f094";
+}
+
+/* line 620, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-phone:before {
+  content: "\f095";
+}
+
+/* line 623, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-square-o:before {
+  content: "\f096";
+}
+
+/* line 626, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bookmark-o:before {
+  content: "\f097";
+}
+
+/* line 629, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-phone-square:before {
+  content: "\f098";
+}
+
+/* line 632, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-twitter:before {
+  content: "\f099";
+}
+
+/* line 635, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-facebook:before {
+  content: "\f09a";
+}
+
+/* line 638, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-github:before {
+  content: "\f09b";
+}
+
+/* line 641, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-unlock:before {
+  content: "\f09c";
+}
+
+/* line 644, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-credit-card:before {
+  content: "\f09d";
+}
+
+/* line 647, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-rss:before {
+  content: "\f09e";
+}
+
+/* line 650, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-hdd-o:before {
+  content: "\f0a0";
+}
+
+/* line 653, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bullhorn:before {
+  content: "\f0a1";
+}
+
+/* line 656, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bell:before {
+  content: "\f0f3";
+}
+
+/* line 659, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-certificate:before {
+  content: "\f0a3";
+}
+
+/* line 662, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-hand-o-right:before {
+  content: "\f0a4";
+}
+
+/* line 665, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-hand-o-left:before {
+  content: "\f0a5";
+}
+
+/* line 668, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-hand-o-up:before {
+  content: "\f0a6";
+}
+
+/* line 671, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-hand-o-down:before {
+  content: "\f0a7";
+}
+
+/* line 674, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrow-circle-left:before {
+  content: "\f0a8";
+}
+
+/* line 677, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrow-circle-right:before {
+  content: "\f0a9";
+}
+
+/* line 680, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrow-circle-up:before {
+  content: "\f0aa";
+}
+
+/* line 683, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrow-circle-down:before {
+  content: "\f0ab";
+}
+
+/* line 686, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-globe:before {
+  content: "\f0ac";
+}
+
+/* line 689, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-wrench:before {
+  content: "\f0ad";
+}
+
+/* line 692, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-tasks:before {
+  content: "\f0ae";
+}
+
+/* line 695, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-filter:before {
+  content: "\f0b0";
+}
+
+/* line 698, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-briefcase:before {
+  content: "\f0b1";
+}
+
+/* line 701, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrows-alt:before {
+  content: "\f0b2";
+}
+
+/* line 705, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-group:before,
+.fa-users:before {
+  content: "\f0c0";
+}
+
+/* line 709, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-chain:before,
+.fa-link:before {
+  content: "\f0c1";
+}
+
+/* line 712, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-cloud:before {
+  content: "\f0c2";
+}
+
+/* line 715, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-flask:before {
+  content: "\f0c3";
+}
+
+/* line 719, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-cut:before,
+.fa-scissors:before {
+  content: "\f0c4";
+}
+
+/* line 723, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-copy:before,
+.fa-files-o:before {
+  content: "\f0c5";
+}
+
+/* line 726, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-paperclip:before {
+  content: "\f0c6";
+}
+
+/* line 730, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-save:before,
+.fa-floppy-o:before {
+  content: "\f0c7";
+}
+
+/* line 733, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-square:before {
+  content: "\f0c8";
+}
+
+/* line 738, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-navicon:before,
+.fa-reorder:before,
+.fa-bars:before {
+  content: "\f0c9";
+}
+
+/* line 741, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-list-ul:before {
+  content: "\f0ca";
+}
+
+/* line 744, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-list-ol:before {
+  content: "\f0cb";
+}
+
+/* line 747, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-strikethrough:before {
+  content: "\f0cc";
+}
+
+/* line 750, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-underline:before {
+  content: "\f0cd";
+}
+
+/* line 753, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-table:before {
+  content: "\f0ce";
+}
+
+/* line 756, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-magic:before {
+  content: "\f0d0";
+}
+
+/* line 759, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-truck:before {
+  content: "\f0d1";
+}
+
+/* line 762, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-pinterest:before {
+  content: "\f0d2";
+}
+
+/* line 765, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-pinterest-square:before {
+  content: "\f0d3";
+}
+
+/* line 768, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-google-plus-square:before {
+  content: "\f0d4";
+}
+
+/* line 771, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-google-plus:before {
+  content: "\f0d5";
+}
+
+/* line 774, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-money:before {
+  content: "\f0d6";
+}
+
+/* line 777, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-caret-down:before {
+  content: "\f0d7";
+}
+
+/* line 780, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-caret-up:before {
+  content: "\f0d8";
+}
+
+/* line 783, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-caret-left:before {
+  content: "\f0d9";
+}
+
+/* line 786, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-caret-right:before {
+  content: "\f0da";
+}
+
+/* line 789, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-columns:before {
+  content: "\f0db";
+}
+
+/* line 793, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-unsorted:before,
+.fa-sort:before {
+  content: "\f0dc";
+}
+
+/* line 797, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sort-down:before,
+.fa-sort-desc:before {
+  content: "\f0dd";
+}
+
+/* line 801, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sort-up:before,
+.fa-sort-asc:before {
+  content: "\f0de";
+}
+
+/* line 804, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-envelope:before {
+  content: "\f0e0";
+}
+
+/* line 807, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-linkedin:before {
+  content: "\f0e1";
+}
+
+/* line 811, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-rotate-left:before,
+.fa-undo:before {
+  content: "\f0e2";
+}
+
+/* line 815, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-legal:before,
+.fa-gavel:before {
+  content: "\f0e3";
+}
+
+/* line 819, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-dashboard:before,
+.fa-tachometer:before {
+  content: "\f0e4";
+}
+
+/* line 822, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-comment-o:before {
+  content: "\f0e5";
+}
+
+/* line 825, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-comments-o:before {
+  content: "\f0e6";
+}
+
+/* line 829, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-flash:before,
+.fa-bolt:before {
+  content: "\f0e7";
+}
+
+/* line 832, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sitemap:before {
+  content: "\f0e8";
+}
+
+/* line 835, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-umbrella:before {
+  content: "\f0e9";
+}
+
+/* line 839, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-paste:before,
+.fa-clipboard:before {
+  content: "\f0ea";
+}
+
+/* line 842, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-lightbulb-o:before {
+  content: "\f0eb";
+}
+
+/* line 845, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-exchange:before {
+  content: "\f0ec";
+}
+
+/* line 848, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-cloud-download:before {
+  content: "\f0ed";
+}
+
+/* line 851, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-cloud-upload:before {
+  content: "\f0ee";
+}
+
+/* line 854, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-user-md:before {
+  content: "\f0f0";
+}
+
+/* line 857, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-stethoscope:before {
+  content: "\f0f1";
+}
+
+/* line 860, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-suitcase:before {
+  content: "\f0f2";
+}
+
+/* line 863, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bell-o:before {
+  content: "\f0a2";
+}
+
+/* line 866, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-coffee:before {
+  content: "\f0f4";
+}
+
+/* line 869, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-cutlery:before {
+  content: "\f0f5";
+}
+
+/* line 872, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file-text-o:before {
+  content: "\f0f6";
+}
+
+/* line 875, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-building-o:before {
+  content: "\f0f7";
+}
+
+/* line 878, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-hospital-o:before {
+  content: "\f0f8";
+}
+
+/* line 881, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-ambulance:before {
+  content: "\f0f9";
+}
+
+/* line 884, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-medkit:before {
+  content: "\f0fa";
+}
+
+/* line 887, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-fighter-jet:before {
+  content: "\f0fb";
+}
+
+/* line 890, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-beer:before {
+  content: "\f0fc";
+}
+
+/* line 893, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-h-square:before {
+  content: "\f0fd";
+}
+
+/* line 896, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-plus-square:before {
+  content: "\f0fe";
+}
+
+/* line 899, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-angle-double-left:before {
+  content: "\f100";
+}
+
+/* line 902, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-angle-double-right:before {
+  content: "\f101";
+}
+
+/* line 905, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-angle-double-up:before {
+  content: "\f102";
+}
+
+/* line 908, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-angle-double-down:before {
+  content: "\f103";
+}
+
+/* line 911, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-angle-left:before {
+  content: "\f104";
+}
+
+/* line 914, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-angle-right:before {
+  content: "\f105";
+}
+
+/* line 917, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-angle-up:before {
+  content: "\f106";
+}
+
+/* line 920, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-angle-down:before {
+  content: "\f107";
+}
+
+/* line 923, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-desktop:before {
+  content: "\f108";
+}
+
+/* line 926, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-laptop:before {
+  content: "\f109";
+}
+
+/* line 929, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-tablet:before {
+  content: "\f10a";
+}
+
+/* line 933, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-mobile-phone:before,
+.fa-mobile:before {
+  content: "\f10b";
+}
+
+/* line 936, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-circle-o:before {
+  content: "\f10c";
+}
+
+/* line 939, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-quote-left:before {
+  content: "\f10d";
+}
+
+/* line 942, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-quote-right:before {
+  content: "\f10e";
+}
+
+/* line 945, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-spinner:before {
+  content: "\f110";
+}
+
+/* line 948, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-circle:before {
+  content: "\f111";
+}
+
+/* line 952, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-mail-reply:before,
+.fa-reply:before {
+  content: "\f112";
+}
+
+/* line 955, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-github-alt:before {
+  content: "\f113";
+}
+
+/* line 958, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-folder-o:before {
+  content: "\f114";
+}
+
+/* line 961, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-folder-open-o:before {
+  content: "\f115";
+}
+
+/* line 964, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-smile-o:before {
+  content: "\f118";
+}
+
+/* line 967, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-frown-o:before {
+  content: "\f119";
+}
+
+/* line 970, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-meh-o:before {
+  content: "\f11a";
+}
+
+/* line 973, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-gamepad:before {
+  content: "\f11b";
+}
+
+/* line 976, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-keyboard-o:before {
+  content: "\f11c";
+}
+
+/* line 979, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-flag-o:before {
+  content: "\f11d";
+}
+
+/* line 982, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-flag-checkered:before {
+  content: "\f11e";
+}
+
+/* line 985, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-terminal:before {
+  content: "\f120";
+}
+
+/* line 988, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-code:before {
+  content: "\f121";
+}
+
+/* line 992, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-mail-reply-all:before,
+.fa-reply-all:before {
+  content: "\f122";
+}
+
+/* line 997, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-star-half-empty:before,
+.fa-star-half-full:before,
+.fa-star-half-o:before {
+  content: "\f123";
+}
+
+/* line 1000, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-location-arrow:before {
+  content: "\f124";
+}
+
+/* line 1003, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-crop:before {
+  content: "\f125";
+}
+
+/* line 1006, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-code-fork:before {
+  content: "\f126";
+}
+
+/* line 1010, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-unlink:before,
+.fa-chain-broken:before {
+  content: "\f127";
+}
+
+/* line 1013, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-question:before {
+  content: "\f128";
+}
+
+/* line 1016, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-info:before {
+  content: "\f129";
+}
+
+/* line 1019, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-exclamation:before {
+  content: "\f12a";
+}
+
+/* line 1022, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-superscript:before {
+  content: "\f12b";
+}
+
+/* line 1025, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-subscript:before {
+  content: "\f12c";
+}
+
+/* line 1028, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-eraser:before {
+  content: "\f12d";
+}
+
+/* line 1031, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-puzzle-piece:before {
+  content: "\f12e";
+}
+
+/* line 1034, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-microphone:before {
+  content: "\f130";
+}
+
+/* line 1037, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-microphone-slash:before {
+  content: "\f131";
+}
+
+/* line 1040, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-shield:before {
+  content: "\f132";
+}
+
+/* line 1043, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-calendar-o:before {
+  content: "\f133";
+}
+
+/* line 1046, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-fire-extinguisher:before {
+  content: "\f134";
+}
+
+/* line 1049, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-rocket:before {
+  content: "\f135";
+}
+
+/* line 1052, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-maxcdn:before {
+  content: "\f136";
+}
+
+/* line 1055, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-chevron-circle-left:before {
+  content: "\f137";
+}
+
+/* line 1058, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-chevron-circle-right:before {
+  content: "\f138";
+}
+
+/* line 1061, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-chevron-circle-up:before {
+  content: "\f139";
+}
+
+/* line 1064, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-chevron-circle-down:before {
+  content: "\f13a";
+}
+
+/* line 1067, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-html5:before {
+  content: "\f13b";
+}
+
+/* line 1070, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-css3:before {
+  content: "\f13c";
+}
+
+/* line 1073, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-anchor:before {
+  content: "\f13d";
+}
+
+/* line 1076, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-unlock-alt:before {
+  content: "\f13e";
+}
+
+/* line 1079, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bullseye:before {
+  content: "\f140";
+}
+
+/* line 1082, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-ellipsis-h:before {
+  content: "\f141";
+}
+
+/* line 1085, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-ellipsis-v:before {
+  content: "\f142";
+}
+
+/* line 1088, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-rss-square:before {
+  content: "\f143";
+}
+
+/* line 1091, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-play-circle:before {
+  content: "\f144";
+}
+
+/* line 1094, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-ticket:before {
+  content: "\f145";
+}
+
+/* line 1097, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-minus-square:before {
+  content: "\f146";
+}
+
+/* line 1100, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-minus-square-o:before {
+  content: "\f147";
+}
+
+/* line 1103, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-level-up:before {
+  content: "\f148";
+}
+
+/* line 1106, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-level-down:before {
+  content: "\f149";
+}
+
+/* line 1109, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-check-square:before {
+  content: "\f14a";
+}
+
+/* line 1112, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-pencil-square:before {
+  content: "\f14b";
+}
+
+/* line 1115, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-external-link-square:before {
+  content: "\f14c";
+}
+
+/* line 1118, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-share-square:before {
+  content: "\f14d";
+}
+
+/* line 1121, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-compass:before {
+  content: "\f14e";
+}
+
+/* line 1125, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-toggle-down:before,
+.fa-caret-square-o-down:before {
+  content: "\f150";
+}
+
+/* line 1129, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-toggle-up:before,
+.fa-caret-square-o-up:before {
+  content: "\f151";
+}
+
+/* line 1133, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-toggle-right:before,
+.fa-caret-square-o-right:before {
+  content: "\f152";
+}
+
+/* line 1137, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-euro:before,
+.fa-eur:before {
+  content: "\f153";
+}
+
+/* line 1140, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-gbp:before {
+  content: "\f154";
+}
+
+/* line 1144, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-dollar:before,
+.fa-usd:before {
+  content: "\f155";
+}
+
+/* line 1148, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-rupee:before,
+.fa-inr:before {
+  content: "\f156";
+}
+
+/* line 1154, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-cny:before,
+.fa-rmb:before,
+.fa-yen:before,
+.fa-jpy:before {
+  content: "\f157";
+}
+
+/* line 1159, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-ruble:before,
+.fa-rouble:before,
+.fa-rub:before {
+  content: "\f158";
+}
+
+/* line 1163, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-won:before,
+.fa-krw:before {
+  content: "\f159";
+}
+
+/* line 1167, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bitcoin:before,
+.fa-btc:before {
+  content: "\f15a";
+}
+
+/* line 1170, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file:before {
+  content: "\f15b";
+}
+
+/* line 1173, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file-text:before {
+  content: "\f15c";
+}
+
+/* line 1176, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sort-alpha-asc:before {
+  content: "\f15d";
+}
+
+/* line 1179, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sort-alpha-desc:before {
+  content: "\f15e";
+}
+
+/* line 1182, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sort-amount-asc:before {
+  content: "\f160";
+}
+
+/* line 1185, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sort-amount-desc:before {
+  content: "\f161";
+}
+
+/* line 1188, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sort-numeric-asc:before {
+  content: "\f162";
+}
+
+/* line 1191, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sort-numeric-desc:before {
+  content: "\f163";
+}
+
+/* line 1194, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-thumbs-up:before {
+  content: "\f164";
+}
+
+/* line 1197, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-thumbs-down:before {
+  content: "\f165";
+}
+
+/* line 1200, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-youtube-square:before {
+  content: "\f166";
+}
+
+/* line 1203, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-youtube:before {
+  content: "\f167";
+}
+
+/* line 1206, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-xing:before {
+  content: "\f168";
+}
+
+/* line 1209, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-xing-square:before {
+  content: "\f169";
+}
+
+/* line 1212, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-youtube-play:before {
+  content: "\f16a";
+}
+
+/* line 1215, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-dropbox:before {
+  content: "\f16b";
+}
+
+/* line 1218, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-stack-overflow:before {
+  content: "\f16c";
+}
+
+/* line 1221, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-instagram:before {
+  content: "\f16d";
+}
+
+/* line 1224, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-flickr:before {
+  content: "\f16e";
+}
+
+/* line 1227, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-adn:before {
+  content: "\f170";
+}
+
+/* line 1230, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bitbucket:before {
+  content: "\f171";
+}
+
+/* line 1233, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bitbucket-square:before {
+  content: "\f172";
+}
+
+/* line 1236, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-tumblr:before {
+  content: "\f173";
+}
+
+/* line 1239, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-tumblr-square:before {
+  content: "\f174";
+}
+
+/* line 1242, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-long-arrow-down:before {
+  content: "\f175";
+}
+
+/* line 1245, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-long-arrow-up:before {
+  content: "\f176";
+}
+
+/* line 1248, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-long-arrow-left:before {
+  content: "\f177";
+}
+
+/* line 1251, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-long-arrow-right:before {
+  content: "\f178";
+}
+
+/* line 1254, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-apple:before {
+  content: "\f179";
+}
+
+/* line 1257, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-windows:before {
+  content: "\f17a";
+}
+
+/* line 1260, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-android:before {
+  content: "\f17b";
+}
+
+/* line 1263, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-linux:before {
+  content: "\f17c";
+}
+
+/* line 1266, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-dribbble:before {
+  content: "\f17d";
+}
+
+/* line 1269, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-skype:before {
+  content: "\f17e";
+}
+
+/* line 1272, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-foursquare:before {
+  content: "\f180";
+}
+
+/* line 1275, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-trello:before {
+  content: "\f181";
+}
+
+/* line 1278, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-female:before {
+  content: "\f182";
+}
+
+/* line 1281, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-male:before {
+  content: "\f183";
+}
+
+/* line 1284, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-gittip:before {
+  content: "\f184";
+}
+
+/* line 1287, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sun-o:before {
+  content: "\f185";
+}
+
+/* line 1290, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-moon-o:before {
+  content: "\f186";
+}
+
+/* line 1293, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-archive:before {
+  content: "\f187";
+}
+
+/* line 1296, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bug:before {
+  content: "\f188";
+}
+
+/* line 1299, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-vk:before {
+  content: "\f189";
+}
+
+/* line 1302, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-weibo:before {
+  content: "\f18a";
+}
+
+/* line 1305, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-renren:before {
+  content: "\f18b";
+}
+
+/* line 1308, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-pagelines:before {
+  content: "\f18c";
+}
+
+/* line 1311, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-stack-exchange:before {
+  content: "\f18d";
+}
+
+/* line 1314, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrow-circle-o-right:before {
+  content: "\f18e";
+}
+
+/* line 1317, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-arrow-circle-o-left:before {
+  content: "\f190";
+}
+
+/* line 1321, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-toggle-left:before,
+.fa-caret-square-o-left:before {
+  content: "\f191";
+}
+
+/* line 1324, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-dot-circle-o:before {
+  content: "\f192";
+}
+
+/* line 1327, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-wheelchair:before {
+  content: "\f193";
+}
+
+/* line 1330, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-vimeo-square:before {
+  content: "\f194";
+}
+
+/* line 1334, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-turkish-lira:before,
+.fa-try:before {
+  content: "\f195";
+}
+
+/* line 1337, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-plus-square-o:before {
+  content: "\f196";
+}
+
+/* line 1340, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-space-shuttle:before {
+  content: "\f197";
+}
+
+/* line 1343, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-slack:before {
+  content: "\f198";
+}
+
+/* line 1346, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-envelope-square:before {
+  content: "\f199";
+}
+
+/* line 1349, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-wordpress:before {
+  content: "\f19a";
+}
+
+/* line 1352, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-openid:before {
+  content: "\f19b";
+}
+
+/* line 1357, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-institution:before,
+.fa-bank:before,
+.fa-university:before {
+  content: "\f19c";
+}
+
+/* line 1361, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-mortar-board:before,
+.fa-graduation-cap:before {
+  content: "\f19d";
+}
+
+/* line 1364, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-yahoo:before {
+  content: "\f19e";
+}
+
+/* line 1367, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-google:before {
+  content: "\f1a0";
+}
+
+/* line 1370, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-reddit:before {
+  content: "\f1a1";
+}
+
+/* line 1373, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-reddit-square:before {
+  content: "\f1a2";
+}
+
+/* line 1376, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-stumbleupon-circle:before {
+  content: "\f1a3";
+}
+
+/* line 1379, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-stumbleupon:before {
+  content: "\f1a4";
+}
+
+/* line 1382, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-delicious:before {
+  content: "\f1a5";
+}
+
+/* line 1385, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-digg:before {
+  content: "\f1a6";
+}
+
+/* line 1389, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-pied-piper-square:before,
+.fa-pied-piper:before {
+  content: "\f1a7";
+}
+
+/* line 1392, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-pied-piper-alt:before {
+  content: "\f1a8";
+}
+
+/* line 1395, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-drupal:before {
+  content: "\f1a9";
+}
+
+/* line 1398, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-joomla:before {
+  content: "\f1aa";
+}
+
+/* line 1401, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-language:before {
+  content: "\f1ab";
+}
+
+/* line 1404, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-fax:before {
+  content: "\f1ac";
+}
+
+/* line 1407, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-building:before {
+  content: "\f1ad";
+}
+
+/* line 1410, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-child:before {
+  content: "\f1ae";
+}
+
+/* line 1413, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-paw:before {
+  content: "\f1b0";
+}
+
+/* line 1416, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-spoon:before {
+  content: "\f1b1";
+}
+
+/* line 1419, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-cube:before {
+  content: "\f1b2";
+}
+
+/* line 1422, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-cubes:before {
+  content: "\f1b3";
+}
+
+/* line 1425, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-behance:before {
+  content: "\f1b4";
+}
+
+/* line 1428, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-behance-square:before {
+  content: "\f1b5";
+}
+
+/* line 1431, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-steam:before {
+  content: "\f1b6";
+}
+
+/* line 1434, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-steam-square:before {
+  content: "\f1b7";
+}
+
+/* line 1437, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-recycle:before {
+  content: "\f1b8";
+}
+
+/* line 1441, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-automobile:before,
+.fa-car:before {
+  content: "\f1b9";
+}
+
+/* line 1445, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-cab:before,
+.fa-taxi:before {
+  content: "\f1ba";
+}
+
+/* line 1448, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-tree:before {
+  content: "\f1bb";
+}
+
+/* line 1451, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-spotify:before {
+  content: "\f1bc";
+}
+
+/* line 1454, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-deviantart:before {
+  content: "\f1bd";
+}
+
+/* line 1457, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-soundcloud:before {
+  content: "\f1be";
+}
+
+/* line 1460, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-database:before {
+  content: "\f1c0";
+}
+
+/* line 1463, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file-pdf-o:before {
+  content: "\f1c1";
+}
+
+/* line 1466, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file-word-o:before {
+  content: "\f1c2";
+}
+
+/* line 1469, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file-excel-o:before {
+  content: "\f1c3";
+}
+
+/* line 1472, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file-powerpoint-o:before {
+  content: "\f1c4";
+}
+
+/* line 1477, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file-photo-o:before,
+.fa-file-picture-o:before,
+.fa-file-image-o:before {
+  content: "\f1c5";
+}
+
+/* line 1481, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file-zip-o:before,
+.fa-file-archive-o:before {
+  content: "\f1c6";
+}
+
+/* line 1485, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file-sound-o:before,
+.fa-file-audio-o:before {
+  content: "\f1c7";
+}
+
+/* line 1489, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file-movie-o:before,
+.fa-file-video-o:before {
+  content: "\f1c8";
+}
+
+/* line 1492, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-file-code-o:before {
+  content: "\f1c9";
+}
+
+/* line 1495, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-vine:before {
+  content: "\f1ca";
+}
+
+/* line 1498, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-codepen:before {
+  content: "\f1cb";
+}
+
+/* line 1501, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-jsfiddle:before {
+  content: "\f1cc";
+}
+
+/* line 1507, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-life-bouy:before,
+.fa-life-saver:before,
+.fa-support:before,
+.fa-life-ring:before {
+  content: "\f1cd";
+}
+
+/* line 1510, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-circle-o-notch:before {
+  content: "\f1ce";
+}
+
+/* line 1514, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-ra:before,
+.fa-rebel:before {
+  content: "\f1d0";
+}
+
+/* line 1518, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-ge:before,
+.fa-empire:before {
+  content: "\f1d1";
+}
+
+/* line 1521, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-git-square:before {
+  content: "\f1d2";
+}
+
+/* line 1524, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-git:before {
+  content: "\f1d3";
+}
+
+/* line 1527, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-hacker-news:before {
+  content: "\f1d4";
+}
+
+/* line 1530, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-tencent-weibo:before {
+  content: "\f1d5";
+}
+
+/* line 1533, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-qq:before {
+  content: "\f1d6";
+}
+
+/* line 1537, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-wechat:before,
+.fa-weixin:before {
+  content: "\f1d7";
+}
+
+/* line 1541, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-send:before,
+.fa-paper-plane:before {
+  content: "\f1d8";
+}
+
+/* line 1545, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-send-o:before,
+.fa-paper-plane-o:before {
+  content: "\f1d9";
+}
+
+/* line 1548, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-history:before {
+  content: "\f1da";
+}
+
+/* line 1551, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-circle-thin:before {
+  content: "\f1db";
+}
+
+/* line 1554, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-header:before {
+  content: "\f1dc";
+}
+
+/* line 1557, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-paragraph:before {
+  content: "\f1dd";
+}
+
+/* line 1560, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-sliders:before {
+  content: "\f1de";
+}
+
+/* line 1563, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-share-alt:before {
+  content: "\f1e0";
+}
+
+/* line 1566, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-share-alt-square:before {
+  content: "\f1e1";
+}
+
+/* line 1569, /Users/bennettlee/.rvm/gems/ruby-2.0.0-p353@railstutorial_rails_4_0/gems/font-awesome-rails-4.1.0.0/app/assets/stylesheets/font-awesome.css.erb */
+.fa-bomb:before {
+  content: "\f1e2";
+}
+
+/*
+ * Social Buttons for Bootstrap
+ *
+ * Copyright 2013-2014 Panayiotis Lipiridis
+ * Licensed under the MIT License
+ *
+ * https://github.com/lipis/bootstrap-social
+ */
+/* line 11, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social {
+  position: relative;
+  padding-left: 44px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* line 11, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social :first-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  line-height: 34px;
+  font-size: 1.6em;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* line 12, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social.btn-lg {
+  padding-left: 61px;
+}
+
+/* line 12, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social.btn-lg :first-child {
+  line-height: 45px;
+  width: 45px;
+  font-size: 1.8em;
+}
+
+/* line 13, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social.btn-sm {
+  padding-left: 38px;
+}
+
+/* line 13, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social.btn-sm :first-child {
+  line-height: 28px;
+  width: 28px;
+  font-size: 1.4em;
+}
+
+/* line 14, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social.btn-xs {
+  padding-left: 30px;
+}
+
+/* line 14, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social.btn-xs :first-child {
+  line-height: 20px;
+  width: 20px;
+  font-size: 1.2em;
+}
+
+/* line 15, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social-icon {
+  position: relative;
+  padding-left: 44px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 34px;
+  width: 34px;
+  padding: 0;
+}
+
+/* line 15, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social-icon :first-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  line-height: 34px;
+  font-size: 1.6em;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* line 16, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social-icon.btn-lg {
+  padding-left: 61px;
+}
+
+/* line 16, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social-icon.btn-lg :first-child {
+  line-height: 45px;
+  width: 45px;
+  font-size: 1.8em;
+}
+
+/* line 17, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social-icon.btn-sm {
+  padding-left: 38px;
+}
+
+/* line 17, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social-icon.btn-sm :first-child {
+  line-height: 28px;
+  width: 28px;
+  font-size: 1.4em;
+}
+
+/* line 18, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social-icon.btn-xs {
+  padding-left: 30px;
+}
+
+/* line 18, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social-icon.btn-xs :first-child {
+  line-height: 20px;
+  width: 20px;
+  font-size: 1.2em;
+}
+
+/* line 19, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social-icon :first-child {
+  border: none;
+  text-align: center;
+  width: 100% !important;
+}
+
+/* line 20, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social-icon.btn-lg {
+  height: 45px;
+  width: 45px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 21, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social-icon.btn-sm {
+  height: 30px;
+  width: 30px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 22, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-social-icon.btn-xs {
+  height: 22px;
+  width: 22px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 23, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-adn {
+  color: #fff;
+  background-color: #d87a68;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 23, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-adn:hover, .btn-adn:focus, .btn-adn:active, .btn-adn.active, .open .dropdown-toggle.btn-adn {
+  color: #fff;
+  background-color: #d05d48;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 24, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-adn:active, .btn-adn.active, .open .dropdown-toggle.btn-adn {
+  background-image: none;
+}
+
+/* line 25, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-adn.disabled, .btn-adn[disabled], fieldset[disabled] .btn-adn, .btn-adn.disabled:hover, .btn-adn[disabled]:hover, fieldset[disabled] .btn-adn:hover, .btn-adn.disabled:focus, .btn-adn[disabled]:focus, fieldset[disabled] .btn-adn:focus, .btn-adn.disabled:active, .btn-adn[disabled]:active, fieldset[disabled] .btn-adn:active, .btn-adn.disabled.active, .btn-adn[disabled].active, fieldset[disabled] .btn-adn.active {
+  background-color: #d87a68;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 26, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-adn .badge {
+  color: #d87a68;
+  background-color: #fff;
+}
+
+/* line 27, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-bitbucket {
+  color: #fff;
+  background-color: #205081;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 27, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-bitbucket:hover, .btn-bitbucket:focus, .btn-bitbucket:active, .btn-bitbucket.active, .open .dropdown-toggle.btn-bitbucket {
+  color: #fff;
+  background-color: #183c60;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 28, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-bitbucket:active, .btn-bitbucket.active, .open .dropdown-toggle.btn-bitbucket {
+  background-image: none;
+}
+
+/* line 29, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-bitbucket.disabled, .btn-bitbucket[disabled], fieldset[disabled] .btn-bitbucket, .btn-bitbucket.disabled:hover, .btn-bitbucket[disabled]:hover, fieldset[disabled] .btn-bitbucket:hover, .btn-bitbucket.disabled:focus, .btn-bitbucket[disabled]:focus, fieldset[disabled] .btn-bitbucket:focus, .btn-bitbucket.disabled:active, .btn-bitbucket[disabled]:active, fieldset[disabled] .btn-bitbucket:active, .btn-bitbucket.disabled.active, .btn-bitbucket[disabled].active, fieldset[disabled] .btn-bitbucket.active {
+  background-color: #205081;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 30, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-bitbucket .badge {
+  color: #205081;
+  background-color: #fff;
+}
+
+/* line 31, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-dropbox {
+  color: #fff;
+  background-color: #1087dd;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 31, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-dropbox:hover, .btn-dropbox:focus, .btn-dropbox:active, .btn-dropbox.active, .open .dropdown-toggle.btn-dropbox {
+  color: #fff;
+  background-color: #0d70b7;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 32, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-dropbox:active, .btn-dropbox.active, .open .dropdown-toggle.btn-dropbox {
+  background-image: none;
+}
+
+/* line 33, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-dropbox.disabled, .btn-dropbox[disabled], fieldset[disabled] .btn-dropbox, .btn-dropbox.disabled:hover, .btn-dropbox[disabled]:hover, fieldset[disabled] .btn-dropbox:hover, .btn-dropbox.disabled:focus, .btn-dropbox[disabled]:focus, fieldset[disabled] .btn-dropbox:focus, .btn-dropbox.disabled:active, .btn-dropbox[disabled]:active, fieldset[disabled] .btn-dropbox:active, .btn-dropbox.disabled.active, .btn-dropbox[disabled].active, fieldset[disabled] .btn-dropbox.active {
+  background-color: #1087dd;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 34, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-dropbox .badge {
+  color: #1087dd;
+  background-color: #fff;
+}
+
+/* line 35, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-facebook {
+  color: #fff;
+  background-color: #3b5998;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 35, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-facebook:hover, .btn-facebook:focus, .btn-facebook:active, .btn-facebook.active, .open .dropdown-toggle.btn-facebook {
+  color: #fff;
+  background-color: #30487b;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 36, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-facebook:active, .btn-facebook.active, .open .dropdown-toggle.btn-facebook {
+  background-image: none;
+}
+
+/* line 37, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-facebook.disabled, .btn-facebook[disabled], fieldset[disabled] .btn-facebook, .btn-facebook.disabled:hover, .btn-facebook[disabled]:hover, fieldset[disabled] .btn-facebook:hover, .btn-facebook.disabled:focus, .btn-facebook[disabled]:focus, fieldset[disabled] .btn-facebook:focus, .btn-facebook.disabled:active, .btn-facebook[disabled]:active, fieldset[disabled] .btn-facebook:active, .btn-facebook.disabled.active, .btn-facebook[disabled].active, fieldset[disabled] .btn-facebook.active {
+  background-color: #3b5998;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 38, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-facebook .badge {
+  color: #3b5998;
+  background-color: #fff;
+}
+
+/* line 39, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-flickr {
+  color: #fff;
+  background-color: #ff0084;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 39, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-flickr:hover, .btn-flickr:focus, .btn-flickr:active, .btn-flickr.active, .open .dropdown-toggle.btn-flickr {
+  color: #fff;
+  background-color: #d6006f;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 40, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-flickr:active, .btn-flickr.active, .open .dropdown-toggle.btn-flickr {
+  background-image: none;
+}
+
+/* line 41, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-flickr.disabled, .btn-flickr[disabled], fieldset[disabled] .btn-flickr, .btn-flickr.disabled:hover, .btn-flickr[disabled]:hover, fieldset[disabled] .btn-flickr:hover, .btn-flickr.disabled:focus, .btn-flickr[disabled]:focus, fieldset[disabled] .btn-flickr:focus, .btn-flickr.disabled:active, .btn-flickr[disabled]:active, fieldset[disabled] .btn-flickr:active, .btn-flickr.disabled.active, .btn-flickr[disabled].active, fieldset[disabled] .btn-flickr.active {
+  background-color: #ff0084;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 42, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-flickr .badge {
+  color: #ff0084;
+  background-color: #fff;
+}
+
+/* line 43, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-foursquare {
+  color: #fff;
+  background-color: #0072b1;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 43, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-foursquare:hover, .btn-foursquare:focus, .btn-foursquare:active, .btn-foursquare.active, .open .dropdown-toggle.btn-foursquare {
+  color: #fff;
+  background-color: #005888;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 44, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-foursquare:active, .btn-foursquare.active, .open .dropdown-toggle.btn-foursquare {
+  background-image: none;
+}
+
+/* line 45, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-foursquare.disabled, .btn-foursquare[disabled], fieldset[disabled] .btn-foursquare, .btn-foursquare.disabled:hover, .btn-foursquare[disabled]:hover, fieldset[disabled] .btn-foursquare:hover, .btn-foursquare.disabled:focus, .btn-foursquare[disabled]:focus, fieldset[disabled] .btn-foursquare:focus, .btn-foursquare.disabled:active, .btn-foursquare[disabled]:active, fieldset[disabled] .btn-foursquare:active, .btn-foursquare.disabled.active, .btn-foursquare[disabled].active, fieldset[disabled] .btn-foursquare.active {
+  background-color: #0072b1;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 46, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-foursquare .badge {
+  color: #0072b1;
+  background-color: #fff;
+}
+
+/* line 47, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-github {
+  color: #fff;
+  background-color: #444;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 47, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-github:hover, .btn-github:focus, .btn-github:active, .btn-github.active, .open .dropdown-toggle.btn-github {
+  color: #fff;
+  background-color: #303030;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 48, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-github:active, .btn-github.active, .open .dropdown-toggle.btn-github {
+  background-image: none;
+}
+
+/* line 49, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-github.disabled, .btn-github[disabled], fieldset[disabled] .btn-github, .btn-github.disabled:hover, .btn-github[disabled]:hover, fieldset[disabled] .btn-github:hover, .btn-github.disabled:focus, .btn-github[disabled]:focus, fieldset[disabled] .btn-github:focus, .btn-github.disabled:active, .btn-github[disabled]:active, fieldset[disabled] .btn-github:active, .btn-github.disabled.active, .btn-github[disabled].active, fieldset[disabled] .btn-github.active {
+  background-color: #444;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 50, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-github .badge {
+  color: #444;
+  background-color: #fff;
+}
+
+/* line 51, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-google-plus {
+  color: #fff;
+  background-color: #dd4b39;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 51, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-google-plus:hover, .btn-google-plus:focus, .btn-google-plus:active, .btn-google-plus.active, .open .dropdown-toggle.btn-google-plus {
+  color: #fff;
+  background-color: #ca3523;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 52, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-google-plus:active, .btn-google-plus.active, .open .dropdown-toggle.btn-google-plus {
+  background-image: none;
+}
+
+/* line 53, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-google-plus.disabled, .btn-google-plus[disabled], fieldset[disabled] .btn-google-plus, .btn-google-plus.disabled:hover, .btn-google-plus[disabled]:hover, fieldset[disabled] .btn-google-plus:hover, .btn-google-plus.disabled:focus, .btn-google-plus[disabled]:focus, fieldset[disabled] .btn-google-plus:focus, .btn-google-plus.disabled:active, .btn-google-plus[disabled]:active, fieldset[disabled] .btn-google-plus:active, .btn-google-plus.disabled.active, .btn-google-plus[disabled].active, fieldset[disabled] .btn-google-plus.active {
+  background-color: #dd4b39;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 54, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-google-plus .badge {
+  color: #dd4b39;
+  background-color: #fff;
+}
+
+/* line 55, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-instagram {
+  color: #fff;
+  background-color: #3f729b;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 55, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-instagram:hover, .btn-instagram:focus, .btn-instagram:active, .btn-instagram.active, .open .dropdown-toggle.btn-instagram {
+  color: #fff;
+  background-color: #335d7e;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 56, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-instagram:active, .btn-instagram.active, .open .dropdown-toggle.btn-instagram {
+  background-image: none;
+}
+
+/* line 57, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-instagram.disabled, .btn-instagram[disabled], fieldset[disabled] .btn-instagram, .btn-instagram.disabled:hover, .btn-instagram[disabled]:hover, fieldset[disabled] .btn-instagram:hover, .btn-instagram.disabled:focus, .btn-instagram[disabled]:focus, fieldset[disabled] .btn-instagram:focus, .btn-instagram.disabled:active, .btn-instagram[disabled]:active, fieldset[disabled] .btn-instagram:active, .btn-instagram.disabled.active, .btn-instagram[disabled].active, fieldset[disabled] .btn-instagram.active {
+  background-color: #3f729b;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 58, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-instagram .badge {
+  color: #3f729b;
+  background-color: #fff;
+}
+
+/* line 59, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-linkedin {
+  color: #fff;
+  background-color: #007bb6;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 59, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-linkedin:hover, .btn-linkedin:focus, .btn-linkedin:active, .btn-linkedin.active, .open .dropdown-toggle.btn-linkedin {
+  color: #fff;
+  background-color: #005f8d;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 60, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-linkedin:active, .btn-linkedin.active, .open .dropdown-toggle.btn-linkedin {
+  background-image: none;
+}
+
+/* line 61, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-linkedin.disabled, .btn-linkedin[disabled], fieldset[disabled] .btn-linkedin, .btn-linkedin.disabled:hover, .btn-linkedin[disabled]:hover, fieldset[disabled] .btn-linkedin:hover, .btn-linkedin.disabled:focus, .btn-linkedin[disabled]:focus, fieldset[disabled] .btn-linkedin:focus, .btn-linkedin.disabled:active, .btn-linkedin[disabled]:active, fieldset[disabled] .btn-linkedin:active, .btn-linkedin.disabled.active, .btn-linkedin[disabled].active, fieldset[disabled] .btn-linkedin.active {
+  background-color: #007bb6;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 62, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-linkedin .badge {
+  color: #007bb6;
+  background-color: #fff;
+}
+
+/* line 63, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-microsoft {
+  color: #fff;
+  background-color: #2672ec;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 63, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-microsoft:hover, .btn-microsoft:focus, .btn-microsoft:active, .btn-microsoft.active, .open .dropdown-toggle.btn-microsoft {
+  color: #fff;
+  background-color: #135ed6;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 64, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-microsoft:active, .btn-microsoft.active, .open .dropdown-toggle.btn-microsoft {
+  background-image: none;
+}
+
+/* line 65, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-microsoft.disabled, .btn-microsoft[disabled], fieldset[disabled] .btn-microsoft, .btn-microsoft.disabled:hover, .btn-microsoft[disabled]:hover, fieldset[disabled] .btn-microsoft:hover, .btn-microsoft.disabled:focus, .btn-microsoft[disabled]:focus, fieldset[disabled] .btn-microsoft:focus, .btn-microsoft.disabled:active, .btn-microsoft[disabled]:active, fieldset[disabled] .btn-microsoft:active, .btn-microsoft.disabled.active, .btn-microsoft[disabled].active, fieldset[disabled] .btn-microsoft.active {
+  background-color: #2672ec;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 66, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-microsoft .badge {
+  color: #2672ec;
+  background-color: #fff;
+}
+
+/* line 67, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-openid {
+  color: #fff;
+  background-color: #f7931e;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 67, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-openid:hover, .btn-openid:focus, .btn-openid:active, .btn-openid.active, .open .dropdown-toggle.btn-openid {
+  color: #fff;
+  background-color: #e47f08;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 68, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-openid:active, .btn-openid.active, .open .dropdown-toggle.btn-openid {
+  background-image: none;
+}
+
+/* line 69, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-openid.disabled, .btn-openid[disabled], fieldset[disabled] .btn-openid, .btn-openid.disabled:hover, .btn-openid[disabled]:hover, fieldset[disabled] .btn-openid:hover, .btn-openid.disabled:focus, .btn-openid[disabled]:focus, fieldset[disabled] .btn-openid:focus, .btn-openid.disabled:active, .btn-openid[disabled]:active, fieldset[disabled] .btn-openid:active, .btn-openid.disabled.active, .btn-openid[disabled].active, fieldset[disabled] .btn-openid.active {
+  background-color: #f7931e;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 70, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-openid .badge {
+  color: #f7931e;
+  background-color: #fff;
+}
+
+/* line 71, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-reddit {
+  color: #000;
+  background-color: #eff7ff;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 71, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-reddit:hover, .btn-reddit:focus, .btn-reddit:active, .btn-reddit.active, .open .dropdown-toggle.btn-reddit {
+  color: #000;
+  background-color: #c6e3ff;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 72, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-reddit:active, .btn-reddit.active, .open .dropdown-toggle.btn-reddit {
+  background-image: none;
+}
+
+/* line 73, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-reddit.disabled, .btn-reddit[disabled], fieldset[disabled] .btn-reddit, .btn-reddit.disabled:hover, .btn-reddit[disabled]:hover, fieldset[disabled] .btn-reddit:hover, .btn-reddit.disabled:focus, .btn-reddit[disabled]:focus, fieldset[disabled] .btn-reddit:focus, .btn-reddit.disabled:active, .btn-reddit[disabled]:active, fieldset[disabled] .btn-reddit:active, .btn-reddit.disabled.active, .btn-reddit[disabled].active, fieldset[disabled] .btn-reddit.active {
+  background-color: #eff7ff;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 74, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-reddit .badge {
+  color: #eff7ff;
+  background-color: #000;
+}
+
+/* line 75, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-soundcloud {
+  color: #fff;
+  background-color: #f50;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 75, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-soundcloud:hover, .btn-soundcloud:focus, .btn-soundcloud:active, .btn-soundcloud.active, .open .dropdown-toggle.btn-soundcloud {
+  color: #fff;
+  background-color: #d64700;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 76, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-soundcloud:active, .btn-soundcloud.active, .open .dropdown-toggle.btn-soundcloud {
+  background-image: none;
+}
+
+/* line 77, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-soundcloud.disabled, .btn-soundcloud[disabled], fieldset[disabled] .btn-soundcloud, .btn-soundcloud.disabled:hover, .btn-soundcloud[disabled]:hover, fieldset[disabled] .btn-soundcloud:hover, .btn-soundcloud.disabled:focus, .btn-soundcloud[disabled]:focus, fieldset[disabled] .btn-soundcloud:focus, .btn-soundcloud.disabled:active, .btn-soundcloud[disabled]:active, fieldset[disabled] .btn-soundcloud:active, .btn-soundcloud.disabled.active, .btn-soundcloud[disabled].active, fieldset[disabled] .btn-soundcloud.active {
+  background-color: #f50;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 78, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-soundcloud .badge {
+  color: #f50;
+  background-color: #fff;
+}
+
+/* line 79, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-tumblr {
+  color: #fff;
+  background-color: #2c4762;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 79, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-tumblr:hover, .btn-tumblr:focus, .btn-tumblr:active, .btn-tumblr.active, .open .dropdown-toggle.btn-tumblr {
+  color: #fff;
+  background-color: #1f3346;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 80, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-tumblr:active, .btn-tumblr.active, .open .dropdown-toggle.btn-tumblr {
+  background-image: none;
+}
+
+/* line 81, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-tumblr.disabled, .btn-tumblr[disabled], fieldset[disabled] .btn-tumblr, .btn-tumblr.disabled:hover, .btn-tumblr[disabled]:hover, fieldset[disabled] .btn-tumblr:hover, .btn-tumblr.disabled:focus, .btn-tumblr[disabled]:focus, fieldset[disabled] .btn-tumblr:focus, .btn-tumblr.disabled:active, .btn-tumblr[disabled]:active, fieldset[disabled] .btn-tumblr:active, .btn-tumblr.disabled.active, .btn-tumblr[disabled].active, fieldset[disabled] .btn-tumblr.active {
+  background-color: #2c4762;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 82, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-tumblr .badge {
+  color: #2c4762;
+  background-color: #fff;
+}
+
+/* line 83, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-twitter {
+  color: #fff;
+  background-color: #55acee;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 83, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-twitter:hover, .btn-twitter:focus, .btn-twitter:active, .btn-twitter.active, .open .dropdown-toggle.btn-twitter {
+  color: #fff;
+  background-color: #309aea;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 84, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-twitter:active, .btn-twitter.active, .open .dropdown-toggle.btn-twitter {
+  background-image: none;
+}
+
+/* line 85, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-twitter.disabled, .btn-twitter[disabled], fieldset[disabled] .btn-twitter, .btn-twitter.disabled:hover, .btn-twitter[disabled]:hover, fieldset[disabled] .btn-twitter:hover, .btn-twitter.disabled:focus, .btn-twitter[disabled]:focus, fieldset[disabled] .btn-twitter:focus, .btn-twitter.disabled:active, .btn-twitter[disabled]:active, fieldset[disabled] .btn-twitter:active, .btn-twitter.disabled.active, .btn-twitter[disabled].active, fieldset[disabled] .btn-twitter.active {
+  background-color: #55acee;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 86, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-twitter .badge {
+  color: #55acee;
+  background-color: #fff;
+}
+
+/* line 87, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-vimeo {
+  color: #fff;
+  background-color: #1ab7ea;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 87, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-vimeo:hover, .btn-vimeo:focus, .btn-vimeo:active, .btn-vimeo.active, .open .dropdown-toggle.btn-vimeo {
+  color: #fff;
+  background-color: #129cc9;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 88, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-vimeo:active, .btn-vimeo.active, .open .dropdown-toggle.btn-vimeo {
+  background-image: none;
+}
+
+/* line 89, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-vimeo.disabled, .btn-vimeo[disabled], fieldset[disabled] .btn-vimeo, .btn-vimeo.disabled:hover, .btn-vimeo[disabled]:hover, fieldset[disabled] .btn-vimeo:hover, .btn-vimeo.disabled:focus, .btn-vimeo[disabled]:focus, fieldset[disabled] .btn-vimeo:focus, .btn-vimeo.disabled:active, .btn-vimeo[disabled]:active, fieldset[disabled] .btn-vimeo:active, .btn-vimeo.disabled.active, .btn-vimeo[disabled].active, fieldset[disabled] .btn-vimeo.active {
+  background-color: #1ab7ea;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 90, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-vimeo .badge {
+  color: #1ab7ea;
+  background-color: #fff;
+}
+
+/* line 91, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-vk {
+  color: #fff;
+  background-color: #587ea3;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 91, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-vk:hover, .btn-vk:focus, .btn-vk:active, .btn-vk.active, .open .dropdown-toggle.btn-vk {
+  color: #fff;
+  background-color: #4a6a89;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 92, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-vk:active, .btn-vk.active, .open .dropdown-toggle.btn-vk {
+  background-image: none;
+}
+
+/* line 93, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-vk.disabled, .btn-vk[disabled], fieldset[disabled] .btn-vk, .btn-vk.disabled:hover, .btn-vk[disabled]:hover, fieldset[disabled] .btn-vk:hover, .btn-vk.disabled:focus, .btn-vk[disabled]:focus, fieldset[disabled] .btn-vk:focus, .btn-vk.disabled:active, .btn-vk[disabled]:active, fieldset[disabled] .btn-vk:active, .btn-vk.disabled.active, .btn-vk[disabled].active, fieldset[disabled] .btn-vk.active {
+  background-color: #587ea3;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 94, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-vk .badge {
+  color: #587ea3;
+  background-color: #fff;
+}
+
+/* line 95, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-yahoo {
+  color: #fff;
+  background-color: #720e9e;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 95, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-yahoo:hover, .btn-yahoo:focus, .btn-yahoo:active, .btn-yahoo.active, .open .dropdown-toggle.btn-yahoo {
+  color: #fff;
+  background-color: #570b79;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 96, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-yahoo:active, .btn-yahoo.active, .open .dropdown-toggle.btn-yahoo {
+  background-image: none;
+}
+
+/* line 97, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-yahoo.disabled, .btn-yahoo[disabled], fieldset[disabled] .btn-yahoo, .btn-yahoo.disabled:hover, .btn-yahoo[disabled]:hover, fieldset[disabled] .btn-yahoo:hover, .btn-yahoo.disabled:focus, .btn-yahoo[disabled]:focus, fieldset[disabled] .btn-yahoo:focus, .btn-yahoo.disabled:active, .btn-yahoo[disabled]:active, fieldset[disabled] .btn-yahoo:active, .btn-yahoo.disabled.active, .btn-yahoo[disabled].active, fieldset[disabled] .btn-yahoo.active {
+  background-color: #720e9e;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 98, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/bootstrap-social.css */
+.btn-yahoo .badge {
+  color: #720e9e;
+  background-color: #fff;
+}
+
+/* line 5, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/devise/sessions.css.scss */
+#signInBox {
+  min-height: 340px;
+  padding: 25px 45px 45px 45px;
+}
+
+/* Bootstrap Social  */
+/* line 12, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/devise/sessions.css.scss */
+.btn-social *:first-child {
+  font-size: 1.7em;
+  line-height: 36px;
+  padding-top: 13px;
+  width: 70px;
+  height: 100px;
+}
+
+/* line 20, /Users/bennettlee/Desktop/Projects/Lendojo/Website/lendojo_app/app/assets/stylesheets/devise/sessions.css.scss */
+.btn-social {
+  font-size: 14px;
+  padding: 20px 0 20px 91px;
+}

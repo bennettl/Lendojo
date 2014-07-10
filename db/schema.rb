@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.datetime "updated_at"
   end
 
+  create_table "referrals", force: true do |t|
+    t.integer  "referrer_id"
+    t.integer  "referree_id"
+    t.integer  "status",      default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "reports", force: true do |t|
     t.integer  "author_id"
     t.integer  "reportable_id"
@@ -210,6 +218,7 @@ ActiveRecord::Schema.define(version: 20140619184735) do
     t.float    "longitude"
     t.decimal  "credits",                precision: 8, scale: 2, default: 0.0
     t.string   "stripe_customer_id"
+    t.string   "referral_code"
     t.integer  "status",                                         default: 0
     t.string   "encrypted_password",                             default: "",    null: false
     t.string   "reset_password_token"
