@@ -13,6 +13,8 @@ module LendojoApp
     
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.assets.precompile += %w( *.scss *.js )
+    config.assets.precompile += %w( *.woff *.eot *.svg *.ttf )
+
 
     # mail
     config.action_mailer.delivery_method = :smtp
