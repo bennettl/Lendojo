@@ -13,7 +13,7 @@ module LendojoApp
     
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.assets.precompile += %w( *.scss *.js )
-    config.assets.precompile += %w( *.woff *.eot *.svg *.ttf )
+    config.assets.precompile += %w( '.woff', '.eot', '.svg', '.ttf' )
 
 
     # mail
