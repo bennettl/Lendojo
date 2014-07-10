@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
 	########################### DEBUGGING PURPOSES ##########################
 
 	# Set up http authentication
-	# USERS = { "lender" => "lendee" }
+	USERS = { "lender" => "lendee" }
 	before_filter :authenticate
 
 	def authenticate
