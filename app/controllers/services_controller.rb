@@ -23,8 +23,10 @@ class ServicesController < ApplicationController
 		@myFilters 		= current_user.filters
 		# If there are no search parameters and user has filters, use the first filter to search
 		search_params 	= (search_params().empty? && !@myFilters.nil?) ? @myFilters.first : search_params()
-
-		@services = Service.search(search_params).paginate(per_page: 9, page: params[:page])
+		@services 		= Service.search(search_params).paginate(per_page: 9, page: params[:page])
+		# Get top 5locations and keywords tag
+		@location_tags 	= Tag.where("category = 'location'").order("count DESC").limit(5)
+		@keyword_tags 	= Tag.where("category = 'keyword'").order('count DESC').limit(5)
 
 		# Respond to multiple formats
 		respond_to do |format|
