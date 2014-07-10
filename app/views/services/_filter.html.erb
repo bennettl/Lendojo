@@ -48,11 +48,9 @@
 						<input type="text" name="location" data-category="location" class="tag-input form-control" autocomplete="off" placeholder="Enter A Location" />
 					</li>
 					<li class="dropdown-header">Top locations</li>
-					<li><a href="#" data-name="Los Angeles" data-category="location" class="tag-item">Los Angeles</a></li>
-					<li><a href="#" data-name="San Francisco" data-category="location" class="tag-item">San Francisco</a></li>
-					<li><a href="#" data-name="Southern California" data-category="location" class="tag-item">Southern California</a></li>
-					<li><a href="#" data-name="Silicon Valley" data-category="location" class="tag-item">Silicon Valley</a></li>
-					<li><a href="#" data-name="United States" data-category="location" class="tag-item">United States</a></li>
+					<% @location_tags.each do |lt| %>
+						<li><a href="#" data-name="<%= lt.name %>" data-category="<%= lt.category %>" class="tag-item"><%= lt.display_name %> (<%= lt.count %>)</a></li>					
+					<% end %>
 				</ul>
 			</li>
 
@@ -85,11 +83,9 @@
 						<input type="text" name="keyword" data-category="keyword" class="keyword-input tag-input form-control" autocomplete="off" placeholder="Enter Keywords" />
 					</li>
 					<li class="dropdown-header">Top Keywords</li>
-					<li><a href="#" data-name="Dog Walking" data-category="keyword" class="tag-item">Dog Walking</a></li>
-					<li><a href="#" data-name="Grocery Shopping" data-category="keyword" class="tag-item">Grocery Shopping</a></li>
-					<li><a href="#" data-name="Hair Cutting" data-category="keyword" class="tag-item">Hair Cutting</a></li>
-					<li><a href="#" data-name="Tutoring" data-category="keyword" class="tag-item">Tutoring</a></li>				
-					<li><a href="#" data-name="Guitar Lessons" data-category="keyword" class="tag-item">Guitar Lessons</a></li>
+					<% @keyword_tags.each do |kt| %>
+						<li><a href="#" data-name="<%= kt.name %>" data-category="<%= kt.category %>" class="tag-item"><%= kt.display_name %> (<%= kt.count %>)</a></li>
+					<% end %>
 				</ul>
 			</li>
 			<li class="dropdown my-filters" date-menu="filters">

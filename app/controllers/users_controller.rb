@@ -39,9 +39,11 @@ class UsersController < ApplicationController
 	end
 	def show
 		if @user = User.find_by(id: params[:id])
+			@reviews = @user.reviews_recieved.paginate(per_page: 4, page: params[:review_page])
 			# Respond to different formats
 			respond_to do |format|
 			  format.html # show.html.erb
+			  format.js # show.js.erb
 			  format.json { render json: @user }
 			end
 		else

@@ -79,13 +79,8 @@ class User < ActiveRecord::Base
 
 	################################## AUTHENTICATION/SESSION/REGISTRATION ##################################
 
-<<<<<<< HEAD
-	# Include default devise modules. Others available are: :confirmable, :lockable, :timeoutable and , :registerable
-	devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
-=======
 	# Include default devise modules. Others available are: :confirmable, :lockable, :timeoutable
 	devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable, :omniauthable, :omniauth_providers => [:facebook, :twitter, :google]
->>>>>>> db3c0c54b6280c8e24888a8f8832c3dccc1fd3ab
 
 	################################## GEOCODING ##################################
 

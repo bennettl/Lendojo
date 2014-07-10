@@ -11,13 +11,6 @@ Rails.application.routes.draw do
     match   'faqs',                     to: 'static_pages#faqs',                    via: 'get'
     match   'contact_form_submit',      to: 'static_pages#contact_form_submit',     via: 'post'
 
-<<<<<<< HEAD
-    # Authentication
-    # get '/auth/:provider/callback',     to: 'users#auth'
-    
-    # devise_for :users
-# 
-=======
     # Devise / Omniauth (Social Authentication)
     devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' } do
         get "/login", :to => "devise/sessions#new", :as => :login
@@ -25,7 +18,6 @@ Rails.application.routes.draw do
         get "/logout", :to => "devise/sessions#destroy", :as => :logout
     end
 
->>>>>>> db3c0c54b6280c8e24888a8f8832c3dccc1fd3ab
     # Sessions
     resources :sessions
     devise_scope :user do 

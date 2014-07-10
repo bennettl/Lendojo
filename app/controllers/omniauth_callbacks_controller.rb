@@ -1,19 +1,4 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-<<<<<<< HEAD
-	def facebook
-		# You need to implement the method below in your model (e.g. app/models/user.rb)
-		@user = User.from_omniauth(request.env["omniauth.auth"])
-
-		if @user.persisted?
-			sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
-			set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
-		else
-			session["devise.facebook_data"] = request.env["omniauth.auth"]
-			redirect_to new_user_registration_url
-		end
-	end
-
-=======
 
     # Omniauth callback for Facebook
     def facebook
@@ -60,5 +45,4 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # http://stackoverflow.com/questions/7362173/integrating-facebook-login-with-omniauth-on-rails
     # https://github.com/mkdynamic/omniauth-facebook
     # https://github.com/intridea/omniauth
->>>>>>> db3c0c54b6280c8e24888a8f8832c3dccc1fd3ab
 end

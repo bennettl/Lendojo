@@ -1,44 +1,40 @@
 <header role="banner">	
 	<%= link_to(image_tag('logo.png', id: :logo), main_app.root_path) %>
-	<nav id="mainNav" role="navigation">
-		<ul class="innerNav">
-			<% # nav_link 'Products', main_app.products_path %>
+	<div id="iconNav">
+		<% # nav_link 'Products', main_app.products_path %>
 			<% if signed_in? %>
-				<li class="nav-list"><%= nav_link 'Services', main_app.services_path %></li>
-				<li class="nav-list"><%= nav_link 'Checklist', main_app.checklist_user_path(current_user) %></li>
-				<li class="nav-list"><%= nav_link 'Pins', main_app.pins_user_path(current_user) %></li>
+				<%= link_to '', main_app.checklist_user_path(current_user), class: 'glyphicon glyphicon-list-alt tooltip_target', data: {toggle: 'tooltip'}, title: 'Checklist' %>
+				<%= link_to '', main_app.pins_user_path(current_user), class: 'glyphicon glyphicon-pushpin tooltip_target', data: {toggle: 'tooltip'}, title: 'Pins' %>
 				<!-- ACCOUNT -->
-				<li class="nav-list dropdown hover" data-menu="account">
-					<a href="#" class="nav-link" data-toggle="dropdown"> Account <b class="caret"></b></a>
+				<div id="accountMenu" class="dropdown hover" data-menu="account">
+					<%= link_to main_app.user_path(current_user) do %>
+						<%= image_tag current_user.main_img(:thumb), class: 'thumbImage' %>
+					<% end %>
 					<ul data-menu="account" class="dropdown-menu" style="top: 25px;">
-						<li><%= link_to 'Profile', main_app.user_path(current_user) %></li>
-						<li><%= link_to 'Settings', main_app.edit_user_path(current_user) %></li>
+						<li class="dropdown-header"><%= current_user.name %></li>
+						<li><%= link_to 'Account', main_app.edit_user_path(current_user) %></li>
 					    <li class="divider"></li>
-						<li><%= link_to 'Sign Out', main_app.destroy_user_session_path, method: :delete %></li>
-					</ul>
-				</li>
-				<!-- ADMIN -->
-				<li class="nav-list dropdown hover" data-menu="admin">
-					<a href="#" class="nav-link" data-toggle="dropdown"> Admin <b class="caret"></b></a>
-					<ul data-menu="admin" class="dropdown-menu" style="top: 25px;">
+						<li class="dropdown-header">Admin</li>
 						<li><%= link_to 'Users', main_app.users_path %></li>
 						<li><%= link_to 'Lender Applications', main_app.lender_applications_path %></li>
 						<li><%= link_to 'Reports', main_app.reports_path %></li>
 						<li><%= link_to 'Reviews', main_app.reviews_path %></li>
 						<li><%= link_to 'Feedback', main_app.feedback_user_path(current_user) %></li>
+					    <li class="divider"></li>
+					    <li><div>Credits: &nbsp;<span class="creditAmount">$ <%= current_user.credits %></span></div></li>
+					    <li class="divider"></li>
+
+						<li><%= link_to 'Sign Out', main_app.destroy_user_session_path, method: :delete %></li>
 					</ul>
-				</li>
 			<% else %>
 				<li class='nav-list'><%= nav_link 'Sign In', main_app.new_user_session_path %></li>
 				<li class='nav-list'><%= nav_link 'Facebook', main_app.user_omniauth_authorize_path(:facebook) %></li>
 				<li class='nav-list'><%= nav_link 'Twitter', main_app.user_omniauth_authorize_path(:twitter) %></li>
 				<li class='nav-list'><%= nav_link 'Google+', main_app.user_omniauth_authorize_path(:google) %></li>
 			<% end %>
-		</ul>
+		</div>
+	</div>
+	<nav id="mainNav" role="navigation" style="display: none;">		
 	</nav>
-
-	<div class="loginIndicator">
-		<% # "WELCOME #{current_user.first_name.upcase}!" %>
-	</div> 
 	<%= link_to 'Become A Lender', new_lender_application_path, id: 'be_a_lender' %>
 </header>

@@ -1,7 +1,9 @@
 <!-- REVIEW -->
 <div id="reviewListSection">
 	<div class="reviewList">
-		<%= render @reviews %>
+		<% reviews.each do |r| %>
+			<%=	render 'reviews/review', review: r %>
+		<% end %>
 	</div>
-	<%= will_paginate @reviews, param_name: 'review_page' %>
+	<%= will_paginate reviews, param_name: 'review_page' %>
 </div>

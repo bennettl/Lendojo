@@ -37,6 +37,8 @@ class CreateUsers < ActiveRecord::Migration
 			# Payment
 			t.decimal 		:credits, precision: 8, scale: 2, default: 0
 			t.string 		:stripe_customer_id
+			# Referrals
+			t.string		:referral_code
 			# Status
 			t.integer 		:status, default: 0 # enum
 			# Authentication/ Devise
@@ -194,6 +196,22 @@ class CreateUsers < ActiveRecord::Migration
 	    	t.timestamps
     	end
 
+		#################################### REVIEWS ####################################
+		create_table :referrals do |t|
+			# Association 
+			t.belongs_to 	:referrer, class_name: 'User', foreign_key: 'referrer_id' # creator of the referral
+			t.belongs_to 	:referree, class_name: 'User', foreign_key: 'referree_id' # person being referred
+			t.integer 		:status, default: 0 # enum
+		    t.timestamps
+	    end
+
+		#################################### TAGS ####################################
+		create_table :tags do |t|
+			t.string 	:category
+			t.string 	:name
+			t.integer 	:count, default: 0
+		end
+
 		#################################### REPORTS ####################################
     	create_table :reports do |t|
 			# Association
@@ -207,12 +225,5 @@ class CreateUsers < ActiveRecord::Migration
 			t.integer 		:status, default: 0
 			t.timestamps
 	    end
-
-		#################################### TAGS ####################################
-		create_table :tags do |t|
-			t.string 	:category
-			t.string 	:name
-			t.integer 	:count, default: 0
-		end
 	end
 end

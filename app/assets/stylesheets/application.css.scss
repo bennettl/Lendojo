@@ -75,6 +75,7 @@ header{
     overflow: inherit;
     width: 100%;
     z-index: 100;
+    border-bottom: 10px solid #f59e8f;
 }
 
 #be_a_lender{
@@ -84,15 +85,14 @@ header{
 	text-transform: uppercase;
 	@include border-radius(5px);
 	position: absolute;
-	top: 20px;
-	right: 20px;
+	top: 40px;
+	left: 60px;
 }
 
 #logo{
 	display: block;
-	width: 300px;
-	height: 110px;
-	margin: 0 auto;
+	height: 90px;
+	margin: 15px auto;
 }
 
 .error{
@@ -119,43 +119,48 @@ header{
 #mainNav {
 	padding: 12px 0;
 	background: #F7F7F7;
+}
 
-	.innerNav {
-		font-size: 1.1em;
-	    height: 28px;
-	    margin: 0 auto;
-	    text-align: center;
-	    display: table;
-	   
-	    li.nav-list{
-	    	float: left;
-
-	    	.nav-link {
-				color: #808080;
-				float: left;
-				padding: 5px 20px;
-				transition: all 0.25s ease;
-				text-decoration: none;
-				@include border-radius(5px);	
-				&:hover, &.active{
-					background: #707070;
-					color: white;
-				}
-			}
-
-			&.open{
-		    	.nav-link {
-		    	background: #707070;
-					color: white;
-		    	}
-		    }
-	    }
+#iconNav{
+	position: absolute; 
+	right: 120px; 
+	top: 40px;
+	& > a{
+		display: inline-block;
+		background: #ddd;
+		@include border-radius(5px);
+		color: #fff;
+		padding: 8px;
+		margin: 0 5px;
+		font-size: 20px;
+		&:hover, &.active{
+			background: #828282;
+		}
 	}
-
+	#accountMenu{
+		display: inline-block;
+		margin: 0 5px;
+		vertical-align: top;
+		.thumbImage{
+			width: 40px;
+			height: 40px;
+			vertical-align: top;
+		}
+		.dropdown-menu{
+			left: -118px;
+			margin-top: 16px;
+			box-shadow: none;
+		}
+	}
+	
 }
 
 /******************* BODY ********************/
 
+.creditAmount{
+	font-weight: bold;
+	color: #54C944;
+}
 .caret.asc {
     border-top-width: 0;
     border-bottom: 4px solid #e28778;
@@ -292,6 +297,7 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
 	}
 }
 #tag-list{
+	display: none;
 	position: absolute;
     top: 0;
     left: 0;
