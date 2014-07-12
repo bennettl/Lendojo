@@ -1,38 +1,48 @@
 <header role="banner">	
 	<%= link_to(image_tag('logo.png', id: :logo), main_app.root_path) %>
 	<div id="iconNav">
-		<% # nav_link 'Products', main_app.products_path %>
-			<% if signed_in? %>
-				<%= link_to '', main_app.checklist_user_path(current_user), class: 'glyphicon glyphicon-list-alt tooltip_target', data: {toggle: 'tooltip'}, title: 'Checklist' %>
-				<%= link_to '', main_app.pins_user_path(current_user), class: 'glyphicon glyphicon-pushpin tooltip_target', data: {toggle: 'tooltip'}, title: 'Pins' %>
-				<!-- ACCOUNT -->
-				<div id="accountMenu" class="dropdown hover" data-menu="account">
-					<%= link_to main_app.user_path(current_user) do %>
-						<%= image_tag current_user.main_img(:thumb), class: 'thumbImage' %>
-					<% end %>
-					<ul data-menu="account" class="dropdown-menu" style="top: 25px;">
-						<li class="dropdown-header"><%= current_user.name %></li>
-						<li><%= link_to 'Account', main_app.edit_user_path(current_user) %></li>
-					    <li class="divider"></li>
-						<li class="dropdown-header">Admin</li>
-						<li><%= link_to 'Users', main_app.users_path %></li>
-						<li><%= link_to 'Lender Applications', main_app.lender_applications_path %></li>
-						<li><%= link_to 'Reports', main_app.reports_path %></li>
-						<li><%= link_to 'Reviews', main_app.reviews_path %></li>
-						<li><%= link_to 'Feedback', main_app.feedback_user_path(current_user) %></li>
-					    <li class="divider"></li>
-					    <li><div>Credits: &nbsp;<span class="creditAmount">$ <%= current_user.credits %></span></div></li>
-					    <li class="divider"></li>
-
-						<li><%= link_to 'Sign Out', main_app.destroy_user_session_path, method: :delete %></li>
-					</ul>
-			<% else %>
-				<li class='nav-list'><%= nav_link 'Sign In', main_app.new_user_session_path %></li>
-				<li class='nav-list'><%= nav_link 'Facebook', main_app.user_omniauth_authorize_path(:facebook) %></li>
-				<li class='nav-list'><%= nav_link 'Twitter', main_app.user_omniauth_authorize_path(:twitter) %></li>
-				<li class='nav-list'><%= nav_link 'Google+', main_app.user_omniauth_authorize_path(:google) %></li>
+		<% if signed_in? %>
+			<%= link_to '', main_app.checklist_user_path(current_user), class: 'signedInIcon glyphicon glyphicon-list-alt tooltip_target', data: {toggle: 'tooltip', placement: 'bottom' }, title: 'Checklist' %>
+			<%= link_to '', main_app.pins_user_path(current_user), class: 'signedInIcon glyphicon glyphicon-pushpin tooltip_target', data: {toggle: 'tooltip', placement: 'bottom' }, title: 'Pins' %>
+			<!-- ACCOUNT -->
+			<div id="accountMenu" class="dropdown hover" data-menu="account">
+				<%= link_to main_app.user_path(current_user), class: 'signedInIcon' do %>
+					<%= image_tag current_user.main_img(:thumb), class: 'thumbImage' %>
+				<% end %>
+				<ul data-menu="account" class="dropdown-menu" style="top: 25px;">
+					<li class="dropdown-header"><%= current_user.name %></li>
+					<li><%= link_to 'Account', main_app.edit_user_path(current_user) %></li>
+				    <li><%= link_to 'Referrals', main_app.referrals_user_path(current_user) %></li>
+				    <li class="divider"></li>
+					<li class="dropdown-header">Admin</li>
+					<li><%= link_to 'Users', main_app.users_path %></li>
+					<li><%= link_to 'Lender Applications', main_app.lender_applications_path %></li>
+					<li><%= link_to 'Reports', main_app.reports_path %></li>
+					<li><%= link_to 'Reviews', main_app.reviews_path %></li>
+				    <li><%= link_to 'Referrals', main_app.referrals_path %></li>
+					<li><%= link_to 'Feedback', main_app.feedback_user_path(current_user) %></li>
+				    <li class="divider"></li>
+				    <li>
+				    	<%= link_to main_app.referrals_user_path(current_user) do %>
+					    	Credits: &nbsp;<span class="money"><%= number_to_currency current_user.credits, precision: 2 %></span>
+					    <% end %>
+				    </li>
+				    <li class="divider"></li>
+					<li><%= link_to 'Sign Out', main_app.destroy_user_session_path, method: :delete %></li>
+				</ul>
+			</div>
+		<% else %>
+			<%= link_to 'Sign In', main_app.new_user_session_path, id: 'signInIcon' %>
+			<%= link_to main_app.user_omniauth_authorize_path(:facebook), class: 'btn btn-social-icon btn-facebook tooltip_target', data: { toggle: 'tooltip', placement: 'bottom' }, title: 'Sign In With Facebook' do %>
+				<i class="fa fa-facebook" ></i>
 			<% end %>
-		</div>
+			<%= link_to main_app.user_omniauth_authorize_path(:twitter), class: 'btn btn-social-icon btn-twitter tooltip_target', data: { toggle: 'tooltip', placement: 'bottom' }, title: 'Sign In With Twitter' do %>
+				<i class="fa fa-twitter" ></i>
+			<% end %>
+			<%= link_to  main_app.user_omniauth_authorize_path(:google), class: 'btn btn-social-icon btn-google-plus tooltip_target', data: { toggle: 'tooltip', placement: 'bottom' }, title: 'Sign In With Google+' do %>
+				<i class="fa fa-google-plus" ></i>
+			<% end %>
+		<% end %>
 	</div>
 	<nav id="mainNav" role="navigation" style="display: none;">		
 	</nav>

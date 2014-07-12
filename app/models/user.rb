@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
 	before_save :before_save_callback
 	after_create :after_create_callback
 
-
 	################################## ASSOCIATIONS ##################################
 
 	has_many :filters
@@ -19,6 +18,10 @@ class User < ActiveRecord::Base
 	### REVIEWS
 	has_many :reviews_given, class_name: "Review", foreign_key: "author_id", dependent: :destroy # Reviews that user has given
 	has_many :reviews_recieved, class_name: "Review", foreign_key: "lender_id", dependent: :destroy # Reviews that the user has recieved
+
+	## REFERRALS
+	has_many :referrals, class_name: "Referral", foreign_key: "referrer_id", dependent: :destroy
+	has_one  :referrer, class_name: "Referral", foreign_key: "referree_id", dependent: :destroy
 
     # Has many ... through explaination
     # Check: alias name (user.checks) 
@@ -284,13 +287,23 @@ class User < ActiveRecord::Base
 		self === user
 	end
 
-	# Make sure email is lower case
+	# Make sure email is lower case, first/last name is trimmed
 	def before_save_callback
-		self.email = email.downcase
+		self.email 			= email.downcase
+		self.first_name.strip!
+		self.last_name.strip!
 	end
 	
 	# Create referral code
 	def after_create_callback
+		# Create a referral if referral_code is not empty, and exiting user with referrral code is found
+		unless referral_code.nil? || referral_code.empty?
+			user = User.find_by(referral_code: referral_code)
+			if user
+				user.refer!(self) # create the referral
+			end
+		end
+		# Create a referral code for the new user
 		count 			= User.where("first_name = '#{self.first_name}'").count.to_s
 		referral_code 	= self.first_name.downcase + count
 		update_attribute('referral_code', referral_code)
@@ -314,7 +327,6 @@ class User < ActiveRecord::Base
 
 	# Create a new user_service relationship with service_id and relationship_type = 'check'
 	def check!(service)
-		
 		return self.lendee_user_services.create!(service_id: service.id, 
 												lender_id: service.lender.id, 
 												address: service.address,
@@ -358,6 +370,7 @@ class User < ActiveRecord::Base
 	end
 	
 	################################## RATE/REVIEW ##################################
+
 	# Rate a lender. Accepts 2 arguments, lender and rating_params (information about the rating)
 	def rate!(lender, rating_params)
 		# Combine the two hash and create the rating
@@ -373,6 +386,14 @@ class User < ActiveRecord::Base
 		merged_hash = lender_hash.merge(review_params)
 		self.reviews_given.create!(merged_hash)
 	end
+
+	################################## REFERRAL ##################################
+
+	# Refer another user.
+	def refer!(other_user)
+		self.referrals.create!(referree_id: other_user.id)
+	end
+
 
 	################################## REPORT ##################################
 	

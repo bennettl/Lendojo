@@ -1,0 +1,34 @@
+<div class="box col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1">	
+	<div class="col-sm-3">
+		<%  
+			# Data for user dashboard
+			all_referrals 	= Referral.all.count
+			data 			= { Referrals: all_referrals } 
+		%>
+		<%= render 'shared/dashboard', { title: 'Dashboard', data: data } %>
+	</div>
+	<div class="col-sm-9">
+		<div class="title">Referrals</div>
+		<div class="indexList-header row">
+			<%= form_for reports_path, html: { id: 'referralIndexForm' } do |f| %>
+				<%= hidden_field_tag 'sort[name]' %>
+				<%= hidden_field_tag 'sort[direction]' %>
+				<!-- ID (sortable) -->
+				<div class="col-xs-1">
+					<%= render 'shared/index_headers/header_sortable', column_name: 'id', title: 'Id' %>
+				</div>
+				<!-- STATUS -->
+				<div class="col-xs-2">Status</div>
+				<!-- AVATAR -->
+				<div class="col-xs-2">Referer</div>
+				<!-- NAME -->
+				<div class="col-xs-2">Referree</div>
+				<!-- CREATED DATE (sortable) -->
+				<div class="col-xs-3">
+					<%= render 'shared/index_headers/header_sortable', column_name: 'updated_at', title: 'Updated At' %>
+				</div>
+			<% end  %>
+		</div>
+		<%= render 'referralList' %>
+	</div>
+</div>

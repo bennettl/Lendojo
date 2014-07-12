@@ -1,3 +1,34 @@
 // Place all the styles related to the referrals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$orange-red: #e28778;
+
+
+#userIndexReferralBox{
+	#blurb{
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 24px;
+		font-weight: 300;
+		margin: 50px 0;
+		text-align: center;
+		text-transform: uppercase;
+
+		#referralCode{
+			padding: 5px 10px;
+			background: #f9f9f9;
+			color: $orange-red;
+			font-weight: 800;
+		}
+		#amount{
+			font-weight: 800;
+		}
+	}
+	
+	#referralListSection{
+	}
+	.userIndexReferral .status-icon{
+		margin: 0 0 0 15px;
+	}
+}

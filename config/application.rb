@@ -12,7 +12,7 @@ module LendojoApp
     config.assets.initialize_on_precompile = false
     
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
-    config.assets.precompile += %w( *.scss *.js )
+    config.assets.precompile += %w( *.css *.js )
     config.assets.precompile += %w( '.woff', '.eot', '.svg', '.ttf' )
 
 

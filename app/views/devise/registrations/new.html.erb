@@ -1,19 +1,20 @@
 <% provide(:title, 'Sign Up')	%>
 <div id="signInBox" class="box small col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
 	<div class="title">Sign Up</div>
-	<%= form_for(User.new, html: {class: 'form-horizontal', autocomplete: 'off'}) do |f| %>
+	<% @user = User.new || params[:user] %>
+	<%= form_for(@user, html: {class: 'form-horizontal', autocomplete: 'off'}) do |f| %>
 		<%= devise_error_messages! %>
 		<div class="row">
 		   <div class="col-sm-6">
-				<%= f.text_field :first_name, class: 'form-control', required: true, placeholder: "First Name" %>
+				<%= f.text_field :first_name, class: 'form-control', value: @user.first_name, required: true, placeholder: "First Name" %>
 			</div>
 		    <div class="col-sm-6">
-				<%= f.text_field :last_name, class: 'form-control', required: true, placeholder: "Last Name" %>
+				<%= f.text_field :last_name, class: 'form-control', value: @user.last_name, required: true, placeholder: "Last Name" %>
 			</div>
 		</div>
  		<div class="row">
 		    <div class="col-sm-12">
-				<%= f.email_field :email, class: 'form-control', required: true, placeholder: "Email" %>
+				<%= f.email_field :email, class: 'form-control', value: @user.email, required: true, placeholder: "Email" %>
 			</div>
 		</div>
 		<div class="row">
@@ -24,6 +25,11 @@
 		<div class="row">
 		    <div class="col-sm-12">
 				<%= f.password_field :password_confirmation, class: 'form-control', required: true, placeholder: "Re-enter Password" %>
+			</div>
+		</div>
+		<div class="row">
+		    <div class="col-sm-12">
+				<%= f.text_field :referral_code, class: 'form-control', placeholder: "Referral Code (optional)" %>
 			</div>
 		</div>
 		<%= f.submit 'Sign Up', class: 'button', style: 'width: 100%; margin: 15px 0 25px;' %>

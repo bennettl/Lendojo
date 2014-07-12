@@ -8,6 +8,7 @@ namespace :db do
 		populate_user_services
 		populate_lender_applications
 		populate_reports
+		populate_referrals
 		populate_tags
 	end	
 
@@ -185,6 +186,18 @@ namespace :db do
 		services.each do|s|
 			s.reports_received.create!(author_id: author_id, reason: reason, summary: summary)
 		end
+	end
+
+	# Populat referrals
+	def populate_referrals
+		user = User.first
+		users = User.limit(10)
+
+		# Refer 8 other users
+		users.each do |u|
+			user.refer!(u) # create the referral
+		end
+		
 	end
 
 	# Populate tags

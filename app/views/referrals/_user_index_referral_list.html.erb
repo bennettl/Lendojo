@@ -1,0 +1,17 @@
+<div id="referralListSection">
+	<div class="col-md-8 col-md-offset-2">
+		<table class="table table-striped referralTable">
+			<thead>
+				<th class="cell">Status</th>
+				<th class="cell">Name</th>
+				<th class="cell">Updated At</th>
+			</thead>
+			<tbody>
+				<% @referrals.each do |r| %>
+					<%= render 'user_index_referral', referral: r %>
+				<% end %>
+			</tbody>
+		</table>
+		<%= will_paginate @referrals %>
+	</div>
+</div>

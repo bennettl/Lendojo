@@ -11,7 +11,8 @@ class LenderApplicationsController < ApplicationController
 	# Include sorting params for sortable headers on index page
 	include HeaderFiltersHelper
 	
-	# Swagger documentation
+	##################################################### SWAGGER #####################################################
+
 	swagger_controller :lender_applications, "Lender Application operations"
 
 	##################################################### RESOURCES #####################################################

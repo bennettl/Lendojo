@@ -1,0 +1,176 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000/",
+  "resourcePath": "referrals",
+  "apis": [
+    {
+      "path": "users/{id}/referrals",
+      "operations": [
+        {
+          "summary": "Shows a list of referrals",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Referrer ID",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "Page Number",
+              "required": false
+            }
+          ],
+          "method": "get",
+          "nickname": "Referrals#user_index"
+        }
+      ]
+    },
+    {
+      "path": "referrals",
+      "operations": [
+        {
+          "summary": "Shows a list of referrals",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "Page Number",
+              "required": false
+            }
+          ],
+          "method": "get",
+          "nickname": "Referrals#index"
+        }
+      ]
+    },
+    {
+      "path": "referrals",
+      "operations": [
+        {
+          "summary": "Creates a new referral",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "referree_id",
+              "type": "integer",
+              "description": "Referree ID",
+              "required": true
+            }
+          ],
+          "method": "post",
+          "nickname": "Referrals#create"
+        }
+      ]
+    },
+    {
+      "path": "referrals/{id}",
+      "operations": [
+        {
+          "summary": "Show indivdual referral",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Referral ID",
+              "required": true
+            }
+          ],
+          "method": "get",
+          "nickname": "Referrals#show"
+        }
+      ]
+    },
+    {
+      "path": "referrals/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing referral",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Referral ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "referral[status]",
+              "type": "status",
+              "description": "Status",
+              "required": false,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "inactive",
+                  "active"
+                ]
+              }
+            }
+          ],
+          "method": "patch",
+          "nickname": "Referrals#update"
+        }
+      ]
+    },
+    {
+      "path": "referrals/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing referral",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Referral ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "referral[status]",
+              "type": "status",
+              "description": "Status",
+              "required": false,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "inactive",
+                  "active"
+                ]
+              }
+            }
+          ],
+          "method": "put",
+          "nickname": "Referrals#update"
+        }
+      ]
+    },
+    {
+      "path": "referrals/{id}",
+      "operations": [
+        {
+          "summary": "Destroy an existing referral",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Referral ID",
+              "required": true
+            }
+          ],
+          "method": "delete",
+          "nickname": "Referrals#destroy"
+        }
+      ]
+    }
+  ]
+}

@@ -11,9 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710071734) do
+ActiveRecord::Schema.define(version: 20140619184735) do
 
-  create_table "coupons", force: true do |t|
+  create_table "discounts", force: true do |t|
+    t.integer  "lender_id"
+    t.integer  "service_id"
+    t.integer  "type",        default: 0
+    t.datetime "expire_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,2 +1,2 @@
 // When a user service is created, executed the following js: render the _uncheck partial
-jQuery('.options .option.check').replaceWith("<%= escape_javascript( render('shared/options/uncheck', service: @service) ) %>");
+jQuery('.options .option.check').replaceWith("<%= escape_javascript( render('shared/options/uncheck', service: @service, glyphicon_name: 'glyphicon-minus') ) %>");

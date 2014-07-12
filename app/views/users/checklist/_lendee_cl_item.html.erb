@@ -4,7 +4,7 @@
 	<td class="options_checklist cell col-xs-1">
 		<% unless checklist_item.status == 'complete' %>
 			<!--  REMOVE -->
-			<%= render 'shared/options/uncheck', service: @service, glyphicon_name: "glyphicon-remove" %>
+			<%= render 'shared/options/uncheck', service: s, glyphicon_name: "glyphicon-remove" %>
 		<% end %>
 		<% # Depending on checklist_item status, have different options presented to lendee %>
 			<% if checklist_item.schedule_unconfirm? %>

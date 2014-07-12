@@ -241,7 +241,6 @@ class UsersController < ApplicationController
 		end
 	end
 
-
 	##################################################### PRIVATE #####################################################
 
 	private

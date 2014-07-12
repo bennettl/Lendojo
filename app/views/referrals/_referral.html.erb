@@ -1,0 +1,21 @@
+<div class="indexList referral-index-item row">
+	<div class="col-xs-1 cell">
+		<div class="text"><%= link_to referral.id, referral %></div>
+	</div>
+	<div class="col-xs-2 cell">
+		<div class="status-icon <%= referral.status %> tooltip_target" title="<%= referral.status.capitalize %>"></div>
+	</div>
+	<div class="col-xs-2 cell">
+		<%= link_to referral.referrer do %>
+			<%= image_tag referral.referrer.main_img(:thumb), class: 'thumbImage tooltip_target', data: { toggle: 'tooltip' }, title: referral.referrer.name %>
+		<% end %>
+	</div>
+	<div class="col-xs-2 cell">
+		<%= link_to referral.referree do %>
+			<%= image_tag referral.referree.main_img(:thumb), class: 'thumbImage tooltip_target', data: { toggle: 'tooltip' }, title: referral.referree.name %>
+		<% end %>
+	</div>
+	<div class="col-xs-3 cell">
+		<div class="text"><%= time_ago_in_words(referral.updated_at) %> ago</div>
+	</div>
+</div>

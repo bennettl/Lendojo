@@ -36,6 +36,7 @@ Rails.application.routes.draw do
         get     'pins',                 on: :member
         get     'feedback',             on: :member
         get     'finish_signup',        on: :member
+        get     'referrals',            on: :member, to: 'referrals#user_index'
         post    'rate',                 on: :member, to: 'ratings#create'
         post    'review',               on: :member, to: 'reviews#create'
         get     'report',               on: :member, to: 'reports#new'
@@ -83,6 +84,9 @@ Rails.application.routes.draw do
 
     # Reports
     resources :reports
+
+    # Referrals
+    resources :referrals
 
     # Tags
     resources :tags

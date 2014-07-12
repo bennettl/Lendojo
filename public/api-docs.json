@@ -8,6 +8,10 @@
       "description": "User operations"
     },
     {
+      "path": "referrals.{format}",
+      "description": "Referral operations"
+    },
+    {
       "path": "ratings.{format}",
       "description": "Rating operations"
     },

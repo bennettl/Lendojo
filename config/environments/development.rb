@@ -7,7 +7,7 @@ Rails.application.configure do
   # Paperclip file attachment
   Paperclip.options[:command_path] = "/usr/local/bin/"
   config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
-  config.assets.precompile += %w( *.scss *.js )
+  config.assets.precompile += %w( *.css *.js )
   config.assets.precompile += %w( '.woff', '.eot', '.svg', '.ttf' )
 
   # In the development environment your application's code is reloaded on

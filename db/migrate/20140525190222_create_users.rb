@@ -205,9 +205,12 @@ class CreateUsers < ActiveRecord::Migration
 		    t.timestamps
 	    end
 
-		#################################### COUPONS ####################################
-		 create_table :coupons do |t|
-
+		#################################### DISCOUNTS ####################################
+		 create_table :discounts do |t|
+			t.belongs_to 	:lender, class_name: 'User', foreign_key: 'lender_id' # target of the review
+			t.belongs_to 	:service
+			t.integer 		:type, default: 0 # percentage, amount
+			t.datetime 		:expire_date
 			t.timestamps
 	    end
 

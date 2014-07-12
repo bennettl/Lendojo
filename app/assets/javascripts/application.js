@@ -28,6 +28,13 @@
 
     function initApp(){
 
+    	// Fade out alters when they are visible
+    	if ($(".alert").css("display") == "block"){
+    		setTimeout(function(){
+				$(".alert").fadeOut(500);
+    		}, 5000);
+    	}
+
     	initRatings(); // Initalize raty for reviewsList
 
     	/************************** AJAX SORTABLE HEADER (INDEX PAGES) **************************/

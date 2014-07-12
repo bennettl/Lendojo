@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
 	# Custom views for registration require additional paramters
 	def configure_devise_permitted_parameters
-		registration_params = [:first_name, :last_name, :email, :password, :password_confirmation]
+		registration_params = [:first_name, :last_name, :email, :referral_code ,:password, :password_confirmation]
 
 		if params[:action] == 'create'
 		  devise_parameter_sanitizer.for(:sign_up) { 

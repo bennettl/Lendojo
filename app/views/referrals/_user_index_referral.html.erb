@@ -1,0 +1,11 @@
+<tr class="userIndexReferral">
+	<td class="col-xs-1 cell">
+		<div class="status-icon <%= referral.status %> tooltip_target" title="<%= referral.status.capitalize %>"></div>
+	</td>
+	<td class="cell col-xs-2">
+		<%= referral.referree.name %>
+	</td>
+	<td class="cell col-xs-2">
+		<div class="text"><%= time_ago_in_words(referral.updated_at) %> ago</div>
+	</td>
+</tr>

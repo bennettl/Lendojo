@@ -16,12 +16,14 @@
 // Remove  *= require_tree . because we don't want to include all css files
 
 @import "bootstrap";
-
+@import "font-awesome";
+@import "bootstrap-social";
 
 /********************  VARIABLES ********************/
 
 $lightGray: #eaeaea;
 $gold: #edb337;
+$gold-hover: #F0C951;
 $orange-red: #e28778;
 $belt-white: #767676; // for border
 $belt-green: #489b4a;
@@ -87,6 +89,9 @@ header{
 	position: absolute;
 	top: 40px;
 	left: 60px;
+	&:hover{
+		background: $gold-hover;
+	}
 }
 
 #logo{
@@ -103,6 +108,12 @@ header{
 
 .alert{
 	padding: 20px 0;
+	bottom: 0;
+    margin: 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 100;
 }
 .alert-notice{
 	background-color: #dff0d8;
@@ -126,17 +137,31 @@ header{
 	right: 120px; 
 	top: 40px;
 	& > a{
-		display: inline-block;
-		background: #ddd;
-		@include border-radius(5px);
-		color: #fff;
-		padding: 8px;
 		margin: 0 5px;
-		font-size: 20px;
-		&:hover, &.active{
-			background: #828282;
+		&#signInIcon{
+			background: none repeat scroll 0 0 #f2c846;
+		    color: white;
+		    padding: 9px 20px;
+		    text-transform: uppercase;
+			@include border-radius(5px);
+			&:hover{
+				background: $gold-hover;
+			}
+		}
+		&.signedInIcon{
+			display: inline-block;
+			background: #ddd;
+			@include border-radius(5px);
+			color: #fff;
+			padding: 8px;
+			margin: 0 5px;
+			font-size: 20px;
+			&:hover, &.active{
+				background: #828282;
+			}
 		}
 	}
+	
 	#accountMenu{
 		display: inline-block;
 		margin: 0 5px;
@@ -157,7 +182,7 @@ header{
 
 /******************* BODY ********************/
 
-.creditAmount{
+.money{
 	font-weight: bold;
 	color: #54C944;
 }
@@ -326,7 +351,7 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
 	@include border-radius(50%);
 	margin: 0 auto;
 
-	&.pending{
+	&.pending, &.inactive{
 		background: #b5b5b5;
 	}
 	&.active, &.approved{
@@ -488,6 +513,7 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
     }
     &:hover{
     	// For links
+    	background: #F0C951;
     	color: #FFFFFF;
     	text-decoration: none;
     	// background: #dcac2f;

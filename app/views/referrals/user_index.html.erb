@@ -1,0 +1,14 @@
+<div id="userIndexReferralBox" class="box">
+	<div id="blurb">
+		<% amount = number_to_currency Referral.credit, precision: 0 %>
+		<% code = User.find_by(id: params[:id]).referral_code %>
+
+		Earn <span id="amount" class="money"><%= amount %></span> for every friend you refer. <br /> Your referral code: <span id="referralCode"><%= code %></span>
+	</div>
+	<div class="title">My Referrals</div>
+		<% if @referrals.empty? %>
+			<p class="center">You currently have no referrals</p>
+		<% else %>
+			<%= render 'user_index_referral_list' %>
+		<% end %>
+</div>

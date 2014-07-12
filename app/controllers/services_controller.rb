@@ -19,7 +19,6 @@ class ServicesController < ApplicationController
 		param :query, :page, :integer, :optional, "Page Number"
 	end
 	def index
-
 		@myFilters 		= current_user.filters
 		# If there are no search parameters and user has filters, use the first filter to search
 		search_params 	= (search_params().empty? && !@myFilters.nil?) ? @myFilters.first : search_params()
