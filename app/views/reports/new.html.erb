@@ -7,7 +7,8 @@
 		<%= form_for Report.new, url: @reportable_path, autocomplete: :off, id: 'reportForm' do |f| %>
 			<%= f.hidden_field :reportable_type, value: @reportable.class.name %>
 		 	<div class="form-group">
-		 		<b>Reporting:</b> <%= @reportable.report_title %>
+			 	<%= f.label 'Reporting' %><br />
+		 		<%= @reportable.report_title %>
 		 	</div>
 		 	<div class="form-group">
 			 	<%= f.label 'Reason' %>

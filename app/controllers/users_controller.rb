@@ -129,7 +129,7 @@ class UsersController < ApplicationController
 		
 		# If update is sucessful, redirect to user page, else render edit page
 		if @user.update_attributes(user_params)
-			flash[:success] = "Update Is Successful" + current_user.inspect
+			flash[:success] = "Update Is Successful"
 
 			# If email changed, sign the user in with new credentials
 			unless user_params[:email].nil?

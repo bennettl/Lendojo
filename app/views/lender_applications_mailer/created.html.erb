@@ -1,0 +1,28 @@
+<p>Dear Admin,</p>
+<p>A new lender application has been submitted and needs to be reviewed. Here is a brief summary of the application. </p>
+<table class="table table-striped" style="margin-top: 20px;">
+	<tr>
+		<th>ID:</th>  
+		<td><%= @lenderApp.id %></td>
+	</tr>
+	<tr>
+		<th>Author:</th>  
+		<td><%= @lenderApp.author.name %></td>
+	</tr>
+	<tr>
+		<th>Hrs/Week:</th>  
+		<td><%= @lenderApp.hours %></td>
+	</tr>
+	<tr>
+		<th>Categories:</th> 
+		 <td><%= @lenderApp.keyword %></td>
+		</tr>
+	<tr>
+		<th>Skills:</th> 
+		 <td><%= @lenderApp.skill %></td>
+		</tr>
+	<tr>
+		<th>Summary:</th>
+		 <td><%= @lenderApp.summary %></td>
+		</tr>
+</table>

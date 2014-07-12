@@ -1,0 +1,2 @@
+<p>Dear <%= @user_service.lender.first_name %>,</p>
+<p><%= @user_service.lendee.first_name %> has checked your service "<%= @user_service.service.title %>" Please reach out to your lendee by via text or phone call to  schedule a time and place. You can find contact information about your lendee over at <%= link_to checklist_user_url(@user_service.lender), checklist_user_url(@user_service.lender) %>.

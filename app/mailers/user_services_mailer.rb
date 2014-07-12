@@ -1,14 +1,20 @@
 class UserServicesMailer < ActionMailer::Base
+	# Use application_mail.html.erb
+	layout 'application_mailer'
+
+	# Automatically inject css styles
+	include Roadie::Rails::Automatic
+	
 	include Rails.application.routes.url_helpers
 
 	default from: "Lendojo <staff@lendojo.com>"
 	
-	# Returns a mail object regarding the status update of a lender application
-	def set_check_updated_mail(user_service)
+	# Mail when a user service 'check' status is updated
+	def check_updated(user_service)
 		@user_service = user_service
 
 		# Status: pending, scheduled_unconfirm, scheduled_confirmed, complete
-		template 	= 'check_' + @user_service.status + '_email'
+		template 	= 'check_' + @user_service.status
 		# Change the to and subject base on @user_service status
 		if @user_service.pending?
 			to 		= @user_service.lender.email

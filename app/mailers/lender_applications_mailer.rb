@@ -1,22 +1,29 @@
 class LenderApplicationsMailer < ActionMailer::Base
+	# Use application_mail.html.erb
+	layout 'application_mailer'
+
+	# Automatically inject css styles
+	include Roadie::Rails::Automatic
+	
+	# Mail defaults
 	default from: "Lendojo <staff@lendojo.com>"
 
-	# Returns a mail object regarding the creation of an lender app
-	def set_created_mail(lenderApp)
+	# Mail when lender application is created
+	def created(lenderApp)
 		admin_email = 'bennettl@usc.edu'
 		@lenderApp 	= lenderApp
 		subject 	= 'Lendojo: New Lender Application'
 
 		mail(to: admin_email, subject: subject) do |format|
-			format.html { render 'created_email' }
+			format.html { render 'created' }
 		end
 	end
 
-	# Returns a mail object regarding the status update of a lender application
-	def set_updated_mail(lenderApp, user)
-		@user 	 	= user
+	# Mail when lender application status is updated
+	def updated(lenderApp)
+		@author  	= lenderApp.author
 		@lenderApp 	= lenderApp
-		template 	= @lenderApp.status + '_email'
+		template 	= @lenderApp.status
 
 		# Change the subject base on @lenderApp status
 		if @lenderApp.approved?
@@ -25,7 +32,7 @@ class LenderApplicationsMailer < ActionMailer::Base
 			subject = "Lendojo: Lender Application Denied"
 		end
 
-		mail(to: @user.email, subject: subject) do |format|
+		mail(to: @author.email, subject: subject) do |format|
 			format.html { render template }
 		end
 	end

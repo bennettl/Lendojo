@@ -1,0 +1,3 @@
+<p>Dear <%= @user_service.lender.first_name %>,</p>
+<p>Congratualtions!!! You successfully completed "<%= @user_service.service.title %>" with <%= @user_service.lendee.first_name %>.</p>
+<p>You will be credted <span class="money">$<%= @user_service.service.price %></span> within the new few hours or you can manually charge <%= @user_service.lendee.first_name %> over at your checklist: <%= link_to checklist_user_url(@user_service.lender), checklist_user_url(@user_service.lender) %>.</p>

@@ -1,11 +1,11 @@
 <div class="review-list-item row">
-	<!-- User Avatar -->
+	<!-- USER AVATAR -->
 	<div class="col-sm-2">
-		<%= link_to review.lender do %>
-			<%= image_tag review.lender.main_img(:thumb), class: 'thumbImage' %>
+		<%= link_to review.author do %>
+			<%= image_tag review.author.main_img(:thumb), class: 'thumbImage' %>
 		<% end %>
 	</div>
-	<!--  Review Details -->
+	<!--  REVIEW DETAILS -->
 	<div class="review-details col-sm-10">
 		<h4><%= review.title %> <small>| <%= review.created_at.strftime("%B %e, %Y") %></small><br /> 
 			<small>By <%= link_to review.author.name, review.author %></small>
@@ -25,6 +25,4 @@
 			</div>
 		<% end %>
 	</div>
-	<!-- <div class="reviewTitle">Review Title</div> -->
-	<!-- <div class="reviewDate"></div> -->
 </div>

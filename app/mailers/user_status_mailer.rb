@@ -1,11 +1,16 @@
 class UserStatusMailer < ActionMailer::Base
-	default from: "Lendojo <staff@lendojo.com>"
-	# Use whenver the user status changes ('active', 'warn', 'suspend', ban') or when new user is created ('inactive')
+	# Use application_mail.html.erb
+	layout 'application_mailer'
 
-	# Returns a  mail object with the user information appended to it
+	# Automatically inject css styles
+	include Roadie::Rails::Automatic
+
+	default from: "Lendojo <staff@lendojo.com>"
+
+	# Mail when a user status is updated
 	def set_mail(user)
 		@user 	 = user
-		template = @user.status + '_email'
+		template = @user.status
 
 		case @user.status
 			when User.statuses[:inactive]

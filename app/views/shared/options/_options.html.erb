@@ -2,12 +2,10 @@
 	<!-- SERVICE ONLY -->
 	<% if object.class.name == 'Service' %>
 		<% service = object %>
-		
 		<!-- CHECK -->
 		<% user_service = current_user.check?(service) %>
 		<% template 	= user_service.nil? ? 'check' : 'uncheck' %>
 		<%= render "shared/options/#{template}", service: service,  glyphicon_name: "glyphicon-remove" %>
-
 		<!-- PIN -->
 		<% user_service = current_user.pin?(service) %>
 		<% template 	= user_service.nil? ? 'pin' : 'unpin' %>

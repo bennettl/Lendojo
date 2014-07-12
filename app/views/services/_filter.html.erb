@@ -38,23 +38,29 @@
 	<div class="filter-menus">
 		<ul class="filter-dimensions">
 			<!-- DIMENSION -->
-			<li class="dimension dropdown tag-dropdown" data-menu="location">
+			<li class="dimension dropdown tag-dropdown hover" data-menu="location">
 				<!-- DIMENSION LABEL -->
 				<a href="#" class="dimension-label" data-toggle="dropdown"> Locations <b class="caret"></b></a>
 				<!-- DROPDOWN MENU -->
 				<ul data-menu="location" class="dropdown-menu">
-					<li class="dropdown-header">Top locations</li>
 					<li>
 						<input type="text" name="location" data-category="location" class="tag-input form-control" autocomplete="off" placeholder="Enter A Location" />
 					</li>
 					<li class="dropdown-header">Top locations</li>
 					<% @location_tags.each do |lt| %>
-						<li><a href="#" data-name="<%= lt.name %>" data-category="<%= lt.category %>" class="tag-item"><%= lt.display_name %> (<%= lt.count %>)</a></li>					
+						<li>
+							<a href="#" data-name="<%= lt.name %>" data-category="<%= lt.category %>" class="tag-item">
+								<div class="top-category">
+									<span class="name"><%= lt.display_name %></span>
+									<span class="count">(<%= lt.count %>)</span>
+								</div>
+							</a>
+						</li>					
 					<% end %>
 				</ul>
 			</li>
 
-			<li class="dimension dropdown tag-dropdown" data-menu="price">
+			<li class="dimension dropdown tag-dropdown hover" data-menu="price">
 				<a href="#" class="dimension-label" data-toggle="dropdown"> Price <b class="caret"></b></a>
 				<!-- DROPDOWN MENU -->
 				<ul data-menu="price" class="dropdown-menu">
@@ -64,7 +70,7 @@
 					<li><a href="#" data-name="$$$$" data-category="price" class="tag-item">$$$$</a></li>
 				</ul>
 			</li>
-			<li class="dimension dropdown tag-dropdown" data-menu="belt">
+			<li class="dimension dropdown tag-dropdown hover" data-menu="belt">
 				<a href="#" class="dimension-label" data-toggle="dropdown"> Rank <b class="caret"></b></a>
 				<!-- DROPDOWN MENU -->
 				<ul data-menu="price" class="dropdown-menu">
@@ -75,7 +81,7 @@
 					<li><a href="#" data-name="white" data-category="belt" class="tag-item">White</a></li>
 				</ul>
 			</li>
-			<li class="dimension dropdown tag-dropdown" data-menu="keyword">
+			<li class="dimension dropdown tag-dropdown hover" data-menu="keyword">
 				<a href="#" class="dimension-label" data-toggle="dropdown"> Keywords <b class="caret"></b></a>
 				<!-- DROPDOWN MENU -->
 				<ul data-menu="keywords" class="dropdown-menu">
@@ -84,11 +90,18 @@
 					</li>
 					<li class="dropdown-header">Top Keywords</li>
 					<% @keyword_tags.each do |kt| %>
-						<li><a href="#" data-name="<%= kt.name %>" data-category="<%= kt.category %>" class="tag-item"><%= kt.display_name %> (<%= kt.count %>)</a></li>
+						<li>
+							<a href="#" data-name="<%= kt.name %>" data-category="<%= kt.category %>" class="tag-item">
+								<div class="top-category">
+									<span class="name"><%= kt.display_name %></span>
+									<span class="count">(<%= kt.count %>)</span>
+								</div>
+							</a>
+						</li>
 					<% end %>
 				</ul>
 			</li>
-			<li class="dropdown my-filters" date-menu="filters">
+			<li class="dropdown my-filters hover" date-menu="filters">
 				<a href="#" class="dimension-label" data-toggle="dropdown">My Filters <b class="caret"></b></a>
 				<!-- DROPDOWN MENU -->
 			<%= render 'services/filter/my_filter_list' %>

@@ -180,30 +180,33 @@ class User < ActiveRecord::Base
 	################################## RAKNING ##################################
 
 	# Ranking Algorithm 
-	# Ranking is base on 3 dimensions
-		# 1. Number of sessions (amount of commitment)
-		# 2. Number of ratings (gives ratings more validity)
-		# 3. Quality of ratings (feedback on work)
-	# Upper-bound. Lenders who past this threshold will recieve a black belt. Each one counts as 100% 
-		# 1. 3 sessions/week * 4 weeks/month * 10 months = 120 sessions
-		# 2. 40 ratings
-		# 3. 4.5 stars
-	# Weight. How important is each dimension
-		# 1. 0.70
-		# 2. 0.15
-		# 3. 0.15
-	# Belt Distribution
-		# Black : 90% 
-		# Red 	: 70%
-		# Blue 	: 40%
-		# Green : 10%
-		# White : 0%
-	# Example cases
-		# Black : 120 services | 20 ratings | 4.5 avg rating 	= 0.7 + 0.07 + 0.15 	= 0.92
-		# Red 	: 100 services | 20 ratings | 4.5 avg rating 	= 0.58 + 0.07 + .15 	= 0.80
- 		# Blue 	: 60 services  | 29 ratings | 4.5 avg rating  	= 0.35 + 0.11 + 0.15 	= 0.61
-		# Green : 30 services  | 10 ratings | 4.5 avg rating 	= 0.175 + 0.0375 + 0.15 = 0.36
-		# White : 10 services  |  3 ratings | 4.5 avg rating 	= 0.06 + 0.01 + 0.15 	= 0.22
+	# Number of Ratings = R
+	# Quality of ratings= Q = average of all ratings on 5.
+
+	# {
+	# Average Number of hours per week = n
+	# Commitment of hours per week=m
+	# Number of weeks person has been with us and lended a service on a given week=w
+	# Number of weeks a person has been with us totally=W
+	# }
+	# “Consistency score” = C= [(0.3)*(n/m)+0.7*(w/W)]
+	
+	# NOTE: The consistency score gives us the consistency of a person more than just the total number of sessions and also takes into account how long the person has been a lender. This is better than just the Total number of sessions because in the case of a service where the lender can’t provide the service too many times in a week we can still measure his consistency and quality of the service while still rewarding the number of times the service is offered.
+
+	# Weight for each dimension:
+	# C=0.4
+	# R=0.25
+	# Q=0.35
+
+	# Lending Score (L):
+	# 0.4*C + 0.25*(R/x) + 0.35(Q/5)
+	# where x is the minimum number of ratings for each belt.
+
+	# Black belt 	(x=30):  L>0.85
+	# Red 			(x=25): L= 0.75-0.85 (inclusive)
+	# Blue (x=20): L= 0.4-0.74
+	# Green (x=10): L=0.2-0.39
+	# White (x=5): L=0-0.2
 
 	# Upper bound
 	@@UPPER_BOUND_SESSION		= 120
@@ -220,9 +223,8 @@ class User < ActiveRecord::Base
 		# ratings_score = /@@UPPER_BOUND_RATINGS
 		# avg_ratings_score = /@@UPPER_BOUND_AVG_RATING
 		score = sessions_score + ratings_score + avg_ratings_score
-		
 		self.update_attribute('score', score)
-		update_belt()
+		update_belt
 	end
 
 	# Update the belt base on the score

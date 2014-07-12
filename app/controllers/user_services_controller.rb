@@ -25,7 +25,7 @@ class UserServicesController < ApplicationController
 	# 	# Continue if update-attribute is sucessful and relationship type is 'check'		
 	# 	if @user_service.update_attributes(check_params) && @user_service.relationship_type == 'check'
 	# 		# Notify lender that a new application has been submitted
-	# 		UserServicesMailer.set_check_updated_mail(@user_service).deliver
+	# 		UserServicesMailer.check_updated(@user_service).deliver
 	# 		# If the user service is finished, charge the lendee
 	# 		if params[:user_service][:status] == "complete"
 	# 			@user_service.charge!

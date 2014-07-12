@@ -4,7 +4,9 @@
 		<!-- AUTHOR -->
 		<div class="form-group">
 			<%= f.label 'Author', class: 'control-label col-sm-2' %>
-			<div class="detail col-sm-9"><%= link_to @report.author.name, @report.author %></div>
+			<div class="detail col-sm-9">
+				<%= link_to @report.author.name, @report.author %>
+			</div>
 		</div>
 		<!-- REPORTABLE -->
 		<div class="form-group">

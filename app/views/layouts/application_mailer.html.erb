@@ -1,0 +1,21 @@
+<!-- LAYOUT FOR EMAILS -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lendojo</title>
+	<%= stylesheet_link_tag "mailer" %>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<%= link_to(image_tag('logo.png', id: :logo), main_app.root_path) %>
+		</header>
+		<div class="col-xs-10 col-xs-offset-1">
+			<!-- EMAIL CONTENT -->
+			<%= yield %>
+			<div id="signature">- The Lendojo Staff</div>
+		</div>
+		
+	</div>
+</body>
+</html>

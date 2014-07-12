@@ -46,13 +46,10 @@
 	<!-- SUMMARY -->
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="sectionTitle">
-				Summary
-			</div>
+			<div class="sectionTitle">Summary</div>
 			<p><%= @service.summary %></p>
 		</div>
 	</div>
-
 	<!-- REVIEW -->
 	<div id="reviewListTitle" class="sectionTitle">Reviews</div>
 	<%= render 'reviews/review_list', reviews: @reviews %>

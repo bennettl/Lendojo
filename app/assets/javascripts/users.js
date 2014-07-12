@@ -41,16 +41,17 @@ function checkList(){
 
 	// If checklist nav exists, select the first tab
 	if ($('#checkListNav').length > 0 ){
-		$('#checkListNav a:first').tab('show')
+		$('#checkListNav a:first').tab('show');
 	}
 
-	// Green notifciation box for checklist updates made, intially hide it
-	$('.checkList .alert.alert-success').hide();
+	// Append success div. Green notifciation box for checklist updates made, intially hide it
+	var success_box = $('<div class="alert alert-success"></div>').hide();
+	$("body").append(success_box);
 
 	/********************************** SCHEDULE_DATE OPTION **********************************/
 	
-	var update_schedule_date_form 	= $("form.update_schedule_date_form");
-	var schedule_date_option 		= $('form.update_schedule_date_form .schedule'); // calender glyphicon
+	var update_schedule_date_form	= $("form.update_schedule_date_form");
+	var schedule_date_option		= $('form.update_schedule_date_form .schedule'); // calender glyphicon
 
     schedule_date_option.datetimepicker(); // datetimepicker initialized
 
@@ -91,8 +92,12 @@ function checkList(){
     	$('.option.schedule.active').parents("form").submit();
 
     	// Notified user via success_box
-    	var success_box			= $(this).parents(".checkList").find(".alert.alert-success"); // find the lender's success box
+    	var success_box			= $(".alert.alert-success"); // find the lender's success box
         success_box.show();
+        // Fade out after 5 seconds
+        setTimeout(function(){
+       		success_box.fadeOut(500);
+        }, 5000);
     	success_box.html('Schedule Date Updated to ' + formatted_date);
     });
 
@@ -118,8 +123,12 @@ function checkList(){
 		schedule_place_div.html(full_address_html);
 
 		// Notified user via success_box
-    	var success_box			= $(this).parents(".checkList").find(".alert.alert-success"); // find the lender's success box
+    	var success_box			= $(".alert.alert-success"); // find the lender's success box
         success_box.show();
+        // Fade out after 5 seconds
+        setTimeout(function(){
+       		success_box.fadeOut(500);
+        }, 5000);
     	success_box.html('Schedule place updated to ' + address + " " + city + ", " + state + " " + zip);
 	});
 	
@@ -145,7 +154,6 @@ function checkList(){
 		var options_checklist = row.find(".options_checklist");
 		charge_form.submit();
 		options_checklist.html("");
-
 	});
 	
 	/********************************** CONFIRM OPTION **********************************/

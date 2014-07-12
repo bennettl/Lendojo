@@ -1,0 +1,47 @@
+// Stylesheet for all emails
+@import "bootstrap";
+
+/******************** MIXINS ********************/
+
+@mixin border-radius($radius: 1px) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+/******************** HEADER ********************/
+
+header{
+	border-bottom-color: rgb(229, 229, 229);
+	border-bottom: 1px solid #e5e5e5;
+	padding-bottom: 3;
+	margin-bottom: 30px;
+}
+#logo{
+	display: block;
+	height: 90px;
+	margin: 15px auto;
+}
+
+/******************** BODY ********************/
+
+body{
+	background: rgb(233, 234, 237);
+}
+
+.container{
+	background: #fff;
+	@include border-radius(3px);
+	margin-top: 40px;
+	padding: 0 50px 50px;
+}
+
+.money{
+	font-weight: bold;
+	color: #54C944;
+}
+
+#signature{
+	float: right;
+	margin-top: 50px;
+}

@@ -182,10 +182,27 @@ header{
 
 /******************* BODY ********************/
 
+.top-category{
+	display: table; 
+	width: 100%; 
+	padding: 3px 0;
+	.name{
+		float: left;
+	}
+	.count{
+		float: right;
+	}
+}
+
+.btn-social-icon{
+	opacity: 0.8;
+}
+
 .money{
 	font-weight: bold;
 	color: #54C944;
 }
+
 .caret.asc {
     border-top-width: 0;
     border-bottom: 4px solid #e28778;
@@ -368,6 +385,7 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
 // Bootstrap dropdown menu for inputs
 
 .dropdown-menu {
+	top: 87%;
 	& > li{
 		& > a{
 			font-size: 0.95em;
@@ -606,7 +624,7 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
     @include border-radius(5px);
     padding: 15px;
     margin-bottom: 50px;
-    min-height: 750px;
+    min-height: 550px;
 
     &.small{
     	min-height: 0
@@ -788,6 +806,12 @@ button::-moz-focus-inner, .nav-tabs > .active > a, .nav-tabs > .active > a:hover
 		.summary{
 			margin: 10px 0;
 		}
+	}
+}
+
+#reviewIndex{
+	#reviewListSection{
+		margin: 0;
 	}
 }
 

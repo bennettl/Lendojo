@@ -46,5 +46,7 @@
 	</div>
 	<nav id="mainNav" role="navigation" style="display: none;">		
 	</nav>
-	<%= link_to 'Become A Lender', new_lender_application_path, id: 'be_a_lender' %>
+	<% unless signed_in? && current_user.lender %>
+		<%= link_to 'Become A Lender', new_lender_application_path, id: 'be_a_lender' %>
+	<% end %>
 </header>

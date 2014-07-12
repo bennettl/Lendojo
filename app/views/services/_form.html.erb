@@ -6,6 +6,7 @@
 		<div class="row">
 		<!-- AVATAR  -->
 		<div class="col-md-5 text-center">
+			<div class="detailTitle" style="text-align: left;"><span class="glyphicon glyphicon-picture"></span>&nbsp;Avatar</div>
 			<%= image_tag @service.main_img.url, class: "serviceImage img-responsive" %>
 			<%= f.file_field :main_img %>
 		</div>
@@ -67,7 +68,6 @@
 				<span>Summary</span>
 			</div>
 			<%= f.text_area :summary, value: @service.summary, placeholder: "More about the service...", class: "form-control" %>
-		
 		</div>
 	</div>
 	<div class="row">

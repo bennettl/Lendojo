@@ -6,16 +6,21 @@
 		<!-- OPTIONS -->
 		<%= render 'shared/options/options', object: service, widget: true %>
 		<div class="shadow">
-			<div style="position: absolute; bottom: 10px; left: 10px;">
-				<div class="serviceTitle"><%= service.title %></div>
-				<div class="headline"><%= service.headline %></div>
-			</div>
+			<%= link_to service, target: "_blank" do %>
+				<div style="position: absolute; bottom: 10px; left: 10px;">
+					<div class="serviceTitle"><%= service.title %></div>
+					<div class="headline"><%= service.headline %></div>
+				</div>
+			<% end %>
 		</div>
 	</div>
 	<div class="desc">
 		<div class="lender">
 			<span class="belt-<%= service.lender.belt %> xsmall glyphicon glyphicon-user"></span>
-			<span class="service"><%= service.lender.name %></span>
+			<span class="service">
+				<%= link_to service.lender, target: "_blank" do %>
+					<%= service.lender.name %></span>
+				<% end %>
 		</div>
 		<div class="price"><%= Service.price_to_symbol(service.price) %></div>
 		<div class="location">

@@ -1,0 +1,9 @@
+<p>Dear <%= @author.first_name %>,</p>
+<p>After a very thorough review and careful consideration, we regret to inform you that your lender application did not go through.</p>
+
+<% unless @lenderApp.staff_notes.empty? %>
+	<p> These are the following notes from our staff: <p>
+	<p> <%= @lenderApp.staff_notes %> </p>
+<% end %>
+
+<p>If you strongly believe we should take a second look at your application, please feel free to contact us at <%= main_app.contact_path %></p>

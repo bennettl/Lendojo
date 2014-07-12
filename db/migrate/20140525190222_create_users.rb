@@ -144,7 +144,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.integer 		:lender_id # owner of the service
 			t.integer 		:lendee_id
 			t.integer 		:service_id
-			t.string 		:relationship_type # checks, pins, hidden
+			t.integer 		:relationship_type, default: 0 # enum
 			t.integer 		:status, default: 0  # enum
 			t.datetime 		:date # date time when service is scheduled
 			# Location: default to service 
@@ -216,9 +216,9 @@ class CreateUsers < ActiveRecord::Migration
 
 		#################################### TAGS ####################################
 		create_table :tags do |t|
-			t.string 	:category
-			t.string 	:name
-			t.integer 	:count, default: 0
+			t.string 		:category
+			t.string 		:name
+			t.integer 		:count, default: 0
 		end
 
 		#################################### REPORTS ####################################

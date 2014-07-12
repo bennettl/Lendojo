@@ -10,6 +10,7 @@ class UserService < ActiveRecord::Base
 
 	################################## ENUMS #################################
 
+	enum relationship_type: [:checks, :pins, :hidden]
 	enum status: [ :pending, :schedule_unconfirm, :schedule_confirmed, :complete ]
 
 	################################## GEOCODING ##################################

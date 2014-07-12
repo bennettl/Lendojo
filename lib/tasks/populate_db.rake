@@ -28,6 +28,7 @@ namespace :db do
 						zip: '90007',
 						lender: true,
 						belt: 'black',
+						status: 'admin',
 						password: 'paper',
 						password_confirmation: 'paper')
 

@@ -56,6 +56,10 @@ gem 'open_uri_redirections'
 # Swagger 
 gem 'swagger-docs', '~> 0.1.8'
 
+# HTML Emails
+gem 'roadie', '~> 3.0.0'
+gem 'roadie-rails', '~> 1.0.2'
+
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'

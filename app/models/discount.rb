@@ -5,5 +5,6 @@ class Discount < ActiveRecord::Base
 	belongs_to :referree, class_name: 'User'
 
 	################################## ENUMS ##################################
-	enum status: [ :inactive, :active ]
+	enum type: [ :percentage, :amount ]
+	
 end
